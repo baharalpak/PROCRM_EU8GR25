@@ -7,4 +7,5 @@ public class TopPageSearch {
     public TopPageSearch(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
+
 }
