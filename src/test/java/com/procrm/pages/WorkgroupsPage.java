@@ -14,11 +14,11 @@ public class WorkgroupsPage {
     @FindBy(xpath="(//a[@href='/workgroups/'])[1]")
     public WebElement workgroupLink;
 
-   @FindBy(xpath= "href=\"/workgroups/group/3/\"")
+   @FindBy(xpath="(//a[@href='/workgroups/group/3/'])[4]")
     public WebElement saleGroup;
 
-   @FindBy(className = "sonet-groups-content-sort-btn")
-   public WebElement abcOrder;
+   //@FindBy(className ="")
+   //public WebElement sortBy;
 
    @FindBy(id= "bx-sonet-groups-request-3")
    public WebElement groupRequest;
@@ -26,11 +26,23 @@ public class WorkgroupsPage {
    @FindBy(id="bx-group-join-submit")
     public WebElement SaleClick;
 
-   public void joinGroup(){
-       workgroupLink.click();
-       saleGroup.click();
-       abcOrder.click();
+   @FindBy(xpath= "(//span[.='Number of members'])[2]")
+    public WebElement selectNumberOfMembers;
 
-   }
-
+   @FindBy(id= "bx-sonet-groups-sort-value")
+    public WebElement isSorted;
 }
+
+   /*
+   ps
+
+    And "user" can sort the groups in a demanded order provided in application.
+    Then "user" can see the groups sorted in a demanded order
+
+  Scenario:  User can leave any joint groups
+    When "user" clicks on group name
+    And "user" sees a pop up window
+    Then "user" clicks on revoke workgroup membership request button to leave the group
+    */
+
+

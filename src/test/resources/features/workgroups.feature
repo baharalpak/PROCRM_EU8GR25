@@ -1,5 +1,5 @@
 
-@wip
+
 Feature: Workgroups feature of ProCrm Application
 
   User Story: As  a user, I should be able to join groups
@@ -14,10 +14,11 @@ Feature: Workgroups feature of ProCrm Application
 
 
   Scenario:  Being able to sort groups
-    When "user" clicks on dropdown menu
-    And "user"  can sort the groups in a demanded order provided in application
-    Then "user" can see the sorted groups
+    When "user" clicks sort by
+    And "user" can sort the groups in a demanded order provided in application.
+    Then "user" can see the groups sorted in a demanded order
 
+    @wip
   Scenario:  User can leave any joint groups
     When "user" clicks on group name
     And "user" sees a pop up window
