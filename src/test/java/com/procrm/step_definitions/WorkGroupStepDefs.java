@@ -45,7 +45,7 @@ public class WorkGroupStepDefs {
 
     }
 
-    @Then("{string} clicks on revoke wokrgroup memebership request button to leave the group")
-    public void clicksOnRevokeWokrgroupMemebershipRequestButtonToLeaveTheGroup(String arg0) {
+    @Then("{string} clicks on revoke workgroup membership request button to leave the group")
+    public void clicksOnRevokeWorkgroupMembershipRequestButtonToLeaveTheGroup(String str) {
     }
 }

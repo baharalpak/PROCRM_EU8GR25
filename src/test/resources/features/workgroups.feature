@@ -1,3 +1,5 @@
+
+@wip
 Feature: Workgroups feature of ProCrm Application
 
   User Story: As  a user, I should be able to join groups
@@ -7,7 +9,7 @@ Feature: Workgroups feature of ProCrm Application
 
   Scenario: Joining workgroups
     When "user" clicks on workgroup module
-    And "user" clicks on "workgroup"
+    And "user" clicks on "Sale"
     Then "user" clicks on join button to send request
 
 
@@ -19,5 +21,5 @@ Feature: Workgroups feature of ProCrm Application
   Scenario:  User can leave any joint groups
     When "user" clicks on group name
     And "user" sees a pop up window
-    Then "user" clicks on revoke wokrgroup memebership request button to leave the group
+    Then "user" clicks on revoke workgroup membership request button to leave the group
 
