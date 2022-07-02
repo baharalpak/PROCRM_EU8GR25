@@ -7,7 +7,7 @@ Feature: Login Functionality of Procrm
   Background: for the scenarios in the feature file, user is expected to be on login page
     Given user launch  the given url
 
-  @pozitiveScenario
+  @positiveScenario
   Scenario Outline: Login as user
 
     When user enters "<username>" and "<password>"
