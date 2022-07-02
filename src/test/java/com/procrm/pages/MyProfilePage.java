@@ -19,6 +19,39 @@ public class MyProfilePage {
     @FindBy(className = "user-profile-block-title")
     public WebElement contactInformation;
 
-    @FindBy(className = "user-profile-events-item user-profile-edit")
+    @FindBy(xpath = "//*[@id=\"workarea-content\"]/div/div/div[2]/div/div[2]/a[1]")
     public WebElement editProfile;
+
+    @FindBy(name = "EMAIL")
+    public WebElement email;
+
+    @FindBy(name = "PERSONAL_WWW")
+    public WebElement webSite;
+
+    @FindBy(name="PERSONAL_ICQ")
+    public WebElement ICQ;
+
+    @FindBy(name="PERSONAL_PHONE")
+    public WebElement phoneNumber;
+
+    @FindBy(name="PERSONAL_FAX")
+    public WebElement faxNumber;
+
+    @FindBy(name="PERSONAL_MOBILE")
+    public WebElement mobileNumber;
+
+    @FindBy(name = "WORK_PHONE")
+    public WebElement workPhone;
+
+    @FindBy(name="UF_PHONE_INNER")
+    public WebElement extensionNumber;
+
+    @FindBy(name = "UF_SKYPE")
+    public WebElement skype;
+
+    @FindBy(className = "webform-button-text")
+    public WebElement saveButton;
+
+    @FindBy(className = "content-edit-form-notice-error")
+    public WebElement errorMessage_IncorrectEmail;
 }
