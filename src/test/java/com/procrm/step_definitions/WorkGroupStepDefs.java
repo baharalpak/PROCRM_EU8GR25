@@ -26,17 +26,17 @@ public class WorkGroupStepDefs {
     @When("{string} clicks on {string}")
     public void clicks_on(String string, String string2) {
         workgroupsPage.saleGroup.click();
-        BrowserUtilities.sleep(3);
+        BrowserUtilities.sleep(5);
     }
     @Then("{string} clicks on join button to send request")
     public void clicks_on_join_button_to_send_request(String string) {
-        workgroupsPage.groupRequest.click();
-        BrowserUtilities.sleep(3);
+        workgroupsPage.joinButton.click();
+       BrowserUtilities.sleep(5);
     }
 
     @When("{string} clicks sort by")
     public void clicks_sort_by(String string) {
-      //  workgroupsPage.sortBy.click();
+       workgroupsPage.sortBy.click();
 
     }
     @When("{string} can sort the groups in a demanded order provided in application.")
@@ -52,6 +52,7 @@ public class WorkGroupStepDefs {
 
     @When("{string} clicks on group name")
     public void clicks_on_group_name(String string) {
+        workgroupsPage.leaveRequestSaleGroup.click();
 
     }
     @When("{string} sees a pop up window")
@@ -60,6 +61,7 @@ public class WorkGroupStepDefs {
     }
     @Then("{string} clicks on revoke workgroup membership request button to leave the group")
     public void clicks_on_revoke_workgroup_membership_request_button_to_leave_the_group(String string) {
+        workgroupsPage.revokeButton.click();
 
     }
 

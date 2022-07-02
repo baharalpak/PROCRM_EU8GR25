@@ -17,20 +17,33 @@ public class WorkgroupsPage {
    @FindBy(xpath="(//a[@href='/workgroups/group/3/'])[4]")
     public WebElement saleGroup;
 
-   //@FindBy(className ="")
-   //public WebElement sortBy;
+  @FindBy(id = "bx-group-join-submit")
+  public WebElement joinButton;
 
-   @FindBy(id= "bx-sonet-groups-request-3")
-   public WebElement groupRequest;
+  // /////////////////////////////////////////////////////////////////////////
 
-   @FindBy(id="bx-group-join-submit")
-    public WebElement SaleClick;
 
-   @FindBy(xpath= "(//span[.='Number of members'])[2]")
+   @FindBy(className= "sonet-groups-content-sort-btn")
+   public WebElement sortBy;
+
+   // @FindBy(xpath= "(//span[.='Number of members'])[2]")
+    @FindBy(id= "popup-window popup-window-no-paddings")
     public WebElement selectNumberOfMembers;
 
-   @FindBy(id= "bx-sonet-groups-sort-value")
+    @FindBy(id= "bx-sonet-groups-sort-value")
     public WebElement isSorted;
+
+    @FindBy(xpath="(//a[@href='/workgroups/group/3/'])[4]")
+   public WebElement leaveRequestSaleGroup;
+
+    @FindBy(className ="ui-btn ui-btn-md ui-btn-danger")
+    public WebElement revokeButton;
+
+
+
+
+
+
 }
 
    /*

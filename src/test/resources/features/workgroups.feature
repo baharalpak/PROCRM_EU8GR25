@@ -12,13 +12,13 @@ Feature: Workgroups feature of ProCrm Application
     And "user" clicks on "Sale"
     Then "user" clicks on join button to send request
 
-
+@wip
   Scenario:  Being able to sort groups
     When "user" clicks sort by
     And "user" can sort the groups in a demanded order provided in application.
     Then "user" can see the groups sorted in a demanded order
 
-    @wip
+
   Scenario:  User can leave any joint groups
     When "user" clicks on group name
     And "user" sees a pop up window
