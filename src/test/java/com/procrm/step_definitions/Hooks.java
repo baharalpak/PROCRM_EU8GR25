@@ -66,5 +66,3 @@ These are the blocks of the code that runs before or after each scenario. So tha
 As per the definition, these are just two annotation @After and @Before. In the console, we can see the blocks getting executed and giving clear output. We can also execute the hooks for specific Tags.
  */
 
-
-
