@@ -54,7 +54,7 @@ Feature: SCRUM-575 - Tasks Feature.
       And "HR" user clicks "Add Tasks" button to create a new task.
       Then "HR" user should be able to display new task created.
 
-      #SCRUM-865
+    #SCRUM-865
   @negativeScenario
   Scenario: Helpdesk user CAN NOT BE ABLE TO create a new task.
     Given "Helpdesk" user is on "My Tasks" Page.
