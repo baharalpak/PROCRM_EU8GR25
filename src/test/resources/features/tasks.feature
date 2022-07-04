@@ -1,4 +1,4 @@
-@wip
+@tasksFeature
 Feature: SCRUM-575 - Tasks Feature.
 
   As a user I should be able to see All Tasks, Ongoing Tasks and Only HR user should be able to create a new task and edit tasks.
