@@ -1,4 +1,4 @@
 package com.procrm.pages;
 
-public class MyProfile {
+public class ServicesPage {
 }
