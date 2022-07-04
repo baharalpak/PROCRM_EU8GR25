@@ -4,7 +4,7 @@ Feature: SCRUM-575 - Tasks Feature.
   As a user I should be able to see All Tasks, Ongoing Tasks and Only HR user should be able to create a new task and edit tasks.
   Accounts are : HR, Helpdesk, Marketing.
 
-  #SCRUM-734
+    #SCRUM-734
   Scenario: HR user should be able to see the All Tasks.
     Given "HR" user is on "Home" Page.
     When "HR" user clicks on Tasks module.
