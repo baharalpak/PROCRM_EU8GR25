@@ -23,8 +23,9 @@ public class DriveStepDefinition {
     @Then("user should be able to see My Driver")
     public void user_should_be_able_to_see_my_driver() {
         String expectedTitle = "My Drive";
-        WebElement actualTitle = Driver.getDriver().findElement(By.xpath("//*[@id=\"top_menu_id_docs_menu_my_disk\"]"));
-        Assert.assertEquals(expectedTitle,actualTitle);
+        WebElement MyDriverTitle = Driver.getDriver().findElement(By.xpath("//*[@id=\"top_menu_id_docs_menu_my_disk\"]"));
+        String actualTitleMyDriver = MyDriverTitle.getText();
+        Assert.assertEquals(expectedTitle,actualTitleMyDriver);
     }
     @Given("user is on Driver module.")
     public void user_is_on_driver_module() {
@@ -44,8 +45,9 @@ public class DriveStepDefinition {
     public void user_should_be_able_to_see_all_documents() {
        //#pagetitle
         String expectedTitle = "All Documents";
-        WebElement actualTitle = Driver.getDriver().findElement(By.cssSelector("#pagetitle"));
-        Assert.assertEquals(expectedTitle,actualTitle);
+        WebElement Title = Driver.getDriver().findElement(By.cssSelector("#pagetitle"));
+        String ActualTitle= Title.getText();
+        Assert.assertEquals(expectedTitle,ActualTitle);
     }
 
 
