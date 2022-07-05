@@ -1,5 +1,6 @@
 package com.procrm.step_definitions;
 
+import com.procrm.pages.BasePage;
 import com.procrm.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -13,7 +14,7 @@ public class DriveStepDefinition {
     @Given("user is on Home Page.")
     public void user_is_on_home_page() {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
     @When("user click on Drive module.")
     public void user_click_on_drive_module() {
