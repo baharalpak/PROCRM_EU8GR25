@@ -4,22 +4,16 @@ Feature: User should be able to display Calendar functionality.
     Given User is on Agileprocrm url successfully
 
   @SCRUM-861
-  Scenario: Verify that User can display 'My Calendar' function.
-    Given HR User is on homepage
+  Scenario Outline: Verify that User can display 'My Calendar' function.
+    Given "<User>" is on homepage
     When User click Calendar button
     Then User should be able to display My Calendar page
 
-
-  Scenario: Verify that User can display 'My Calendar' function.
-    Given Marketing User is on homepage
-    When User click Calendar button
-    Then User should be able to display My Calendar page
-
-
-  Scenario: Verify that User can display 'My Calendar' function.
-    Given Helpdesk User is on homepage
-    When User click Calendar button
-    Then User should be able to display My Calendar page
+    Examples:
+      | User      |
+      | hr        |
+      | marketing |
+      | helpdesk  |
 
 
   @SCRUM-862
@@ -32,22 +26,14 @@ Feature: User should be able to display Calendar functionality.
 
 
   @SCRUM-863
- Scenario: Verify that User can display Company Calendar function.
-    Given HR User is on homepage
+  Scenario Outline: Verify that User can display Company Calendar function.
+    Given "<User>" is on homepage
     When User click Calendar button
     And User click Company Calendar button
     Then User should be able to display Company Calendar page
 
-
-  Scenario: Verify that User can display Company Calendar function.
-    Given Marketing User is on homepage
-    When User click Calendar button
-    And User click Company Calendar button
-    Then User should be able to display Company Calendar page
-
-
-  Scenario: Verify that User can display Company Calendar function.
-    Given Helpdesk User is on homepage
-    When User click Calendar button
-    And User click Company Calendar button
-    Then User should be able to display Company Calendar page
+    Examples:
+      | User      |
+      | hr        |
+      | marketing |
+      | helpdesk  |

@@ -29,10 +29,23 @@ public class Calendar_StepDefinitions {
 
     }
 
-    @Given("HR User is on homepage")
-    public void hr_user_is_on_homepage() {
 
-        BasePage.loginAsHR();
+    @Given("{string} is on homepage")
+    public void hr_user_is_on_homepage(String userType) {
+
+        switch (userType.toLowerCase()){
+            case "hr":
+                BasePage.loginAsHelpDesk();
+                break;
+
+            case "helpdesk":
+                BasePage.loginAsHelpDesk();
+                break;
+
+            case "marketing":
+                BasePage.loginAsMarketing();
+                break;
+        }
 
     }
 
@@ -49,15 +62,11 @@ public class Calendar_StepDefinitions {
 
     }
 
-    @Given("Marketing User is on homepage")
-    public void marketingUserIsOnHomepage() {
-        BasePage.loginAsMarketing();
+    @Given("HR User is on homepage")
+    public void hrUserIsOnHomepage() {
+        BasePage.loginAsHR();
     }
 
-    @Given("Helpdesk User is on homepage")
-    public void helpdeskUserIsOnHomepage() {
-        BasePage.loginAsHelpDesk();
-    }
 
     @When("User click ADD button")
     public void userClickADDButton() {
