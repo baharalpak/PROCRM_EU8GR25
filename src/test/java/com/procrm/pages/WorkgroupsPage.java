@@ -5,7 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class WorkgroupsPage {
+public class WorkgroupsPage{
+
 
     public WorkgroupsPage(){
         PageFactory.initElements(Driver.getDriver(), this);
@@ -23,22 +24,25 @@ public class WorkgroupsPage {
   // /////////////////////////////////////////////////////////////////////////
 
 
-   @FindBy(className= "sonet-groups-content-sort-btn")
+   @FindBy(xpath = "//span[@class='sonet-groups-content-sort-btn']")
    public WebElement sortBy;
 
-   // @FindBy(xpath= "(//span[.='Number of members'])[2]")
-    @FindBy(id= "popup-window popup-window-no-paddings")
+
+    @FindBy(xpath= "(//span[@class='menu-popup-item-text'])[4]")
+
     public WebElement selectNumberOfMembers;
 
-    @FindBy(id= "bx-sonet-groups-sort-value")
-    public WebElement isSorted;
+    //@FindBy(id= "bx-sonet-groups-sort-value")
+   // public WebElement isSorted;
 
     @FindBy(xpath="(//a[@href='/workgroups/group/3/'])[4]")
    public WebElement leaveRequestSaleGroup;
 
-    @FindBy(className ="ui-btn ui-btn-md ui-btn-danger")
+    @FindBy(xpath  ="//button[@class='ui-btn ui-btn-md ui-btn-danger']")
     public WebElement revokeButton;
 
+    @FindBy(id= "bx-group-join-successfull-request-popup")
+    public WebElement popupWindow;
 
 
 

@@ -11,6 +11,7 @@ import org.junit.Assert;
 
 public class WorkGroupStepDefs {
 
+
     WorkgroupsPage workgroupsPage= new WorkgroupsPage();
 
     @Given("user is logged in and on the  homepage")
@@ -21,6 +22,7 @@ public class WorkGroupStepDefs {
     @When("{string} clicks on workgroup module")
     public void clicks_on_workgroup_module(String string) {
         workgroupsPage.workgroupLink.click();
+        BrowserUtilities.sleep(5);
     }
 
     @When("{string} clicks on {string}")
@@ -33,20 +35,22 @@ public class WorkGroupStepDefs {
         workgroupsPage.joinButton.click();
        BrowserUtilities.sleep(5);
     }
-
+//2. seneryo
     @When("{string} clicks sort by")
     public void clicks_sort_by(String string) {
+        BrowserUtilities.sleep(5);
        workgroupsPage.sortBy.click();
+        BrowserUtilities.sleep(5);
 
     }
     @When("{string} can sort the groups in a demanded order provided in application.")
     public void can_sort_the_groups_in_a_demanded_order_provided_in_application(String string) {
         workgroupsPage.selectNumberOfMembers.click();
-
+        BrowserUtilities.sleep(5);
     }
     @Then("{string} can see the groups sorted in a demanded order")
     public void can_see_the_groups_sorted_in_a_demanded_order(String string) {
-        Assert.assertTrue(workgroupsPage.isSorted.isDisplayed());
+       // Assert.assertTrue(workgroupsPage.isSorted.isDisplayed());
 
     }
 
@@ -57,6 +61,7 @@ public class WorkGroupStepDefs {
     }
     @When("{string} sees a pop up window")
     public void sees_a_pop_up_window(String string) {
+        workgroupsPage.popupWindow.isDisplayed();
 
     }
     @Then("{string} clicks on revoke workgroup membership request button to leave the group")
