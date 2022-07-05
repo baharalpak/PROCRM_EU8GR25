@@ -12,6 +12,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
+
+import javax.swing.*;
 
 import static org.openqa.selenium.Keys.ENTER;
 
@@ -80,10 +83,6 @@ public class Calendar_StepDefinitions {
 
 
     }
-    @Then("Verify that User {string} the {string} on My Calendar page successfully")
-    public void verify_that_user_the_on_my_calendar_page_successfully(String string, String string2) {
-
-}
 
 
 
