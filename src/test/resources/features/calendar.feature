@@ -6,20 +6,20 @@ Feature: User should be able to display Calendar functionality.
   @SCRUM-861
   Scenario: Verify that User can display 'My Calendar' function.
     Given HR User is on homepage
-    When  User click Calendar button
-    Then  User should be able to display My Calendar page
+    When User click Calendar button
+    Then User should be able to display My Calendar page
 
 
   Scenario: Verify that User can display 'My Calendar' function.
     Given Marketing User is on homepage
-    When  User click Calendar button
-    Then  User should be able to display My Calendar page
+    When User click Calendar button
+    Then User should be able to display My Calendar page
 
 
   Scenario: Verify that User can display 'My Calendar' function.
     Given Helpdesk User is on homepage
-    When  User click Calendar button
-    Then  User should be able to display My Calendar page
+    When User click Calendar button
+    Then User should be able to display My Calendar page
 
 
   @SCRUM-862
@@ -32,22 +32,22 @@ Feature: User should be able to display Calendar functionality.
 
 
   @SCRUM-863
- Scenario : Verify that User can display Company Calendar function.
-   Given HR User is on homepage
-    When  User click Calendar button
-    And   User click Company Calendar
-    Then  User should be able to display Company Calendar page
+ Scenario: Verify that User can display Company Calendar function.
+    Given HR User is on homepage
+    When User click Calendar button
+    And User click Company Calendar button
+    Then User should be able to display Company Calendar page
 
 
-  Scenario : Verify that User can display Company Calendar function.
+  Scenario: Verify that User can display Company Calendar function.
     Given Marketing User is on homepage
-    When  User click Calendar button
-    And   User click Company Calendar
-    Then  User should be able to display Company Calendar page
+    When User click Calendar button
+    And User click Company Calendar button
+    Then User should be able to display Company Calendar page
 
 
-  Scenario : Verify that User can display Company Calendar function.
+  Scenario: Verify that User can display Company Calendar function.
     Given Helpdesk User is on homepage
-    When  User click Calendar button
-    And   User click Company Calendar
-    Then  User should be able to display Company Calendar page
+    When User click Calendar button
+    And User click Company Calendar button
+    Then User should be able to display Company Calendar page

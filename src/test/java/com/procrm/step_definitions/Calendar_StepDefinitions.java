@@ -85,8 +85,8 @@ public class Calendar_StepDefinitions {
     }
 
 
-    @And("User click Company Calendar")
-    public void userClickCompanyCalendar() {
+    @And("User click Company Calendar button")
+    public void userClickCompanyCalendarButton() {
 
         calendarPage.companyCalendarButton.click();
     }
