@@ -37,3 +37,17 @@ Feature: User should be able to display Calendar functionality.
     When  User click Calendar button
     And   User click Company Calendar
     Then  User should be able to display Company Calendar page
+
+
+  Scenario : Verify that User can display Company Calendar function.
+    Given Marketing User is on homepage
+    When  User click Calendar button
+    And   User click Company Calendar
+    Then  User should be able to display Company Calendar page
+
+
+  Scenario : Verify that User can display Company Calendar function.
+    Given Helpdesk User is on homepage
+    When  User click Calendar button
+    And   User click Company Calendar
+    Then  User should be able to display Company Calendar page
