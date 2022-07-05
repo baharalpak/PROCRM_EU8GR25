@@ -30,6 +30,9 @@ public class CalendarPage extends LoginPage {
     @FindBy(id = "calendar_slider_15039_save_cmd")
     public WebElement saveButton;
 
+    @FindBy(xpath = "//span[.='Company Calendar']")
+    public WebElement companyCalendarButton;
+
 
 
 

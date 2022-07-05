@@ -31,9 +31,9 @@ Feature: User should be able to display Calendar functionality.
     Then User should be able to see event is created on the calendar
 
 
-  #@SCRUM-863
- ## Scenario : Verify that User can display Company Calendar function.
- ##   Given HR User is on homepage
- ##   When  User click Calendar button
-  #  And   User click Company Calendar
-   # Then  User should be able to display Company Calendar page
+  @SCRUM-863
+ Scenario : Verify that User can display Company Calendar function.
+   Given HR User is on homepage
+    When  User click Calendar button
+    And   User click Company Calendar
+    Then  User should be able to display Company Calendar page

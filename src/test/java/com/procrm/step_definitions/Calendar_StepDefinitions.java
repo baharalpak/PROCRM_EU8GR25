@@ -85,6 +85,19 @@ public class Calendar_StepDefinitions {
     }
 
 
+    @And("User click Company Calendar")
+    public void userClickCompanyCalendar() {
+
+        calendarPage.companyCalendarButton.click();
+    }
+
+    @Then("User should be able to display Company Calendar page")
+    public void userShouldBeAbleToDisplayCompanyCalendarPage() {
+
+        Assert.assertTrue(Driver.getDriver().getTitle().contains("Calendar"));
+
+    }
+
 
 
 }
