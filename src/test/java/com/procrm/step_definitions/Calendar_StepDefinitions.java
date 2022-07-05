@@ -33,10 +33,8 @@ public class Calendar_StepDefinitions {
 
     }
 
-
     @When("User click Calendar button")
     public void user_click_calendar_button() {
-
 
         calendarPage.calendarButton.click();
 
@@ -48,12 +46,10 @@ public class Calendar_StepDefinitions {
 
     }
 
-
     @Given("Marketing User is on homepage")
     public void marketingUserIsOnHomepage() {
         BasePage.loginAsMarketing();
     }
-
 
     @Given("Helpdesk User is on homepage")
     public void helpdeskUserIsOnHomepage() {
@@ -84,5 +80,13 @@ public class Calendar_StepDefinitions {
 
 
     }
+    @Then("Verify that User {string} the {string} on My Calendar page successfully")
+    public void verify_that_user_the_on_my_calendar_page_successfully(String string, String string2) {
 
 }
+
+
+
+
+}
+
