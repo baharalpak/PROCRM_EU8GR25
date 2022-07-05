@@ -68,6 +68,8 @@ public class WorkGroupStepDefs {
     public void clicks_on_revoke_workgroup_membership_request_button_to_leave_the_group(String string) {
         workgroupsPage.revokeButton.click();
 
+
+
     }
 
 }
