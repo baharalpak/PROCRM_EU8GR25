@@ -13,7 +13,7 @@ Feature: My Profile Feature
       | hr        |
       | marketing |
       | helpdesk  |
-  @wip
+
   Scenario Outline:User can edit 'Contact Information' on My Profile and see updated personal information after editing
     Given "<user>" user is on homepage
     When user clicks on profile name
