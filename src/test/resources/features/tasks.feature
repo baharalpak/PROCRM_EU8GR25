@@ -7,44 +7,44 @@ Feature: SCRUM-575 - Tasks Feature.
   @SCRUM-734 @HR
   Scenario: HR user should be able to see the All Tasks.
     Given HR user is on Home Page.
-    When HR user clicks on Tasks module.
-    Then HR user clicks All button on My Tasks Page.
-    Then HR user should be able to display All Tasks.
+    When User clicks on Tasks module.
+    Then User clicks All button on My Tasks Page.
+    Then User should be able to display All Tasks.
 
   @SCRUM-736 @Helpdesk
   Scenario: Helpdesk user should be able to see the All Tasks.
     Given Helpdesk user is on Home Page.
-    When Helpdesk user clicks on Tasks module.
-    Then Helpdesk user clicks "All Tab" button on My Tasks Page.
-    Then Helpdesk user should be able to display All Tasks.
+    When User clicks on Tasks module.
+    Then User clicks All button on My Tasks Page.
+    Then User should be able to display All Tasks.
 
   @SCRUM-735 @Marketing
   Scenario: Marketing user should be able to see the All Tasks.
     Given Marketing user is on Home Page.
-    When Marketing user clicks on Tasks module.
-    Then Marketing user clicks "All Tab" button on My Tasks Page.
-    Then Marketing user should be able to display All Tasks.
+    When User clicks on Tasks module.
+    Then User clicks All button on My Tasks Page.
+    Then User should be able to display All Tasks.
 
   @SCRUM-737 @HR
   Scenario: HR user should be able to see Ongoing Tasks.
     Given HR user is on Home Page.
-    When HR user clicks on Tasks module.
-    And HR user clicks "Ongoing Tab" button on My Tasks Page.
-    Then HR user should be able to see Ongoing Tasks.
+    When User clicks on Tasks module.
+    And User clicks Ongoing button on My Tasks Page.
+    Then User should be able to see Ongoing Tasks.
 
   @SCRUM-739 @Helpdesk
   Scenario: Helpdesk user should be able to see Ongoing Tasks.
     Given Helpdesk user is on Home Page.
-    When Helpdesk user clicks on Tasks module.
-    And Helpdesk user clicks "Ongoing Tab" button on My Tasks Page.
-    Then Helpdesk user should be able to see Ongoing Tasks.
+    When User clicks on Tasks module.
+    And User clicks Ongoing button on My Tasks Page.
+    Then User should be able to see Ongoing Tasks.
 
   @SCRUM-738 @Marketing
   Scenario: Marketing user should be able to see Ongoing Tasks.
     Given Marketing user is on Home Page.
-    When Marketing user clicks on Tasks module.
-    And Marketing user clicks "Ongoing Tab" button on My Tasks Page.
-    Then Marketing user should be able to see Ongoing Tasks.
+    When User clicks on Tasks module.
+    And User clicks Ongoing button on My Tasks Page.
+    Then User should be able to see Ongoing Tasks.
 
   @SCRUM-864 @HR
   Scenario: HR user should be able to create a new task.
