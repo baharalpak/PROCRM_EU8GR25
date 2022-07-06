@@ -20,11 +20,21 @@ public class MyProfileStepDefinitions {
 
     Faker faker = new Faker();
 
-    @Given("HR user is on homepage")
-    public void hr_user_is_on_homepage() {
-        BasePage.loginAsHR();
-    }
+    @Given("{string} user is on homepage")
+    public void hr_user_is_on_homepage(String userType) {
+        switch (userType.toLowerCase()) {
+            case "hr":
+                BasePage.loginAsHR();
+                break;
+            case "helpdesk":
+                BasePage.loginAsHelpDesk();
+                break;
+            case "marketing":
+                BasePage.loginAsMarketing();
+                break;
 
+        }
+    }
     @When("HR user clicks on profile name")
     public void hr_user_clicks_on_profile_name() {
         myProfilePage.profileName.click();
