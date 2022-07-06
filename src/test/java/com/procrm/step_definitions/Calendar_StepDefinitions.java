@@ -30,7 +30,7 @@ public class Calendar_StepDefinitions {
     }
 
 
-    @Given("{string} is on homepage")
+   /* @Given("{string} is on homepage")
     public void hr_user_is_on_homepage(String userType) {
 
         switch (userType.toLowerCase()){
@@ -48,6 +48,8 @@ public class Calendar_StepDefinitions {
         }
 
     }
+    *
+    */
 
     @When("User click Calendar button")
     public void user_click_calendar_button() {

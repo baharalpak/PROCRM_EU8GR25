@@ -1,5 +1,3 @@
-
-
 Feature: Workgroups feature of ProCrm Application
 
   User Story: As  a user, I should be able to join groups
@@ -8,7 +6,6 @@ Feature: Workgroups feature of ProCrm Application
     Given user is logged in and on the  homepage
 
   Scenario: Joining workgroups
-    #Given "<user>" user is on homepage
     When "user" clicks on workgroup module
     And "user" clicks on "Sale"
     Then "user" clicks on join button to send request
@@ -26,4 +23,3 @@ Feature: Workgroups feature of ProCrm Application
     And "user" clicks on group name
     And "user" sees a pop up window
     Then "user" clicks on revoke workgroup membership request button to leave the group
-
