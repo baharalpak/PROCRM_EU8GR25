@@ -1,3 +1,4 @@
+@calendar
 Feature: User should be able to display Calendar functionality.
 
   Background:
