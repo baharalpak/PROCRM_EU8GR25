@@ -1,5 +1,8 @@
 package com.procrm.utilities;
 
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+
 public class BrowserUtilities {
 
     /*
@@ -13,6 +16,11 @@ public class BrowserUtilities {
         }catch (InterruptedException e ) {
 
         }
+    }
+
+    public static void clickWithJS(WebElement element) {
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
     }
 
 

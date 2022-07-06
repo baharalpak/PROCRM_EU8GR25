@@ -79,7 +79,7 @@ public class Calendar_StepDefinitions {
 
         //calendarPage.eventNameBox.click();
         //calendarPage.eventNameBox.clear();
-        BrowserUtilities.sleep(5);
+        BrowserUtilities.clickWithJS(calendarPage.eventNameBox);
         calendarPage.eventNameBox.sendKeys(eventName);
         calendarPage.dateBox.sendKeys(eventDate);
         calendarPage.allDayBox.click();

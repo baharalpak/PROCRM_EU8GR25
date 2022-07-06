@@ -18,7 +18,7 @@ public class CalendarPage extends LoginPage {
     @FindBy(className = "ui-btn-main")
     public WebElement addButton;
 
-    @FindBy(id = "calendar_slider_15039_entry_name")
+    @FindBy(name = "name")
     public WebElement eventNameBox;
 
     @FindBy(id = "calendar_slider_15039_date_from")
