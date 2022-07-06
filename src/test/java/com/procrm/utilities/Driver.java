@@ -52,7 +52,7 @@ access to the object of this class from outside the class
                     WebDriverManager.chromedriver().setup();
                     driverPool.set(new ChromeDriver());
                     driverPool.get().manage().window().maximize();
-                    //   driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+                    driverPool.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                     break;
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
