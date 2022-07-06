@@ -1,31 +1,59 @@
 package com.procrm.step_definitions;
 
+import com.procrm.pages.BasePage;
 import com.procrm.pages.CompanyPage;
 import com.procrm.utilities.BrowserUtilities;
-import com.procrm.utilities.ConfigurationReader;
 import com.procrm.utilities.Driver;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.WebElement;
 
 public class EmployeeStep_definition {
 
     CompanyPage companyPage = new CompanyPage();
 
-    @And("user clicks {string} button")
-    public void userClicksButton(String functionName) {
-    companyPage.menuButton.click();
-        BrowserUtilities.sleep(2);
-    companyPage.clickAnyFunctions(functionName);
+
+    @When("user clicks Employees button")
+    public void user_clicks_employees_button() {
+        companyPage.menu.click();
+        BrowserUtilities.sleep(3);
+    }
+    @When("user clicks Company Structure button")
+    public void user_clicks_company_structure_button() {
+        companyPage.companyStructure.click();
+        BrowserUtilities.sleep(3);
+    }
+    @Then("user should see the Company Structure")
+    public void user_should_see_the_company_structure() {
+        Assert.assertTrue(Driver.getDriver().getTitle().contains("Company Structure"));
+    }
+    @When("user clicks Telephone Directory button")
+    public void user_clicks_telephone_directory_button() {
+        companyPage.telephoneDirectory.click();
+        BrowserUtilities.sleep(3);
+
+      }
+    @Then("user should see the telephone directory")
+    public void user_should_see_the_telephone_directory() {
+        Assert.assertTrue(Driver.getDriver().getTitle().contains("Telephone Directory"));
+
     }
 
-    @Then("user verifies Page Title as {string}")
-    public void userVerifiesPageTitleAs(String expectedPageTitle) {
-        BrowserUtilities.sleep(2);
-        Assert.assertEquals(expectedPageTitle, companyPage.pageTitle.getText());
+    @Given("{string} logs in home page")
+    public void hr_user_is_on_homepage(String userType) {
+        switch (userType.toLowerCase()) {
+            case "hr":
+                BasePage.loginAsHR();
+                break;
+            case "helpdesk":
+                BasePage.loginAsHelpDesk();
+                break;
+            case "marketing":
+                BasePage.loginAsMarketing();
+                break;
+
+        }
+    }
     }
 
-
-}

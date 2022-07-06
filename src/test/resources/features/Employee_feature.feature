@@ -3,7 +3,6 @@ Feature: Functionality of Employee Feature Application
 
   Background:
     Given user launch  the given url
-  @wip
   Scenario Outline: Display company structure
     When user enters "<username>" and "<password>"
     And  user click on login button

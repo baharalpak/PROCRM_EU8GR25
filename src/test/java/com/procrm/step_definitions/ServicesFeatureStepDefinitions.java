@@ -13,15 +13,7 @@ import java.util.Locale;
 public class ServicesFeatureStepDefinitions {
 
     ServicesPage servicesPage = new ServicesPage();
-    @Given("{string} user is on home page")
-    public void user_is_on_home_page(String userType) {
-        if(userType.toLowerCase().equals("marketing"))
-        {BasePage.loginAsMarketing();}
-        else if(userType.toLowerCase().equals("helpdesk"))
-        {BasePage.loginAsHelpDesk();}
-        else
-        {BasePage.loginAsHR();}
-    }
+
     @When("User clicks on the services tab.")
     public void user_clicks_on_the_services_tab() {
         servicesPage.servicesTab.click();
