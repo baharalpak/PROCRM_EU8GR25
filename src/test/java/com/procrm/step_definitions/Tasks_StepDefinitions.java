@@ -15,11 +15,7 @@ public class Tasks_StepDefinitions {
 
     TasksPage tasksPage = new TasksPage();
 
-    @Given("HR user is on Home Page.")
-    public void hr_user_is_on_home_page() {
 
-        BasePage.loginAsHR();
-    }
 
     @When("User clicks on Tasks module.")
     public void hr_user_clicks_on_tasks_module() {

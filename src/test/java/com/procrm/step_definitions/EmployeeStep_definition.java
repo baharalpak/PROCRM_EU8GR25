@@ -13,11 +13,7 @@ public class EmployeeStep_definition {
 
     CompanyPage companyPage = new CompanyPage();
 
-    @Given("user is on homepage")
-    public void user_is_on_homepage() {
-        BasePage.loginAsHR();
-        BrowserUtilities.sleep(3);
-    }
+
     @When("user clicks Employees button")
     public void user_clicks_employees_button() {
         companyPage.menu.click();
