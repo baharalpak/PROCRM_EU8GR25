@@ -17,4 +17,10 @@ public class TasksPage{
     @FindBy(xpath = "//span[.='All']")
     public WebElement allTabButton;
 
+    @FindBy(xpath = "(//input[@class='main-grid-checkbox main-grid-row-checkbox main-grid-check-all'])[1]")
+    public WebElement allTasks;
+
+    @FindBy(xpath = "//div[@class='main-ui-filter-search-square main-ui-filter-search-square-preset main-ui-square']")
+    public WebElement inProgress;
+
 }
