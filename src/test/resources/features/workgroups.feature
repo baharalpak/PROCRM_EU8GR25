@@ -8,6 +8,7 @@ Feature: Workgroups feature of ProCrm Application
     Given user is logged in and on the  homepage
 
   Scenario: Joining workgroups
+    #Given "<user>" user is on homepage
     When "user" clicks on workgroup module
     And "user" clicks on "Sale"
     Then "user" clicks on join button to send request
