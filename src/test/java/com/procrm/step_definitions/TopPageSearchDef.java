@@ -23,10 +23,12 @@ public class TopPageSearchDef {
    // public void user_is_on_agileprocrm_homepage() {
  //       BasePage.loginAsHR();
   //  }
-   @Given("{string} user is on homepage")
+  /* @Given("{string} user is on homepage")
    public void userIsOnHomepage(String user) {
         BasePage.loginAsHR();
    }
+
+   */
 
     @When("user types {string} in the agileprocrm search box and press enter")
     public void user_types_in_the_agileprocrm_search_box_and_press_enter(String searchValue) {
