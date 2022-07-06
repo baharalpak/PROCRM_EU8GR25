@@ -11,7 +11,7 @@ public class WorkgroupsPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(xpath="(//a[@href='/workgroups/'])[1]")
+    @FindBy(xpath="(//span[@class= 'menu-item-link-text'])[4]")
     public WebElement workgroupLink;
 
     @FindBy(xpath="(//a[@href='/workgroups/group/3/'])[1]")

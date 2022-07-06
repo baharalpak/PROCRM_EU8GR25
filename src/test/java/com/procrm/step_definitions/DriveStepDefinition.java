@@ -15,9 +15,6 @@ import org.openqa.selenium.WebElement;
 public class DriveStepDefinition {
     DriverPage driverPage =  new DriverPage();
 
-    @Given("Marketing user is on Home Page.")
-    public void marketing_user_is_on_home_page() {
-        BasePage.loginAsMarketing();    }
 
 
     @When("click on Drive module.")

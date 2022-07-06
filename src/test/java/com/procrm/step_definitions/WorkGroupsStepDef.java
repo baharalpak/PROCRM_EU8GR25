@@ -6,6 +6,10 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WorkGroupsStepDef {
 
@@ -16,7 +20,7 @@ public class WorkGroupsStepDef {
     @When("user clicks on workgroup module")
     public void user_clicks_on_workgroup_module() {
         workgroupsPage.workgroupLink.click();
-        BrowserUtilities.sleep(5);
+
 
     }
 
@@ -34,6 +38,7 @@ public class WorkGroupsStepDef {
 
     @And("user clicks on join workgroup button")
     public void userClicksOnJoinWorkgroupButton() {
+
         workgroupsPage.joinGroupButton.click();
     }
 
@@ -52,22 +57,12 @@ public class WorkGroupsStepDef {
     }
 
 
-    @Then("user can see the groups sorted in a demanded order")
-    public void user_can_see_the_groups_sorted_in_a_demanded_order() {
-
-    }
-
-
     @When("user clicks on group name")
     public void user_clicks_on_group_name() {
         workgroupsPage.leaveRequestSaleGroup.click();
         BrowserUtilities.sleep(2);
     }
 
-
-    @When("user sees a pop up window")
-    public void user_sees_a_pop_up_window() {
-    }
 
     @Then("user clicks on revoke workgroup membership request button to leave the group")
     public void user_clicks_on_revoke_workgroup_membership_request_button_to_leave_the_group() {
