@@ -1,45 +1,39 @@
-@smoke
 Feature: User should be able to display Calendar functionality.
 
   Background:
-   Given User is on Agileprocrm url successfully
+    Given User is on Agileprocrm url successfully
 
   @SCRUM-861
   Scenario Outline: Verify that User can display 'My Calendar' function.
-    When User enters "<username>" and "<password>"
-    And  User click on Log In button
-    And  User should land on home page
-    And  User click "Calendar" button
-    Then User verify displaying "My Calendar" function successfully
+    Given "<User>" is on homepage
+    When User click Calendar button
+    Then User should be able to display My Calendar page
 
     Examples:
-      | username                      | password |
-      | hr1@cybertekschool.com        | UserUser |
-      | helpdesk1@cybertekschool.com  | UserUser |
-      | marketing3@cybertekschool.com | UserUser |
+      | User      |
+      | hr        |
+      | marketing |
+      | helpdesk  |
+
 
   @SCRUM-862
   Scenario: Verify that As an HR User can add an event on My Calendar.
-    When User enters username "hr1@cybertekschool.com" and  password "UserUser"
-    And  User click on Log In button
-    And  User should land on home page
-    And  User click "Calendar" button
-    And  User display "My Calendar" function
-    And  User click "ADD" button
-    And  User should be able to see "New Event" page
-    Then Verify that User "SAVE(CTRL+ENTER)" the "New Event" on My Calendar page successfully
+    Given HR User is on homepage
+    And User click Calendar button
+    When User click ADD button
+    And Fill event name as "Test" and date as "02/01/2023" and click All day checkbox and save the event
+    Then User should be able to see event is created on the calendar
 
 
   @SCRUM-863
   Scenario Outline: Verify that User can display Company Calendar function.
-    When User enters "<username>" and "<password>"
-    And  User click on Log In button
-    And  User should land on home page
-    And  User click "Calendar" button
-    Then User verify displaying "Company Calendar" function successfully
+    Given "<User>" is on homepage
+    When User click Calendar button
+    And User click Company Calendar button
+    Then User should be able to display Company Calendar page
 
     Examples:
-      | username                      | password |
-      | hr1@cybertekschool.com        | UserUser |
-      | helpdesk1@cybertekschool.com  | UserUser |
-      | marketing3@cybertekschool.com | UserUser |
+      | User      |
+      | hr        |
+      | marketing |
+      | helpdesk  |
