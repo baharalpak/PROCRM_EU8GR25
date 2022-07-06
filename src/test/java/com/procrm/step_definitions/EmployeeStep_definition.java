@@ -45,18 +45,19 @@ public class EmployeeStep_definition {
     }
 
     @Given("{string} logs in home page")
-    public void logsInHomePage(String user) {
-        if (user.equals("hr")){
-            BasePage.loginAsHR();
-            BrowserUtilities.sleep(3);
-        }else if (user.equals("marketing")){
-            BasePage.loginAsMarketing();
-            BrowserUtilities.sleep(3);
-        }else {
-            BasePage.loginAsHelpDesk();
-            BrowserUtilities.sleep(3);
-        }
+    public void hr_user_is_on_homepage(String userType) {
+        switch (userType.toLowerCase()) {
+            case "hr":
+                BasePage.loginAsHR();
+                break;
+            case "helpdesk":
+                BasePage.loginAsHelpDesk();
+                break;
+            case "marketing":
+                BasePage.loginAsMarketing();
+                break;
 
+        }
     }
     }
 
