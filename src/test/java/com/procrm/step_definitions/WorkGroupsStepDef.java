@@ -14,6 +14,7 @@ public class WorkGroupsStepDef {
     public void user_clicks_on_workgroup_module() {
         workgroupsPage.workgroupLink.click();
         BrowserUtilities.sleep(5);
+
     }
 
     @When("user clicks on sale")
