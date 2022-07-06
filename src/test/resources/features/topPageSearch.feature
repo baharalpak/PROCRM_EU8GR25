@@ -24,7 +24,7 @@ Feature: agileprocrm top page search feature
       #| Chat and Calls    |
     Examples: search values we are going to be using in this scenario is a below
       | word       |
-      | test value |
+      | Test Value |
       | employees  |
       | Chat       |
 

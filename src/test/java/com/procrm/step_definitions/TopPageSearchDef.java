@@ -113,6 +113,6 @@ public class TopPageSearchDef {
 
     @Then("related {string} is displayed")
     public void relatedIsDisplayed(String word) {
-        Assert.assertTrue(Driver.getDriver().getTitle().toLowerCase().contains(word));
+        Assert.assertTrue(Driver.getDriver().getTitle().toLowerCase().contains(word.toLowerCase()));
     }
 }
