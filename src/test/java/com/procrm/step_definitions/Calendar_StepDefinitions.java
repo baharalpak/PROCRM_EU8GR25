@@ -55,6 +55,8 @@ public class Calendar_StepDefinitions {
         calendarPage.calendarButton.click();
 
     }
+
+
     @Then("User should be able to display My Calendar page")
     public void user_should_be_able_to_display_my_calendar_page() {
 
@@ -92,6 +94,7 @@ public class Calendar_StepDefinitions {
         calendarPage.date_to_07_03.click();
         calendarPage.date_to_07_14.click();
         calendarPage.date_to_07_17.click();
+        BrowserUtilities.sleep(5);
         calendarPage.allDayBox.click();
         BrowserUtilities.sleep(5);
         calendarPage.saveButton.click();

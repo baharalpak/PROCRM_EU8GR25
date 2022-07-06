@@ -51,7 +51,6 @@ public class CalendarPage extends LoginPage {
     @FindBy(xpath = "//a[.='17']")
     public WebElement date_to_07_17;
 
-
     @FindBy(name = "skip_time")
     public WebElement allDayBox;
 
