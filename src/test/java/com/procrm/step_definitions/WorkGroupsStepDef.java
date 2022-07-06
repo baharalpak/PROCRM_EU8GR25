@@ -3,12 +3,15 @@ package com.procrm.step_definitions;
 import com.procrm.pages.WorkgroupsPage;
 import com.procrm.utilities.BrowserUtilities;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class WorkGroupsStepDef {
 
     WorkgroupsPage workgroupsPage = new WorkgroupsPage();
+
+
 
     @When("user clicks on workgroup module")
     public void user_clicks_on_workgroup_module() {
@@ -74,5 +77,5 @@ public class WorkGroupsStepDef {
     }
 
 
-}
 
+}
