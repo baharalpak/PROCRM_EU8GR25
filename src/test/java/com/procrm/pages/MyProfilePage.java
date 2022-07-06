@@ -13,10 +13,10 @@ public class MyProfilePage {
     @FindBy(id = "user-block")
     public WebElement profileName;
 
-    @FindBy(linkText = "My Profile")
+    @FindBy(xpath = "//*[@id=\"popup-window-content-menu-popup-user-menu\"]/div/div/a[1]/span[2]")
     public WebElement myProfileLink;
 
-    @FindBy(className = "user-profile-block-title")
+    @FindBy(xpath="//*[@id=\"workarea-content\"]/div/div/div[3]/table/tbody/tr[1]/td")
     public WebElement contactInformation;
 
     @FindBy(xpath = "//*[@id=\"workarea-content\"]/div/div/div[2]/div/div[2]/a[1]")
