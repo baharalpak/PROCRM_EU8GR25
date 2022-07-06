@@ -15,10 +15,22 @@ public class WorkGroupStepDefs {
     WorkgroupsPage workgroupsPage= new WorkgroupsPage();
 
     @Given("user is logged in and on the  homepage")
-    public void user_is_logged_in_and_on_the_homepage() {
-        BasePage.loginAsHR();
+    public void user_is_logged_in_and_on_the_homepage(String userType) {
 
-    }
+            switch (userType.toLowerCase()) {
+                case "hr":
+                    BasePage.loginAsHR();
+                    break;
+                case "helpdesk":
+                    BasePage.loginAsHelpDesk();
+                    break;
+                case "marketing":
+                    BasePage.loginAsMarketing();
+                    break;
+            }
+        }
+
+
     @When("{string} clicks on workgroup module")
     public void clicks_on_workgroup_module(String string) {
         workgroupsPage.workgroupLink.click();
