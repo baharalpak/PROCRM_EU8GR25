@@ -74,14 +74,24 @@ public class Calendar_StepDefinitions {
         BrowserUtilities.sleep(5);
     }
 
-    @And("Fill event name as {string} and date as {string} and click All day checkbox and save the event")
-    public void fillEventNameAsAndDateAsAndClickAllDayCheckboxAndSaveTheEvent(String eventName, String eventDate) {
+    @And("Fill event name as {string} and {string} and {string} click All day checkbox and save the event")
+    public void fillEventNameAsAndDateAsAndClickAllDayCheckboxAndSaveTheEvent(String eventName, String eventStartDate, String eventEndDate) {
 
-        //calendarPage.eventNameBox.click();
-        //calendarPage.eventNameBox.clear();
         BrowserUtilities.clickWithJS(calendarPage.eventNameBox);
         calendarPage.eventNameBox.sendKeys(eventName);
-        calendarPage.dateBox.sendKeys(eventDate);
+        calendarPage.dateFrom.click();
+        BrowserUtilities.sleep(5);
+        calendarPage.date_from_07_01.click();
+        calendarPage.date_from_07_15.click();
+        calendarPage.date_from_07_05.click();
+        calendarPage.date_from_07_16.click();
+        BrowserUtilities.sleep(5);
+        calendarPage.dateTo.click();
+        BrowserUtilities.sleep(5);
+        calendarPage.date_to_07_02.click();
+        calendarPage.date_to_07_03.click();
+        calendarPage.date_to_07_14.click();
+        calendarPage.date_to_07_17.click();
         calendarPage.allDayBox.click();
         BrowserUtilities.sleep(5);
         calendarPage.saveButton.click();

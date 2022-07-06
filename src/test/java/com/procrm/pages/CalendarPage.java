@@ -21,13 +21,41 @@ public class CalendarPage extends LoginPage {
     @FindBy(name = "name")
     public WebElement eventNameBox;
 
-    @FindBy(id = "calendar_slider_15039_date_from")
-    public WebElement dateBox;
+    @FindBy(name = "date_from")
+    public WebElement dateFrom;
 
-    @FindBy(id = "calendar_slider_15039_date_full_day")
+    @FindBy(name = "date_to")
+    public WebElement dateTo;
+
+    @FindBy(xpath = "(//a[.='1'])[1]")
+    public WebElement date_from_07_01;
+
+    @FindBy(xpath = "(//a[.='2'])[1]")
+    public WebElement date_to_07_02;
+
+    @FindBy(xpath = "//a[.='15']")
+    public WebElement date_from_07_15;
+
+    @FindBy(xpath = "(//a[.='3'])[1]")
+    public WebElement date_to_07_03;
+
+    @FindBy(xpath = "(//a[.='5'])[1]")
+    public WebElement date_from_07_05;
+
+    @FindBy(xpath = "//a[.='14']")
+    public WebElement date_to_07_14;
+
+    @FindBy(xpath = "//a[.='16']")
+    public WebElement date_from_07_16;
+
+    @FindBy(xpath = "//a[.='17']")
+    public WebElement date_to_07_17;
+
+
+    @FindBy(name = "skip_time")
     public WebElement allDayBox;
 
-    @FindBy(id = "calendar_slider_15039_save_cmd")
+    @FindBy(xpath = "//span[.='(Ctrl+Enter)']")
     public WebElement saveButton;
 
     @FindBy(xpath = "//span[.='Company Calendar']")

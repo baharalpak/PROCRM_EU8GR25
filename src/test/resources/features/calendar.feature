@@ -17,12 +17,19 @@ Feature: User should be able to display Calendar functionality.
 
 
   @SCRUM-862
-  Scenario: Verify that As an HR User can add an event on My Calendar.
+  Scenario Outline: Verify that As an HR User can add an event on My Calendar.
     Given HR User is on homepage
     And User click Calendar button
     When User click ADD button
-    And Fill event name as "Test" and date as "02/01/2023" and click All day checkbox and save the event
+    And Fill event name as "Test" and "<start date>" and "<end date>" click All day checkbox and save the event
     Then User should be able to see event is created on the calendar
+
+    Examples:
+      | start date | end date   |
+      | 07/01/2022 | 07/02/2022 |
+      | 07/15/2022 | 07/03/2022 |
+      | 07/05/2022 | 07/14/2022 |
+      | 07/16/2022 | 07/17/2022 |
 
 
   @SCRUM-863
