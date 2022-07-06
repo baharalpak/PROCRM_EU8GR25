@@ -9,8 +9,12 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
+import java.util.List;
 
 public class MyProfileStepDefinitions {
 
@@ -52,6 +56,85 @@ public class MyProfileStepDefinitions {
         Assert.assertTrue(myProfilePage.contactInformation.isDisplayed());
     }
 
+    @When("clicks on Edit profile button")
+    public void clicks_on_edit_profile_button() {
+        myProfilePage.editProfile.click();
+        BrowserUtilities.sleep(5);
+    }
+
+    @When("provide e-mail,Web site,ICQ,phone,fax,mobile,work phone,extension number,skype and clicks SAVE button")
+    public void provide_e_mail_web_site_icq_phone_fax_mobile_work_phone_extension_number_skype_and_clicks_save_button() {
+        myProfilePage.email.clear();
+        myProfilePage.webSite.clear();
+        myProfilePage.ICQ.clear();
+        myProfilePage.phoneNumber.clear();
+        myProfilePage.faxNumber.clear();
+        myProfilePage.mobileNumber.clear();
+        myProfilePage.workPhone.clear();
+        myProfilePage.extensionNumber.clear();
+        myProfilePage.skype.clear();
+        BrowserUtilities.sleep(5);
+        action.sendKeys(myProfilePage.email, faker.bothify("######??@gmail.com")).perform();
+        action.sendKeys(myProfilePage.webSite, faker.letterify("www.#########.com")).perform();
+        action.sendKeys(myProfilePage.ICQ, faker.numerify("?????")).perform();
+        action.sendKeys(myProfilePage.phoneNumber, faker.phoneNumber().phoneNumber()).perform();
+        action.sendKeys(myProfilePage.faxNumber, faker.phoneNumber().phoneNumber()).perform();
+        action.sendKeys(myProfilePage.mobileNumber, faker.phoneNumber().cellPhone()).perform();
+        action.sendKeys(myProfilePage.extensionNumber, faker.phoneNumber().extension()).perform();
+        action.sendKeys(myProfilePage.skype, faker.name().username()).perform();
+        action.click(myProfilePage.saveButton).perform();
+        BrowserUtilities.sleep(5);
+
+    }
+
+    @Then("user should be able to see updated information on the profile page")
+    public void user_should_be_able_to_see_updated_information_on_the_profile_page() {
+
+    }
+
+    @When("leave all the fields empty and clicks SAVE button")
+    public void leave_all_the_fields_empty_and_clicks_save_button() {
+        myProfilePage.email.clear();
+        myProfilePage.webSite.clear();
+        myProfilePage.ICQ.clear();
+        myProfilePage.phoneNumber.clear();
+        myProfilePage.faxNumber.clear();
+        myProfilePage.mobileNumber.clear();
+        myProfilePage.workPhone.clear();
+        myProfilePage.extensionNumber.clear();
+        myProfilePage.skype.clear();
+        action.click(myProfilePage.saveButton).perform();
+        BrowserUtilities.sleep(3);
+    }
+
+    @Then("Error message is thrown and HR user can not edit profile")
+    public void error_message_is_thrown_and_hr_user_can_not_edit_profile() {
+        Assert.assertTrue(myProfilePage.errorMessage_IncorrectEmail.isDisplayed());
+        System.out.println(myProfilePage.errorMessage_IncorrectEmail.getText());
+    }
+
+    @Given("User is on home page")
+    public void user_is_on_home_page() {
+        BasePage.loginAsHR();
+    }
+
+    @When("user enters -££$$%%>- as phone number")
+    public void user_enters_££$$_as_phone_number() {
+        myProfilePage.phoneNumber.clear();
+        action.sendKeys(myProfilePage.phoneNumber, "-££$$%%>-");
+        action.click(myProfilePage.saveButton).perform();
+        BrowserUtilities.sleep(5);
+    }
+
+    @Then("user should not be able to update profile")
+    public void user_should_not_be_able_to_update_profile() {
+        String updatedPhoneNumber = myProfilePage.phoneNumber.getText();
+        if (!(updatedPhoneNumber.equals("-££$$%%>-"))) {
+            System.out.println("Test Passed");
+        } else {
+            System.out.println("Test Failed!!!");
+        }
+    }
 
 
 }
