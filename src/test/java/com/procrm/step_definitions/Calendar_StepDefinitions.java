@@ -89,21 +89,21 @@ public class Calendar_StepDefinitions {
         calendarPage.eventNameBox.sendKeys(eventName);
         BrowserUtilities.sleep(5);
 
-        if (eventStartDate.equals("past")&& eventEndDate.equals("past")){
+        if (eventStartDate.equals("past") && eventEndDate.equals("past")) {
 
             calendarPage.dateFrom.click();
-          //  BrowserUtilities.sleep(5);
+            //  BrowserUtilities.sleep(5);
             calendarPage.dateFrom.clear();
-          //  BrowserUtilities.sleep(5);
+            //  BrowserUtilities.sleep(5);
             calendarPage.dateFrom.sendKeys(ConfigurationReader.getProperty("past"), Keys.ENTER);
-           // BrowserUtilities.sleep(5);
+            // BrowserUtilities.sleep(5);
             calendarPage.dateTo.click();
-           // BrowserUtilities.sleep(5);
+            // BrowserUtilities.sleep(5);
             calendarPage.dateTo.clear();
-          //  BrowserUtilities.sleep(5);
+            //  BrowserUtilities.sleep(5);
             calendarPage.dateTo.sendKeys(ConfigurationReader.getProperty("past"), Keys.ENTER);
-          //  BrowserUtilities.sleep(5);
-        }else if(eventStartDate.equals("future")&& eventEndDate.equals("future")){
+            //  BrowserUtilities.sleep(5);
+        } else if (eventStartDate.equals("future") && eventEndDate.equals("future")) {
 
             calendarPage.dateFrom.click();
             //  BrowserUtilities.sleep(5);
@@ -117,7 +117,7 @@ public class Calendar_StepDefinitions {
             //  BrowserUtilities.sleep(5);
             calendarPage.dateTo.sendKeys(ConfigurationReader.getProperty("future"), Keys.ENTER);
             //  BrowserUtilities.sleep(5);
-        }else if(eventStartDate.equals("past")&& eventEndDate.equals("future")){
+        } else if (eventStartDate.equals("past") && eventEndDate.equals("future")) {
 
             calendarPage.dateFrom.click();
             //  BrowserUtilities.sleep(5);
@@ -143,13 +143,15 @@ public class Calendar_StepDefinitions {
 
         } */
 
-        calendarPage.allDayBox.click();
-        BrowserUtilities.sleep(5);
-        calendarPage.saveButton.click();
+            calendarPage.allDayBox.click();
+            BrowserUtilities.sleep(5);
+            calendarPage.saveButton.click();
 
 
+        }
 
     }
+
 
     @Then("User should be able to see event is created on the calendar")
     public void userShouldBeAbleToSeeEventIsCreatedOnTheCalendar() {
@@ -162,20 +164,26 @@ public class Calendar_StepDefinitions {
     public void userClickCompanyCalendarButton() {
 
         calendarPage.companyCalendarButton.click();
+
     }
+
 
     @Then("User should be able to display Company Calendar page")
     public void userShouldBeAbleToDisplayCompanyCalendarPage() {
 
         Assert.assertTrue(Driver.getDriver().getTitle().contains("Calendar"));
-
     }
 
 
 
 
-
-
-
 }
+
+
+
+
+
+
+
+
 
