@@ -132,7 +132,20 @@ public class Calendar_StepDefinitions {
             calendarPage.dateTo.sendKeys(ConfigurationReader.getProperty("future"), Keys.ENTER);
             //  BrowserUtilities.sleep(5);
 
-
+        }else if (eventStartDate.equals("future") && eventEndDate.equals("past")){
+            calendarPage.dateFrom.click();
+            //  BrowserUtilities.sleep(5);
+            calendarPage.dateFrom.clear();
+            //  BrowserUtilities.sleep(5);
+            calendarPage.dateFrom.sendKeys(ConfigurationReader.getProperty("future"), Keys.ENTER);
+            // BrowserUtilities.sleep(5);
+            calendarPage.dateTo.click();
+            // BrowserUtilities.sleep(5);
+            calendarPage.dateTo.clear();
+            //  BrowserUtilities.sleep(5);
+            calendarPage.dateTo.sendKeys(ConfigurationReader.getProperty("past"), Keys.ENTER);
+            //  BrowserUtilities.sleep(5);
+        }
 
 
 
@@ -150,7 +163,7 @@ public class Calendar_StepDefinitions {
 
         }
 
-    }
+
 
 
     @Then("User should be able to see event is created on the calendar")

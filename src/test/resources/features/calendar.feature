@@ -27,9 +27,9 @@ Feature: User should be able to display Calendar functionality.
     Examples:
       | start date | end date |
       | past       | past     |
-      | past       | today    |
       | future     | future   |
       | past       | future   |
+      | future     | past     |
       | today      | today    |
 
 
