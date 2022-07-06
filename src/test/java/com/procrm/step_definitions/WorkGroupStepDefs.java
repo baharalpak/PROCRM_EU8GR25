@@ -41,6 +41,7 @@ public class WorkGroupStepDefs {
     public void clicks_on(String string, String string2) {
         workgroupsPage.saleGroup.click();
         BrowserUtilities.sleep(5);
+
     }
     @Then("{string} clicks on join button to send request")
     public void clicks_on_join_button_to_send_request(String string) {
