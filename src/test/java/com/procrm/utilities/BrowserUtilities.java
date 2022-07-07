@@ -1,7 +1,10 @@
 package com.procrm.utilities;
 
-import org.junit.Assert;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BrowserUtilities {
 
@@ -14,7 +17,7 @@ public class BrowserUtilities {
         try {
             Thread.sleep(second);
         }catch (InterruptedException e ) {
-
+     e.printStackTrace();
         }
     }
 
@@ -23,38 +26,54 @@ public class BrowserUtilities {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
     }
 
-    /*
-    This method accepts a String "expectedTitle" and Asserts if it is true
-     */
-    public static void verifyTitle(WebDriver driver , String expectedTitle){
-
-        Assert.assertEquals(driver.getTitle(), expectedTitle);
-
-    }
-
     /**
-     * This method will accept a String as expected value and verify actual URL CONTAINS the value.
-     * @param expectedInURL
-     */
-    public static void verifyURLContains(String expectedInURL){
-        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(expectedInURL));
-    }
-
-    /**
-     * Verifies whether the element matching the provided locator is displayed on page
+     * Waits for the provided element to be visible on the page
      *
-     * @param by
-     * @throws AssertionError if the element matching the provided locator is not found or not displayed
+     * @param element
+     * @param timeToWaitInSec
+     * @return
      */
-    public static void verifyElementDisplayed(By by) {
-        try {
-            Assert.assertTrue("Element not visible: " + by, Driver.getDriver().findElement(by).isDisplayed());
-        } catch (NoSuchElementException e) {
-            e.printStackTrace();
-            Assert.fail("Element not found: " + by);
-
-        }
+    public static WebElement waitForVisibility(WebElement element, int timeToWaitInSec) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeToWaitInSec);
+        return wait.until(ExpectedConditions.visibilityOf(element));
     }
+
+    /**
+     * Waits for element matching the locator to be visible on the page
+     *
+     * @param locator
+     * @param timeout
+     * @return
+     */
+    public static WebElement waitForVisibility(By locator, int timeout) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    /**
+     * Waits for provided element to be clickable
+     *
+     * @param element
+     * @param timeout
+     * @return
+     */
+    public static WebElement waitForClickablility(WebElement element, int timeout) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
+        return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    /**
+     * Waits for element matching the locator to be clickable
+     *
+     * @param locator
+     * @param timeout
+     * @return
+     */
+    public static WebElement waitForClickablility(By locator, int timeout) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
 
 
 }

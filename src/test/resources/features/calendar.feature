@@ -1,16 +1,20 @@
-Feature: User should be able to display Calendar functionality.
+@calendar
+Feature: Calendar Feature
+
+  User Story: User should be able to display Calendar functionality.
+  Users: Hr,Marketing,Helpdesk
 
   Background:
     Given User is on Agileprocrm url successfully
 
   @SCRUM-861
   Scenario Outline: Verify that User can display 'My Calendar' function.
-    Given "<User>" is on homepage
+    Given "<user>" user is on homepage
     When User click Calendar button
     Then User should be able to display My Calendar page
 
     Examples:
-      | User      |
+      | user      |
       | hr        |
       | marketing |
       | helpdesk  |
@@ -25,22 +29,21 @@ Feature: User should be able to display Calendar functionality.
     Then User should be able to see event is created on the calendar
 
     Examples:
-      | start date | end date   |
-      | 07/01/2022 | 07/02/2022 |
-      | 07/15/2022 | 07/03/2022 |
-      | 07/05/2022 | 07/14/2022 |
-      | 07/16/2022 | 07/17/2022 |
+      | start date | end date |
+      | past       | past     |
+      | future     | future   |
+      | today      | today    |
 
 
   @SCRUM-863
   Scenario Outline: Verify that User can display Company Calendar function.
-    Given "<User>" is on homepage
+    Given "<user>" user is on homepage
     When User click Calendar button
     And User click Company Calendar button
     Then User should be able to display Company Calendar page
 
     Examples:
-      | User      |
+      | user      |
       | hr        |
       | marketing |
       | helpdesk  |
