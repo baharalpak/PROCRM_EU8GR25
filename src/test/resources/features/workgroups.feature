@@ -1,4 +1,4 @@
-
+@work1
 Feature: Workgroups feature of ProCrm Application
 
   User Story: As  a user, I should be able to join groups
@@ -6,7 +6,7 @@ Feature: Workgroups feature of ProCrm Application
   Background: For the scenarios in the feature file, user is expected to be on home page
 
 
-@work1
+
   Scenario Outline: Joining workgroups
     Given "<user>" user is on homepage
     When user clicks on workgroup module
