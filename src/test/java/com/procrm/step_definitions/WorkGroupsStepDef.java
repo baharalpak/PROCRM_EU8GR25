@@ -21,26 +21,13 @@ public class WorkGroupsStepDef {
     public void user_clicks_on_workgroup_module() {
         workgroupsPage.workgroupLink.click();
 
-
     }
 
-    @When("user clicks on sale")
-    public void user_clicks_on_sale() {
-        workgroupsPage.saleGroup.click();
-        BrowserUtilities.sleep(2);
-    }
 
-    @Then("user clicks on join button to send request")
-    public void user_clicks_on_join_button_to_send_request() {
-        workgroupsPage.joinButton.click();
-        BrowserUtilities.sleep(2);
-    }
 
-    @And("user clicks on join workgroup button")
-    public void userClicksOnJoinWorkgroupButton() {
 
-        workgroupsPage.joinGroupButton.click();
-    }
+
+
 
 
     @When("user clicks sort by")
@@ -56,10 +43,15 @@ public class WorkGroupsStepDef {
         BrowserUtilities.sleep(5);
     }
 
+    @And("user clicks on small join button")
+    public void userClicksOnSmallJoinButton() {
+        workgroupsPage.smalljoinBtn.click();
+        BrowserUtilities.sleep(5);
+    }
 
-    @When("user clicks on group name")
-    public void user_clicks_on_group_name() {
-        workgroupsPage.leaveRequestSaleGroup.click();
+    @When("user clicks on sale")
+    public void user_clicks_on_sale() {
+        workgroupsPage.saleGroup.click();
         BrowserUtilities.sleep(2);
     }
 
