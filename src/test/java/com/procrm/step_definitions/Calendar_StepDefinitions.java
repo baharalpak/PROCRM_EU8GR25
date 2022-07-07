@@ -16,6 +16,10 @@ import org.openqa.selenium.interactions.Actions;
 
 import javax.swing.*;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
+
 import static org.openqa.selenium.Keys.ENTER;
 
 public class Calendar_StepDefinitions {
@@ -25,7 +29,7 @@ public class Calendar_StepDefinitions {
 
     @Given("User is on Agileprocrm url successfully")
     public void user_is_on_agileprocrm_url_successfully() {
-       Driver.getDriver().get(ConfigurationReader.getProperty("url"));
+        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
 
     }
 
@@ -62,7 +66,7 @@ public class Calendar_StepDefinitions {
     @Then("User should be able to display My Calendar page")
     public void user_should_be_able_to_display_my_calendar_page() {
 
-       Assert.assertTrue(Driver.getDriver().getTitle().contains("Calendar"));
+        Assert.assertTrue(Driver.getDriver().getTitle().contains("Calendar"));
 
     }
 
@@ -83,27 +87,43 @@ public class Calendar_StepDefinitions {
 
         BrowserUtilities.clickWithJS(calendarPage.eventNameBox);
         calendarPage.eventNameBox.sendKeys(eventName);
-        calendarPage.dateFrom.click();
         BrowserUtilities.sleep(5);
-        calendarPage.date_from_07_01.click();
-        calendarPage.date_from_07_15.click();
-        calendarPage.date_from_07_05.click();
-        calendarPage.date_from_07_16.click();
-        BrowserUtilities.sleep(5);
-        calendarPage.dateTo.click();
-        BrowserUtilities.sleep(5);
-        calendarPage.date_to_07_02.click();
-        calendarPage.date_to_07_03.click();
-        calendarPage.date_to_07_14.click();
-        calendarPage.date_to_07_17.click();
-        BrowserUtilities.sleep(5);
-        calendarPage.allDayBox.click();
-        BrowserUtilities.sleep(5);
-        calendarPage.saveButton.click();
-    }
+
+        if (eventStartDate.equals("past") && eventEndDate.equals("past")) {
+
+            calendarPage.dateFrom.click();
+            calendarPage.dateFrom.clear();
+            calendarPage.dateFrom.sendKeys(ConfigurationReader.getProperty("past"), Keys.ENTER);
+            calendarPage.dateTo.click();
+            calendarPage.dateTo.clear();
+            calendarPage.dateTo.sendKeys(ConfigurationReader.getProperty("past"), Keys.ENTER);
+
+        } else if (eventStartDate.equals("future") && eventEndDate.equals("future")) {
+
+            calendarPage.dateFrom.click();
+            calendarPage.dateFrom.clear();
+            calendarPage.dateFrom.sendKeys(ConfigurationReader.getProperty("future"), Keys.ENTER);
+            calendarPage.dateTo.click();
+            calendarPage.dateTo.clear();
+            calendarPage.dateTo.sendKeys(ConfigurationReader.getProperty("future"), Keys.ENTER);
+
+        }
+
+
+            calendarPage.allDayBox.click();
+            BrowserUtilities.sleep(5);
+            calendarPage.saveButton.click();
+
+
+        }
+
+
+
 
     @Then("User should be able to see event is created on the calendar")
     public void userShouldBeAbleToSeeEventIsCreatedOnTheCalendar() {
+
+        Assert.assertTrue(Driver.getDriver().getTitle().contains("Calendar"));
 
 
     }
@@ -113,20 +133,26 @@ public class Calendar_StepDefinitions {
     public void userClickCompanyCalendarButton() {
 
         calendarPage.companyCalendarButton.click();
+
     }
+
 
     @Then("User should be able to display Company Calendar page")
     public void userShouldBeAbleToDisplayCompanyCalendarPage() {
 
-        Assert.assertTrue(Driver.getDriver().getTitle().contains("Calendar"));
-
+        Assert.assertTrue(Driver.getDriver().getTitle().contains("Event Calendar"));
     }
-
-
-
 
 
 
 
 }
+
+
+
+
+
+
+
+
 

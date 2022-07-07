@@ -27,29 +27,6 @@ public class CalendarPage extends LoginPage {
     @FindBy(name = "date_to")
     public WebElement dateTo;
 
-    @FindBy(xpath = "(//a[.='1'])[1]")
-    public WebElement date_from_07_01;
-
-    @FindBy(xpath = "(//a[.='2'])[1]")
-    public WebElement date_to_07_02;
-
-    @FindBy(xpath = "//a[.='15']")
-    public WebElement date_from_07_15;
-
-    @FindBy(xpath = "(//a[.='3'])[1]")
-    public WebElement date_to_07_03;
-
-    @FindBy(xpath = "(//a[.='5'])[1]")
-    public WebElement date_from_07_05;
-
-    @FindBy(xpath = "//a[.='14']")
-    public WebElement date_to_07_14;
-
-    @FindBy(xpath = "//a[.='16']")
-    public WebElement date_from_07_16;
-
-    @FindBy(xpath = "//a[.='17']")
-    public WebElement date_to_07_17;
 
     @FindBy(name = "skip_time")
     public WebElement allDayBox;
