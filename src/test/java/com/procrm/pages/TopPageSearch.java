@@ -17,15 +17,6 @@ public class TopPageSearch {
     @FindBy(xpath = "//a[@href='/company/personal/user/693/blog/']")
     public WebElement conversationsButton;
 
-   /* @FindBy(id="LIVEFEED_search")
-   // public WebElement secondTopPageSearch;
-
-    //@FindBy(id = "search-textbox-input")
-    //@FindBy(xpath = "//span[@class='header-search-icon header-search-icon-title']")
-    //@FindBy(xpath = "//*[@id=\"search\"]/span[1]")
-    //@FindBy(xpath = "(//a[@class='search-title-top-item-link'])[1]")
-    @FindBy(xpath = "(//a[@href='/company/personal/user/693/blog/'])[3]")
-    public WebElement topPageSearchButton;  */
     @FindBy(xpath = "(//a[@href='/about/company/contacts.php'])[1]")
     public WebElement otherSite;
 
