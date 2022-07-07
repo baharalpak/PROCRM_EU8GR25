@@ -34,27 +34,27 @@ public class WorkGroupsStepDef {
 
     @When("user can sort the groups in a demanded order provided in application.")
     public void user_can_sort_the_groups_in_a_demanded_order_provided_in_application() {
-        workgroupsPage.selectNumberOfMembers.click();
+       BrowserUtilities.clickWithJS(workgroupsPage.selectNumberOfMembers);
         BrowserUtilities.sleep(2);
     }
 
     @And("user clicks on small join button")
     public void userClicksOnSmallJoinButton() {
-
+    BrowserUtilities.clickWithJS(workgroupsPage.smalljoinBtn);
         //workgroupsPage.smalljoinBtn.click();
         BrowserUtilities.sleep(5);
     }
 
     @When("user clicks on sale")
     public void user_clicks_on_sale() {
-        workgroupsPage.saleGroup.click();
+       BrowserUtilities.clickWithJS(workgroupsPage.saleGroup);
         BrowserUtilities.sleep(5);
     }
 
 
     @Then("user clicks on revoke workgroup membership request button to leave the group")
     public void user_clicks_on_revoke_workgroup_membership_request_button_to_leave_the_group() {
-        workgroupsPage.revokeButton.click();
+       BrowserUtilities.clickWithJS(workgroupsPage.revokeButton);
         BrowserUtilities.sleep(5);
 
     }
