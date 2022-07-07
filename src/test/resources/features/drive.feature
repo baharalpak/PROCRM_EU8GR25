@@ -4,38 +4,32 @@ Feature:
 
 
 
-  Scenario:
-    Given HR user is on Home Page.
+  Scenario Outline:
+    Given "<user>" user is on homepage
     When  click on Drive module.
     Then user should be able to see and access My Drive.
+    Examples:
+      | user      |
+      | hr        |
+      | marketing |
+      | helpdesk  |
 
 
-  Scenario:
-    Given Marketing1 user is on Home Page.
-    When  user click on Drive module.
-    Then user should be able to see and access My Drive.
 
-  Scenario:
-    Given HelpDesk user is on Home Page.
-        When  user click on Drive module.
-    Then user should be able to see and access My Drive.
 
-  Scenario:
-    Given HR user is on Home Page.
+
+  Scenario Outline:
+    Given "<user>" user is on homepage
     When user click on Drive module.
     And user click on All Documents.
     Then user should be able to see All Documents.
 
-  Scenario:
-    Given Marketing user is on Home Page.
-    When  user click on Drive module.
-    And user click on All Documents.
-    Then user should be able to see All Documents.
+    Examples:
+      | user      |
+      | hr        |
+      | marketing |
+      | helpdesk  |
 
-  Scenario:
-    Given HelpDesk user is on Home Page.
-    When user click on Drive module.
-    And user click on All Documents.
-    Then user should be able to see All Documents.
+
 
 
