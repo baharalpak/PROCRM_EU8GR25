@@ -123,7 +123,7 @@ public class Calendar_StepDefinitions {
     @Then("User should be able to see event is created on the calendar")
     public void userShouldBeAbleToSeeEventIsCreatedOnTheCalendar() {
 
-
+        Assert.assertTrue(Driver.getDriver().getTitle().contains("Calendar"));
 
 
     }
@@ -140,7 +140,7 @@ public class Calendar_StepDefinitions {
     @Then("User should be able to display Company Calendar page")
     public void userShouldBeAbleToDisplayCompanyCalendarPage() {
 
-        Assert.assertTrue(Driver.getDriver().getTitle().contains("Calendar"));
+        Assert.assertTrue(Driver.getDriver().getTitle().contains("Event Calendar"));
     }
 
 

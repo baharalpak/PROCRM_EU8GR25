@@ -1,5 +1,8 @@
 @calendar
-Feature: User should be able to display Calendar functionality.
+Feature: Calendar Feature
+
+  User Story: User should be able to display Calendar functionality.
+  Users: Hr,Marketing,Helpdesk
 
   Background:
     Given User is on Agileprocrm url successfully
