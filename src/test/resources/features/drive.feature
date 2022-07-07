@@ -11,7 +11,7 @@ Feature:
 
 
   Scenario:
-    Given Marketing user is on Home Page.
+    Given Marketing1 user is on Home Page.
     When  user click on Drive module.
     Then user should be able to see and access My Drive.
 
