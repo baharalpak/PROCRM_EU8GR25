@@ -117,34 +117,6 @@ public class Calendar_StepDefinitions {
             //  BrowserUtilities.sleep(5);
             calendarPage.dateTo.sendKeys(ConfigurationReader.getProperty("future"), Keys.ENTER);
             //  BrowserUtilities.sleep(5);
-        } else if (eventStartDate.equals("past") && eventEndDate.equals("future")) {
-
-            calendarPage.dateFrom.click();
-            //  BrowserUtilities.sleep(5);
-            calendarPage.dateFrom.clear();
-            //  BrowserUtilities.sleep(5);
-            calendarPage.dateFrom.sendKeys(ConfigurationReader.getProperty("past"), Keys.ENTER);
-            // BrowserUtilities.sleep(5);
-            calendarPage.dateTo.click();
-            // BrowserUtilities.sleep(5);
-            calendarPage.dateTo.clear();
-            //  BrowserUtilities.sleep(5);
-            calendarPage.dateTo.sendKeys(ConfigurationReader.getProperty("future"), Keys.ENTER);
-            //  BrowserUtilities.sleep(5);
-
-        }else if (eventStartDate.equals("future") && eventEndDate.equals("past")){
-            calendarPage.dateFrom.click();
-            //  BrowserUtilities.sleep(5);
-            calendarPage.dateFrom.clear();
-            //  BrowserUtilities.sleep(5);
-            calendarPage.dateFrom.sendKeys(ConfigurationReader.getProperty("future"), Keys.ENTER);
-            // BrowserUtilities.sleep(5);
-            calendarPage.dateTo.click();
-            // BrowserUtilities.sleep(5);
-            calendarPage.dateTo.clear();
-            //  BrowserUtilities.sleep(5);
-            calendarPage.dateTo.sendKeys(ConfigurationReader.getProperty("past"), Keys.ENTER);
-            //  BrowserUtilities.sleep(5);
         }
 
 
