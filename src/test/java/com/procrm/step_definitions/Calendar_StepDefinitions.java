@@ -97,6 +97,7 @@ public class Calendar_StepDefinitions {
             calendarPage.dateTo.click();
             calendarPage.dateTo.clear();
             calendarPage.dateTo.sendKeys(ConfigurationReader.getProperty("past"), Keys.ENTER);
+
         } else if (eventStartDate.equals("future") && eventEndDate.equals("future")) {
 
             calendarPage.dateFrom.click();
@@ -105,6 +106,7 @@ public class Calendar_StepDefinitions {
             calendarPage.dateTo.click();
             calendarPage.dateTo.clear();
             calendarPage.dateTo.sendKeys(ConfigurationReader.getProperty("future"), Keys.ENTER);
+
         }
 
 
@@ -120,6 +122,8 @@ public class Calendar_StepDefinitions {
 
     @Then("User should be able to see event is created on the calendar")
     public void userShouldBeAbleToSeeEventIsCreatedOnTheCalendar() {
+
+
 
 
     }
