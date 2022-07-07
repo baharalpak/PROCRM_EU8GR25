@@ -92,41 +92,21 @@ public class Calendar_StepDefinitions {
         if (eventStartDate.equals("past") && eventEndDate.equals("past")) {
 
             calendarPage.dateFrom.click();
-            //  BrowserUtilities.sleep(5);
             calendarPage.dateFrom.clear();
-            //  BrowserUtilities.sleep(5);
             calendarPage.dateFrom.sendKeys(ConfigurationReader.getProperty("past"), Keys.ENTER);
-            // BrowserUtilities.sleep(5);
             calendarPage.dateTo.click();
-            // BrowserUtilities.sleep(5);
             calendarPage.dateTo.clear();
-            //  BrowserUtilities.sleep(5);
             calendarPage.dateTo.sendKeys(ConfigurationReader.getProperty("past"), Keys.ENTER);
-            //  BrowserUtilities.sleep(5);
         } else if (eventStartDate.equals("future") && eventEndDate.equals("future")) {
 
             calendarPage.dateFrom.click();
-            //  BrowserUtilities.sleep(5);
             calendarPage.dateFrom.clear();
-            //  BrowserUtilities.sleep(5);
             calendarPage.dateFrom.sendKeys(ConfigurationReader.getProperty("future"), Keys.ENTER);
-            // BrowserUtilities.sleep(5);
             calendarPage.dateTo.click();
-            // BrowserUtilities.sleep(5);
             calendarPage.dateTo.clear();
-            //  BrowserUtilities.sleep(5);
             calendarPage.dateTo.sendKeys(ConfigurationReader.getProperty("future"), Keys.ENTER);
-            //  BrowserUtilities.sleep(5);
         }
 
-
-
-      /*  if (eventStartDate.equals("today")) {
-            String dateFormat = "MM/DD/YYYY";
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat);
-            String date = simpleDateFormat.format(new Date());
-
-        } */
 
             calendarPage.allDayBox.click();
             BrowserUtilities.sleep(5);
