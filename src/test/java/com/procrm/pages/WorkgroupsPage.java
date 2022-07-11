@@ -21,11 +21,24 @@ public class WorkgroupsPage {
     public WebElement sortBy;
 
 
+    @FindBy(xpath = "(//span[@class = 'menu-popup-item-text'])[1]")
+    public WebElement abcGroup;
+
+    @FindBy(xpath = "(//span[@class = 'menu-popup-item-text'])[2]")
+    public WebElement timeJoined;
+
+    @FindBy(xpath = "(//span[@class = 'menu-popup-item-text'])[3]")
+    public WebElement lastViewed;
+
+
     @FindBy(xpath= "(//span[@class='menu-popup-item-text'])[4]")
     public WebElement selectNumberOfMembers;
 
+    @FindBy(xpath = "(//span[@class = 'menu-popup-item-text'])[5]")
+    public WebElement lastActive;
 
-
+    @FindBy(xpath = "(//span[@class = 'menu-popup-item-text'])[6]")
+    public WebElement timeCreated;
 
     @FindBy(xpath = "(//span[@class = 'popup-window-button'])[3]")
     public WebElement smalljoinBtn;
