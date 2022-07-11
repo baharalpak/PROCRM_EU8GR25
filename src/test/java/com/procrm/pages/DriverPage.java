@@ -6,9 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.procrm.utilities.Driver;
 
 public class DriverPage {
-    public DriverPage () {
-
-        PageFactory.initElements(Driver.getDriver(),this);    }
+    public DriverPage () {PageFactory.initElements(Driver.getDriver(),this);    }
 
         @FindBy(xpath = "(//span[@class='menu-item-link-text'])[5]")
         public WebElement DriverButton;
