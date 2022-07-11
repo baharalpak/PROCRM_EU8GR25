@@ -76,7 +76,7 @@ public class MyProfileStepDefinitions {
         BrowserUtilities.sleep(5);
         action.sendKeys(myProfilePage.email, faker.bothify("######??@gmail.com")).perform();
         action.sendKeys(myProfilePage.webSite, faker.letterify("www.#########.com")).perform();
-        action.sendKeys(myProfilePage.ICQ, faker.numerify("?????")).perform();
+        action.sendKeys(myProfilePage.ICQ, faker.numerify("####")).perform();
         action.sendKeys(myProfilePage.phoneNumber, faker.phoneNumber().phoneNumber()).perform();
         action.sendKeys(myProfilePage.faxNumber, faker.phoneNumber().phoneNumber()).perform();
         action.sendKeys(myProfilePage.mobileNumber, faker.phoneNumber().cellPhone()).perform();
@@ -84,12 +84,15 @@ public class MyProfileStepDefinitions {
         action.sendKeys(myProfilePage.skype, faker.name().username()).perform();
         action.click(myProfilePage.saveButton).perform();
         BrowserUtilities.sleep(5);
-
     }
 
     @Then("user should be able to see updated information on the profile page")
     public void user_should_be_able_to_see_updated_information_on_the_profile_page() {
-
+        if (myProfilePage.emailTextBox.getText().isBlank()) {
+            System.out.println("Fail !!");
+        } else {
+            System.out.println("Pass");
+        }
     }
 
     @When("leave all the fields empty and clicks SAVE button")
@@ -118,8 +121,8 @@ public class MyProfileStepDefinitions {
         BasePage.loginAsHR();
     }
 
-    @When("user enters -££$$%%>- as phone number")
-    public void user_enters_££$$_as_phone_number() {
+    @When("user fills in {string} with {string} as phone number")
+    public void user_fills_in_with_as_phone_number(String string, String string2) {
         myProfilePage.phoneNumber.clear();
         action.sendKeys(myProfilePage.phoneNumber, "-££$$%%>-");
         action.click(myProfilePage.saveButton).perform();
@@ -128,13 +131,19 @@ public class MyProfileStepDefinitions {
 
     @Then("user should not be able to update profile")
     public void user_should_not_be_able_to_update_profile() {
-        String updatedPhoneNumber = myProfilePage.phoneNumber.getText();
-        if (!(updatedPhoneNumber.equals("-££$$%%>-"))) {
-            System.out.println("Test Passed");
+        if(myProfilePage.udatedPhoneNumber.getText().equals("-££$$%%>-")){
+            System.out.println("Not valid input, Fail");
         } else {
-            System.out.println("Test Failed!!!");
+            System.out.println("Pass");
         }
+
+        /*
+        if (Driver.getDriver().getPageSource().contains("-££$$%%>-")) {
+            System.out.println("Fail");
+        } else {
+            System.out.println("Pass");
+        }
+        */
+
     }
-
-
 }

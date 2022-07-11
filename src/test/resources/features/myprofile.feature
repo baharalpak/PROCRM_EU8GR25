@@ -49,6 +49,6 @@ Feature: My Profile Feature
     And user clicks on profile name
     And clicks on My Profile link from dropdown menu
     And clicks on Edit profile button
-    When user enters -££$$%%>- as phone number
+    When user fills in "phone number" with "-££$$%%>-" as phone number
     Then user should not be able to update profile
 
