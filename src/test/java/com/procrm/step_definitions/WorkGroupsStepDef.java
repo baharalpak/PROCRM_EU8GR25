@@ -16,12 +16,10 @@ public class WorkGroupsStepDef {
     WorkgroupsPage workgroupsPage = new WorkgroupsPage();
 
 
-
     @When("user clicks on workgroup module")
     public void user_clicks_on_workgroup_module() {
         workgroupsPage.workgroupLink.click();
         BrowserUtilities.sleep(2);
-
     }
 
 
@@ -31,12 +29,31 @@ public class WorkGroupsStepDef {
         BrowserUtilities.sleep(2);
     }
 
-
-    @When("user can sort the groups in a demanded order provided in application.")
-    public void user_can_sort_the_groups_in_a_demanded_order_provided_in_application() {
-       BrowserUtilities.clickWithJS(workgroupsPage.selectNumberOfMembers);
+    @And("user can sort the {string} in a demanded order provided in application.")
+    public void userCanSortTheInADemandedOrderProvidedInApplication(String nameOfGroups) {
+        switch (nameOfGroups){
+            case  "ABC order":
+                BrowserUtilities.clickWithJS(workgroupsPage.abcGroup);
+                break;
+            case "Time joined":
+                BrowserUtilities.clickWithJS(workgroupsPage.timeJoined);
+                break;
+            case "Last viewed":
+                BrowserUtilities.clickWithJS(workgroupsPage.lastViewed);
+                break;
+            case "Number of members":
+                BrowserUtilities.clickWithJS(workgroupsPage.selectNumberOfMembers);
+                break;
+            case "Last active":
+                BrowserUtilities.clickWithJS(workgroupsPage.lastActive);
+                break;
+            case "Time created":
+                BrowserUtilities.clickWithJS(workgroupsPage.timeCreated);
+                break;
+        }
         BrowserUtilities.sleep(2);
     }
+
 
     @And("user clicks on small join button")
     public void userClicksOnSmallJoinButton() {
@@ -58,7 +75,6 @@ public class WorkGroupsStepDef {
         BrowserUtilities.sleep(5);
 
     }
-
 
 
 }
