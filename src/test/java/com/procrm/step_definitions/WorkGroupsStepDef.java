@@ -20,15 +20,15 @@ public class WorkGroupsStepDef {
     public void user_clicks_on_workgroup_module() {
         workgroupsPage.workgroupLink.click();
         BrowserUtilities.sleep(2);
-    }
 
+}
 
     @When("user clicks sort by")
     public void user_clicks_sort_by() {
         workgroupsPage.sortBy.click();
         BrowserUtilities.sleep(2);
     }
-
+    
     @And("user can sort the {string} in a demanded order provided in application.")
     public void userCanSortTheInADemandedOrderProvidedInApplication(String nameOfGroups) {
         switch (nameOfGroups){
@@ -55,6 +55,12 @@ public class WorkGroupsStepDef {
     }
 
 
+    @When("user can sort the groups in a demanded order provided in application.")
+    public void user_can_sort_the_groups_in_a_demanded_order_provided_in_application() {
+       BrowserUtilities.clickWithJS(workgroupsPage.selectNumberOfMembers);
+        BrowserUtilities.sleep(2);
+    }
+    
     @And("user clicks on small join button")
     public void userClicksOnSmallJoinButton() {
     BrowserUtilities.clickWithJS(workgroupsPage.smalljoinBtn);

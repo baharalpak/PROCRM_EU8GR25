@@ -40,7 +40,6 @@ public class WorkgroupsPage {
     @FindBy(xpath = "(//span[@class = 'menu-popup-item-text'])[6]")
     public WebElement timeCreated;
 
-
     @FindBy(xpath = "(//span[@class = 'popup-window-button'])[3]")
     public WebElement smalljoinBtn;
 

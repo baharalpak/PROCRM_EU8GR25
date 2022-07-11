@@ -24,7 +24,9 @@ Feature: Workgroups feature of ProCrm Application
     Given "HR" user is on homepage
     When user clicks on workgroup module
     And user clicks sort by
+
     And user can sort the "<groups>" in a demanded order provided in application.
+
     Examples:
       | groups      |
       | ABC order   |
