@@ -63,7 +63,6 @@ public class TopPageSearchDef {
             topPageSearch.searchBox.sendKeys(Keys.ENTER);
             BrowserUtilities.sleep(3);
 
-
     }
     @When("user types following {string} in the agileprocrm search box and press enter")
     public void userTypesFollowingInTheAgileprocrmSearchBoxAndPressEnter(String word) {
@@ -76,8 +75,6 @@ public class TopPageSearchDef {
     @Then("user should see {string} in the page")
     public void userShouldSeeInThePage(String result) {
         Assert.assertTrue(Driver.getDriver().getTitle().substring(5).trim().equals(result));
-        //Assert.assertTrue(Driver.getDriver().getTitle().substring(5).equals(result));
-       // Assert.assertTrue(Driver.getDriver().getTitle().contains(result));
     }
 
     @When("user types non-related characters {string} in the agileprocrm search box and press enter")
@@ -103,12 +100,6 @@ public class TopPageSearchDef {
     @Then("user cannot search")
     public void userCannotSearch() {
         Assert.assertTrue(Driver.getDriver().getTitle().substring(5).trim().equals("Portal"));
-    }
-
-
-    @Then("related items is displayed")
-    public void relatedItemsIsDisplayed() {
-
     }
 
     @Then("related {string} is displayed")
