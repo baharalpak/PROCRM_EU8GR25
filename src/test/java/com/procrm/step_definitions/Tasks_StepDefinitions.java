@@ -136,7 +136,7 @@ public class Tasks_StepDefinitions {
         }
     }
 
-    @When("{string} user clicks on the last created task.")
+    @And("{string} user clicks on the last created task.")
     public void userClicksOnTheLastCreatedTask(String userType) {
 
         if (userType.equalsIgnoreCase("hr") || userType.equalsIgnoreCase("helpdesk")){

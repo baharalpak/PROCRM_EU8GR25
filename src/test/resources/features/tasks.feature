@@ -8,21 +8,21 @@ Feature: SCRUM-575 - Tasks Feature.
   Scenario: HR user should be able to see the All Tasks.
     Given "HR" user is on Home Page.
     When User clicks on Tasks module.
-    Then User clicks "All" button.
+    And User clicks "All" button.
     Then User should be able to display All Tasks.
 
   @SCRUM-736 @Helpdesk
   Scenario: Helpdesk user should be able to see the All Tasks.
     Given "Helpdesk" user is on Home Page.
     When User clicks on Tasks module.
-    Then User clicks "All" button.
+    And User clicks "All" button.
     Then User should be able to display All Tasks.
 
   @SCRUM-735 @Marketing
   Scenario: Marketing user should be able to see the All Tasks.
     Given "Marketing" user is on Home Page.
     When User clicks on Tasks module.
-    Then User clicks "All" button.
+    And User clicks "All" button.
     Then User should be able to display All Tasks.
 
   @SCRUM-737 @HR
@@ -80,7 +80,7 @@ Feature: SCRUM-575 - Tasks Feature.
     When User clicks "New Task" button.
     And User fills in Task Name which is mandatory field with "Test".
     And User clicks "Add Task" button.
-    When "HR" user clicks on the last created task.
+    And "HR" user clicks on the last created task.
     And User clicks "Edit" button.
     And "HR" user edits the Task Name as "Test 1" and clicks Save Changes button.
     And User clicks "Close" button.
