@@ -13,7 +13,9 @@ import org.junit.runner.RunWith;
         glue = "com/procrm/step_definitions",
 
         dryRun = false,
-        tags = "@work1"
+
+        tags = "@wip"
+
 
 )
 
