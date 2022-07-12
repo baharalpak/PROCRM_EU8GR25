@@ -6,7 +6,7 @@ Feature: CRM services feature.
     Given "<usertype>" user is on home page
     When User clicks on the services tab.
     And  User clicks on the training tab.
-    And  User clicks on the my courses tab to see his/her courses
+    And  User clicks on the my courses tab to see their courses
     Then "My Courses" should be displayed
   Examples:
     | usertype  |  |
@@ -19,7 +19,7 @@ Feature: CRM services feature.
     Given "<usertype>" user is on home page
     When User clicks on the services tab.
     And  User clicks on the training tab.
-    And  User clicks on the grade book tab to see his/her grades
+    And  User clicks on the grade book tab to see their grades
     Then "Grade Book" should be displayed
     Examples:
       | usertype  |  |
@@ -27,6 +27,7 @@ Feature: CRM services feature.
       | helpdesk  |  |
       | marketing |  |
 
+  @wipmustafa
   Scenario Outline: Hr, Helpesk and Marketing user can edit their data under Student's Profile
     Given "<usertype>" user is on home page
     When User clicks on the services tab.
@@ -39,13 +40,6 @@ Feature: CRM services feature.
       | hr        |  |
       | helpdesk  |  |
       | marketing |  |
-
-  Scenario: Editing the student profile.
-    Given User is on home page
-    When User clicks on the services tab.
-    And   User clicks on the training tab.
-    And   User clicks on the profile tab.
-    Then  User edits the student profile and clicks on the save button.
 
 
 
