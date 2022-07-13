@@ -9,24 +9,16 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-
-import java.util.Locale;
 
 public class Tasks_StepDefinitions {
 
     TasksPage tasksPage = new TasksPage();
-
-
 
     @When("User clicks on Tasks module.")
     public void user_clicks_on_tasks_module() {
 
         tasksPage.tasksModuleButton.click();
     }
-
 
     @Given("{string} user is on Home Page.")
     public void userIsOnHomePage(String userType) {
@@ -47,21 +39,13 @@ public class Tasks_StepDefinitions {
     @Then("User should be able to display All Tasks.")
     public void user_should_be_able_to_display() {
 
-        //Assert.assertTrue(tasksPage.allTasks.isSelected());
-
         Assert.assertTrue(tasksPage.inProgressBox.isDisplayed());
-
-        BrowserUtilities.sleep(3);
-       // Assert.assertTrue((tasksPage.tasks.isDisplayed() || tasksPage.noTask.isDisplayed()));
-
     }
-
 
     @Then("User should be able to see Ongoing Tasks.")
     public void userShouldBeAbleToSeeOngoingTasks() {
 
         Assert.assertTrue(tasksPage.ongoingBox.isDisplayed());
-
     }
 
     @And("User clicks {string} button.")
@@ -98,8 +82,6 @@ public class Tasks_StepDefinitions {
                 break;
         }
         BrowserUtilities.sleep(3);
-        // tasksPage.allTasks.click();
-
     }
 
     @And("User fills in Task Name which is mandatory field with {string}.")
@@ -108,7 +90,6 @@ public class Tasks_StepDefinitions {
         Driver.getDriver().switchTo().frame(tasksPage.iframeNewTask);
 
         tasksPage.taskNameField.sendKeys(text);
-
     }
 
     @Then("{string} user should be able to display new task created on My Tasks Page.")
@@ -116,7 +97,9 @@ public class Tasks_StepDefinitions {
 
         if (userType.toLowerCase().equals("hr")){
 
-            Assert.assertTrue(tasksPage.newTask.getText().equals("Test"));
+            BrowserUtilities.sleep(3);
+
+            Assert.assertEquals("Task has been created", tasksPage.popupNewTask.getText());
 
         }
     }
@@ -124,36 +107,23 @@ public class Tasks_StepDefinitions {
     @Then("{string} user CAN NOT BE ABLE TO display new task created.")
     public void userCANNOTBEABLETODisplayNewTaskCreated(String userType) {
 
-        if (userType.toLowerCase().equals("helpdesk")){
-
-            BrowserUtilities.sleep(2);
-            Assert.assertFalse(tasksPage.newTask.getText().equals("Test"));
-        }
-
-        if (userType.toLowerCase().equals("marketing")){
-            BrowserUtilities.sleep(2);
-            Assert.assertFalse(tasksPage.newCreatedTaskMarketing.getText().equals("Test"));
+        if (userType.equalsIgnoreCase("marketing") || userType.equalsIgnoreCase("helpdesk")){
+            Assert.assertFalse(tasksPage.popupNewTask.isDisplayed());
         }
     }
 
-    @When("{string} user clicks on the last created task.")
+    @And("{string} user clicks on the last created task.")
     public void userClicksOnTheLastCreatedTask(String userType) {
 
-        if (userType.equalsIgnoreCase("hr") || userType.equalsIgnoreCase("helpdesk")){
+        if (userType.equalsIgnoreCase("hr")){
 
             tasksPage.newTask.click();
-        }
-
-        if (userType.equalsIgnoreCase("marketing")){
-
-            tasksPage.newCreatedTaskMarketing.click();
         }
     }
 
 
     @And("{string} user edits the Task Name as {string} and clicks Save Changes button.")
     public void userEditsTheTaskNameAsAndClicksSaveChangesButton(String userType, String newTaskName) {
-
 
         if (userType.equalsIgnoreCase("hr")){
 
