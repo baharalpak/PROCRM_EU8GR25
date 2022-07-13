@@ -1,8 +1,8 @@
-@regression
+@SCRUM-870
 Feature: My Profile Feature
 
   As a user, I should be able to display and edit "Contact Information" on My Profile so that I can display my personal information
-
+  @SCRUM-871
   Scenario Outline:User can display 'Contact Information' on My Profile
     Given "<user>" user is on homepage
     When user clicks on profile name
@@ -15,7 +15,7 @@ Feature: My Profile Feature
       | marketing |
       | helpdesk  |
 
-
+  @SCRUM-872
   Scenario Outline:User can edit 'Contact Information' on My Profile and see updated personal information after editing
     Given "<user>" user is on homepage
     And user clicks on profile name
@@ -29,7 +29,7 @@ Feature: My Profile Feature
       | hr        |
       | marketing |
       | helpdesk  |
-
+  @SCRUM-873
   Scenario Outline:User cannot leave all the fields empty while editing profile
     Given "<user>" user is on homepage
     And user clicks on profile name
@@ -43,7 +43,7 @@ Feature: My Profile Feature
       | hr        |
       | marketing |
       | helpdesk  |
-
+  @SCRUM-874
   Scenario: Contact number fields should not contain anything other than integers
     Given User is on home page
     And user clicks on profile name
