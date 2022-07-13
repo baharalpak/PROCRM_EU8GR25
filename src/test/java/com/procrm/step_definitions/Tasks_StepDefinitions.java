@@ -124,11 +124,6 @@ public class Tasks_StepDefinitions {
 
             tasksPage.newTask.click();
         }
-
-//        if (userType.equalsIgnoreCase("marketing")){
-//
-//            tasksPage.newCreatedTaskMarketing.click();
-//        }
     }
 
 

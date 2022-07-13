@@ -19,17 +19,8 @@ public class TasksPage{
     @FindBy(xpath = "//span[.='All']")
     public WebElement allTabButton;
 
-    @FindBy(xpath = "(//input[@class='main-grid-checkbox main-grid-row-checkbox main-grid-check-all'])[1]")
-    public WebElement allTasks;
-
     @FindBy(xpath = "//div[@class='main-ui-square-item'][1]")
     public WebElement inProgressBox;
-
-    //@FindBy(xpath = "//span[.='Tasks:']")
-    //public WebElement tasks;
-
-    @FindBy(xpath = "//span[.='There are no tasks requiring immediate attention']")
-    public WebElement noTask;
 
     @FindBy(xpath = "//span[.='Ongoing']")
     public WebElement ongoingButton;
@@ -58,14 +49,8 @@ public class TasksPage{
     @FindBy(xpath = "//input[@data-bx-id='task-edit-title']")
     public WebElement taskNameField;
 
-    @FindBy(xpath = "//table[@id='TASKS_GRID_ROLE_ID_4096_0_ADVANCED_N_table']//tr//td[3]")
-    public List<WebElement> tasksNames;
-
     @FindBy(xpath = "(((//tr[@class='main-grid-row main-grid-row-body'])//td)[3]/span/a)")
     public WebElement newTask;
-
-    @FindBy(xpath = "(//span[.='Test'])[1]")
-    public WebElement newCreatedTaskMarketing;
 
     @FindBy(xpath = "//div[@class='ui-notification-balloon-message']")
     public WebElement popupNewTask;
