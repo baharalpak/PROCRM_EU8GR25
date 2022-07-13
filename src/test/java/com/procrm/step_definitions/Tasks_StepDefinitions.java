@@ -9,11 +9,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-
-import java.util.Locale;
 
 public class Tasks_StepDefinitions {
 
@@ -120,7 +115,7 @@ public class Tasks_StepDefinitions {
     @And("{string} user clicks on the last created task.")
     public void userClicksOnTheLastCreatedTask(String userType) {
 
-        if (userType.equalsIgnoreCase("hr") || userType.equalsIgnoreCase("helpdesk") || userType.equalsIgnoreCase("marketing")){
+        if (userType.equalsIgnoreCase("hr")){
 
             tasksPage.newTask.click();
         }
