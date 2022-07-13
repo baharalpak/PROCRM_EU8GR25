@@ -11,16 +11,16 @@ Feature: SCRUM-575 - Tasks Feature.
     And User clicks "All" button.
     Then User should be able to display All Tasks.
 
-  @SCRUM-736 @Helpdesk
-  Scenario: Helpdesk user should be able to see the All Tasks.
-    Given "Helpdesk" user is on Home Page.
+  @SCRUM-735 @Marketing
+  Scenario: Marketing user should be able to see the All Tasks.
+    Given "Marketing" user is on Home Page.
     When User clicks on Tasks module.
     And User clicks "All" button.
     Then User should be able to display All Tasks.
 
-  @SCRUM-735 @Marketing
-  Scenario: Marketing user should be able to see the All Tasks.
-    Given "Marketing" user is on Home Page.
+  @SCRUM-736 @Helpdesk
+  Scenario: Helpdesk user should be able to see the All Tasks.
+    Given "Helpdesk" user is on Home Page.
     When User clicks on Tasks module.
     And User clicks "All" button.
     Then User should be able to display All Tasks.
@@ -32,16 +32,16 @@ Feature: SCRUM-575 - Tasks Feature.
     And User clicks "Ongoing" button.
     Then User should be able to see Ongoing Tasks.
 
-  @SCRUM-739 @Helpdesk
-  Scenario: Helpdesk user should be able to see Ongoing Tasks.
-    Given "Helpdesk" user is on Home Page.
+  @SCRUM-738 @Marketing
+  Scenario: Marketing user should be able to see Ongoing Tasks.
+    Given "Marketing" user is on Home Page.
     When User clicks on Tasks module.
     And User clicks "Ongoing" button.
     Then User should be able to see Ongoing Tasks.
 
-  @SCRUM-738 @Marketing
-  Scenario: Marketing user should be able to see Ongoing Tasks.
-    Given "Marketing" user is on Home Page.
+  @SCRUM-739 @Helpdesk
+  Scenario: Helpdesk user should be able to see Ongoing Tasks.
+    Given "Helpdesk" user is on Home Page.
     When User clicks on Tasks module.
     And User clicks "Ongoing" button.
     Then User should be able to see Ongoing Tasks.
@@ -82,9 +82,21 @@ Feature: SCRUM-575 - Tasks Feature.
     And User clicks "Add Task" button.
     And "HR" user clicks on the last created task.
     And User clicks "Edit" button.
-    And "HR" user edits the Task Name as "Test 1" and clicks Save Changes button.
+    And "HR" user edits the Task Name as "Test 10" and clicks Save Changes button.
     And User clicks "Close" button.
-    Then HR user should be able to see "Test 1" which is edited on My Tasks Page.
+    Then HR user should be able to see "Test 10" which is edited on My Tasks Page.
 
+#  @SCRUM-868 @Helpdesk @negativeScenario
+#  Scenario: Helpdesk user CAN NOT BE ABLE TO edit task.
+#    Given Helpdesk user is on My Tasks Page.
+#    When "Helpdesk" user clicks on the last created task.
+#    And Helpdesk user clicks "Edit" button.
+#    Then Helpdesk user CAN NOT BE ABLE TO edit task.
 
+#  @SCRUM-869 @Marketing @negativeScenario
+#  Scenario: Marketing user CAN NOT BE ABLE TO edit task.
+#    Given Marketing user is on My Tasks Page.
+#    When Marketing user clicks on the last created task .
+#    And Marketing user clicks "Edit" button.
+#    Then Marketing user CAN NOT BE ABLE TO edit task.
 

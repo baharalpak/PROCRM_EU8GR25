@@ -67,5 +67,8 @@ public class TasksPage{
     @FindBy(xpath = "(//span[.='Test'])[1]")
     public WebElement newCreatedTaskMarketing;
 
+    @FindBy(xpath = "//div[@class='ui-notification-balloon-message']")
+    public WebElement popupNewTask;
+
 
 }
