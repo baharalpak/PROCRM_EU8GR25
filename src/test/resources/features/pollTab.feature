@@ -18,16 +18,27 @@ Feature: User should be able to create a poll by clicking on Poll tab under Acti
 
     Scenario:  User should be able to add users from selecting multiple contacts from Employees and Departments contact lists.
       Given "<user>" user is on poll tap
-      When User
+      When User clicks on add more
+      And user click on Employees and Departments
+      And user add employees from contact list
 
-Scenario: User should be able to attach link using the link button
+
+
+  Scenario: User should be able to attach link using the link button
 Given "<user>" user is on poll tap
   When user click on link button
   And add a link to link box
   And clicks on save button
   Then User should be able to see the link in the text box.
 
-  Scenario: User should be able to attach link and add mention using the link and add mention icon respectively.
+  Scenario: User should be able to  add mention using add mention icon.
+
+    Given "<user>" user is on poll tap
+    When user click on mention icon.
+    And user click on Employees and Departments button
+    And user mention employees from contact list
+    Then User should be able to see the mention in the text box.
+
   Scenario: User should be able to create and edit questions and answers.
 
   Scenario: User should be able to send a pool.
