@@ -1,8 +1,9 @@
-Feature: SCRUM-575 - Tasks Feature.
-#  SCRUM-875: Test Execution for SCRUM-575
+Feature: SCRUM-575-Tasks Feature.
 
-As a user, I should be able to see All Tasks, Ongoing Tasks and Only HR user should be able to create a new task and edit tasks.
-Accounts are: HR, Helpdesk, Marketing.
+  # SCRUM-875: Test Execution for SCRUM-575
+
+  As a user, I should be able to see All Tasks, Ongoing Tasks and Only HR user should be able to create a new task and edit tasks.
+  Accounts are: HR, Helpdesk, Marketing.
 
   @SCRUM-734 @HR
   Scenario: HR user should be able to see the All Tasks.
@@ -86,17 +87,4 @@ Accounts are: HR, Helpdesk, Marketing.
     And User clicks "Close" button.
     Then HR user should be able to see "Test 10" which is edited on My Tasks Page.
 
-#  @SCRUM-868 @Helpdesk @negativeScenario
-#  Scenario: Helpdesk user CAN NOT BE ABLE TO edit task.
-#    Given Helpdesk user is on My Tasks Page.
-#    When "Helpdesk" user clicks on the last created task.
-#    And Helpdesk user clicks "Edit" button.
-#    Then Helpdesk user CAN NOT BE ABLE TO edit task.
-
-#  @SCRUM-869 @Marketing @negativeScenario
-#  Scenario: Marketing user CAN NOT BE ABLE TO edit task.
-#    Given Marketing user is on My Tasks Page.
-#    When Marketing user clicks on the last created task .
-#    And Marketing user clicks "Edit" button.
-#    Then Marketing user CAN NOT BE ABLE TO edit task.
 
