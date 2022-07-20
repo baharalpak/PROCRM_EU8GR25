@@ -74,6 +74,23 @@ public class BrowserUtilities {
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
+    /**
+     * Checks or unchecks given checkbox
+     *
+     * @param element
+     * @param check
+     */
+    public static void selectCheckBox(WebElement element, boolean check) {
+        if (check) {
+            if (!element.isSelected()) {
+                element.click();
+            }
+        } else {
+            if (element.isSelected()) {
+                element.click();
+            }
+        }
+    }
 
 
 }

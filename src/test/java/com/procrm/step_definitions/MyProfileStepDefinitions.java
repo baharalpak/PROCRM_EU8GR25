@@ -131,13 +131,15 @@ public class MyProfileStepDefinitions {
 
     @Then("user should not be able to update profile")
     public void user_should_not_be_able_to_update_profile() {
-        if(myProfilePage.udatedPhoneNumber.getText().equals("-££$$%%>-")){
+       Assert.assertNotEquals("This field should not take anything other than integers","-££$$%%>-",myProfilePage.updatedPhoneNumber.getText());
+
+       /* if(myProfilePage.udatedPhoneNumber.getText().equals("-££$$%%>-")){
             System.out.println("Not valid input, Fail");
         } else {
             System.out.println("Pass");
         }
-
-        /*
+        */
+       /*
         if (Driver.getDriver().getPageSource().contains("-££$$%%>-")) {
             System.out.println("Fail");
         } else {
