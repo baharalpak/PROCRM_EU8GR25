@@ -74,7 +74,7 @@ public class TopPageSearchDef {
     }
     @Then("user should see {string} in the page")
     public void userShouldSeeInThePage(String result) {
-        Assert.assertTrue(Driver.getDriver().getTitle().substring(5).trim().equals(result));
+        Assert.assertTrue(Driver.getDriver().getTitle().toLowerCase().contains(result.toLowerCase()));
     }
 
     @When("user types non-related characters {string} in the agileprocrm search box and press enter")
@@ -87,8 +87,7 @@ public class TopPageSearchDef {
 
     @Then("user should not see search result {string}")
     public void userShouldNotSeeSearchResult(String result) {
-       Assert.assertTrue(Driver.getDriver().getTitle().substring(5).trim().equals(result));
-       // Assert.assertFalse(Driver.getDriver().getTitle().contains(result));
+        Assert.assertFalse(Driver.getDriver().getTitle().toLowerCase().contains(result.toLowerCase()));
     }
 
     @When("user does not types anything")
