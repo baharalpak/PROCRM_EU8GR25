@@ -37,7 +37,7 @@ public class MyProfilePage {
     @FindBy(name = "PERSONAL_PHONE")
     public WebElement phoneNumber;
     @FindBy(xpath = "//*[@id=\"workarea-content\"]/div/div/div[3]/table/tbody/tr[5]/td[2]/a")
-    public WebElement udatedPhoneNumber;
+    public WebElement updatedPhoneNumber;
     @FindBy(name = "PERSONAL_FAX")
     public WebElement faxNumber;
 
