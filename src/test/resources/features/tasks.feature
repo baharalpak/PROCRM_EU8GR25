@@ -1,4 +1,3 @@
-
 Feature: SCRUM-575 - Tasks Feature.
 #  SCRUM-875: Test Execution for SCRUM-575
 
