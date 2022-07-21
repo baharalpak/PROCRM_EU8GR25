@@ -94,6 +94,12 @@ public class TasksPage_Scrum889 {
     @FindBy(xpath = "(//span[@class='task-form-field-controls'])[4]")
     public WebElement addObservers;
 
+    @FindBy(xpath = "(//span[@class='task-dashed-link-inner'])[2]")
+    public WebElement participants;
+
+    @FindBy(xpath = "(//tr[@class='main-grid-row main-grid-row-body'])[1]//td[3]/span/a")
+    public WebElement lastCreated;
+
 
 
 
