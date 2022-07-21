@@ -33,7 +33,12 @@ Feature: SCRUM-897
     Given "<user>" user is on homepage
     And User clicks "MESSAGE" button.
     And User clicks "Add mention icon" button.
-    And User adds "<mentions>".
+    And User adds mentions below.
+      | hr13@cybertekschool.com        |
+      | hr91@cybertekschool.com        |
+      | marketing67@cybertekschool.com |
+      | helpdesk47@cybertekschool.com  |
+      | helpdesk77@cybertekschool.com  |
     Then User clicks "Save" button.
 
     Examples:
@@ -42,10 +47,4 @@ Feature: SCRUM-897
       | marketing |
       | helpdesk  |
 
-    Examples:
-      | mentions                       |
-      | hr13@cybertekschool.com        |
-      | hr91@cybertekschool.com        |
-      | marketing67@cybertekschool.com |
-      | helpdesk47@cybertekschool.com  |
-      | helpdesk77@cybertekschool.com  |
+
