@@ -1,8 +1,10 @@
+
+
 @CompanyStructure
 Feature: Functionality of Employee Feature Application
   #As a user, I should be able display the company structure and telephone directory
 
-   Scenario Outline: Display company structure
+  Scenario Outline: Display company structure
     Given "<user>" logs in home page
     When user clicks Employees button
     And user clicks Company Structure button
@@ -24,10 +26,5 @@ Feature: Functionality of Employee Feature Application
       | helpdesk  |
       | marketing |
 
-
-
-
-
-
-
+    #message
 
