@@ -17,6 +17,18 @@ public class InteractWithEmployeesPage {
     @FindBy(xpath = "(//a[.='Comment'])[1]")
     public WebElement commentButton;
 
+    @FindBy(xpath = "//body[@style='min-height: 84px;']")
+    public WebElement commentInputBox;
+
+
+   @FindBy(id="lhe_button_submit_blogCommentFormWbPP")
+    public WebElement sendButton;
+
+   @FindBy(id = "record-BLOG_103-15")
+    public WebElement isVisibleName;
+
+
+
 
 
 
