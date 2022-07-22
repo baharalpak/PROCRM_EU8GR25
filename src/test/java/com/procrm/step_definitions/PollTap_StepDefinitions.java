@@ -1,5 +1,6 @@
 package com.procrm.step_definitions;
 
+import com.procrm.pages.PollTapPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,7 +11,7 @@ public class PollTap_StepDefinitions {
 
     @When("user clicks on Activity Stream")
     public void user_clicks_on_activity_stream() {
-
+PollTapPage.Activity_StreamButton.click();
 
     }
 

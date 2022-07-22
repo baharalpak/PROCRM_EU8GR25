@@ -19,8 +19,8 @@ Feature: User should be able to create a poll by clicking on Poll tab under Acti
     Scenario:  User should be able to add users from selecting multiple contacts from Employees and Departments contact lists.
       Given "<user>" user is on poll tap
       When User clicks on add more
-      And user click on Employees and Departments
-      And user add employees from contact list
+      And user add employees emails
+
 
 
 
@@ -40,8 +40,22 @@ Given "<user>" user is on poll tap
     Then User should be able to see the mention in the text box.
 
   Scenario: User should be able to create and edit questions and answers.
+    Given "<user>" user is on poll tap
+    When user click on Question text Box
+    And User add a question
+    And user edit the question
+    When user click on 1 answer text box
+    And user add an answer to the text box
+    And user edit the answer
+    When user click on 2 answer text box
+    And user add an second answer to the text box
+    And user edit the second answer
+Scenario:  User should be able to delete questions and multiple answers.
+  Given "<user>" user is on poll tap
+  And
 
   Scenario: User should be able to send a pool.
+  When
 
   #1. User should be able to add users from selecting multiple contacts from Employees and Departments contact lists.
   #2. User should be able to attach link by clicking on the link icon.
