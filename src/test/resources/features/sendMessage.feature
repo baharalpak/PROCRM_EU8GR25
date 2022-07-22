@@ -8,7 +8,8 @@ Feature: SCRUM-897
     And User clicks "MESSAGE" button.
     And User clicks "Insert video icon" button.
     And User fills "Video source box" with "video URL".
-    Then User clicks "Save" button.
+    And User clicks "Save" button.
+    Then Verify that user can add video.
 
     Examples:
       | user      |
@@ -18,10 +19,11 @@ Feature: SCRUM-897
 
   Scenario Outline: User should be able to create a quote by clicking on the Comma icon.
     Given "<user>" user is on homepage
-    And User clicks "MESSAGE" button.
+    When User clicks "MESSAGE" button.
     And User clicks "Comma icon" button.
     And User fills "Quote box" with "quote input".
-    Then User clicks "Save" button.
+    And User clicks "Save" button.
+    Then Verify that user can create quote.
 
     Examples:
       | user      |
@@ -31,7 +33,7 @@ Feature: SCRUM-897
 
   Scenario Outline: User should be able to add mention by clicking on the Add mention icon.
     Given "<user>" user is on homepage
-    And User clicks "MESSAGE" button.
+    When User clicks "MESSAGE" button.
     And User clicks "Add mention icon" button.
     And User adds mentions below.
       | hr13@cybertekschool.com        |
@@ -39,7 +41,8 @@ Feature: SCRUM-897
       | marketing67@cybertekschool.com |
       | helpdesk47@cybertekschool.com  |
       | helpdesk77@cybertekschool.com  |
-    Then User clicks "Save" button.
+    And User clicks "Save" button.
+    Then Verify that user can add mention.
 
     Examples:
       | user      |
