@@ -68,6 +68,35 @@ public class InteractWithEmployees_StepDefinitions {
     }
 
 
+    @When("User click the like button at the INPUT BOX.")
+    public void userClickTheLikeButtonAtTheINPUTBOX() {
+
+         interactWithEmployeesPage.likeButton.click();
+         BrowserUtilities.sleep(5);
 
 
+    }
+
+    @Then("User should see like on other employees' posts.")
+    public void userShouldSeeLikeOnOtherEmployeesPosts() {
+
+        Assert.assertTrue(interactWithEmployeesPage.likeButtonIsVisible.isDisplayed());
+    }
+
+    @When("User click the unfollow button at the INPUT BOX.")
+    public void userClickTheUnfollowButtonAtTheINPUTBOX() {
+
+        interactWithEmployeesPage.unfollowButton.click();
+        BrowserUtilities.sleep(5);
+
+
+    }
+
+    @Then("User should see follow button on other employees' posts.")
+    public void userShouldSeeFollowButtonOnOtherEmployeesPosts() {
+
+        Assert.assertTrue(interactWithEmployeesPage.followButtonIsVisible.isDisplayed());
+
+
+    }
 }

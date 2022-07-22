@@ -27,6 +27,19 @@ public class InteractWithEmployeesPage {
    @FindBy(id = "record-BLOG_103-15")
     public WebElement isVisibleName;
 
+    @FindBy(xpath = "(//a[.='Like'])[1]")
+    public WebElement likeButton;
+
+    @FindBy(xpath ="//span[@title='Like']" )
+    public WebElement likeButtonIsVisible;
+
+   @FindBy(xpath = "(//span[.='Unfollow'])[1]")
+    public WebElement unfollowButton;
+
+   @FindBy(xpath = "//a[.='Follow']")
+    public  WebElement followButtonIsVisible;
+
+
 
 
 
