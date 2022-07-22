@@ -1,7 +1,7 @@
 Feature: Functions Under Employee Menu
   #As a user, I should be able to use functions under employee menu
 
-  @Scrum-893
+
   Scenario Outline: Display company structure
     Given "<user>" user is on homepage
     When user clicks Employees button
@@ -13,17 +13,84 @@ Feature: Functions Under Employee Menu
       | hr        |
       | marketing |
       | helpdesk  |
-
+  @Scrum-893
   Scenario: Add a department
     Given "HR" user is on homepage
     When user clicks Employees button
     And user clicks Company Structure button
     And user clicks ADD Department button
     And user types department name
-    Then user clicks on ADD button
+    And user clicks add
+    Then user can see the name of the newly created department
 
-  Scenario Outline:Find employees
+
+  Scenario Outline:Find employees by search box
     Given "<user>" user is on homepage
+    When user clicks Find Employees
+    And user types "name of employee" in the search box
+    Then user can see "name of employee" employee info displayed
+
+    Examples:
+      | user      |
+      | hr        |
+      | marketing |
+      | helpdesk  |
+
+
+  Scenario Outline:Find employees by search box
+    Given "<user>" user is on homepage
+    When user click Find Employees
+    And  user clicks Search By Alphabet button
+    And user clicks the letter "letter"
+    Then user can see employee info
+
+    Examples:
+      | user      |
+      | hr        |
+      | marketing |
+      | helpdesk  |
+
+  Scenario Outline: Export the employee list
+    Given "<user> user is on homepage
+    When user clicks Find Employees
+    And user clicks the more button
+    And user clicks Export to Excel
+    Then user download the file
+
+    Examples:
+      | user      |
+      | hr        |
+      | marketing |
+      | helpdesk  |
+
+  Scenario Outline: Display Telephone Directory
+    Given "<user>" logs in home page
+    When user clicks Employees button
+    And user clicks Telephone Directory button
+    Then user should see the telephone directory
+    Examples:
+      | user      |
+      | hr        |
+      | helpdesk  |
+      | marketing |
+
+  Scenario Outline: User send message to employee from the telephone directory
+    Given "<user>" logs in home page
+    Given there are two users in application as "<sender>" and "<receiver>"
+    When "<sender>" send "date" to "<receiver>"
+    And  "<receiver>" login
+    Then verify that "<receiver>" gets "date"
+
+    Examples:
+      | sender            | receiver     |
+      | James             | Nick Owhadi  |
+
+
+
+
+
+
+
 
 
 
