@@ -23,7 +23,7 @@ Feature: Functions Under Employee Menu
     And user clicks add
     Then user can see the name of the newly created department
 
-
+  @Scrum-893
   Scenario Outline:Find employees by search box
     Given "<user>" user is on homepage
     When user clicks Find Employees
@@ -51,7 +51,7 @@ Feature: Functions Under Employee Menu
       | helpdesk  |
 
   Scenario Outline: Export the employee list
-    Given "<user> user is on homepage
+    Given "<user>" user is on homepage
     When user clicks Find Employees
     And user clicks the more button
     And user clicks Export to Excel

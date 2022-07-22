@@ -22,5 +22,16 @@ public class FunctionsUnderEmployeeMenuPage {
     @FindBy(xpath = "//a[@title='Department25']")
     public WebElement createdDepartmentName;
 
+    @FindBy(xpath = "(//a[@class='menu-item-link'])[10]")
+    public WebElement employeesButton;
+
+    @FindBy(xpath = "(//a[@class='main-buttons-item-link'])[2]")
+    public WebElement employeesFindButton;
+
+    @FindBy(xpath = "//input[@id='user-fio']")
+    public WebElement employeesSearchButton;
+
+
+
 
 }
