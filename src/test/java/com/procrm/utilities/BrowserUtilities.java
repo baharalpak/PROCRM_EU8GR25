@@ -3,6 +3,7 @@ package com.procrm.utilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -90,6 +91,24 @@ public class BrowserUtilities {
                 element.click();
             }
         }
+    }
+    /**
+     * Scrolls down to an element using JavaScript
+     *
+     * @param element
+     */
+    public static void scrollToElement(WebElement element) {
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+
+    /**
+     * Moves the mouse to given element
+     *
+     * @param element on which to hover
+     */
+    public static void hover(WebElement element) {
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(element).perform();
     }
 
 

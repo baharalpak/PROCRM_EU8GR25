@@ -9,3 +9,4 @@ Feature: Appreciation Feature
     Given "<user>" user is on homepage
     And "<user>" clicks on more button
     And "<user>" clicks on appreciation button
+
