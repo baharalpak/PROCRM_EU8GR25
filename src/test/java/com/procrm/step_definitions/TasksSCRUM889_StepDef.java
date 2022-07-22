@@ -19,6 +19,7 @@ public class TasksSCRUM889_StepDef {
     TasksPage_Scrum889 tasksPage_scrum889=new TasksPage_Scrum889();
     Calendar calendar=Calendar.getInstance();
     String expectedTitle="";
+    JavascriptExecutor js=(JavascriptExecutor)Driver.getDriver();
 
     @When("Fills {string} details")
     public void fills_details(String string, DataTable dataTable) {
@@ -69,9 +70,9 @@ public class TasksSCRUM889_StepDef {
         BrowserUtilities.sleep(3);
         tasksPage_scrum889.moreButton.click();
 
-        JavascriptExecutor js=(JavascriptExecutor)Driver.getDriver();
         BrowserUtilities.sleep(2);
-        js.executeScript("arguments[0].scrollIntoView(true)",tasksPage_scrum889.scrollDown);
+        BrowserUtilities.clickWithJS(tasksPage_scrum889.scrollDown);
+      //  js.executeScript("arguments[0].scrollIntoView(true)",tasksPage_scrum889.scrollDown);
         tasksPage_scrum889.timeTracking.click();
         BrowserUtilities.sleep(3);
         tasksPage_scrum889.timeTrackingHours.sendKeys(map.get("time hours"));
@@ -90,7 +91,8 @@ public class TasksSCRUM889_StepDef {
         tasksPage_scrum889.addReminderWithEmail.click();
         BrowserUtilities.sleep(2);
 
-        js.executeScript("arguments[0].scrollIntoView(true)",tasksPage_scrum889.scrollDown);
+       // js.executeScript("arguments[0].scrollIntoView(true)",tasksPage_scrum889.scrollDown);
+        BrowserUtilities.clickWithJS(tasksPage_scrum889.scrollDown);
         BrowserUtilities.sleep(2);
         tasksPage_scrum889.dependantTasks.click();
         BrowserUtilities.waitForClickablility(tasksPage_scrum889.dependentSearchBox,10);
@@ -148,15 +150,33 @@ public class TasksSCRUM889_StepDef {
     }
     @When("User select last created task")
     public void user_select_last_created_task() {
+       // BrowserUtilities.waitForClickablility(tasksPage_scrum889.checkboxForDelete,10);
+       // BrowserUtilities.sleep(3);
+        BrowserUtilities.clickWithJS(tasksPage_scrum889.checkboxForDelete);
+        BrowserUtilities.sleep(4);
+       // tasksPage_scrum889.checkboxForDelete.click();
+        js.executeScript("arguments[0].scrollIntoView(true)",tasksPage_scrum889.scrollDownForDelete);
+        //BrowserUtilities.clickWithJS(tasksPage_scrum889.scrollDownForDelete);
+        BrowserUtilities.sleep(3);
 
     }
     @When("User select {string} section under {string} dropdown menu")
     public void user_select_section_under_dropdown_menu(String string, String string2) {
+        BrowserUtilities.waitForVisibility(tasksPage_scrum889.selectOption,10);
+
+        //BrowserUtilities.clickWithJS(tasksPage_scrum889.selectOption);
+        tasksPage_scrum889.selectOption.click();
+        tasksPage_scrum889.selectOption.click();
+        BrowserUtilities.sleep(4);
+
+        tasksPage_scrum889.deleteUnderSelection.click();
 
     }
     @When("User clicks {string} button and {string} button")
     public void user_clicks_button_and_button(String string, String string2) {
-
+     tasksPage_scrum889.applyButtonForDelete.click();
+     BrowserUtilities.waitForVisibility(tasksPage_scrum889.continueForDelete,10);
+     tasksPage_scrum889.continueForDelete.click();
     }
     @Then("User should be able to delete task.")
     public void user_should_be_able_to_delete_task() {
