@@ -5,26 +5,23 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.Date;
+
 public class InteractWithEmployeesPage {
 
-    public InteractWithEmployeesPage() {
-
-        PageFactory.initElements(Driver.getDriver(),this);
-
-
-    }
+    public InteractWithEmployeesPage() {PageFactory.initElements(Driver.getDriver(),this);}
 
     @FindBy(xpath = "(//a[.='Comment'])[1]")
     public WebElement commentButton;
 
+    @FindBy(className = "bx-editor-iframe")
+    public WebElement commentBoxIFrame;
+
     @FindBy(xpath = "//body[@contenteditable='true']")
     public WebElement commentInputBox;
 
-   @FindBy(id="lhe_button_submit_blogCommentFormWbPP")
+   @FindBy(css=".ui-btn.ui-btn-sm.ui-btn-primary")
     public WebElement sendButton;
-
-   @FindBy(id = "record-BLOG_103-15")
-    public WebElement isVisibleName;
 
     @FindBy(xpath = "(//a[.='Like'])[1]")
     public WebElement likeButton;
@@ -56,13 +53,4 @@ public class InteractWithEmployeesPage {
 
    @FindBy(xpath = "//div[@title='Remove from favorites']")
     public WebElement seeYellowStarIcon;
-
-
-
-
-
-
-
-
-
 }
