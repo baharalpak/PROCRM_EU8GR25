@@ -7,13 +7,12 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class PollTap_StepDefinitions {
-
+    PollTapPage pollTapPage=new PollTapPage();
 
     @When("user clicks on Activity Stream")
     public void user_clicks_on_activity_stream() {
-PollTapPage.Activity_StreamButton.click();
+pollTapPage.AddMore.sendKeys("marketing1@cybertekschool.com");
 
-    }
 
     @When("clicks on Poll tap  from top menu")
     public void clicks_on_poll_tap_from_top_menu() {

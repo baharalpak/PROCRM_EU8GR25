@@ -31,6 +31,13 @@ Given "<user>" user is on poll tap
   And clicks on save button
   Then User should be able to see the link in the text box.
 
+  Scenario: User should  NOT be able to attach Text as Link using the link button(Negative )
+    Given "<user>" user is on poll tap
+    When user click on link button
+    And add a Text to link box
+    And clicks on save button
+    Then User should NOT be able to see the text as link in the text box.
+
   Scenario: User should be able to  add mention using add mention icon.
 
     Given "<user>" user is on poll tap
@@ -50,12 +57,29 @@ Given "<user>" user is on poll tap
     When user click on 2 answer text box
     And user add an second answer to the text box
     And user edit the second answer
-Scenario:  User should be able to delete questions and multiple answers.
+Scenario:  User should be able to delete questions and multiple answers, and user should be able select  the Allow multiple choice checkbox.
+
   Given "<user>" user is on poll tap
-  And
+  And user click on delete question icon
+  Then the question will be deleted
+  And user click on delete answer1 icon
+  And user click on delete answer2 icon
+  Then the answers should be deleted
+  And user click on multiple choice checkbox.
+
+
+
 
   Scenario: User should be able to send a pool.
-  When
+    Given "<user>" user is on poll tap
+  When user click on send button
+  Then user should be able to send the message.
+
+  Scenario: User should NOT be able to send a pool with a wrong credential
+    Given "<user>" user is on poll tap
+    When user add a wrong email
+    And user click on send button
+    Then user should NOT be able to send the message.
 
   #1. User should be able to add users from selecting multiple contacts from Employees and Departments contact lists.
   #2. User should be able to attach link by clicking on the link icon.
