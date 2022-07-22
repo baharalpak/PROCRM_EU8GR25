@@ -1,6 +1,6 @@
+
 Feature: Task Feature SCRUM_889
   As a user, I should be able to use "Tasks" functionality so that user can create, change, delete and track the tasks either on Activity Stream or Tasks page.
-
 
   Scenario:    HR User can create a high priority task in duration of the certain deadline by mentioning about a user.
     Given "HR" user is on Home Page.
@@ -13,8 +13,7 @@ Feature: Task Feature SCRUM_889
       | mention  | hr19@cybertekschool.com |
     And User clicks "Add Task" button.
     Then User should be able to display new task created on My Tasks Page
-
-
+  @Scrum889
   Scenario: HR User can edit the task for adding time tracking.
   HR User can edit the task for adding reminder to e-mail.
   HR User can add dependent tasks by editing the already created task.
@@ -32,7 +31,7 @@ Feature: Task Feature SCRUM_889
     And User clicks "Close" button.
     Then User should be able to see edited task.
 
-  @Scrum889
+
   Scenario: Marketing User can edit the task by declaring himself/herself as responsible person
   Marketing User can add participants and observers to already created task by editing.
   Marketing User can add checklist to an already created task by editing.
@@ -72,9 +71,11 @@ Feature: Task Feature SCRUM_889
     Then User should be able to see new task created.
 
   Scenario:HR User can create new task template for high priority task, for him/herself, by mentioning about Marketing User, specifying the deadline, using the Options under 'Deadline in' section.
+  HR User can be redirected to "New task template" page by clicking 'All templates' under "TASK TEMPLATES" menu on "New task" module.
     Given "HR" user is on Home Page.
     And User clicks on Tasks module.
-    When User clicks "New Task" button.
+    When User clicks "New Task Template" button.
+    And User clicks "ADD" button.
     And Fills "task" details
       | priority    | High Priority                  |
       | responsible | him/herself                    |
@@ -82,7 +83,9 @@ Feature: Task Feature SCRUM_889
       | deadline    | 5days 2 hours 15 minutes       |
       | mention     | marketing19@cybertekschool.com |
     And User clicks "Add Task" button.
-    Then User should be able to display new task created on My Tasks Page
+    And User clicks on Tasks module.
+    And User clicks "New Task Template" button.
+    Then User should be able to redirected to "Task templates" page
 
   Scenario: HR User can delete task by using "SELECT ACTION" dropdown menu after checking the task.
     Given "HR" user is on Home Page.
@@ -92,9 +95,8 @@ Feature: Task Feature SCRUM_889
     And User clicks "APPLY" button and "Continue" button
     Then User should be able to delete task.
 
-  Scenario: HR User can be redirected to "New task template" page by clicking 'All templates' under "TASK TEMPLATES" menu on "New task" module.
-    Given "HR" user is on Home Page.
-    And User clicks on Tasks module.
+
+
 
 
 

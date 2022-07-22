@@ -50,7 +50,7 @@ public class TasksPage_Scrum889 {
     @FindBy(xpath = "//a[@class='bx-calendar-form-arrow-top']")
     public WebElement PM;
 
-    @FindBy(xpath = "(//span[@class='bx-finder-groupbox-content']/a)[7]")
+    @FindBy(xpath = "(//span[@class='bx-finder-groupbox-content']/a)[2]")
     public WebElement addMentionPerson;
 
     @FindBy(xpath = "(((//tr[@class='main-grid-row main-grid-row-body'])//td)[3]/span/a)")
@@ -76,11 +76,48 @@ public class TasksPage_Scrum889 {
     @FindBy(xpath = "(//span[@class='task-dashed-link-inner'])[9]")
     public WebElement reminder;
 
+    @FindBy(xpath = "//span[@class='task-reminder-type-changer']/span/a")
+    public WebElement reminderUsing;
+
+    //@FindBy(xpath = "(//span[@class='menu-popup-item menu-popup-no-icon '])[2]")
+    @FindBy(xpath = " (//div[@id='menu-popup-reminder-bitrix_tasks_task_default_1-form-form-transport']/div/div/div/span)[2]")
+    public WebElement reminderDeadline;
+
+    @FindBy(xpath = "//a[@title='Send e-mail message']")
+    public WebElement sendEMail;
+
+    @FindBy(xpath = "//div[@class='task-popup-label-add']")
+    public WebElement addReminderWithEmail;
+
+    @FindBy(xpath = "(//a[@class='js-id-tdp-mem-sel-is-open-form task-form-field-link'])[1]")
+    public WebElement changeResponsible;
+
+    @FindBy(xpath = "(//input[@class='js-id-tdp-mem-sel-is-search js-id-network-selector-search task-form-field-search task-form-field-input'])[1]")
+    public WebElement addResponsiblePeople;
+
+
     @FindBy(xpath = "(//input[@class='task-popup-inp'])[1]")
     public WebElement reminderCalendar;
-
-    @FindBy(xpath = "//span[@id='bx-component-scope-dependson-bitrix_tasks_task_default_1']")
+    @FindBy(xpath = "(//span[@id='bx-component-scope-dependson-bitrix_tasks_task_default_1']/span)[2]")
+   // @FindBy(xpath = "//span[@id='bx-component-scope-dependson-bitrix_tasks_task_default_1']")
     public WebElement dependantTasks;
+
+    @FindBy(xpath = "//input[@id='dependson_task_input']")
+    public WebElement dependentSearchBox;
+
+    @FindBy(xpath = "((//div[@class='finder-box-tabs-content'])[3]/div/div/div)[1]")
+    public WebElement selectDependent;
+
+    @FindBy(xpath = "(//div[@class='popup-window-buttons'])[2]/span")
+    public WebElement selectDependentButton;
+    @FindBy(xpath = "(//span[@class='task-options-item-param'])[15]")
+    public WebElement scrollDown;
+
+    @FindBy(xpath = "//button[@class='ui-btn ui-btn-success']")
+    public WebElement saveChangesButton;
+
+    @FindBy(xpath = "//span[@title='Close']")
+    public WebElement closeButton;
 
     @FindBy(xpath = "//div[@class='finder-box-item finder-box-item-selected']")
     public WebElement addDependentTask;
@@ -99,6 +136,7 @@ public class TasksPage_Scrum889 {
 
     @FindBy(xpath = "(//tr[@class='main-grid-row main-grid-row-body'])[1]//td[3]/span/a")
     public WebElement lastCreated;
+
 
 
 
