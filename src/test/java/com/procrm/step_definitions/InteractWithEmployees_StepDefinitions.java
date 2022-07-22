@@ -99,4 +99,51 @@ public class InteractWithEmployees_StepDefinitions {
 
 
     }
+
+    @When("User click the like button at the reviewers's comments.")
+    public void userClickTheLikeButtonAtTheReviewersSComments() {
+        interactWithEmployeesPage.likeButtonReviwers.click();
+        BrowserUtilities.sleep(5);
+    }
+
+    @Then("User should see like on other reviewers's comments.")
+    public void userShouldSeeLikeOnOtherReviewersSComments() {
+        Assert.assertTrue(interactWithEmployeesPage.getLikeButtonReviwersIsVisible.isDisplayed());
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    @When("User click the reviewers' name")
+    public void userClickTheReviewersName() {
+
+        interactWithEmployeesPage.clickReviwersName.click();
+        BrowserUtilities.sleep(5);
+
+    }
+
+    @Then("User should be able to see reviewers' profiles.")
+    public void userShouldBeAbleToSeeReviewersProfiles() {
+      Assert.assertTrue(interactWithEmployeesPage.displayReviwersProfiles.isDisplayed());
+
+    }
+
+    @When("User click the star icon.")
+    public void userClickTheStarIcon() {
+        interactWithEmployeesPage.starIconButton.click();
+        BrowserUtilities.sleep(5);
+    }
+
+    @Then("User should be able to see yellow star icon is applicable")
+    public void userShouldBeAbleToSeeYellowStarIconIsApplicable() {
+        Assert.assertTrue(interactWithEmployeesPage.seeYellowStarIcon.isDisplayed());
+    }
 }

@@ -39,6 +39,26 @@ public class InteractWithEmployeesPage {
    @FindBy(xpath = "//a[.='Follow']")
     public  WebElement followButtonIsVisible;
 
+    @FindBy(xpath = "(//a[@class='bx-ilike-text'])[2]")
+    public  WebElement likeButtonReviwers;
+
+    @FindBy(xpath = "//span[@title='Like']")
+    public WebElement getLikeButtonReviwersIsVisible;
+
+  @FindBy(xpath = "//a[@class='feed-com-name  feed-author-name feed-author-name-600']")
+    public WebElement clickReviwersName;
+
+
+   @FindBy(xpath = "//div[@class='workarea-content-paddings']")
+    public WebElement displayReviwersProfiles;
+
+   @FindBy(id= "log_entry_favorites_787")
+    public WebElement starIconButton;
+
+   @FindBy(xpath = "//div[@title='Remove from favorites']")
+    public WebElement seeYellowStarIcon;
+
+
 
 
 

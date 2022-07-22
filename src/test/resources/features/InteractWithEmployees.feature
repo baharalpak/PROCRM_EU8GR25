@@ -31,7 +31,7 @@ Feature: Interact With Employees on the Posts
       | hr        |
       | marketing |
       | helpdesk  |
-  @SCRUM-896
+
     Scenario Outline: Verify that User can make a unfollow on other employees' posts.
       Given "<user>" user is on homepage.
       When User click the unfollow button at the INPUT BOX.
@@ -77,7 +77,7 @@ Feature: Interact With Employees on the Posts
         | hr        |
         | marketing |
         | helpdesk  |
-
+  @SCRUM-896
       Scenario Outline: Verify that User should be able to add others' posts to favorite by clicking on the Star icon.
         Given "<user>" user is on homepage.
         When User click the star icon.
