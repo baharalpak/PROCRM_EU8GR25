@@ -81,4 +81,15 @@ Feature: SCRUM-897
       | marketing |
       | helpdesk  |
 
+  @SCRUM-906 @negative
+  Scenario Outline: User CAN NOT send a message without filling Message Title which is mandatory field.
+    Given "<user>" user is on homepage
+    When User clicks "MESSAGE" button.
+    And User clicks "Send" button.
+    Then Verify that user CAN NOT send a message.
 
+    Examples:
+      | user      |
+      | hr        |
+      | marketing |
+      | helpdesk  |
