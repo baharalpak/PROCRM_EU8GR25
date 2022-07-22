@@ -21,6 +21,11 @@ Feature: Interact With Employees on the Posts
       | marketing |
       | helpdesk  |
 
+  Scenario:
+    When User click the like button at the INPUT BOX.
+    Then User should see like on other employees' posts.
+
+
 
 
 
