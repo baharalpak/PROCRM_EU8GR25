@@ -7,4 +7,5 @@ Feature: Appreciation Feature
   Scenario: User should be able to click on upload files
   icon to upload files and pictures from local disks.
     Given "<user>" user is on homepage
-
+    And "<user>" clicks on more button
+    And "<user>" clicks on appreciation button
