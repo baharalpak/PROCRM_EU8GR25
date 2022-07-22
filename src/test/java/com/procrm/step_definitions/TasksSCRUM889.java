@@ -86,10 +86,15 @@ public class TasksSCRUM889 {
         tasksPage_scrum889.observers.click();
         BrowserUtilities.sleep(3);
 
+
     }
     @Then("HR user should be able to see {string} which is edited on My Tasks Page")
     public void hr_user_should_be_able_to_see_which_is_edited_on_my_tasks_page(String editedTaskName) {
         Assert.assertTrue(tasksPage_scrum889.newTask.getText().toLowerCase().contains("test"));
+    }
+    @When("{string} user clicks on the last created task")
+    public void user_clicks_on_the_last_created_task(String user) {
+        tasksPage_scrum889.lastCreated.click();
     }
 
 

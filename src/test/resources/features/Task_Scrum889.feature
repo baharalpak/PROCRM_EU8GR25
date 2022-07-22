@@ -1,7 +1,7 @@
 Feature: Task Feature SCRUM_889
   As a user, I should be able to use "Tasks" functionality so that user can create, change, delete and track the tasks either on Activity Stream or Tasks page.
 
-  @Scrum889
+
   Scenario:    HR User can create a high priority task in duration of the certain deadline by mentioning about a user.
     Given "HR" user is on Home Page.
     And User clicks on Tasks module.
@@ -32,12 +32,13 @@ Feature: Task Feature SCRUM_889
     And User clicks "Close" button.
     Then User should be able to see edited task.
 
+  @Scrum889
   Scenario: Marketing User can edit the task by declaring himself/herself as responsible person
   Marketing User can add participants and observers to already created task by editing.
   Marketing User can add checklist to an already created task by editing.
     Given "Marketing" user is on Home Page.
     And User clicks on Tasks module.
-    When "Marketing" user clicks on the last created task.
+    When "Marketing" user clicks on the last created task
     And User clicks "Edit" button.
     And Edit "task" details with  below information
       | responsible | marketing73@cybertekschool.com |
@@ -83,17 +84,17 @@ Feature: Task Feature SCRUM_889
     And User clicks "Add Task" button.
     Then User should be able to display new task created on My Tasks Page
 
-    Scenario: HR User can delete task by using "SELECT ACTION" dropdown menu after checking the task.
-      Given "HR" user is on Home Page.
-      And User clicks on Tasks module.
-      When User select last created task
-      And User select "Delete" section under "SELECT ACTION" dropdown menu
-      And User clicks "APPLY" button and "Continue" button
-      Then User should be able to delete task.
+  Scenario: HR User can delete task by using "SELECT ACTION" dropdown menu after checking the task.
+    Given "HR" user is on Home Page.
+    And User clicks on Tasks module.
+    When User select last created task
+    And User select "Delete" section under "SELECT ACTION" dropdown menu
+    And User clicks "APPLY" button and "Continue" button
+    Then User should be able to delete task.
 
-      Scenario: HR User can be redirected to "New task template" page by clicking 'All templates' under "TASK TEMPLATES" menu on "New task" module.
-        Given "HR" user is on Home Page.
-        And User clicks on Tasks module.
+  Scenario: HR User can be redirected to "New task template" page by clicking 'All templates' under "TASK TEMPLATES" menu on "New task" module.
+    Given "HR" user is on Home Page.
+    And User clicks on Tasks module.
 
 
 

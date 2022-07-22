@@ -8,3 +8,4 @@ Feature: Appreciation Feature
   icon to upload files and pictures from local disks.
     Given "<user>" user is on homepage
 
+
