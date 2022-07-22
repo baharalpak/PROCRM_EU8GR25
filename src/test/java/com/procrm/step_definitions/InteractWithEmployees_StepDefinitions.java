@@ -45,9 +45,9 @@ public class InteractWithEmployees_StepDefinitions {
     @When("User write comment in the INPUT BOX {string}")
     public void user_write_comment_in_the_input_box(String message) {
 
-        Actions action = new Actions(Driver.getDriver());
-        action.doubleClick(interactWithEmployeesPage.commentInputBox).perform();
+        interactWithEmployeesPage.commentInputBox.click();
         BrowserUtilities.sleep(5);
+        interactWithEmployeesPage.commentInputBox.sendKeys(message);
 
 
 
