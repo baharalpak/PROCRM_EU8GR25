@@ -13,7 +13,7 @@ Feature: Task Feature SCRUM_889
       | mention  | hr19@cybertekschool.com |
     And User clicks "Add Task" button.
     Then User should be able to display new task created on My Tasks Page
-  @Scrum889
+
   Scenario: HR User can edit the task for adding time tracking.
   HR User can edit the task for adding reminder to e-mail.
   HR User can add dependent tasks by editing the already created task.
@@ -21,17 +21,17 @@ Feature: Task Feature SCRUM_889
     And User clicks on Tasks module.
     When "HR" user clicks on the last created task.
     And User clicks "Edit" button.
-    And Edit "task" details with  below information
+    * Edit "task" details with  below information
       | time hours     | 2                        |
       | time minutes   | 30                       |
       | responsible    | alper@cybertekschool.com |
       | reminder       | One day before deadline  |
       | dependant task | Dependant Task for test  |
-    And User clicks "Sava Changes" button
-    And User clicks "Close" button.
+    * User clicks "Sava Changes" button
+    * User clicks "Close" button.
     Then User should be able to see edited task.
 
-
+  @Scrum889
   Scenario: Marketing User can edit the task by declaring himself/herself as responsible person
   Marketing User can add participants and observers to already created task by editing.
   Marketing User can add checklist to an already created task by editing.
@@ -39,15 +39,15 @@ Feature: Task Feature SCRUM_889
     And User clicks on Tasks module.
     When "Marketing" user clicks on the last created task
     And User clicks "Edit" button.
-    And Edit "task" details with  below information
+    * Edit "task" details with  below specific information
       | responsible | marketing73@cybertekschool.com |
       | participant | marketing1@cybertekschool.com  |
       | observer    | hr2@cybertekschool.com         |
       | checklist1  | TEST1                          |
       | checklist2  | TEST2                          |
       | checklist3  | TEST3                          |
-    And User clicks "Sava Changes" button
-    And User clicks "Close" button.
+    * User clicks "Sava Changes" button
+    * User clicks "Close" button.
     Then User should be able to see edited task.
 
   Scenario: HR User can add one more responsible person by editing created task.
@@ -76,16 +76,17 @@ Feature: Task Feature SCRUM_889
     And User clicks on Tasks module.
     When User clicks "New Task Template" button.
     And User clicks "ADD" button.
-    And Fills "task" details
+    * Fills "task" details
       | priority    | High Priority                  |
       | responsible | him/herself                    |
       | title       | Test Case 5                    |
       | deadline    | 5days 2 hours 15 minutes       |
       | mention     | marketing19@cybertekschool.com |
-    And User clicks "Add Task" button.
-    And User clicks on Tasks module.
-    And User clicks "New Task Template" button.
+    * User clicks "Add Task" button.
+    * User clicks on Tasks module.
+    * User clicks "New Task Template" button.
     Then User should be able to redirected to "Task templates" page
+
 
   Scenario: HR User can delete task by using "SELECT ACTION" dropdown menu after checking the task.
     Given "HR" user is on Home Page.

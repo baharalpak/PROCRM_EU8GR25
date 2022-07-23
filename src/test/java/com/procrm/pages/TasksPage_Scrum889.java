@@ -128,15 +128,57 @@ public class TasksPage_Scrum889 {
     @FindBy(xpath = "(//span[.='Observers'])[1]")
     public WebElement observers;
 
-    @FindBy(xpath = "(//span[@class='task-form-field-controls'])[4]")
+    //@FindBy(xpath = "(//span[@class='task-form-field-controls'])[4]")
+    @FindBy(xpath = "//*[@id=\"bx-component-scope-bitrix_tasks_task_default_1-auditor\"]/span[2]/a[2]")
     public WebElement addObservers;
+
+    @FindBy(xpath = "//*[@id=\"bx-component-scope-bitrix_tasks_task_default_1-auditor\"]/span[2]/input")
+    public WebElement sendObservers;
 
     @FindBy(xpath = "(//span[@class='task-dashed-link-inner'])[2]")
     public WebElement participants;
 
+    @FindBy(xpath = "//*[@id=\"bx-component-scope-bitrix_tasks_task_default_1-accomplice\"]/span[2]/a[2]")
+    public WebElement addParticipants;
+
+    @FindBy(xpath = "(//*[@id='bx-component-scope-bitrix_tasks_task_default_1-accomplice']/span)[2]/input")
+    public WebElement sendParticipants;
+
+    @FindBy(xpath = "//*[@id=\"post-buttons-bottom\"]/span[5]")
+    public WebElement checklist;
+
+    @FindBy(xpath = "//*[@id=\"bx-component-scope-bitrix_tasks_task_default_1-checklist\"]/div[3]/span/span/input")
+    public WebElement addChecklist;
+
+
     @FindBy(xpath = "(//tr[@class='main-grid-row main-grid-row-body'])[1]//td[3]/span/a")
     public WebElement lastCreated;
 
+    ////////////////////////////
+    //@FindBy(xpath = "((//tr[@class='main-grid-row main-grid-row-body'])//td)[1]/span/input")
+    //@FindBy(xpath = "//*[@id=\"checkbox_TASKS_GRID_ROLE_ID_4096_0_ADVANCED_N_663\"]")
+    @FindBy(xpath = "//*[@id=\"TASKS_GRID_ROLE_ID_4096_0_ADVANCED_N_table\"]/tbody/tr[6]/td[1]/span")
+    public WebElement checkboxForDelete;
+
+    @FindBy(xpath = "(//span[@class='main-grid-panel-content-title'])[1]")
+    public WebElement scrollDownForDelete;
+
+    //@FindBy(xpath = "//span[@id='action_button_TASKS_GRID_ROLE_ID_4096_0_ADVANCED_N']")
+    @FindBy(xpath = "//*[@id=\"action_button_TASKS_GRID_ROLE_ID_4096_0_ADVANCED_N_control\"]")
+    public WebElement selectOption;
+
+    @FindBy(xpath = "//*[@id=\"popup-window-content-menu-popup-action_button_TASKS_GRID_ROLE_ID_4096_0_ADVANCED_N_control_menu\"]/div/div/span[13]/span[2]/span")
+    public WebElement deleteUnderSelection;
+
+    @FindBy(xpath = "//*[@id=\"apply_button_control\"]")
+    public WebElement applyButtonForDelete;
+
+    @FindBy(xpath = "//*[@id=\"task-confirm-popup\"]/div[2]/span[1]")
+    public WebElement continueForDelete;
+
+    //////////////
+    @FindBy(xpath = "//*[@id=\"TASKS_GRID_ROLE_ID_4096_0_ADVANCED_N_table\"]/tbody/tr[1]/td[3]/span/a")
+    public WebElement lastCreatedForMarketing;
 
 
 
