@@ -31,7 +31,7 @@ Feature: Task Feature SCRUM_889
     * User clicks "Close" button.
     Then User should be able to see edited task.
 
-
+  @Scrum889
   Scenario: Marketing User can edit the task by declaring himself/herself as responsible person
   Marketing User can add participants and observers to already created task by editing.
   Marketing User can add checklist to an already created task by editing.
@@ -39,7 +39,7 @@ Feature: Task Feature SCRUM_889
     And User clicks on Tasks module.
     When "Marketing" user clicks on the last created task
     And User clicks "Edit" button.
-    * Edit "task" details with  below information
+    * Edit "task" details with  below specific information
       | responsible | marketing73@cybertekschool.com |
       | participant | marketing1@cybertekschool.com  |
       | observer    | hr2@cybertekschool.com         |
@@ -87,7 +87,7 @@ Feature: Task Feature SCRUM_889
     * User clicks "New Task Template" button.
     Then User should be able to redirected to "Task templates" page
 
-  @Scrum889
+
   Scenario: HR User can delete task by using "SELECT ACTION" dropdown menu after checking the task.
     Given "HR" user is on Home Page.
     And User clicks on Tasks module.
