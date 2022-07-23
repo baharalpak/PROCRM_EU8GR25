@@ -36,6 +36,18 @@ Feature: Functions Under Employee Menu
       | marketing |
       | helpdesk  |
 
+  Scenario Outline:Can not type nothing to find employees
+    When user clicks Find Employees
+    And user types nothing in the search box
+    And user click search button
+    Then user can not see any employee info displayed
+
+    Examples:
+      | user      |
+      | hr        |
+      | marketing |
+      | helpdesk  |
+
 
   Scenario Outline:Find employees by search box
     Given "<user>" user is on homepage
@@ -43,6 +55,19 @@ Feature: Functions Under Employee Menu
     And  user clicks Search By Alphabet button
     And user clicks the letter "letter"
     Then user can see employee info
+
+    Examples:
+      | user      |
+      | hr        |
+      | marketing |
+      | helpdesk  |
+
+
+  Scenario Outline:Can not type a special character to find employees
+    When user clicks Find Employees
+    And user types some "special characters" in the search box
+    And user click search button
+    Then user can not see any employee info displayed
 
     Examples:
       | user      |
