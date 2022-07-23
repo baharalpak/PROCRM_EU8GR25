@@ -2,11 +2,14 @@
 
 Feature: User should be able to create a poll by clicking on Poll tab under Active Stream.
   Background: user is expected to be on Home Page
-
+@pollTab0
   Scenario Outline: User should be able to land on Poll Tab Under Activity Stream
     Given "<user>" user is on homepage
     When user clicks on Activity Stream
     And clicks on Poll tap  from top menu
+  When User clicks on add more
+  And user click on Employees and Departments button
+  And user add employees emails
     Then user should be able to see  text box to create a poll
 
     Examples:
@@ -15,24 +18,57 @@ Feature: User should be able to create a poll by clicking on Poll tab under Acti
       | marketing |
       | helpdesk  |
 
+  @pollTab1
+  Scenario Outline: User should be able to land on Poll Tab Under Activity Stream
+    Given "<user>" user is on homepage
+    When user clicks on Activity Stream
+    And clicks on Poll tap  from top menu
+    When user click on link button
+    And add a link to link box
+    And add text to text box
+    And clicks on save button
+    Then User should be able to see the link in the text box.
 
-    Scenario:  User should be able to add users from selecting multiple contacts from Employees and Departments contact lists.
-      Given "<user>" user is on poll tap
-      When User clicks on add more
-      And user add employees emails
+    Examples:
+      | user      |
+      | hr        |
+      | marketing |
+      | helpdesk  |
+  @pollTab2
+  Scenario Outline: User should be able to land on Poll Tab Under Activity Stream
+    Given "<user>" user is on homepage
+    When user clicks on Activity Stream
+    And clicks on Poll tap  from top menu
+    When user click on mention icon.
 
+    When user click on mention icon.
+    And user click on Employees and Departments button
+    And user mention employees from contact list
+    Then User should be able to see the mention in the text box.
+
+
+    Examples:
+      | user      |
+      | hr        |
+      | marketing |
+      | helpdesk  |
 
 
 
   Scenario: User should be able to attach link using the link button
-Given "<user>" user is on poll tap
+    Given "<user>" user is on homepage
+    And user clicks on Activity Stream
+    And clicks on Poll tap  from top menu
   When user click on link button
   And add a link to link box
+    And add text to text box
   And clicks on save button
   Then User should be able to see the link in the text box.
 
-  Scenario: User should  NOT be able to attach Text as Link using the link button(Negative )
-    Given "<user>" user is on poll tap
+  Scenario: User should  NOT be able to attach Text without a Link (Negative )
+    Given "<user>" user is on homepage
+    And user clicks on Activity Stream
+    And clicks on Poll tap  from top menu
     When user click on link button
     And add a Text to link box
     And clicks on save button
@@ -40,14 +76,18 @@ Given "<user>" user is on poll tap
 
   Scenario: User should be able to  add mention using add mention icon.
 
-    Given "<user>" user is on poll tap
+    Given "<user>" user is on homepage
+    And user clicks on Activity Stream
+    And clicks on Poll tap  from top menu
     When user click on mention icon.
     And user click on Employees and Departments button
     And user mention employees from contact list
     Then User should be able to see the mention in the text box.
 
   Scenario: User should be able to create and edit questions and answers.
-    Given "<user>" user is on poll tap
+    Given "<user>" user is on homepage
+    And user clicks on Activity Stream
+    And clicks on Poll tap  from top menu
     When user click on Question text Box
     And User add a question
     And user edit the question
@@ -59,7 +99,9 @@ Given "<user>" user is on poll tap
     And user edit the second answer
 Scenario:  User should be able to delete questions and multiple answers, and user should be able select  the Allow multiple choice checkbox.
 
-  Given "<user>" user is on poll tap
+  Given "<user>" user is on homepage
+  And user clicks on Activity Stream
+  And clicks on Poll tap  from top menu
   And user click on delete question icon
   Then the question will be deleted
   And user click on delete answer1 icon
@@ -71,12 +113,16 @@ Scenario:  User should be able to delete questions and multiple answers, and use
 
 
   Scenario: User should be able to send a pool.
-    Given "<user>" user is on poll tap
+    Given "<user>" user is on homepage
+    And user clicks on Activity Stream
+    And clicks on Poll tap  from top menu
   When user click on send button
   Then user should be able to send the message.
 
   Scenario: User should NOT be able to send a pool with a wrong credential
-    Given "<user>" user is on poll tap
+    Given "<user>" user is on homepage
+    And user clicks on Activity Stream
+    And clicks on Poll tap  from top menu
     When user add a wrong email
     And user click on send button
     Then user should NOT be able to send the message.
