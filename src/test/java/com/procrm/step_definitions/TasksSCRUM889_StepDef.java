@@ -14,6 +14,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.time.LocalTime;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Map;
 
 public class TasksSCRUM889_StepDef {
@@ -146,12 +147,12 @@ public class TasksSCRUM889_StepDef {
         tasksPage_scrum889.sendParticipants.sendKeys("" + Keys.ENTER);
         BrowserUtilities.sleep(3);
         tasksPage_scrum889.observers.click();
-         BrowserUtilities.waitForClickablility(tasksPage_scrum889.addObservers,10);
+        BrowserUtilities.waitForClickablility(tasksPage_scrum889.addObservers,10);
         BrowserUtilities.clickWithJS(tasksPage_scrum889.addObservers);
         BrowserUtilities.sleep(2);
         tasksPage_scrum889.sendObservers.sendKeys(map.get("observer"));
         tasksPage_scrum889.sendObservers.sendKeys("" + Keys.ENTER);
-BrowserUtilities.sleep(4);
+        BrowserUtilities.sleep(4);
 
         action.moveToElement(tasksPage_scrum889.checklist).click();
         BrowserUtilities.sleep(3);
@@ -234,6 +235,43 @@ BrowserUtilities.sleep(4);
     public void user_should_be_able_to_delete_task() {
 
     }
+    @When("User clicks {string} button under {string}")
+    public void user_clicks_button_under(String string, String string2) {
+        tasksPage_scrum889.newTaskDropDown.click();
+        tasksPage_scrum889.allTemplates.click();
+    }
+    @When("User clicks {string} button in the New Task Template")
+    public void user_clicks_button_in_the_new_task_template(String string) {
+        tasksPage_scrum889.addAllTemplatesNewTask.click();
+    }
+    @When("Fills {string} details below")
+    public void fills_details_below(String string,DataTable dataTable) {
+        Map<String, String> map = dataTable.asMap(String.class, String.class);
 
+        BrowserUtilities.sleep(3);
+        tasksPage_scrum889.addMentionAllTemplates.click();
+        BrowserUtilities.sleep(3);
+        // tasksPage_scrum889.addMentionEmployees.click();
+       /* List<String> mention=BrowserUtilities.getElementsText(tasksPage_scrum889.employeesList);
+        for (String each : mention) {
+            if (each.equalsIgnoreCase("marketing19@cybertekschool.com")){
+
+            }
+        }*/
+        // tasksPage_scrum889.addMentionMarketing(tasksPage_scrum889.employeesList);
+
+        //tasksPage_scrum889.addMentionPerson.click();
+
+        tasksPage_scrum889.addMentionMarketing.click();
+        BrowserUtilities.sleep(3);
+        tasksPage_scrum889.highPriority.click();
+        BrowserUtilities.sleep(3);
+        tasksPage_scrum889.titleAllTemplatesNewTask.sendKeys(map.get("title"));
+        BrowserUtilities.sleep(5);
+
+        tasksPage_scrum889.deadlineMinutes.click();
+        tasksPage_scrum889.deadlineBox.sendKeys("2720"+Keys.ENTER);
+
+    }
 
 }
