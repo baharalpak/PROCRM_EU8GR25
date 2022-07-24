@@ -2,15 +2,18 @@ package com.procrm.pages;
 
 import com.procrm.utilities.Driver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TasksPage_Scrum889 {
     public TasksPage_Scrum889() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
+
 
     @FindBy(id = "tasks-task-priority-cb")
     public WebElement highPriority;
@@ -21,8 +24,25 @@ public class TasksPage_Scrum889 {
     @FindBy(id = "bx-b-mention-task-form-bitrix_tasks_task_default_1")
     public WebElement addMention;
 
-    @FindBy(id = "destDepartmentTab_mention95440246")
-    public WebElement addMentionEmployee;
+    @FindBy(xpath = "(//div[@class='bx-finder-box-tabs']/a)[2]")
+    public WebElement addMentionEmployees;
+
+    @FindBy(xpath = "//span[@class='bx-finder-groupbox-content']/a")
+    public WebElement addMentionMarketing;
+    @FindBy(xpath = "//*[@id=\"bx-lm-category-relation-129\"]")
+    public List<WebElement> employeesList;
+    public static void addMentionMarketing(List<WebElement> list) {
+        //List<String> elemTexts = new ArrayList<>();
+        Actions action=new Actions(Driver.getDriver());
+        for (WebElement el : list) {
+            if(el.getText().equalsIgnoreCase("marketing19@cybertekschool.com"))
+                //elemTexts.add(el.getText());
+                // el.click();
+                action.doubleClick(el).perform();
+            //action.click(el).perform();
+        }
+        //return elemTexts;
+    }
 
     //@FindBy(xpath = "//input[@class='task-options-inp']")
     @FindBy(xpath = "(//span[@class='task-options-inp-container task-options-date t-empty'])[1]")
@@ -99,7 +119,7 @@ public class TasksPage_Scrum889 {
     @FindBy(xpath = "(//input[@class='task-popup-inp'])[1]")
     public WebElement reminderCalendar;
     @FindBy(xpath = "(//span[@id='bx-component-scope-dependson-bitrix_tasks_task_default_1']/span)[2]")
-   // @FindBy(xpath = "//span[@id='bx-component-scope-dependson-bitrix_tasks_task_default_1']")
+    // @FindBy(xpath = "//span[@id='bx-component-scope-dependson-bitrix_tasks_task_default_1']")
     public WebElement dependantTasks;
 
     @FindBy(xpath = "//input[@id='dependson_task_input']")
@@ -179,6 +199,34 @@ public class TasksPage_Scrum889 {
     //////////////
     @FindBy(xpath = "//*[@id=\"TASKS_GRID_ROLE_ID_4096_0_ADVANCED_N_table\"]/tbody/tr[1]/td[3]/span/a")
     public WebElement lastCreatedForMarketing;
+
+    //////
+    @FindBy(xpath="//span[@id='tasks-popupMenuAdd']")
+    public WebElement newTaskDropDown;
+
+    @FindBy(xpath = "//*[@id=\"popup-window-content-menu-popup-popupMenuAdd\"]/div/div/a[2]/span[2]")
+    public WebElement allTemplates;
+
+    @FindBy(xpath = "//*[@id=\"content-table\"]/table/tbody/tr[1]/td/div/div[2]/div/div[4]/a")
+    public WebElement addAllTemplatesNewTask;
+
+    @FindBy(xpath = "//*[@id=\"bx-component-scope-bitrix_tasks_task_template_default_1-frame\"]/div[3]/div[1]/div[5]/div/div[1]/div/span[2]/span[3]")
+    public WebElement addDeadlineMinutes;
+
+    @FindBy(xpath = "//input[@class='js-id-task-template-edit-title']")
+    public WebElement titleAllTemplatesNewTask;
+
+    @FindBy(xpath = "//*[@id=\"bx-b-mention-task-form-bitrix_tasks_task_template_default_1\"]")
+    public WebElement addMentionAllTemplates;
+
+    @FindBy(xpath = "//*[@id=\"bx-component-scope-bitrix_tasks_task_template_default_1-frame\"]/div[3]/div[1]/div[5]/div/div[1]/div/span[2]/span[3]")
+    public WebElement deadlineMinutes;
+
+    @FindBy(xpath = "//*[@id=\"bx-component-scope-bitrix_tasks_task_template_default_1-frame\"]/div[3]/div[1]/div[5]/div/div[1]/div/span[1]/input[1]")
+    public WebElement deadlineBox;
+
+    @FindBy(xpath = "//button[@class='js-id-wfr-edit-form-submit webform-small-button webform-small-button-accept']")
+    public WebElement createTaskTemplate;
 
 
 
