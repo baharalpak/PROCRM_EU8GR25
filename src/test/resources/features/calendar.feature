@@ -1,4 +1,4 @@
-@calendar
+@SCRUM-885
 Feature: Calendar Feature
 
   User Story: User should be able to display Calendar functionality.
