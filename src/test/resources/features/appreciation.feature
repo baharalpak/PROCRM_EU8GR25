@@ -14,7 +14,7 @@ Feature: Appreciation Feature
       | helpdesk  |  |
       | marketing |  |
   @wip
-  Scenario Outline: User adds users from selecting multiple contacts from Employees and Departments contact lists
+  Scenario Outline: User adds multiple contacts from Employees and Departments contact lists
     Given "<user>" user is on homepage
     When User clicks on appreciation tab
     And User adds users from Employees and Departments contact lists
