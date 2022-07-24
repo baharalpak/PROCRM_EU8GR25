@@ -17,10 +17,41 @@ public class TasksPage{
     @FindBy(xpath = "//span[.='All']")
     public WebElement allTabButton;
 
-    @FindBy(xpath = "(//input[@class='main-grid-checkbox main-grid-row-checkbox main-grid-check-all'])[1]")
-    public WebElement allTasks;
+    @FindBy(xpath = "//div[@class='main-ui-square-item'][1]")
+    public WebElement inProgressBox;
 
-    @FindBy(xpath = "//div[@class='main-ui-filter-search-square main-ui-filter-search-square-preset main-ui-square']")
-    public WebElement inProgress;
+    @FindBy(xpath = "//span[.='Ongoing']")
+    public WebElement ongoingButton;
+
+    @FindBy(xpath = "(//div[@class='main-ui-square-item'])[2]")
+    public WebElement ongoingBox;
+
+    @FindBy(id = "tasks-buttonAdd")
+    public WebElement newTaskButton;
+
+    @FindBy(xpath = "//button[@class='ui-btn ui-btn-success']")
+    public WebElement addTaskButton;
+
+    @FindBy(xpath = "//a[@class='task-view-button edit ui-btn ui-btn-link']")
+    public WebElement editTaskButton;
+
+    @FindBy(xpath = "//button[@class='ui-btn ui-btn-success']")
+    public WebElement saveChangesButton;
+
+    @FindBy(xpath = "//span[@title='Close']")
+    public WebElement closeButton;
+
+    @FindBy(xpath = "//iframe[@class='side-panel-iframe']")
+    public WebElement iframeNewTask;
+
+    @FindBy(xpath = "//input[@data-bx-id='task-edit-title']")
+    public WebElement taskNameField;
+
+    @FindBy(xpath = "(((//tr[@class='main-grid-row main-grid-row-body'])//td)[3]/span/a)")
+    public WebElement newTask;
+
+    @FindBy(xpath = "//div[@class='ui-notification-balloon-message']")
+    public WebElement popupNewTask;
+
 
 }

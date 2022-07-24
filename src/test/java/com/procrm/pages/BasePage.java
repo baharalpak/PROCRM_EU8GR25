@@ -15,7 +15,7 @@ public abstract class BasePage {
 
    /* public  static void userType(){
 
-        String user=ConfigurationReader.getProperty("userType");
+        String user=ConfigurationReader.giugh letProperty("userType");
         switch(user){
             case "HR user":
                 Driver.getDriver().get(ConfigurationReader.getProperty("url"));

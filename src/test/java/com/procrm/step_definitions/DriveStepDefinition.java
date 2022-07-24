@@ -16,7 +16,6 @@ public class DriveStepDefinition {
     DriverPage driverPage =  new DriverPage();
 
 
-
     @When("click on Drive module.")
     public void click_on_drive_module() {
         driverPage.DriverButton.click();    }
@@ -25,7 +24,9 @@ public class DriveStepDefinition {
     public void user_should_be_able_to_see_and_access_my_drive() {
         Assert.assertTrue(Driver.getDriver().getTitle().contains("Drive"));    }
 
-
+    @Given("HelpDesk user is on Home Page.")
+    public void help_desk_user_is_on_home_page() {
+        BasePage.loginAsHelpDesk();    }
 
     @When("user click on All Documents.")
     public void user_click_on_all_documents() {

@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.security.PublicKey;
+
 public class MyProfilePage {
     public MyProfilePage() {
         PageFactory.initElements(Driver.getDriver(), this);
@@ -16,7 +18,7 @@ public class MyProfilePage {
     @FindBy(xpath = "//*[@id=\"popup-window-content-menu-popup-user-menu\"]/div/div/a[1]/span[2]")
     public WebElement myProfileLink;
 
-    @FindBy(xpath="//*[@id=\"workarea-content\"]/div/div/div[3]/table/tbody/tr[1]/td")
+    @FindBy(xpath = "//*[@id=\"workarea-content\"]/div/div/div[3]/table/tbody/tr[1]/td")
     public WebElement contactInformation;
 
     @FindBy(xpath = "//*[@id=\"workarea-content\"]/div/div/div[2]/div/div[2]/a[1]")
@@ -24,26 +26,28 @@ public class MyProfilePage {
 
     @FindBy(name = "EMAIL")
     public WebElement email;
-
+    @FindBy(xpath = "//*[@id=\"workarea-content\"]/div/div/div[3]/table/tbody/tr[2]/td[2]/a")
+    public WebElement emailTextBox;
     @FindBy(name = "PERSONAL_WWW")
     public WebElement webSite;
 
-    @FindBy(name="PERSONAL_ICQ")
+    @FindBy(name = "PERSONAL_ICQ")
     public WebElement ICQ;
 
-    @FindBy(name="PERSONAL_PHONE")
+    @FindBy(name = "PERSONAL_PHONE")
     public WebElement phoneNumber;
-
-    @FindBy(name="PERSONAL_FAX")
+    @FindBy(xpath = "//*[@id=\"workarea-content\"]/div/div/div[3]/table/tbody/tr[5]/td[2]/a")
+    public WebElement updatedPhoneNumber;
+    @FindBy(name = "PERSONAL_FAX")
     public WebElement faxNumber;
 
-    @FindBy(name="PERSONAL_MOBILE")
+    @FindBy(name = "PERSONAL_MOBILE")
     public WebElement mobileNumber;
 
     @FindBy(name = "WORK_PHONE")
     public WebElement workPhone;
 
-    @FindBy(name="UF_PHONE_INNER")
+    @FindBy(name = "UF_PHONE_INNER")
     public WebElement extensionNumber;
 
     @FindBy(name = "UF_SKYPE")
