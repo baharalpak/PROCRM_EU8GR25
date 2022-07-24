@@ -228,6 +228,15 @@ public class TasksPage_Scrum889 {
     @FindBy(xpath = "//button[@class='js-id-wfr-edit-form-submit webform-small-button webform-small-button-accept']")
     public WebElement createTaskTemplate;
 
+    @FindBy(xpath = "//*[@id=\"pagetitle-menu\"]/div/div/a[1]")
+    public WebElement backToList;
+
+    @FindBy(xpath = "//*[@id=\"TASKS_TEMPLATES_FILTER_ID_table\"]/tbody/tr[1]/td[3]/span/a")
+    public WebElement lastCreatedForNewTemplate;
+
+    //////
+    @FindBy(xpath = "//a[@title='Tasks']")
+    public WebElement tasksModuleButton;
 
 
 

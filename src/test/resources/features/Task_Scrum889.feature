@@ -1,16 +1,17 @@
-
 Feature: Task Feature SCRUM_889
   As a user, I should be able to use "Tasks" functionality so that user can create, change, delete and track the tasks either on Activity Stream or Tasks page.
+
 
   Scenario:    HR User can create a high priority task in duration of the certain deadline by mentioning about a user.
     Given "HR" user is on Home Page.
     And User clicks on Tasks module.
     When User clicks "New Task" button.
     And Fills "task" details
-      | priority | High Priority           |
-      | title    | Test Case 5             |
-      | deadline | Tomorrows Date          |
-      | mention  | hr19@cybertekschool.com |
+      | priority | High Priority                  |
+      | title    | Test Case 5                    |
+      | body     | Daily Stand-up: 19.00CEST      |
+      | deadline | Tomorrows Date                 |
+      | mention  | marketing73@cybertekschool.com |
     And User clicks "Add Task" button.
     Then User should be able to display new task created on My Tasks Page
 
@@ -57,19 +58,20 @@ Feature: Task Feature SCRUM_889
     And User clicks "Edit" button.
     And User clicks responsible person button and add one more responsible person
     Then User should be able to add more responsible people.
-
+  @Scrum889
   Scenario: Marketing User can create a subtask of the first acceptance criteria's task quickly by using plus button, adding tags.
     Given "HR" user is on Home Page.
     And User clicks plus button on Tasks module.
-    And Fills "task" details
+    * Fills "task" details
       | priority | High Priority           |
       | title    | Test Case 5             |
       | deadline | Tomorrows Date          |
       | mention  | hr19@cybertekschool.com |
       | subtask  | first created task      |
-    And User clicks "Add Task" button.
+    * User clicks "Add Task" button.
     Then User should be able to see new task created.
-  @Scrum889
+
+
   Scenario:HR User can create new task template for high priority task, for him/herself, by mentioning about Marketing User, specifying the deadline, using the Options under 'Deadline in' section.
   HR User can be redirected to "New task template" page by clicking 'All templates' under "TASK TEMPLATES" menu on "New task" module.
     Given "HR" user is on Home Page.
@@ -79,12 +81,12 @@ Feature: Task Feature SCRUM_889
     * Fills "task" details below
       | priority    | High Priority                  |
       | responsible | him/herself                    |
-      | title       | Test Case 5                    |
+      | title       | Test Case new Templates        |
       | deadline    | 5days 2 hours 15 minutes       |
       | mention     | marketing73@cybertekschool.com |
-    * User clicks "Add Task" button.
+    * User clicks "CREATE TASK TEMPLATE" button
     * User clicks on Tasks module.
-    * User clicks "New Task Template" button.
+    * User clicks "New Task Template" button under "New Task"
     Then User should be able to redirected to "Task templates" page
 
 
