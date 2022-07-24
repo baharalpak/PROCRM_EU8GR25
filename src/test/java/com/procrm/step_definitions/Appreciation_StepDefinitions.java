@@ -56,14 +56,41 @@ public class Appreciation_StepDefinitions {
 
     @When("User adds a text and the URL address of the link")
     public void user_adds_a_text_and_the_url_address_of_the_link() {
-        AppreciationPage.linkIcon();
+        AppreciationPage.addLinkAndText();
     }
     @Then("link should be attached successfully")
     public void link_should_be_attached_successfully() {
-        Assert.assertTrue(AppreciationPage.linkText.isDisplayed());
-        Assert.assertTrue(AppreciationPage.linkURL.isDisplayed());
+
+        Assert.assertEquals("The title of the linked website",AppreciationPage.messageBox.getText());
+        Assert.assertEquals("www.youtube.com",AppreciationPage.messageBox.getAttribute("href"));
 
     }
+
+    @When("User adds video URLs")
+    public void user_adds_video_ur_ls() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Then("videos should be inserted successfully")
+    public void videos_should_be_inserted_successfully() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @When("User creates a quote")
+    public void user_creates_a_quote() {
+        AppreciationPage.quoteIcon.click();
+        BrowserUtilities.sleep(2);
+        AppreciationPage.quotationBox.sendKeys("When life gives you lemons, make lemonade.");
+        BrowserUtilities.sleep(2);
+        AppreciationPage.messageBox.click();
+
+    }
+    @Then("quotes should be created successfully")
+    public void quotes_should_be_created_successfully() {
+        Assert.assertEquals("When life gives you lemons, make lemonade.",AppreciationPage.quotationBox.getText());
+    }
+
 
 
 }

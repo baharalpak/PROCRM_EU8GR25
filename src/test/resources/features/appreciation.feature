@@ -37,3 +37,28 @@ Feature: Appreciation Feature
       | hr        |  |
       | helpdesk  |  |
       | marketing |  |
+
+
+    Scenario Outline: User inserts videos by entering the video URL.
+      Given "<user>" user is on homepage
+      When User clicks on appreciation tab
+      And User adds video URLs
+      Then videos should be inserted successfully
+      Examples:
+        | user      |  |
+        | hr        |  |
+        | helpdesk  |  |
+        | marketing |  |
+
+  @mustafa
+    Scenario Outline:  User creates a quote by clicking on the Comma icon.
+      Given "<user>" user is on homepage
+      When User clicks on appreciation tab
+      And User creates a quote
+      Then quotes should be created successfully
+      Examples:
+        | user      |  |
+        | hr        |  |
+        | helpdesk  |  |
+        | marketing |  |
+

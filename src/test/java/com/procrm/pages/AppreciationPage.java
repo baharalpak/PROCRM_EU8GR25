@@ -48,17 +48,29 @@ public class AppreciationPage {
     @FindBy(xpath = "//*[@id=\"bx-lm-category-relation-129\"]/a[3]/div[1]/div[1]")
     public WebElement email2;
 
-    @FindBy(xpath = "//*[@id=\"bx-b-link-blogPostForm\"]/span/i")
+    @FindBy(xpath = "//span[@title='Link']")
     public WebElement linkIcon;
 
-    @FindBy(xpath = "//*[@id=\"bx-b-link-blogPostForm\"]/span/i")
+    @FindBy(xpath = "//input[@id='linkidPostFormLHE_blogPostForm-text']")
     public WebElement linkText;
 
-    @FindBy(xpath = "//*[@id=\"linkidPostFormLHE_blogPostForm-href\"]")
+    @FindBy(xpath = "//input[@id='linkidPostFormLHE_blogPostForm-href']")
     public WebElement linkURL;
 
     @FindBy(xpath = "//*[@id=\"undefined\"]")
     public WebElement linkSaveButton;
+
+    @FindBy(xpath = "//*[@id=\"bx-b-video-blogPostForm\"]/span")
+    public WebElement videoIcon;
+
+    @FindBy(xpath = "//body[@class='vsc-initialized']")
+    public WebElement messageBox;
+
+    @FindBy(xpath = "//*[@title='Quote text']")
+    public WebElement quoteIcon;
+
+    @FindBy (xpath = "//*[@class='bxhtmled-quote']")
+    public WebElement quotationBox;
 
 
 
@@ -78,10 +90,15 @@ public class AppreciationPage {
         // sendButton.click();
     }
 
-    public void linkIcon(){
+    public void addLinkAndText(){
         linkIcon.click();
-        linkText.sendKeys("The title of the linked website");
-        linkURL.sendKeys("www.youtube.com");
+        BrowserUtilities.sleep(2);
+        String linkTextWritten = "The title of the linked website";
+        linkText.sendKeys(linkTextWritten);
+        BrowserUtilities.sleep(2);
+        String youtubeLink = "www.youtube.com";
+        linkURL.sendKeys(youtubeLink);
+        BrowserUtilities.sleep(2);
         linkSaveButton.click();
     }
 
