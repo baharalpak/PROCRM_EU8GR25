@@ -95,8 +95,17 @@ public WebElement answer2;
     @FindBy(xpath ="//*[@title=\"Delete question\"]" )
     public WebElement deleteQuestion;
     // And user click on delete question icon
+    @FindBy(xpath = "//*[@for=\"answer_0__0_\"]")
+    public WebElement deleteAnswer1;
+
+    @FindBy(xpath = "//*[@for=\"answer_0__1_\"]")
+    public WebElement deleteAnswer2;
+
+    @FindBy(xpath = "//*[@for=\"answer_0__2_\"]")
+    public WebElement deleteAnswer3;
 
     @FindBy(xpath = "//*[@id=\"multi_0\"]")
     public WebElement MultiCheckBox;
+
 
 }
