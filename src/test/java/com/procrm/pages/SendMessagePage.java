@@ -20,11 +20,17 @@ public class SendMessagePage {
     @FindBy(xpath = "//body[@contenteditable='true']")
     public WebElement messageTitleBox;
 
-    @FindBy(css = ".bxhtmled-top-bar-btn bxhtmled-button-video")
+    @FindBy(xpath = "//span[@class='bxhtmled-top-bar-btn bxhtmled-button-video']")
     public WebElement insertVideoIcon;
 
     @FindBy(css = ".bx-editor-iframe")
     public WebElement videoInsertIframe;
+
+    @FindBy(xpath = "//input[@placeholder='YouTube or Vimeo video URL']")
+    public WebElement videoSourceBox;
+
+    @FindBy(xpath = "//span[@class='bxhtmled-video-error']")
+    public WebElement videoNotAddedError;
 
     @FindBy(xpath = "//input[@value='Save']")
     public WebElement saveButton;
