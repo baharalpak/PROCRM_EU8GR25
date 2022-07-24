@@ -37,3 +37,12 @@ Feature: Appreciation Feature
       | hr        |  |
       | helpdesk  |  |
       | marketing |  |
+
+    Scenario Outline: User inserts videos by entering the video URL.
+      Given "<user>" user is on homepage
+      When User clicks on appreciation tab
+      Examples:
+        | user      |  |
+        | hr        |  |
+        | helpdesk  |  |
+        | marketing |  |
