@@ -32,16 +32,16 @@ public class InteractWithEmployeesPage {
     @FindBy(xpath ="//span[@title='Like']" )
     public WebElement likeButtonIsVisible;
 
-    @FindBy(xpath = "//div[@title='Cry']")
+    @FindBy(xpath = "(//div[@title='Cry'])[2]")
     public WebElement cryButton;
 
     @FindBy(xpath = "//a[.='Cry']")
     public WebElement cryButtonIsVisible;
 
-    @FindBy(xpath = "//div[@title='Laugh']")
+    @FindBy(xpath = "(//div[@title='Laugh'])[2]")
     public WebElement laughButton;
 
-    @FindBy(xpath = "//div[@title='Kiss']")
+    @FindBy(xpath = "(//div[@title='Kiss'])[2]")
     public WebElement kissButton;
 
     @FindBy(xpath = "//a[.='Kiss']")
@@ -74,7 +74,7 @@ public class InteractWithEmployeesPage {
     @FindBy(xpath = "//div[@title='Remove from favorites']")
     public WebElement seeYellowStarIcon;
 
-    @FindBy(id="record-BLOG_119-31-actions-reply")
+    @FindBy(xpath = "(//a[.='Reply'])[1]")
     public WebElement reviwersReplyButton;
 
     @FindBy(xpath = "//span[@class='feed-add-info-text']")
