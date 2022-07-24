@@ -2,13 +2,12 @@ Feature: SCRUM-897
 
   As a user, I should be able to send messages by clicking on Message tab under Active Stream.
 
-  @SCRUM-901
+  @SCRUM-901 @DONE
   Scenario Outline: User should be able to insert videos by clicking on the video icon and entering the YOUTUBE video URL.
     Given "<user>" user is on homepage
     When User clicks Message button.
     And User clicks Insert video icon.
-    * User fills Video source box with "YouTube video URL".
-    * User clicks Save button.
+    And User fills Video source box with "https://www.youtube.com/watch?v=H_XxH66lm3U".
     Then Verify that user can add video.
 
     Examples:
@@ -17,13 +16,15 @@ Feature: SCRUM-897
       | marketing |
       | helpdesk  |
 
-  @SCRUM-902
+
+  @SCRUM-902 @olmadi #manuelde yukluyor otomasyonda yuklemiyor video
   Scenario Outline: User should be able to insert videos by clicking on the video icon and entering the VIMEO video URL.
     Given "<user>" user is on homepage
     When User clicks Message button.
     And User clicks Insert video icon.
-    * User fills Video source box with "Vimeo video URL".
-    * User clicks Save button.
+    And User fills Video source box with "https://vimeo.com/259411563".
+    And User clicks Save button.
+    And User clicks Send button.
     Then Verify that user can add video.
 
     Examples:
@@ -32,14 +33,14 @@ Feature: SCRUM-897
       | marketing |
       | helpdesk  |
 
-  @SCRUM-903
+  @SCRUM-903 @DONE
   Scenario Outline: User should be able to create a quote by clicking on the Comma icon.
     Given "<user>" user is on homepage
     When User clicks Message button.
     And User clicks Comma icon.
-    * User fills Quote box with "quote input".
-    * User clicks Send button.
-    Then Verify that user can create quote.
+    And User fills Quote box with "Hello World".
+    And User clicks Send button.
+    Then Verify that user can create quote as "Hello World" text.
 
     Examples:
       | user      |
@@ -51,29 +52,32 @@ Feature: SCRUM-897
   Scenario Outline: User should be able to add mention by clicking on the Add mention icon.
     Given "<user>" user is on homepage
     When User clicks Message button.
-    And User clicks Add mention.
-    * User adds mentions below.
-      | hr13@cybertekschool.com        |
-      | hr91@cybertekschool.com        |
-      | marketing67@cybertekschool.com |
-      | helpdesk47@cybertekschool.com  |
-      | helpdesk77@cybertekschool.com  |
-    * User clicks Send button.
+    And User clicks Add mention icon.
+    And User clicks Employees and Departments.
+    And User adds "hr13@cybertekschool.com".
+    And User clicks on add more
+    And User clicks Employees and Departments.
+    And User adds mentions below.
+      #| hr91@cybertekschool.com        |
+     # | marketing67@cybertekschool.com |
+     # | helpdesk47@cybertekschool.com  |
+     # | helpdesk77@cybertekschool.com  |
+    And User clicks Send button.
+    And User clicks more recipient link.
     Then Verify that user can add mention.
 
     Examples:
       | user      |
       | hr        |
-      | marketing |
-      | helpdesk  |
 
-  @SCRUM-905
+
+  @SCRUM-905 @DONE
   Scenario Outline: User should be able to send a message.
     Given "<user>" user is on homepage
     When User clicks Message button.
     And User fills Message Title which is mandatory field with "New Message".
     And User clicks Send button.
-    Then Verify that user can send a message.
+    Then Verify that user can send a message as "New Message" text.
 
     Examples:
       | user      |
@@ -99,8 +103,8 @@ Feature: SCRUM-897
     Given "<user>" user is on homepage
     When User clicks Message button.
     And User clicks Upload Files icon.
-    * User uploads THE FILE to Upload files and images box.
-    * User clicks Send button.
+    And User uploads "THE FILE" to Upload files and images box.
+    And User clicks Send button.
     Then Verify that user can upload the file.
 
     Examples:
@@ -114,8 +118,8 @@ Feature: SCRUM-897
     Given "<user>" user is on homepage
     When User clicks Message button.
     And User clicks Upload Files icon.
-    * User uploads THE PICTURE to Upload files and images box.
-    * User clicks Send button.
+    And User uploads "THE PICTURE" to Upload files and images box.
+    And User clicks Send button.
     Then Verify that user can upload the picture.
 
     Examples:
@@ -129,9 +133,9 @@ Feature: SCRUM-897
     Given "<user>" user is on homepage
     When User clicks Message button.
     And User clicks Link icon.
-    * User attach THE LINK to Link URL Box.
-    * User clicks Save button.
-    * User clicks Send button.
+    And User attach "THE LINK" to Link URL Box.
+    And User clicks Save button.
+    And User clicks Send button.
     Then Verify that user can attach link.
 
     Examples:
@@ -145,9 +149,9 @@ Feature: SCRUM-897
     Given "<user>" user is on homepage
     When User clicks Message button.
     And User fills Message Title which is mandatory field with "New Message".
-    * User clicks ADD MORE link on TO BOX.
-    * User clicks Employees and Departments link.
-    * User adds multiple users from selecting multiple contacts below.
+    And User clicks ADD MORE link on TO BOX.
+    And User clicks Employees and Departments link.
+    And User adds multiple users from selecting multiple contacts below.
       | hr1@cybertekschool.com         |
       | helpdesk19@cybertekschool.com  |
       | marketing37@cybertekschool.com |
@@ -155,8 +159,8 @@ Feature: SCRUM-897
       | helpdesk31@cybertekschool.com  |
       | marketing59@cybertekschool.com |
       | Test1                          |
-    * User clicks Close button.
-    * User clicks Send button.
+    And User clicks Close button.
+    And User clicks Send button.
     Then Verify that user can add users.
 
     Examples:
