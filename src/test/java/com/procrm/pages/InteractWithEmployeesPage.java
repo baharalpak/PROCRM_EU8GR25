@@ -20,6 +20,9 @@ public class InteractWithEmployeesPage {
     @FindBy(xpath = "//body[@contenteditable='true']")
     public WebElement commentInputBox;
 
+    @FindBy(xpath = "(//div[@class='feed-com-user-box'])[1]")
+    public WebElement commentIsVisible;
+
     @FindBy(css=".ui-btn.ui-btn-sm.ui-btn-primary")
     public WebElement sendButton;
 
@@ -28,6 +31,24 @@ public class InteractWithEmployeesPage {
 
     @FindBy(xpath ="//span[@title='Like']" )
     public WebElement likeButtonIsVisible;
+
+    @FindBy(xpath = "//div[@title='Cry']")
+    public WebElement cryButton;
+
+    @FindBy(xpath = "//a[.='Cry']")
+    public WebElement cryButtonIsVisible;
+
+    @FindBy(xpath = "//div[@title='Laugh']")
+    public WebElement laughButton;
+
+    @FindBy(xpath = "//div[@title='Kiss']")
+    public WebElement kissButton;
+
+    @FindBy(xpath = "//a[.='Kiss']")
+    public WebElement kissButtonISVisible;
+
+    @FindBy(xpath = "//a[.='Laugh']")
+    public WebElement laughButtonIsVisible;
 
     @FindBy(xpath = "(//span[.='Unfollow'])[1]")
     public WebElement unfollowButton;
