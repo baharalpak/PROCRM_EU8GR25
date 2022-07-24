@@ -16,8 +16,6 @@ Feature:
 
 
 
-
-
   Scenario Outline:
     Given "<user>" user is on homepage
     When user click on Drive module.
