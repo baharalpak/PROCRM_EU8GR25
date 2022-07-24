@@ -32,6 +32,7 @@ public class PollTapPage {
     public WebElement EmployeesDepartments;
     //      And user click on Employees and Departments
     ////*[@id="destDepartmentTab_destination8011297"]
+    ////*[@id="destDepartmentTab_mention67270847"]
     ////*[contains(@id,"destDepartmentTab")]
 
     @FindBy(xpath = "//*[@title=\"Link\"]/i")
@@ -50,7 +51,7 @@ public class PollTapPage {
     //  And clicks on save button
 
 
-    @FindBy(xpath = "//*[@id=\"undefined\"]")
+    @FindBy(xpath = "//*[@id=\"bx-b-mention-blogPostForm\"]")
     public WebElement MentionButton;
     //Scenario: User should be able to  add mention using add mention icon.
     //
@@ -61,6 +62,7 @@ public class PollTapPage {
     @FindBy(xpath = "//*[@id=\"bx-lm-category-relation-129\"]/a[6]/div[1]/div[1]")
     public WebElement MentionEDButton;
     //    And user click on Employees and Departments button
+
     @FindBy(xpath = "//*[@id=\"feed-add-post-destination-input\"]")
     public WebElement addEmployee ;
     //    And user mention employees from contact list
@@ -69,4 +71,24 @@ public class PollTapPage {
     //    Then User should be able to see the mention in the text box.
 
 
+    @FindBy(xpath = "//*[@id=\"question_0\"]")
+    public WebElement questionTextBox;
+// When user click on Question text Box and add a question
+
+//    And User add a question
+
+//    And user edit the question
+//    When user click on 1 answer text box
+    @FindBy(xpath = "//*[@id=\"answer_0__0_\"]")
+    public WebElement answer1;
+//    And user add an answer to the text box
+//    And user edit the answer
+//    When user click on 2 answer text box
+@FindBy(xpath = "//*[@id=\"answer_0__1_\"]")
+public WebElement answer2;
+
+    @FindBy(xpath = "//*[@id=\"answer_0__2_\"]")
+    public WebElement answer3;
+//    And user add an second answer to the text box
+//    And user edit the second answer
 }

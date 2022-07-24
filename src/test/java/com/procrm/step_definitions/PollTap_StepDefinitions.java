@@ -9,7 +9,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.Keys;
 import io.cucumber.java.*;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
 
 public class PollTap_StepDefinitions {
     PollTapPage pollTapPage=new PollTapPage();
@@ -96,6 +98,7 @@ public class PollTap_StepDefinitions {
     public void userClickOnMentionIcon() {
         pollTapPage.MentionButton.click();
         BrowserUtilities.sleep(2);
+
     }
 
     @And("user click on Employees and Departments button")
@@ -107,7 +110,7 @@ public class PollTap_StepDefinitions {
     @And("user mention employees from contact list")
     public void userMentionEmployeesFromContactList() {
         pollTapPage.MentionEDButton.click();
-        BrowserUtilities.sleep(2);
+        BrowserUtilities.sleep(4);
 
         
     }
@@ -117,45 +120,69 @@ public class PollTap_StepDefinitions {
 
 
 
+
     }
 
     @When("user click on Question text Box")
     public void userClickOnQuestionTextBox() {
+pollTapPage.questionTextBox.click();
 
     }
 
     @And("User add a question")
     public void userAddAQuestion() {
+        pollTapPage.questionTextBox.sendKeys("Question1");
+        BrowserUtilities.sleep(2);
 
     }
 
     @And("user edit the question")
     public void userEditTheQuestion() {
+        pollTapPage.questionTextBox.clear();
+        BrowserUtilities.sleep(2);
+        pollTapPage.questionTextBox.sendKeys("QuestionEdit");
+        BrowserUtilities.sleep(2);
 
     }
 
-    @When("user click on {int} answer text box")
-    public void userClickOnAnswerTextBox(int arg0) {
+    @When("user click on answer1 text box")
+    public void userClickOnAnswer1TextBox() {
+        pollTapPage.answer1.click();
 
     }
+    @When("user click on answer2 text box")
+    public void userClickOnAnswer2TextBox() {
+        pollTapPage.answer2.click();
+
+    }
+
 
     @And("user add an answer to the text box")
     public void userAddAnAnswerToTheTextBox() {
+       pollTapPage.answer1.sendKeys("Answer1");
+
 
     }
 
     @And("user edit the answer")
     public void userEditTheAnswer() {
+        pollTapPage.answer1.clear();
+        pollTapPage.answer1.sendKeys("Answer1Edit");
+
 
     }
 
     @And("user add an second answer to the text box")
     public void userAddAnSecondAnswerToTheTextBox() {
+        pollTapPage.answer2.sendKeys("Answer2");
+
 
     }
 
     @And("user edit the second answer")
     public void userEditTheSecondAnswer() {
+        pollTapPage.answer2.clear();
+        pollTapPage.answer2.sendKeys("Answer2Edit");
 
     }
 

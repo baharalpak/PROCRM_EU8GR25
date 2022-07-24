@@ -40,8 +40,6 @@ Feature: User should be able to create a poll by clicking on Poll tab under Acti
     When user clicks on Activity Stream
     And clicks on Poll tap  from top menu
     When user click on mention icon.
-
-    When user click on mention icon.
     And user click on Employees and Departments button
     And user mention employees from contact list
     Then User should be able to see the mention in the text box.
@@ -53,17 +51,28 @@ Feature: User should be able to create a poll by clicking on Poll tab under Acti
       | marketing |
       | helpdesk  |
 
-
-
-  Scenario: User should be able to attach link using the link button
+  @pollTab
+  Scenario Outline: User should be able to land on Poll Tab Under Activity Stream
     Given "<user>" user is on homepage
-    And user clicks on Activity Stream
+    When user clicks on Activity Stream
     And clicks on Poll tap  from top menu
-  When user click on link button
-  And add a link to link box
-    And add text to text box
-  And clicks on save button
-  Then User should be able to see the link in the text box.
+    When user click on Question text Box
+    And User add a question
+    And user edit the question
+    When user click on answer1 text box
+    And user add an answer to the text box
+    And user edit the answer
+    When user click on answer2 text box
+    And user add an second answer to the text box
+    And user edit the second answer
+
+
+    Examples:
+      | user      |
+      | hr        |
+      | marketing |
+      | helpdesk  |
+
 
   Scenario: User should  NOT be able to attach Text without a Link (Negative )
     Given "<user>" user is on homepage
