@@ -1,7 +1,7 @@
 Feature: Task Feature SCRUM_889
   As a user, I should be able to use "Tasks" functionality so that user can create, change, delete and track the tasks either on Activity Stream or Tasks page.
 
-
+  @Scrum889
   Scenario:    HR User can create a high priority task in duration of the certain deadline by mentioning about a user.
     Given "HR" user is on Home Page.
     And User clicks on Tasks module.
@@ -11,7 +11,7 @@ Feature: Task Feature SCRUM_889
       | title    | Test Case 5                    |
       | body     | Daily Stand-up: 19.00CEST      |
       | deadline | Tomorrows Date                 |
-      | mention  | marketing73@cybertekschool.com |
+      | mention  | marketing2@cybertekschool.com |
     And User clicks "Add Task" button.
     Then User should be able to display new task created on My Tasks Page
 
@@ -58,16 +58,17 @@ Feature: Task Feature SCRUM_889
     And User clicks "Edit" button.
     And User clicks responsible person button and add one more responsible person
     Then User should be able to add more responsible people.
-  @Scrum889
+
   Scenario: Marketing User can create a subtask of the first acceptance criteria's task quickly by using plus button, adding tags.
-    Given "HR" user is on Home Page.
+    Given "Marketing" user is on Home Page.
     And User clicks plus button on Tasks module.
     * Fills "task" details
       | priority | High Priority           |
       | title    | Test Case 5             |
       | deadline | Tomorrows Date          |
       | mention  | hr19@cybertekschool.com |
-      | subtask  | first created task      |
+      * User add "Subtask"
+     # | subtask  | first created task      |
     * User clicks "Add Task" button.
     Then User should be able to see new task created.
 

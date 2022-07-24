@@ -8,6 +8,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
@@ -35,7 +36,7 @@ public class TasksSCRUM889_StepDef {
         tasksPage_scrum889.taskTitle.sendKeys(map.get("title"));
         expectedTitle = map.get("title");
 
-        tasksPage_scrum889.taskTitle.sendKeys(Keys.TAB+map.get("body"));
+        tasksPage_scrum889.taskTitle.sendKeys(Keys.TAB+map.get("body")+Keys.ENTER);
 
         //Driver.getDriver().switchTo().parentFrame();
 
@@ -55,7 +56,11 @@ public class TasksSCRUM889_StepDef {
 
         tasksPage_scrum889.addMention.click();
         BrowserUtilities.sleep(2);
-        tasksPage_scrum889.addMentionPerson.click();
+        tasksPage_scrum889.addMentionEmployees.click();
+        BrowserUtilities.sleep(3);
+        tasksPage_scrum889.addMentionMarketing(map.get("mention")).click();
+        //tasksPage_scrum889.addMentionPerson.click();
+        BrowserUtilities.sleep(5);
     }
 
     @Then("User should be able to display new task created on My Tasks Page")
@@ -193,15 +198,20 @@ public class TasksSCRUM889_StepDef {
 
     @Given("User clicks plus button on Tasks module.")
     public void user_clicks_plus_button_on_tasks_module() {
+        action.moveToElement(tasksPage_scrum889.tasksModuleButton).build().perform();
+        tasksPage_scrum889.plusTaskButton.click();
+        //Driver.getDriver().findElement(By.cssSelector("[class=menu-item-plus-icon]")).click();
+        BrowserUtilities.sleep(5);
+       /* action.moveToElement(tasksPage_scrum889.tasksModuleButton).perform();
+        BrowserUtilities.waitForVisibility(tasksPage_scrum889.plusTaskButton,10);
+        action.click(tasksPage_scrum889.plusTaskButton).perform();*/
 
-        action.moveToElement(tasksPage_scrum889.tasksModuleButton,0,0).perform();
-        //action.moveToElement(tasksPage_scrum889.tasksModuleButton,200,50).perform();
-        BrowserUtilities.sleep(3);
-        action.click(tasksPage_scrum889.tasksModuleButton).perform();
-        //BrowserUtilities.hover(tasksPage_scrum889.tasksModuleButton);
-       // action.click(tasksPage_scrum889.tasksModuleButton).perform();
     }
-
+    @Given("User add {string}")
+    public void user_add(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
     @Then("User should be able to see new task created.")
     public void user_should_be_able_to_see_new_task_created() {
 
