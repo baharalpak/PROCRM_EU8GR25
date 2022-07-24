@@ -33,7 +33,7 @@ Feature: Interact With Employees on the Posts
       | marketing |
       | helpdesk  |
 
-  @SCRUM-896
+
   Scenario Outline: Verify that User should be able to like on all other reviewers's comments.
     Given "<user>" user is on homepage.
     When User click the "<interaction>" button at the employees' posts.
@@ -69,7 +69,7 @@ Feature: Interact With Employees on the Posts
       | helpdesk  |
 
 
-
+  @SCRUM-896
   Scenario Outline: Verify that User should be able to comments on all other reviewers's comments.
     Given "<user>" user is on homepage.
     When User click the comments button at the reviewers's comments.

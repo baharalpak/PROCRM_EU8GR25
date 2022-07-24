@@ -206,6 +206,8 @@ public class InteractWithEmployees_StepDefinitions {
     @And("User click the send button at the INPUT BOX at the reviewers's comments.")
     public void userClickTheSendButtonAtTheINPUTBOXAtTheReviewersSComments() {
 
+        Driver.getDriver().switchTo().defaultContent();
+        BrowserUtilities.sleep(3);
         interactWithEmployeesPage.sendButton.click();
 
     }
