@@ -184,20 +184,37 @@ public class InteractWithEmployees_StepDefinitions {
 
     @When("User click the comments button at the reviewers's comments.")
     public void userClickTheCommentsButtonAtTheReviewersSComments() {
-        
+
+        interactWithEmployeesPage.reviwersReplyButton.click();
+
     }
 
-    @And("User write comment in the INPUT BOX {string} at the reviewers's comments.")
-    public void userWriteCommentInTheINPUTBOXAtTheReviewersSComments(String arg0) {
-        
+    @And("User write comment in the INPUT BOX at the reviewers's comments.")
+    public void userWriteCommentInTheINPUTBOXAtTheReviewersSComments() {
+
+        Driver.getDriver().switchTo().frame(interactWithEmployeesPage.commentBoxIFrame); //iFrame switch
+
+        BrowserUtilities.waitForClickablility(interactWithEmployeesPage.commentInputBox,5);
+
+        interactWithEmployeesPage.commentInputBox.click();
+        interactWithEmployeesPage.commentInputBox.sendKeys(String.valueOf(date));
+
+
+
     }
 
     @And("User click the send button at the INPUT BOX at the reviewers's comments.")
     public void userClickTheSendButtonAtTheINPUTBOXAtTheReviewersSComments() {
-        
+
+        interactWithEmployeesPage.sendButton.click();
+
     }
 
     @Then("User should see own comment on other reviewers's comments is applicable.")
     public void userShouldSeeOwnCommentOnOtherReviewersSCommentsIsApplicable() {
+
+        Assert.assertTrue(interactWithEmployeesPage.commentIsVisible.isDisplayed());
+
+
     }
 }

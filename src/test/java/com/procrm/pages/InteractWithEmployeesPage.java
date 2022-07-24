@@ -75,5 +75,8 @@ public class InteractWithEmployeesPage {
     @FindBy(xpath = "//div[@title='Remove from favorites']")
     public WebElement seeYellowStarIcon;
 
+    @FindBy(id="record-BLOG_119-31-actions-reply")
+    public WebElement reviwersReplyButton;
+
 
 }

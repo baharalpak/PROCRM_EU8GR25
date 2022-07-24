@@ -11,7 +11,7 @@ Feature: Interact With Employees on the Posts
   Scenario Outline: Verify that User can make a comment on other employees' posts.
     Given "<user>" user is on homepage.
     When User click comment button other employees' posts
-    And User write comment in the INPUT BOX "Thank you"
+    And User write comment in the INPUT BOX "date"
     And User click the send button at the INPUT BOX.
     Then User should see own comment on other employees' posts is applicable.
 
@@ -73,7 +73,7 @@ Feature: Interact With Employees on the Posts
   Scenario Outline: Verify that User should be able to comments on all other reviewers's comments.
     Given "<user>" user is on homepage.
     When User click the comments button at the reviewers's comments.
-    And User write comment in the INPUT BOX "Thank you" at the reviewers's comments.
+    And User write comment in the INPUT BOX at the reviewers's comments.
     And User click the send button at the INPUT BOX at the reviewers's comments.
     Then User should see own comment on other reviewers's comments is applicable.
 
