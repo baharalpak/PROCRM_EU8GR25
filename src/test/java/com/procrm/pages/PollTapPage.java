@@ -91,4 +91,12 @@ public WebElement answer2;
     public WebElement answer3;
 //    And user add an second answer to the text box
 //    And user edit the second answer
+
+    @FindBy(xpath ="//*[@title=\"Delete question\"]" )
+    public WebElement deleteQuestion;
+    // And user click on delete question icon
+
+    @FindBy(xpath = "//*[@id=\"multi_0\"]")
+    public WebElement MultiCheckBox;
+
 }

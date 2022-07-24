@@ -148,11 +148,13 @@ pollTapPage.questionTextBox.click();
     @When("user click on answer1 text box")
     public void userClickOnAnswer1TextBox() {
         pollTapPage.answer1.click();
+        BrowserUtilities.sleep(2);
 
     }
     @When("user click on answer2 text box")
     public void userClickOnAnswer2TextBox() {
         pollTapPage.answer2.click();
+        BrowserUtilities.sleep(2);
 
     }
 
@@ -160,6 +162,7 @@ pollTapPage.questionTextBox.click();
     @And("user add an answer to the text box")
     public void userAddAnAnswerToTheTextBox() {
        pollTapPage.answer1.sendKeys("Answer1");
+        BrowserUtilities.sleep(2);
 
 
     }
@@ -167,7 +170,9 @@ pollTapPage.questionTextBox.click();
     @And("user edit the answer")
     public void userEditTheAnswer() {
         pollTapPage.answer1.clear();
+        BrowserUtilities.sleep(2);
         pollTapPage.answer1.sendKeys("Answer1Edit");
+        BrowserUtilities.sleep(2);
 
 
     }
@@ -175,6 +180,7 @@ pollTapPage.questionTextBox.click();
     @And("user add an second answer to the text box")
     public void userAddAnSecondAnswerToTheTextBox() {
         pollTapPage.answer2.sendKeys("Answer2");
+        BrowserUtilities.sleep(2);
 
 
     }
@@ -182,7 +188,9 @@ pollTapPage.questionTextBox.click();
     @And("user edit the second answer")
     public void userEditTheSecondAnswer() {
         pollTapPage.answer2.clear();
+        BrowserUtilities.sleep(2);
         pollTapPage.answer2.sendKeys("Answer2Edit");
+        BrowserUtilities.sleep(2);
 
     }
 

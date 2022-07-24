@@ -51,7 +51,7 @@ Feature: User should be able to create a poll by clicking on Poll tab under Acti
       | marketing |
       | helpdesk  |
 
-  @pollTab
+  @pollTab3
   Scenario Outline: User should be able to land on Poll Tab Under Activity Stream
     Given "<user>" user is on homepage
     When user clicks on Activity Stream
@@ -73,7 +73,28 @@ Feature: User should be able to create a poll by clicking on Poll tab under Acti
       | marketing |
       | helpdesk  |
 
+  @pollTab4
+  Scenario Outline: User should be able to delete questions and multiple answers, and user should be able select  the Allow multiple choice checkbox.
+    Given "<user>" user is on homepage
+    When user clicks on Activity Stream
+    And clicks on Poll tap  from top menu
+       And User add a question
+        And user add an answer to the text box
+        And user add an second answer to the text box
+    And user click on delete question icon
 
+    And user click on delete answer1 icon
+    And user click on delete answer2 icon
+
+    And user click on multiple choice checkbox.
+
+
+
+    Examples:
+      | user      |
+      | hr        |
+      | marketing |
+      | helpdesk  |
   Scenario: User should  NOT be able to attach Text without a Link (Negative )
     Given "<user>" user is on homepage
     And user clicks on Activity Stream
@@ -100,10 +121,10 @@ Feature: User should be able to create a poll by clicking on Poll tab under Acti
     When user click on Question text Box
     And User add a question
     And user edit the question
-    When user click on 1 answer text box
+
     And user add an answer to the text box
     And user edit the answer
-    When user click on 2 answer text box
+
     And user add an second answer to the text box
     And user edit the second answer
 Scenario:  User should be able to delete questions and multiple answers, and user should be able select  the Allow multiple choice checkbox.
