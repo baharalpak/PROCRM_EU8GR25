@@ -53,4 +53,6 @@ public class InteractWithEmployeesPage {
 
     @FindBy(xpath = "//div[@title='Remove from favorites']")
     public WebElement seeYellowStarIcon;
+
+
 }

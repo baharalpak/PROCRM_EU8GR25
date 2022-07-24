@@ -24,6 +24,7 @@ public class InteractWithEmployees_StepDefinitions {
     @Given("{string} user is on homepage.")
     public void user_is_on_homepage(String userType) {
 
+
         switch (userType.toLowerCase()) {
             case "hr":
                 BasePage.loginAsHR();

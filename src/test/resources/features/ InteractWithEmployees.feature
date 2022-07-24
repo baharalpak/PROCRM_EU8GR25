@@ -16,6 +16,7 @@ Feature: Interact With Employees on the Posts
     And User click the send button at the INPUT BOX.
     Then User should see own comment on other employees' posts is applicable.
 
+
     Examples:
       | user      |
       | hr        |
