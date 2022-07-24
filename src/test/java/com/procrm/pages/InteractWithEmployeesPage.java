@@ -20,6 +20,9 @@ public class InteractWithEmployeesPage {
     @FindBy(xpath = "//body[@contenteditable='true']")
     public WebElement commentInputBox;
 
+    @FindBy(xpath = "(//div[@class='feed-com-user-box'])[1]")
+    public WebElement commentIsVisible;
+
     @FindBy(css=".ui-btn.ui-btn-sm.ui-btn-primary")
     public WebElement sendButton;
 
@@ -28,6 +31,24 @@ public class InteractWithEmployeesPage {
 
     @FindBy(xpath ="//span[@title='Like']" )
     public WebElement likeButtonIsVisible;
+
+    @FindBy(xpath = "(//div[@title='Cry'])[2]")
+    public WebElement cryButton;
+
+    @FindBy(xpath = "//a[.='Cry']")
+    public WebElement cryButtonIsVisible;
+
+    @FindBy(xpath = "(//div[@title='Laugh'])[2]")
+    public WebElement laughButton;
+
+    @FindBy(xpath = "(//div[@title='Kiss'])[2]")
+    public WebElement kissButton;
+
+    @FindBy(xpath = "//a[.='Kiss']")
+    public WebElement kissButtonISVisible;
+
+    @FindBy(xpath = "//a[.='Laugh']")
+    public WebElement laughButtonIsVisible;
 
     @FindBy(xpath = "(//span[.='Unfollow'])[1]")
     public WebElement unfollowButton;
@@ -41,18 +62,23 @@ public class InteractWithEmployeesPage {
     @FindBy(xpath = "//span[@title='Like']")
     public WebElement getLikeButtonReviwersIsVisible;
 
-    @FindBy(xpath = "//a[@class='feed-com-name  feed-author-name feed-author-name-600']")
+    @FindBy(xpath = "(//a[@target='_top'])[1]")
     public WebElement clickReviwersName;
-
 
     @FindBy(xpath = "//div[@class='workarea-content-paddings']")
     public WebElement displayReviwersProfiles;
 
-    @FindBy(id= "log_entry_favorites_787")
+    @FindBy(xpath = "(//div[@title='Add to favorites'])[1]")
     public WebElement starIconButton;
 
     @FindBy(xpath = "//div[@title='Remove from favorites']")
     public WebElement seeYellowStarIcon;
+
+    @FindBy(xpath = "(//a[.='Reply'])[1]")
+    public WebElement reviwersReplyButton;
+
+    @FindBy(xpath = "//span[@class='feed-add-info-text']")
+    public WebElement errorMessage;
 
 
 }
