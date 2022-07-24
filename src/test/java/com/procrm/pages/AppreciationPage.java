@@ -24,9 +24,6 @@ public class AppreciationPage {
     @FindBy(xpath = "(//span[@class='menu-popup-item-text'])[2]")
     public WebElement appreciationButton;
 
-    //span[text()='Appreciation']
-    //span/span[text()='Appreciation']
-
     @FindBy(xpath = "//span[@id='bx-b-uploadfile-blogPostForm']")
     private WebElement uploadFilesIcon;
 
@@ -44,14 +41,6 @@ public class AppreciationPage {
 
     @FindBy (xpath = "//a[@class='bx-finder-box-tab bx-lm-tab-department bx-finder-box-tab-selected']")
     public WebElement employeesAndDepartmentsButton;
-
-    //String uploadTime;
-    //make time dynamic!! Use uploadTime
-    // @FindBy(xpath = "//div[@class='feed-time'][contains(text(),uploadTime)]/../../../..//a[@class='feed-com-file-name']")
-    //public WebElement lastUploadedFile;
-
-    //@FindBy(xpath = "//div[@class='feed-time'][contains(text(),'today, 05:45 pm')]/../../../..//span[@class='feed-com-files-photo']/img]")
-    //public WebElement lastUploadedPicture;
 
     //METHODS
     public void uploadFile(String filePath) {
@@ -79,25 +68,17 @@ public class AppreciationPage {
         }
         return flag;
     }
-    /*public void setUploadTime() {
-         uploadTime = "today, "+""; //wip //format should be like 05:45 pm
-     }*/
 
-    public boolean isFileUploaded() {
-        //file (12).xlsx
-        //return lastUploadedFile.getAttribute("title").contains("file") && lastUploadedFile.getAttribute("title").contains(".xlsx");
+    public boolean isFileNameMatching() {
 
         return uploadedFiles.getAttribute("title").contains("file")
                 && uploadedFiles.getAttribute("alt").contains(".xlsx");
     }
 
-    // image (5).jpg
-    public boolean isPictureUploaded() {
+    public boolean isPictureNameMatching() {
 
         return uploadedFiles.getAttribute("alt").contains("image")
                 && uploadedFiles.getAttribute("alt").contains(".jpg");
 
-        //   return 0;
-        // }
     }
 }

@@ -33,9 +33,8 @@ public class Appreciation_StepDefinitions {
     public void the_file_and_the_picture_should_be_uploaded_successfully() {
 
         Assert.assertTrue(AppreciationPage.isFilesAndImagesUploaded(2));
-        // Assert.assertTrue(AppreciationPage.isFileUploaded());
-        // Assert.assertTrue(AppreciationPage.isPictureUploaded());
-
+        Assert.assertTrue(AppreciationPage.isFileNameMatching());
+        Assert.assertTrue(AppreciationPage.isPictureNameMatching());
     }
 
     @When("User adds users from Employees and Departments contact lists")
