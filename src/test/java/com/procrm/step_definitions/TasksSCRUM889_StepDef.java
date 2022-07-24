@@ -23,6 +23,7 @@ public class TasksSCRUM889_StepDef {
     String expectedTitle = "";
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
     Actions action = new Actions(Driver.getDriver());
+    String expectedForNewTemplate="";
 
     @When("Fills {string} details")
     public void fills_details(String string, DataTable dataTable) {
@@ -33,6 +34,9 @@ public class TasksSCRUM889_StepDef {
         tasksPage_scrum889.highPriority.click();
         tasksPage_scrum889.taskTitle.sendKeys(map.get("title"));
         expectedTitle = map.get("title");
+
+        tasksPage_scrum889.taskTitle.sendKeys(Keys.TAB+map.get("body"));
+
         //Driver.getDriver().switchTo().parentFrame();
 
         int hour = LocalTime.now().getHour();
@@ -121,6 +125,10 @@ public class TasksSCRUM889_StepDef {
             case "Close":
                 tasksPage_scrum889.closeButton.click();
                 break;
+            case "CREATE TASK TEMPLATE":
+                action.moveToElement(tasksPage_scrum889.createTaskTemplate).perform();
+                tasksPage_scrum889.createTaskTemplate.click();
+                break;
         }
     }
 
@@ -186,6 +194,12 @@ public class TasksSCRUM889_StepDef {
     @Given("User clicks plus button on Tasks module.")
     public void user_clicks_plus_button_on_tasks_module() {
 
+        action.moveToElement(tasksPage_scrum889.tasksModuleButton,0,0).perform();
+        //action.moveToElement(tasksPage_scrum889.tasksModuleButton,200,50).perform();
+        BrowserUtilities.sleep(3);
+        action.click(tasksPage_scrum889.tasksModuleButton).perform();
+        //BrowserUtilities.hover(tasksPage_scrum889.tasksModuleButton);
+       // action.click(tasksPage_scrum889.tasksModuleButton).perform();
     }
 
     @Then("User should be able to see new task created.")
@@ -195,7 +209,7 @@ public class TasksSCRUM889_StepDef {
 
     @Then("User should be able to redirected to {string} page")
     public void user_should_be_able_to_redirected_to_page(String string) {
-
+        Assert.assertEquals(expectedForNewTemplate,tasksPage_scrum889.lastCreatedForNewTemplate.getText());
     }
 
     @When("User select last created task")
@@ -249,28 +263,21 @@ public class TasksSCRUM889_StepDef {
         Map<String, String> map = dataTable.asMap(String.class, String.class);
 
         BrowserUtilities.sleep(3);
-        tasksPage_scrum889.addMentionAllTemplates.click();
-        BrowserUtilities.sleep(3);
-        // tasksPage_scrum889.addMentionEmployees.click();
-       /* List<String> mention=BrowserUtilities.getElementsText(tasksPage_scrum889.employeesList);
-        for (String each : mention) {
-            if (each.equalsIgnoreCase("marketing19@cybertekschool.com")){
+        //tasksPage_scrum889.addMentionAllTemplates.click();
+       // BrowserUtilities.sleep(3);
 
-            }
-        }*/
-        // tasksPage_scrum889.addMentionMarketing(tasksPage_scrum889.employeesList);
-
-        //tasksPage_scrum889.addMentionPerson.click();
-
-        tasksPage_scrum889.addMentionMarketing.click();
-        BrowserUtilities.sleep(3);
+        //tasksPage_scrum889.addMentionMarketing.click();
+       // BrowserUtilities.sleep(3);
         tasksPage_scrum889.highPriority.click();
         BrowserUtilities.sleep(3);
         tasksPage_scrum889.titleAllTemplatesNewTask.sendKeys(map.get("title"));
         BrowserUtilities.sleep(5);
+        tasksPage_scrum889.titleAllTemplatesNewTask.sendKeys(Keys.TAB+map.get("mention")+Keys.ENTER);
 
         tasksPage_scrum889.deadlineMinutes.click();
-        tasksPage_scrum889.deadlineBox.sendKeys("2720"+Keys.ENTER);
+        tasksPage_scrum889.deadlineBox.sendKeys("7335"+Keys.ENTER);
+        expectedForNewTemplate=map.get("title");
+
 
     }
 
