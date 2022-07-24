@@ -13,12 +13,25 @@ Feature: Appreciation Feature
       | hr        |  |
       | helpdesk  |  |
       | marketing |  |
-  @wip
+
+
   Scenario Outline: User adds multiple contacts from Employees and Departments contact lists
     Given "<user>" user is on homepage
     When User clicks on appreciation tab
     And User adds users from Employees and Departments contact lists
     Then users should be added successfully
+    Examples:
+      | user      |  |
+      | hr        |  |
+      | helpdesk  |  |
+      | marketing |  |
+
+
+  Scenario Outline: User attaches link by clicking on the link icon
+    Given "<user>" user is on homepage
+    When User clicks on appreciation tab
+    And User adds a text and the URL address of the link
+    Then link should be attached successfully
     Examples:
       | user      |  |
       | hr        |  |

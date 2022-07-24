@@ -33,21 +33,36 @@ public class Appreciation_StepDefinitions {
     public void the_file_and_the_picture_should_be_uploaded_successfully() {
 
         Assert.assertTrue(AppreciationPage.isFilesAndImagesUploaded(2));
-        Assert.assertTrue(AppreciationPage.isFileNameMatching());
-        Assert.assertTrue(AppreciationPage.isPictureNameMatching());
+       // Assert.assertTrue(AppreciationPage.isFileNameMatching());
+       // Assert.assertTrue(AppreciationPage.isPictureNameMatching());
     }
 
     @When("User adds users from Employees and Departments contact lists")
     public void user_adds_users_from_employees_and_departments_contact_lists() {
         AppreciationPage.addUsersButton.click();
-        //AppreciationPage.userEmail.click();
+        AppreciationPage.employeesAndDepartmentsButton.click();
+        BrowserUtilities.sleep(2);
+        AppreciationPage.email2.click();
+        AppreciationPage.email1.click();
+        BrowserUtilities.sleep(2);
 
 
     }
     @Then("users should be added successfully")
     public void users_should_be_added_successfully() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Assert.assertTrue(AppreciationPage.email2.isDisplayed());
+        Assert.assertTrue(AppreciationPage.email1.isDisplayed());
+    }
+
+    @When("User adds a text and the URL address of the link")
+    public void user_adds_a_text_and_the_url_address_of_the_link() {
+        AppreciationPage.linkIcon();
+    }
+    @Then("link should be attached successfully")
+    public void link_should_be_attached_successfully() {
+        Assert.assertTrue(AppreciationPage.linkText.isDisplayed());
+        Assert.assertTrue(AppreciationPage.linkURL.isDisplayed());
+
     }
 
 
