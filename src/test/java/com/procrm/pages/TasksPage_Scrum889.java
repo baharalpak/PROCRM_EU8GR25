@@ -1,5 +1,6 @@
 package com.procrm.pages;
 
+import com.procrm.utilities.BrowserUtilities;
 import com.procrm.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -29,19 +30,15 @@ public class TasksPage_Scrum889 {
 
     @FindBy(xpath = "//span[@class='bx-finder-groupbox-content']/a")
     public WebElement addMentionMarketing;
-    @FindBy(xpath = "//*[@id=\"bx-lm-category-relation-129\"]")
+    @FindBy(css = "[class='bx-finder-company-department-employee-name']")
     public List<WebElement> employeesList;
-    public static void addMentionMarketing(List<WebElement> list) {
-        //List<String> elemTexts = new ArrayList<>();
-        Actions action=new Actions(Driver.getDriver());
-        for (WebElement el : list) {
-            if(el.getText().equalsIgnoreCase("marketing19@cybertekschool.com"))
-                //elemTexts.add(el.getText());
-                // el.click();
-                action.doubleClick(el).perform();
-            //action.click(el).perform();
+    public WebElement addMentionMarketing(String mentionUserEmployee) {
+        WebElement expectedMention=null;
+        for (WebElement el : employeesList) {
+            if(el.getText().equalsIgnoreCase(mentionUserEmployee))
+            expectedMention=el;
         }
-        //return elemTexts;
+        return expectedMention;
     }
 
     //@FindBy(xpath = "//input[@class='task-options-inp']")
@@ -235,8 +232,13 @@ public class TasksPage_Scrum889 {
     public WebElement lastCreatedForNewTemplate;
 
     //////
+    //@FindBy(xpath = "//a[@href='/company/personal/user/664/tasks/']")
     @FindBy(xpath = "//a[@title='Tasks']")
     public WebElement tasksModuleButton;
+
+    //@FindBy(css="[class=menu-item-plus-icon]")
+    @FindBy(xpath = "//span[@class='menu-item-plus']/a")
+    public WebElement plusTaskButton;
 
 
 
