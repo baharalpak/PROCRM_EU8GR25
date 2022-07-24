@@ -219,4 +219,10 @@ public class InteractWithEmployees_StepDefinitions {
 
 
     }
+
+    @Then("User should see error message {string} in INPUT BOX.")
+    public void userShouldSeeErrorMessageInINPUTBOX(String message) {
+
+        Assert.assertTrue(interactWithEmployeesPage.errorMessage.getText().contains(message));
+    }
 }

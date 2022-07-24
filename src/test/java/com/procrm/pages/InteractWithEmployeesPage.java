@@ -62,14 +62,13 @@ public class InteractWithEmployeesPage {
     @FindBy(xpath = "//span[@title='Like']")
     public WebElement getLikeButtonReviwersIsVisible;
 
-    @FindBy(xpath = "//a[@class='feed-com-name  feed-author-name feed-author-name-600']")
+    @FindBy(xpath = "(//a[@target='_top'])[1]")
     public WebElement clickReviwersName;
-
 
     @FindBy(xpath = "//div[@class='workarea-content-paddings']")
     public WebElement displayReviwersProfiles;
 
-    @FindBy(id= "log_entry_favorites_787")
+    @FindBy(xpath = "(//div[@title='Add to favorites'])[1]")
     public WebElement starIconButton;
 
     @FindBy(xpath = "//div[@title='Remove from favorites']")
@@ -77,6 +76,9 @@ public class InteractWithEmployeesPage {
 
     @FindBy(id="record-BLOG_119-31-actions-reply")
     public WebElement reviwersReplyButton;
+
+    @FindBy(xpath = "//span[@class='feed-add-info-text']")
+    public WebElement errorMessage;
 
 
 }
