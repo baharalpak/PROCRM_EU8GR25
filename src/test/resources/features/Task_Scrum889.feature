@@ -101,5 +101,5 @@ Feature: Task Feature SCRUM_889
       And User clicks on Tasks module.
       When "Marketing" user clicks on the last created task
       And User clicks "Edit" button.
-      And User clicks responsible person button and add one more responsible person
+      And User clicks responsible person button and add declare himself/herself
         | responsible | marketing73@cybertekschool.com |
