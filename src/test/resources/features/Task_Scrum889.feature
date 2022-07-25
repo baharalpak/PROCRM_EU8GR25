@@ -48,7 +48,6 @@ Feature: Task Feature SCRUM_889
     * User clicks "Close" button.
     Then User should be able to see edited task.
 
-  @Scrum889
   Scenario: HR User can add one more responsible person by editing created task.
     Given "HR" user is on Home Page.
     And User clicks on Tasks module.
@@ -95,7 +94,7 @@ Feature: Task Feature SCRUM_889
     And User select "Delete" section under "SELECT ACTION" dropdown menu
     And User clicks "APPLY" button and "Continue" button
     Then User should be able to delete task.
-
+  @Scrum889
     Scenario: Marketing User can edit the task by declaring himself/herself as responsible person
       Given "Marketing" user is on Home Page.
       And User clicks on Tasks module.
