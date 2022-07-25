@@ -271,5 +271,10 @@ public class TasksSCRUM889_StepDef {
         tasksPage_scrum889.deadlineBox.sendKeys("7335"+Keys.ENTER);
         expectedForNewTemplate=map.get("title");
     }
+    @When("User clicks responsible person button and add declare himself\\/herself")
+    public void user_clicks_responsible_person_button_and_add_declare_himself_herself(io.cucumber.datatable.DataTable dataTable) {
+
+    }
+
 
 }
