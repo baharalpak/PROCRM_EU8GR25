@@ -1,8 +1,7 @@
 Feature: Task Feature SCRUM_889
   As a user, I should be able to use "Tasks" functionality so that user can create, change, delete and track the tasks either on Activity Stream or Tasks page.
 
-  @Scrum889
-  Scenario:    HR User can create a high priority task in duration of the certain deadline by mentioning about a user.
+  Scenario: HR User can create a high priority task in duration of the certain deadline by mentioning about a user.
     Given "HR" user is on Home Page.
     And User clicks on Tasks module.
     When User clicks "New Task" button.
@@ -11,7 +10,7 @@ Feature: Task Feature SCRUM_889
       | title    | Test Case 5                    |
       | body     | Daily Stand-up: 19.00CEST      |
       | deadline | Tomorrows Date                 |
-      | mention  | marketing2@cybertekschool.com |
+      | mention  | marketing73@cybertekschool.com |
     And User clicks "Add Task" button.
     Then User should be able to display new task created on My Tasks Page
 
@@ -51,6 +50,7 @@ Feature: Task Feature SCRUM_889
     * User clicks "Close" button.
     Then User should be able to see edited task.
 
+  @Scrum889
   Scenario: HR User can add one more responsible person by editing created task.
     Given "HR" user is on Home Page.
     And User clicks on Tasks module.
@@ -64,10 +64,10 @@ Feature: Task Feature SCRUM_889
     And User clicks plus button on Tasks module.
     * Fills "task" details
       | priority | High Priority           |
-      | title    | Test Case 5             |
+      | title    | For Subtask             |
       | deadline | Tomorrows Date          |
       | mention  | hr19@cybertekschool.com |
-      * User add "Subtask"
+    * User add "Subtask"
      # | subtask  | first created task      |
     * User clicks "Add Task" button.
     Then User should be able to see new task created.
@@ -84,7 +84,7 @@ Feature: Task Feature SCRUM_889
       | responsible | him/herself                    |
       | title       | Test Case new Templates        |
       | deadline    | 5days 2 hours 15 minutes       |
-      | mention     | marketing73@cybertekschool.com |
+      | mention     | marketing14@cybertekschool.com |
     * User clicks "CREATE TASK TEMPLATE" button
     * User clicks on Tasks module.
     * User clicks "New Task Template" button under "New Task"

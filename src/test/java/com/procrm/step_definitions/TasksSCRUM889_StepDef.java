@@ -13,6 +13,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.List;
@@ -29,7 +31,6 @@ public class TasksSCRUM889_StepDef {
     @When("Fills {string} details")
     public void fills_details(String string, DataTable dataTable) {
         Map<String, String> map = dataTable.asMap(String.class, String.class);
-        BrowserUtilities.sleep(1);
         Driver.getDriver().switchTo().frame(tasksPage_scrum889.iframeNewTask);
         BrowserUtilities.sleep(1);
         tasksPage_scrum889.highPriority.click();
@@ -43,6 +44,23 @@ public class TasksSCRUM889_StepDef {
         int hour = LocalTime.now().getHour();
         int minute = LocalTime.now().getMinute();
         tasksPage_scrum889.deadline.click();
+        Calendar calendar=Calendar.getInstance();
+        DateFormat dateFormat=new SimpleDateFormat("dd");
+        //DateFormat dateFormat=new SimpleDateFormat("MM/dd/YYYY"); //Tarih formatini ihtiyacimiza gore degistirdik
+        String today= dateFormat.format(calendar.getTime()); //Bugunun tarihini aldik
+        //System.out.println(today);
+
+        calendar.add(Calendar.DATE,2); //Bugunden itibaren 15 gun sonrayi ekledim
+
+        String tomorrow=dateFormat.format(calendar.getTime());
+
+
+       /* System.out.println(next);
+
+        calendar.add(Calendar.DATE,-45); //En son ayarlanan gunden itibaren 45 gun cikarttim
+        String  past=dateFormat.format(calendar.getTime());
+        System.out.println(past);*/
+        tasksPage_scrum889.addTaskDayCalendar(tomorrow).click();
 
         hour = (hour >= 12) ? hour -= 12 : hour;
 
@@ -51,7 +69,7 @@ public class TasksSCRUM889_StepDef {
         tasksPage_scrum889.timeHours.sendKeys("" + hour);
         tasksPage_scrum889.timeMinutes.sendKeys("" + minute);
 
-        tasksPage_scrum889.PM.click();
+        //tasksPage_scrum889.PM.click();
         tasksPage_scrum889.calendar.click();
 
         tasksPage_scrum889.addMention.click();
@@ -60,7 +78,6 @@ public class TasksSCRUM889_StepDef {
         BrowserUtilities.sleep(3);
         tasksPage_scrum889.addMentionMarketing(map.get("mention")).click();
         //tasksPage_scrum889.addMentionPerson.click();
-        BrowserUtilities.sleep(5);
     }
 
     @Then("User should be able to display new task created on My Tasks Page")
@@ -75,7 +92,7 @@ public class TasksSCRUM889_StepDef {
         BrowserUtilities.sleep(2);
         tasksPage_scrum889.changeResponsible.click();
 
-        BrowserUtilities.sleep(5);
+        BrowserUtilities.sleep(2);
         tasksPage_scrum889.addResponsiblePeople.sendKeys(map.get("responsible"));
 
         BrowserUtilities.sleep(2);
@@ -209,8 +226,14 @@ public class TasksSCRUM889_StepDef {
     }
     @Given("User add {string}")
     public void user_add(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        tasksPage_scrum889.moreButton.click();
+        BrowserUtilities.sleep(1);
+        BrowserUtilities.scrollToElement(tasksPage_scrum889.subTaskTitle);
+        tasksPage_scrum889.addSubTask.click();
+        tasksPage_scrum889.searchSubTask.sendKeys("Test Case 5"+Keys.ENTER);
+        action.click(tasksPage_scrum889.selectSearchSubTask).build().perform();
+        action.click(tasksPage_scrum889.selectButton).build().perform();
+        BrowserUtilities.sleep(1);
     }
     @Then("User should be able to see new task created.")
     public void user_should_be_able_to_see_new_task_created() {
@@ -272,17 +295,13 @@ public class TasksSCRUM889_StepDef {
     public void fills_details_below(String string,DataTable dataTable) {
         Map<String, String> map = dataTable.asMap(String.class, String.class);
 
-        BrowserUtilities.sleep(3);
-        //tasksPage_scrum889.addMentionAllTemplates.click();
-       // BrowserUtilities.sleep(3);
-
-        //tasksPage_scrum889.addMentionMarketing.click();
-       // BrowserUtilities.sleep(3);
         tasksPage_scrum889.highPriority.click();
-        BrowserUtilities.sleep(3);
         tasksPage_scrum889.titleAllTemplatesNewTask.sendKeys(map.get("title"));
-        BrowserUtilities.sleep(5);
-        tasksPage_scrum889.titleAllTemplatesNewTask.sendKeys(Keys.TAB+map.get("mention")+Keys.ENTER);
+        BrowserUtilities.sleep(1);
+        tasksPage_scrum889.addMention.click();
+        tasksPage_scrum889.addMentionEmployees.click();
+        tasksPage_scrum889.addMentionMarketing(map.get("mention")).click();
+        //tasksPage_scrum889.titleAllTemplatesNewTask.sendKeys(Keys.TAB+map.get("mention")+Keys.ENTER);
 
         tasksPage_scrum889.deadlineMinutes.click();
         tasksPage_scrum889.deadlineBox.sendKeys("7335"+Keys.ENTER);

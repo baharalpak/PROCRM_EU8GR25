@@ -15,7 +15,6 @@ public class TasksPage_Scrum889 {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-
     @FindBy(id = "tasks-task-priority-cb")
     public WebElement highPriority;
 
@@ -28,8 +27,6 @@ public class TasksPage_Scrum889 {
     @FindBy(xpath = "(//div[@class='bx-finder-box-tabs']/a)[2]")
     public WebElement addMentionEmployees;
 
-    @FindBy(xpath = "//span[@class='bx-finder-groupbox-content']/a")
-    public WebElement addMentionMarketing;
     @FindBy(css = "[class='bx-finder-company-department-employee-name']")
     public List<WebElement> employeesList;
     public WebElement addMentionMarketing(String mentionUserEmployee) {
@@ -41,20 +38,23 @@ public class TasksPage_Scrum889 {
         return expectedMention;
     }
 
+    @FindBy(css="[class='bx-calendar-cell']")
+    public List<WebElement> calendarWeekDays;
+    public WebElement addTaskDayCalendar(String taskDay){
+        WebElement expectedDay=null;
+        for (WebElement day : calendarWeekDays){
+            if (day.getText().equalsIgnoreCase(taskDay))
+                expectedDay=day;
+        }
+        return expectedDay;
+    }
+
     //@FindBy(xpath = "//input[@class='task-options-inp']")
     @FindBy(xpath = "(//span[@class='task-options-inp-container task-options-date t-empty'])[1]")
     public WebElement deadline;
 
     @FindBy(xpath = "//iframe[@class='side-panel-iframe']")
     public WebElement iframeNewTask;
-
-    @FindBy(xpath = "//iframe[@class='bx-editor-iframe']")
-    public WebElement iframeBody;
-
-    // @FindBy(xpath = "(//body[@class='vsc-initialized'])[1]")
-    @FindBy(className = "vsc-initialized")
-    public WebElement body;
-
     @FindBy(xpath = "(//span[@class='bx-calendar-button-text'])[1]")
     public WebElement calendar;
 
@@ -67,14 +67,8 @@ public class TasksPage_Scrum889 {
     @FindBy(xpath = "//a[@class='bx-calendar-form-arrow-top']")
     public WebElement PM;
 
-    @FindBy(xpath = "(//span[@class='bx-finder-groupbox-content']/a)[2]")
-    public WebElement addMentionPerson;
-
     @FindBy(xpath = "(((//tr[@class='main-grid-row main-grid-row-body'])//td)[3]/span/a)")
     public WebElement newTask;
-
-    @FindBy(xpath = "(//tbody/tr/td/..//span/a)[18]")
-    public WebElement edit;
 
     //@FindBy(xpath = "(//span[@class='task-additional-alt-promo-text'])[2]")
     @FindBy(xpath = "//div[@class='task-additional-alt-more']")
@@ -239,7 +233,23 @@ public class TasksPage_Scrum889 {
     //@FindBy(css="[class=menu-item-plus-icon]")
     @FindBy(xpath = "//span[@class='menu-item-plus']/a")
     public WebElement plusTaskButton;
+    @FindBy(xpath = "//span[.='Subtask of']")
+    public WebElement subTaskTitle;
+    @FindBy(xpath = "//*[@id=\"bx-component-scope-parenttask-bitrix_tasks_task_default_1\"]/span[2]/a/span[1]")
+    public WebElement addSubTask;
 
+    @FindBy(xpath = "//input[@id='parenttask_task_input']")
+    public WebElement searchSubTask;
+
+    @FindBy(xpath = "//*[@id=\"parenttask_search\"]/div[1]/div[1]")
+    public WebElement selectSearchSubTask;
+    //@FindBy(className = "popup-window-button popup-window-button-accept")
+    @FindBy(xpath = "//*[@id=\"task-item-set-popupparenttask\"]/div[2]/span[1]")
+    public WebElement selectButton;
+
+    //
+    @FindBy(xpath = "(//a[@class='js-id-tdp-mem-sel-is-open-form task-form-field-link'])[1]")
+    public WebElement responsibleChange;
 
 
 }
