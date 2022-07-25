@@ -1,8 +1,7 @@
 Feature: Task Feature SCRUM_889
   As a user, I should be able to use "Tasks" functionality so that user can create, change, delete and track the tasks either on Activity Stream or Tasks page.
 
-  @Scrum889
-  Scenario:    HR User can create a high priority task in duration of the certain deadline by mentioning about a user.
+  Scenario: HR User can create a high priority task in duration of the certain deadline by mentioning about a user.
     Given "HR" user is on Home Page.
     And User clicks on Tasks module.
     When User clicks "New Task" button.
@@ -11,7 +10,7 @@ Feature: Task Feature SCRUM_889
       | title    | Test Case 5                    |
       | body     | Daily Stand-up: 19.00CEST      |
       | deadline | Tomorrows Date                 |
-      | mention  | marketing2@cybertekschool.com |
+      | mention  | marketing73@cybertekschool.com |
     And User clicks "Add Task" button.
     Then User should be able to display new task created on My Tasks Page
 
@@ -33,15 +32,13 @@ Feature: Task Feature SCRUM_889
     Then User should be able to see edited task.
 
 
-  Scenario: Marketing User can edit the task by declaring himself/herself as responsible person
-  Marketing User can add participants and observers to already created task by editing.
+  Scenario:Marketing User can add participants and observers to already created task by editing.
   Marketing User can add checklist to an already created task by editing.
     Given "Marketing" user is on Home Page.
     And User clicks on Tasks module.
     When "Marketing" user clicks on the last created task
     And User clicks "Edit" button.
     * Edit "task" details with  below specific information
-      | responsible | marketing73@cybertekschool.com |
       | participant | marketing1@cybertekschool.com  |
       | observer    | hr2@cybertekschool.com         |
       | checklist1  | TEST1                          |
@@ -51,6 +48,7 @@ Feature: Task Feature SCRUM_889
     * User clicks "Close" button.
     Then User should be able to see edited task.
 
+  @Scrum889
   Scenario: HR User can add one more responsible person by editing created task.
     Given "HR" user is on Home Page.
     And User clicks on Tasks module.
@@ -64,11 +62,10 @@ Feature: Task Feature SCRUM_889
     And User clicks plus button on Tasks module.
     * Fills "task" details
       | priority | High Priority           |
-      | title    | Test Case 5             |
+      | title    | For Subtask             |
       | deadline | Tomorrows Date          |
       | mention  | hr19@cybertekschool.com |
-      * User add "Subtask"
-     # | subtask  | first created task      |
+    * User add "Subtask"
     * User clicks "Add Task" button.
     Then User should be able to see new task created.
 
@@ -84,7 +81,7 @@ Feature: Task Feature SCRUM_889
       | responsible | him/herself                    |
       | title       | Test Case new Templates        |
       | deadline    | 5days 2 hours 15 minutes       |
-      | mention     | marketing73@cybertekschool.com |
+      | mention     | marketing14@cybertekschool.com |
     * User clicks "CREATE TASK TEMPLATE" button
     * User clicks on Tasks module.
     * User clicks "New Task Template" button under "New Task"
@@ -99,14 +96,10 @@ Feature: Task Feature SCRUM_889
     And User clicks "APPLY" button and "Continue" button
     Then User should be able to delete task.
 
-
-
-
-
-
-
-
-
-
-
-
+    Scenario: Marketing User can edit the task by declaring himself/herself as responsible person
+      Given "Marketing" user is on Home Page.
+      And User clicks on Tasks module.
+      When "Marketing" user clicks on the last created task
+      And User clicks "Edit" button.
+      And User clicks responsible person button and add one more responsible person
+        | responsible | marketing73@cybertekschool.com |
