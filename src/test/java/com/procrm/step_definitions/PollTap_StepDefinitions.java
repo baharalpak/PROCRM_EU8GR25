@@ -3,6 +3,7 @@ package com.procrm.step_definitions;
 import com.procrm.pages.BasePage;
 import com.procrm.pages.PollTapPage;
 import com.procrm.utilities.BrowserUtilities;
+import com.procrm.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -15,6 +16,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class PollTap_StepDefinitions {
     PollTapPage pollTapPage=new PollTapPage();
+
 
     @When("user clicks on Activity Stream")
     public void user_clicks_on_activity_stream() {
@@ -196,18 +198,40 @@ pollTapPage.questionTextBox.click();
 
     @And("user click on delete question icon")
     public void userClickOnDeleteQuestionIcon() {
-
+        pollTapPage.questionTextBox.click();
+        BrowserUtilities.sleep(2);
+        pollTapPage.deleteQuestion.click();
+        BrowserUtilities.sleep(2);
+        Driver.getDriver().switchTo().alert().accept();
+        BrowserUtilities.sleep(2);
     }
 
     @Then("the question will be deleted")
     public void theQuestionWillBeDeleted() {
 
-    }
-
-    @And("user click on delete answer{int} icon")
-    public void userClickOnDeleteAnswerIcon(int arg0) {
 
     }
+
+    @And("user click on delete answerOne icon")
+    public void userClickOnDeleteAnswerOne() {
+        pollTapPage.answer1.click();
+        BrowserUtilities.sleep(2);
+        pollTapPage.deleteAnswer1.click();
+        BrowserUtilities.sleep(2);
+        Driver.getDriver().switchTo().alert().accept();
+
+    }
+    @And("user click on delete answerTwo icon")
+    public void userClickOnDeleteAnswerTwo() {
+        pollTapPage.answer2.click();
+        BrowserUtilities.sleep(2);
+        pollTapPage.deleteAnswer2.click();
+        BrowserUtilities.sleep(2);
+        Driver.getDriver().switchTo().alert().accept();
+
+    }
+
+    //user click on delete answerTwo icon
 
     @Then("the answers should be deleted")
     public void theAnswersShouldBeDeleted() {
@@ -216,11 +240,17 @@ pollTapPage.questionTextBox.click();
 
     @And("user click on multiple choice checkbox.")
     public void userClickOnMultipleChoiceCheckbox() {
+        pollTapPage.MultiCheckBox.click();
+        BrowserUtilities.sleep(2);
+
 
     }
 
     @When("user click on send button")
     public void userClickOnSendButton() {
+        pollTapPage.SendButton.click();
+
+
 
     }
 

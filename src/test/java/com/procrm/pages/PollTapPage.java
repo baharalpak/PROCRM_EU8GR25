@@ -107,5 +107,9 @@ public WebElement answer2;
     @FindBy(xpath = "//*[@id=\"multi_0\"]")
     public WebElement MultiCheckBox;
 
+    @FindBy(xpath = "//*[@id=\"blog-submit-button-save\"]")
+    public  WebElement SendButton;
+
+
 
 }
