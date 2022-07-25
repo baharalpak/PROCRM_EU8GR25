@@ -76,16 +76,13 @@ public class CalendarTasksEvents_StepDefinitions {
         Select availability = new Select(calendarTasksEvents.selectAvailability);
         availability.selectByVisibleText(map.get("Availability"));
 
-        BrowserUtilities.clickWithJS(calendarTasksEvents.saveButton);
-
+        calendarTasksEvents.saveButton.click();
     }
-
 
     @Then("user verifies the new calendar event is displayed")
     public void user_verifies_the_new_calendar_event_is_displayed() {
 
     }
-
 
     @When("User click EDIT button")
     public void user_click_edit_button() {

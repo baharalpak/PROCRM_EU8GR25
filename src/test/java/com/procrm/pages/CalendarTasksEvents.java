@@ -65,7 +65,10 @@ public class CalendarTasksEvents {
    // @FindBy(linkText = "(Cmd+Enter)")
     //public WebElement saveButton;
 
-    @FindBy(xpath = "//div[@class='calendar-form-footer-container' and text()='Save']")
+    //@FindBy(xpath= "(//div[@class='calendar-form-footer-container']/button)[1]")
+    //public WebElement saveButton;
+
+    @FindBy( css = "[id*='save_cmd']")
     public WebElement saveButton;
 
     @FindBy(className = "calendar-field-colorpicker-color-item-more-link")
