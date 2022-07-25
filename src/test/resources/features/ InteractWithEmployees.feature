@@ -1,4 +1,4 @@
-
+@SCRUM-928
 Feature: Interact With Employees on the Posts
 
   User Story:
@@ -9,6 +9,7 @@ Feature: Interact With Employees on the Posts
   Background:
     Given User is on Agileprocrm url successfully
 
+  @SCRUM-919
   Scenario Outline: Verify that User can make a comment on other employees' posts.
     Given "<user>" user is on homepage.
     When User click comment button other employees' posts
@@ -23,7 +24,7 @@ Feature: Interact With Employees on the Posts
       | marketing |
       | helpdesk  |
 
-
+@SCRUM-926
   Scenario Outline: Negative Scenario: Verify that User cannot make a comment with empty input box on other employees' posts.
     Given "<user>" user is on homepage.
     When User click comment button other employees' posts
@@ -37,7 +38,7 @@ Feature: Interact With Employees on the Posts
       | helpdesk  |
 
 
-
+  @SCRUM-920
   Scenario Outline: Verify that User can make a like on other employees' posts.
     Given "<user>" user is on homepage.
     When User click the like button at the INPUT BOX.
@@ -50,7 +51,7 @@ Feature: Interact With Employees on the Posts
       | helpdesk  |
 
 
-
+@SCRUM-927
   Scenario Outline: Verify that User should be able to interaction on all other employees' posts.
     Given "<user>" user is on homepage.
     When User click the "<interaction>" button at the employees' posts.
@@ -63,7 +64,7 @@ Feature: Interact With Employees on the Posts
       | helpdesk  |laugh      |
 
 
-
+  @SCRUM-921
   Scenario Outline: Verify that User can make a unfollow on other employees' posts.
     Given "<user>" user is on homepage.
     When User click the unfollow button at the INPUT BOX.
@@ -76,6 +77,7 @@ Feature: Interact With Employees on the Posts
       | helpdesk  |
 
 
+  @SCRUM-923
   Scenario Outline: Verify that User should be able to like on all other reviewers's comments.
     Given "<user>" user is on homepage.
     When User click the like button at the reviewers's comments.
@@ -88,7 +90,7 @@ Feature: Interact With Employees on the Posts
       | helpdesk  |
 
 
-  @SCRUM-896
+  @SCRUM-922
   Scenario Outline: Verify that User should be able to comments on all other reviewers's comments.
     Given "<user>" user is on homepage.
     When User click the comments button at the reviewers's comments.
@@ -102,7 +104,7 @@ Feature: Interact With Employees on the Posts
       | marketing |
       | helpdesk  |
 
-
+@SCRUM-924
   Scenario Outline: Verify that User should be able to click on reviewers' name and visit their profiles.
     Given "<user>" user is on homepage.
     When User click the reviewers' name
@@ -115,7 +117,7 @@ Feature: Interact With Employees on the Posts
       | helpdesk  |
 
 
-
+@SCRUM-925
   Scenario Outline: Verify that User should be able to add others' posts to favorite by clicking on the Star icon.
     Given "<user>" user is on homepage.
     When User click the star icon.
