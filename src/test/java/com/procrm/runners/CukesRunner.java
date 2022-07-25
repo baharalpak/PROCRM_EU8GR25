@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
         glue = "com/procrm/step_definitions",
         dryRun = false,
 
-        tags = "@Scrum889"
+        tags = ""
 
 )
 
