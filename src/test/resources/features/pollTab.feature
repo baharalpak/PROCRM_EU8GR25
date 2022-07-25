@@ -81,12 +81,13 @@ Feature: User should be able to create a poll by clicking on Poll tab under Acti
        And User add a question
         And user add an answer to the text box
         And user add an second answer to the text box
+    And user click on multiple choice checkbox.
+
+    And user click on delete answerOne icon
+    And user click on delete answerTwo icon
     And user click on delete question icon
 
-    And user click on delete answer1 icon
-    And user click on delete answer2 icon
 
-    And user click on multiple choice checkbox.
 
 
 
@@ -95,6 +96,28 @@ Feature: User should be able to create a poll by clicking on Poll tab under Acti
       | hr        |
       | marketing |
       | helpdesk  |
+
+  @pollTab5
+  Scenario Outline:  User should be able to send a pool.
+    Given "<user>" user is on homepage
+    When user clicks on Activity Stream
+    And clicks on Poll tap  from top menu
+    And User add a question
+    And user add an answer to the text box
+    And user add an second answer to the text box
+    And user click on multiple choice checkbox.
+    When user click on send button
+    Then user should be able to send the message.
+
+
+
+
+    Examples:
+      | user      |
+      | hr        |
+      | marketing |
+      | helpdesk  |
+
   Scenario: User should  NOT be able to attach Text without a Link (Negative )
     Given "<user>" user is on homepage
     And user clicks on Activity Stream
@@ -134,8 +157,7 @@ Scenario:  User should be able to delete questions and multiple answers, and use
   And clicks on Poll tap  from top menu
   And user click on delete question icon
   Then the question will be deleted
-  And user click on delete answer1 icon
-  And user click on delete answer2 icon
+
   Then the answers should be deleted
   And user click on multiple choice checkbox.
 
