@@ -27,7 +27,6 @@ public class TasksSCRUM889_StepDef {
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
     Actions action = new Actions(Driver.getDriver());
     String expectedForNewTemplate="";
-
     @When("Fills {string} details")
     public void fills_details(String string, DataTable dataTable) {
         Map<String, String> map = dataTable.asMap(String.class, String.class);

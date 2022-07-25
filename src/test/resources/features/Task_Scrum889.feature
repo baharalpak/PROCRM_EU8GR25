@@ -32,15 +32,13 @@ Feature: Task Feature SCRUM_889
     Then User should be able to see edited task.
 
 
-  Scenario: Marketing User can edit the task by declaring himself/herself as responsible person
-  Marketing User can add participants and observers to already created task by editing.
+  Scenario:Marketing User can add participants and observers to already created task by editing.
   Marketing User can add checklist to an already created task by editing.
     Given "Marketing" user is on Home Page.
     And User clicks on Tasks module.
     When "Marketing" user clicks on the last created task
     And User clicks "Edit" button.
     * Edit "task" details with  below specific information
-      | responsible | marketing73@cybertekschool.com |
       | participant | marketing1@cybertekschool.com  |
       | observer    | hr2@cybertekschool.com         |
       | checklist1  | TEST1                          |
@@ -68,7 +66,6 @@ Feature: Task Feature SCRUM_889
       | deadline | Tomorrows Date          |
       | mention  | hr19@cybertekschool.com |
     * User add "Subtask"
-     # | subtask  | first created task      |
     * User clicks "Add Task" button.
     Then User should be able to see new task created.
 
@@ -99,14 +96,10 @@ Feature: Task Feature SCRUM_889
     And User clicks "APPLY" button and "Continue" button
     Then User should be able to delete task.
 
-
-
-
-
-
-
-
-
-
-
-
+    Scenario: Marketing User can edit the task by declaring himself/herself as responsible person
+      Given "Marketing" user is on Home Page.
+      And User clicks on Tasks module.
+      When "Marketing" user clicks on the last created task
+      And User clicks "Edit" button.
+      And User clicks responsible person button and add one more responsible person
+        | responsible | marketing73@cybertekschool.com |
