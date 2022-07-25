@@ -27,9 +27,6 @@ public class SendMessagePage {
     @FindBy(xpath = "//span[@class='bxhtmled-top-bar-btn bxhtmled-button-video']")
     public WebElement insertVideoIcon;
 
-    @FindBy(xpath = "(//div[@class='feed-post-text-block-inner-inner'])[1]//iframe")
-    public WebElement videoInsertedIframe;
-
     @FindBy(xpath = "//input[@placeholder='YouTube or Vimeo video URL']")
     public WebElement videoSourceBox;
 
@@ -51,29 +48,11 @@ public class SendMessagePage {
     @FindBy(xpath = "//blockquote[@class='bxhtmled-quote']")
     public WebElement quoteBox;
 
-    @FindBy(xpath = "(//table[@class='blogquote'])[1]")
-    public WebElement quoteTextElement;
-
     @FindBy(id = "bx-b-mention-blogPostForm")
     public WebElement addMentionIcon;
 
     @FindBy(xpath = "//a[@class='bx-finder-box-tab bx-lm-tab-department']")
     public WebElement employeesAndDepartments;
-
-//    @FindBy(xpath = "//div[.='hr13@cybertekschool.com']")
-//    public WebElement mention1;
-//
-//    @FindBy(xpath = "//div[.='hr91@cybertekschool.com']")
-//    public WebElement mention2;
-//
-//    @FindBy(xpath = "//div[.='marketing67@cybertekschool.com']")
-//    public WebElement mention3;
-//
-//    @FindBy(xpath = "//div[.='helpdesk47@cybertekschool.com']")
-//    public WebElement mention4;
-//
-//    @FindBy(xpath = "//div[.='helpdesk77@cybertekschool.com']")
-//    public WebElement mention5;
 
     @FindBy(xpath = "//span[@class='popup-window-close-icon']")
     public WebElement closeButton;
@@ -81,8 +60,8 @@ public class SendMessagePage {
     @FindBy(xpath = "(//a[@href='javascript:void(0)'])[1]")
     public WebElement moreRecipientLink;
 
-    @FindBy(xpath = "(//div[@class='bx-finder-company-department-employee-name'])[1]")
-    public WebElement mention1Text;
+    @FindBy(xpath = "//a[.='Add more']")
+    public WebElement addMoreLink;
 
     @FindBy(xpath = "(//div[@class='bx-finder-company-department-employee-name'])[2]")
     public WebElement mention2Text;
@@ -95,6 +74,9 @@ public class SendMessagePage {
 
     @FindBy(xpath = "(//div[@class='bx-finder-company-department-employee-name'])[5]")
     public WebElement mention5Text;
+
+    @FindBy(xpath = "//span[.='The message title is not specified']")
+    public WebElement mandatoryMessageTitleError;
 
 
 }
