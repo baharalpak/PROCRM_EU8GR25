@@ -26,7 +26,8 @@ public class TasksSCRUM889_StepDef {
     String expectedTitle = "";
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
     Actions action = new Actions(Driver.getDriver());
-    String expectedForNewTemplate="";
+    String expectedForNewTemplate = "";
+
     @When("Fills {string} details")
     public void fills_details(String string, DataTable dataTable) {
         Map<String, String> map = dataTable.asMap(String.class, String.class);
@@ -35,16 +36,16 @@ public class TasksSCRUM889_StepDef {
         tasksPage_scrum889.highPriority.click();
         tasksPage_scrum889.taskTitle.sendKeys(map.get("title"));
         expectedTitle = map.get("title");
-        tasksPage_scrum889.taskTitle.sendKeys(Keys.TAB+map.get("body")+Keys.ENTER);
+        tasksPage_scrum889.taskTitle.sendKeys(Keys.TAB + map.get("body") + Keys.ENTER);
 
         int hour = LocalTime.now().getHour();
         int minute = LocalTime.now().getMinute();
         tasksPage_scrum889.deadline.click();
-        Calendar calendar=Calendar.getInstance();
-        DateFormat dateFormat=new SimpleDateFormat("dd");
-        String today= dateFormat.format(calendar.getTime()); //Today date
-        calendar.add(Calendar.DATE,2); //two days later
-        String tomorrow=dateFormat.format(calendar.getTime());
+        Calendar calendar = Calendar.getInstance();
+        DateFormat dateFormat = new SimpleDateFormat("dd");
+        String today = dateFormat.format(calendar.getTime()); //Today date
+        calendar.add(Calendar.DATE, 2); //two days later
+        String tomorrow = dateFormat.format(calendar.getTime());
         tasksPage_scrum889.addTaskDayCalendar(tomorrow).click();
 
         hour = (hour >= 12) ? hour -= 12 : hour;
@@ -136,7 +137,8 @@ public class TasksSCRUM889_StepDef {
 
     @Then("User should be able to see edited task.")
     public void user_should_be_able_to_see_edited_task() {
-        Assert.assertEquals(tasksPage_scrum889.newTask.getText(), expectedTitle);
+        Assert.assertTrue(tasksPage_scrum889.lastCreatedForMarketing.isDisplayed());
+        // Assert.assertEquals(tasksPage_scrum889.newTask.getText(), expectedTitle);
     }
 
     @When("{string} user clicks on the last created task")
@@ -149,38 +151,33 @@ public class TasksSCRUM889_StepDef {
     public void edit_details_with_below_specific_information(String string, DataTable dataTable) {
         Map<String, String> map = dataTable.asMap(String.class, String.class);
         tasksPage_scrum889.participants.click();
-        BrowserUtilities.waitForVisibility(tasksPage_scrum889.addParticipants,10);
+        BrowserUtilities.waitForVisibility(tasksPage_scrum889.addParticipants, 10);
 
         tasksPage_scrum889.addParticipants.click();
-        BrowserUtilities.sleep(2);
+
         tasksPage_scrum889.sendParticipants.sendKeys(map.get("participant"));
         tasksPage_scrum889.sendParticipants.sendKeys("" + Keys.ENTER);
-        BrowserUtilities.sleep(3);
+
         tasksPage_scrum889.observers.click();
-        BrowserUtilities.waitForClickablility(tasksPage_scrum889.addObservers,10);
+        BrowserUtilities.waitForClickablility(tasksPage_scrum889.addObservers, 10);
         BrowserUtilities.clickWithJS(tasksPage_scrum889.addObservers);
-        BrowserUtilities.sleep(2);
+
         tasksPage_scrum889.sendObservers.sendKeys(map.get("observer"));
         tasksPage_scrum889.sendObservers.sendKeys("" + Keys.ENTER);
-        BrowserUtilities.sleep(4);
 
         action.moveToElement(tasksPage_scrum889.checklist).click();
-        BrowserUtilities.sleep(3);
 
         action.click(tasksPage_scrum889.addChecklist);
-        action.sendKeys(tasksPage_scrum889.addChecklist,map.get("checklist1")).perform();
-        BrowserUtilities.sleep(3);
-        tasksPage_scrum889.addChecklist.sendKeys(""+Keys.ENTER);
-        BrowserUtilities.sleep(2);
-        action.sendKeys(tasksPage_scrum889.addChecklist,map.get("checklist2")).perform();
-        tasksPage_scrum889.addChecklist.sendKeys(""+Keys.ENTER);
-        BrowserUtilities.sleep(3);
-        action.sendKeys(tasksPage_scrum889.addChecklist,map.get("checklist3")).perform();
-        BrowserUtilities.sleep(3);
-        tasksPage_scrum889.addChecklist.sendKeys(""+Keys.ENTER);
-        BrowserUtilities.sleep(3);
+        action.sendKeys(tasksPage_scrum889.addChecklist, map.get("checklist1")).perform();
+        tasksPage_scrum889.addChecklist.sendKeys("" + Keys.ENTER);
 
+        action.click(tasksPage_scrum889.addChecklist);
+        action.sendKeys(tasksPage_scrum889.addChecklist, map.get("checklist2")).perform();
+        tasksPage_scrum889.addChecklist.sendKeys("" + Keys.ENTER);
 
+        action.click(tasksPage_scrum889.addChecklist);
+        action.sendKeys(tasksPage_scrum889.addChecklist, map.get("checklist3")).perform();
+        tasksPage_scrum889.addChecklist.sendKeys("" + Keys.ENTER);
     }
 
     @When("User clicks responsible person button and add one more responsible person")
@@ -198,17 +195,19 @@ public class TasksSCRUM889_StepDef {
         action.moveToElement(tasksPage_scrum889.tasksModuleButton).build().perform();
         tasksPage_scrum889.plusTaskButton.click();
     }
+
     @Given("User add {string}")
     public void user_add(String string) {
         tasksPage_scrum889.moreButton.click();
         BrowserUtilities.sleep(1);
         BrowserUtilities.scrollToElement(tasksPage_scrum889.subTaskTitle);
         tasksPage_scrum889.addSubTask.click();
-        tasksPage_scrum889.searchSubTask.sendKeys("Test Case 5"+Keys.ENTER);
+        tasksPage_scrum889.searchSubTask.sendKeys("Edit" + Keys.ENTER);
         action.click(tasksPage_scrum889.selectSearchSubTask).build().perform();
         action.click(tasksPage_scrum889.selectButton).build().perform();
         BrowserUtilities.sleep(1);
     }
+
     @Then("User should be able to see new task created.")
     public void user_should_be_able_to_see_new_task_created() {
 
@@ -216,7 +215,7 @@ public class TasksSCRUM889_StepDef {
 
     @Then("User should be able to redirected to {string} page")
     public void user_should_be_able_to_redirected_to_page(String string) {
-        Assert.assertEquals(expectedForNewTemplate,tasksPage_scrum889.lastCreatedForNewTemplate.getText());
+        Assert.assertEquals(expectedForNewTemplate, tasksPage_scrum889.lastCreatedForNewTemplate.getText());
     }
 
     @When("User select last created task")
@@ -248,17 +247,20 @@ public class TasksSCRUM889_StepDef {
     public void user_should_be_able_to_delete_task() {
 
     }
+
     @When("User clicks {string} button under {string}")
     public void user_clicks_button_under(String string, String string2) {
         tasksPage_scrum889.newTaskDropDown.click();
         tasksPage_scrum889.allTemplates.click();
     }
+
     @When("User clicks {string} button in the New Task Template")
     public void user_clicks_button_in_the_new_task_template(String string) {
         tasksPage_scrum889.addAllTemplatesNewTask.click();
     }
+
     @When("Fills {string} details below")
-    public void fills_details_below(String string,DataTable dataTable) {
+    public void fills_details_below(String string, DataTable dataTable) {
         Map<String, String> map = dataTable.asMap(String.class, String.class);
         tasksPage_scrum889.highPriority.click();
         tasksPage_scrum889.titleAllTemplatesNewTask.sendKeys(map.get("title"));
@@ -268,11 +270,68 @@ public class TasksSCRUM889_StepDef {
         tasksPage_scrum889.addMentionMarketing(map.get("mention")).click();
 
         tasksPage_scrum889.deadlineMinutes.click();
-        tasksPage_scrum889.deadlineBox.sendKeys("7335"+Keys.ENTER);
-        expectedForNewTemplate=map.get("title");
+        tasksPage_scrum889.deadlineBox.sendKeys("7335" + Keys.ENTER);
+        expectedForNewTemplate = map.get("title");
     }
-    @When("User clicks responsible person button and add declare himself\\/herself")
-    public void user_clicks_responsible_person_button_and_add_declare_himself_herself(io.cucumber.datatable.DataTable dataTable) {
+
+    @When("Edit task responsible as {string}")
+    public void edit_task_responsible_as(String responsible) {
+        tasksPage_scrum889.changeResponsible.click();
+        BrowserUtilities.sleep(1);
+        tasksPage_scrum889.addResponsiblePeople.sendKeys(responsible);
+        BrowserUtilities.sleep(1);
+        tasksPage_scrum889.addResponsiblePeople.sendKeys("" + Keys.ENTER);
+    }
+
+    @When("Edit task reminder as {string}")
+    public void edit_task_reminder_as(String reminder) {
+        BrowserUtilities.sleep(3);
+        tasksPage_scrum889.moreButton.click();
+        BrowserUtilities.sleep(2);
+        BrowserUtilities.clickWithJS(tasksPage_scrum889.scrollDown);
+        BrowserUtilities.sleep(2);
+        tasksPage_scrum889.reminder.click();
+        BrowserUtilities.sleep(4);
+        tasksPage_scrum889.reminderUsing.click();
+        BrowserUtilities.sleep(2);
+        tasksPage_scrum889.reminderDeadline.click();
+        BrowserUtilities.sleep(2);
+        tasksPage_scrum889.sendEMail.click();
+        BrowserUtilities.sleep(1);
+        tasksPage_scrum889.addReminderWithEmail.click();
+        BrowserUtilities.sleep(2);
+    }
+
+    @When("Edit task dependant as {string}")
+    public void edit_task_dependant_as(String dependant) {
+        BrowserUtilities.clickWithJS(tasksPage_scrum889.scrollDown);
+        BrowserUtilities.sleep(1);
+        tasksPage_scrum889.dependantTasks.click();
+        BrowserUtilities.waitForClickablility(tasksPage_scrum889.dependentSearchBox, 10);
+        tasksPage_scrum889.dependentSearchBox.sendKeys(dependant);
+        tasksPage_scrum889.dependentSearchBox.sendKeys("" + Keys.ENTER);
+        tasksPage_scrum889.selectDependent.click();
+        tasksPage_scrum889.selectDependentButton.click();
+    }
+
+    @When("Edit task hours {string}")
+    public void edit_task_hours(String hours) {
+        tasksPage_scrum889.timeTracking.click();
+        tasksPage_scrum889.timeTrackingHours.sendKeys(hours);
+    }
+
+    @When("Edit task minutes {string}")
+    public void edit_task_minutes(String minutes) {
+        tasksPage_scrum889.timeTrackingMinutes.sendKeys(minutes);
+    }
+
+    @When("User clicks responsible person button and add declare himself\\/herself {string}")
+    public void user_clicks_responsible_person_button_and_add_declare_himself_herself(String string) {
+
+    }
+
+    @Then("User should be able to declare himself\\/herself as responsible person")
+    public void user_should_be_able_to_declare_himself_herself_as_responsible_person() {
 
     }
 
