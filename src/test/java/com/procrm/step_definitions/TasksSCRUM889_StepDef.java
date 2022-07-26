@@ -1,9 +1,11 @@
 package com.procrm.step_definitions;
 
+import com.procrm.pages.BasePage;
 import com.procrm.pages.TasksPage_Scrum889;
 import com.procrm.utilities.BrowserUtilities;
 import com.procrm.utilities.Driver;
 import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -32,34 +34,23 @@ public class TasksSCRUM889_StepDef {
     public void fills_details(String string, DataTable dataTable) {
         Map<String, String> map = dataTable.asMap(String.class, String.class);
         Driver.getDriver().switchTo().frame(tasksPage_scrum889.iframeNewTask);
-        BrowserUtilities.sleep(1);
         tasksPage_scrum889.highPriority.click();
         tasksPage_scrum889.taskTitle.sendKeys(map.get("title"));
         expectedTitle = map.get("title");
         tasksPage_scrum889.taskTitle.sendKeys(Keys.TAB + map.get("body") + Keys.ENTER);
 
-        int hour = LocalTime.now().getHour();
-        int minute = LocalTime.now().getMinute();
         tasksPage_scrum889.deadline.click();
-        Calendar calendar = Calendar.getInstance();
-        DateFormat dateFormat = new SimpleDateFormat("dd");
-        String today = dateFormat.format(calendar.getTime()); //Today date
-        calendar.add(Calendar.DATE, 2); //two days later
-        String tomorrow = dateFormat.format(calendar.getTime());
-        tasksPage_scrum889.addTaskDayCalendar(tomorrow).click();
-
-        hour = (hour >= 12) ? hour -= 12 : hour;
-
-        BrowserUtilities.sleep(2);
+        tasksPage_scrum889.addTaskDayCalendar().click();
         tasksPage_scrum889.timeHours.clear();
-        tasksPage_scrum889.timeHours.sendKeys("" + hour);
-        tasksPage_scrum889.timeMinutes.sendKeys("" + minute);
+        //tasksPage_scrum889.timeHours.sendKeys("" + tasksPage_scrum889.addTaskHours());
+        //tasksPage_scrum889.timeMinutes.sendKeys("" + tasksPage_scrum889.addTaskMinutes());
+        tasksPage_scrum889.timeHours.sendKeys(""+2);
+        tasksPage_scrum889.timeHours.sendKeys(""+30);
         tasksPage_scrum889.calendar.click();
 
         tasksPage_scrum889.addMention.click();
-        BrowserUtilities.sleep(2);
+        BrowserUtilities.waitForClickablility(tasksPage_scrum889.addMentionEmployees, 10);
         tasksPage_scrum889.addMentionEmployees.click();
-        BrowserUtilities.sleep(3);
         tasksPage_scrum889.addMentionMarketing(map.get("mention")).click();
     }
 
@@ -68,61 +59,12 @@ public class TasksSCRUM889_StepDef {
         Assert.assertEquals(tasksPage_scrum889.newTask.getText(), expectedTitle);
     }
 
-    @When("Edit {string} details with  below information")
-    public void edit_details_with_below_information(String string, DataTable dataTable) {
-        Map<String, String> map = dataTable.asMap(String.class, String.class);
-        // BrowserUtilities.waitForClickablility(tasksPage_scrum889.moreButton,10);
-        BrowserUtilities.sleep(2);
-        tasksPage_scrum889.changeResponsible.click();
-
-        BrowserUtilities.sleep(2);
-        tasksPage_scrum889.addResponsiblePeople.sendKeys(map.get("responsible"));
-
-        BrowserUtilities.sleep(2);
-        tasksPage_scrum889.addResponsiblePeople.sendKeys("" + Keys.ENTER);
-
-        BrowserUtilities.sleep(3);
-        tasksPage_scrum889.moreButton.click();
-
-        BrowserUtilities.sleep(2);
-        BrowserUtilities.clickWithJS(tasksPage_scrum889.scrollDown);
-        tasksPage_scrum889.timeTracking.click();
-        BrowserUtilities.sleep(3);
-        tasksPage_scrum889.timeTrackingHours.sendKeys(map.get("time hours"));
-        tasksPage_scrum889.timeTrackingMinutes.sendKeys(map.get("time minutes"));
-
-
-        BrowserUtilities.sleep(2);
-        tasksPage_scrum889.reminder.click();
-        BrowserUtilities.sleep(4);
-        tasksPage_scrum889.reminderUsing.click();
-        BrowserUtilities.sleep(2);
-        tasksPage_scrum889.reminderDeadline.click();
-        BrowserUtilities.sleep(2);
-        tasksPage_scrum889.sendEMail.click();
-        BrowserUtilities.sleep(1);
-        tasksPage_scrum889.addReminderWithEmail.click();
-        BrowserUtilities.sleep(2);
-
-        BrowserUtilities.clickWithJS(tasksPage_scrum889.scrollDown);
-        BrowserUtilities.sleep(2);
-        tasksPage_scrum889.dependantTasks.click();
-        BrowserUtilities.waitForClickablility(tasksPage_scrum889.dependentSearchBox, 10);
-        tasksPage_scrum889.dependentSearchBox.sendKeys(map.get("dependant task"));
-        BrowserUtilities.sleep(2);
-        tasksPage_scrum889.dependentSearchBox.sendKeys("" + Keys.ENTER);
-        BrowserUtilities.sleep(2);
-        tasksPage_scrum889.selectDependent.click();
-        BrowserUtilities.sleep(2);
-        tasksPage_scrum889.selectDependentButton.click();
-    }
 
     @When("User clicks {string} button")
     public void user_clicks_button(String button) {
         switch (button) {
-            case "Sava Changes":
+            case "Save Changes":
                 tasksPage_scrum889.saveChangesButton.click();
-                BrowserUtilities.sleep(2);
                 Driver.getDriver().switchTo().parentFrame();
                 break;
             case "Close":
@@ -182,12 +124,12 @@ public class TasksSCRUM889_StepDef {
 
     @When("User clicks responsible person button and add one more responsible person")
     public void user_clicks_responsible_person_button_and_add_one_more_responsible_person() {
-
+        BasePage.clickAnyFunctions("Add more");
     }
 
     @Then("User should be able to add more responsible people.")
     public void user_should_be_able_to_add_more_responsible_people() {
-
+        Assert.assertTrue(tasksPage_scrum889.newTask.isDisplayed());
     }
 
     @Given("User clicks plus button on Tasks module.")
@@ -199,13 +141,12 @@ public class TasksSCRUM889_StepDef {
     @Given("User add {string}")
     public void user_add(String string) {
         tasksPage_scrum889.moreButton.click();
-        BrowserUtilities.sleep(1);
+        BrowserUtilities.waitForVisibility(tasksPage_scrum889.addSubTask, 10);
         BrowserUtilities.scrollToElement(tasksPage_scrum889.subTaskTitle);
         tasksPage_scrum889.addSubTask.click();
         tasksPage_scrum889.searchSubTask.sendKeys("Edit" + Keys.ENTER);
         action.click(tasksPage_scrum889.selectSearchSubTask).build().perform();
         action.click(tasksPage_scrum889.selectButton).build().perform();
-        BrowserUtilities.sleep(1);
     }
 
     @Then("User should be able to see new task created.")
@@ -220,19 +161,15 @@ public class TasksSCRUM889_StepDef {
 
     @When("User select last created task")
     public void user_select_last_created_task() {
-        BrowserUtilities.clickWithJS(tasksPage_scrum889.checkboxForDelete);
-        BrowserUtilities.sleep(4);
+        action.click(tasksPage_scrum889.checkboxForDelete).build().perform();
         js.executeScript("arguments[0].scrollIntoView(true)", tasksPage_scrum889.scrollDownForDelete);
-        BrowserUtilities.sleep(3);
     }
 
     @When("User select {string} section under {string} dropdown menu")
     public void user_select_section_under_dropdown_menu(String string, String string2) {
         BrowserUtilities.waitForVisibility(tasksPage_scrum889.selectOption, 10);
-
-        tasksPage_scrum889.selectOption.click();
-        tasksPage_scrum889.selectOption.click();
-        BrowserUtilities.sleep(2);
+        BrowserUtilities.clickWithJS(tasksPage_scrum889.selectOption);
+        BrowserUtilities.waitForClickablility(tasksPage_scrum889.deleteUnderSelection, 10);
         tasksPage_scrum889.deleteUnderSelection.click();
     }
 
@@ -245,6 +182,7 @@ public class TasksSCRUM889_StepDef {
 
     @Then("User should be able to delete task.")
     public void user_should_be_able_to_delete_task() {
+        Assert.assertTrue(tasksPage_scrum889.newTask.isDisplayed());
 
     }
 
@@ -262,50 +200,42 @@ public class TasksSCRUM889_StepDef {
     @When("Fills {string} details below")
     public void fills_details_below(String string, DataTable dataTable) {
         Map<String, String> map = dataTable.asMap(String.class, String.class);
+
         tasksPage_scrum889.highPriority.click();
         tasksPage_scrum889.titleAllTemplatesNewTask.sendKeys(map.get("title"));
-        BrowserUtilities.sleep(1);
-        tasksPage_scrum889.addMention.click();
-        tasksPage_scrum889.addMentionEmployees.click();
-        tasksPage_scrum889.addMentionMarketing(map.get("mention")).click();
-
         tasksPage_scrum889.deadlineMinutes.click();
         tasksPage_scrum889.deadlineBox.sendKeys("7335" + Keys.ENTER);
         expectedForNewTemplate = map.get("title");
+        BrowserUtilities.waitForClickablility(tasksPage_scrum889.titleAllTemplatesNewTask, 10);
+        tasksPage_scrum889.titleAllTemplatesNewTask.sendKeys("" + Keys.TAB + map.get("mention"));
+
     }
 
     @When("Edit task responsible as {string}")
     public void edit_task_responsible_as(String responsible) {
         tasksPage_scrum889.changeResponsible.click();
-        BrowserUtilities.sleep(1);
+        BrowserUtilities.waitForClickablility(tasksPage_scrum889.addResponsiblePeople, 10);
         tasksPage_scrum889.addResponsiblePeople.sendKeys(responsible);
-        BrowserUtilities.sleep(1);
         tasksPage_scrum889.addResponsiblePeople.sendKeys("" + Keys.ENTER);
     }
 
     @When("Edit task reminder as {string}")
     public void edit_task_reminder_as(String reminder) {
-        BrowserUtilities.sleep(3);
         tasksPage_scrum889.moreButton.click();
-        BrowserUtilities.sleep(2);
         BrowserUtilities.clickWithJS(tasksPage_scrum889.scrollDown);
-        BrowserUtilities.sleep(2);
+        BrowserUtilities.waitForClickablility(tasksPage_scrum889.reminder, 10);
         tasksPage_scrum889.reminder.click();
-        BrowserUtilities.sleep(4);
         tasksPage_scrum889.reminderUsing.click();
-        BrowserUtilities.sleep(2);
+        BrowserUtilities.waitForClickablility(tasksPage_scrum889.reminderDeadline, 10);
         tasksPage_scrum889.reminderDeadline.click();
-        BrowserUtilities.sleep(2);
         tasksPage_scrum889.sendEMail.click();
-        BrowserUtilities.sleep(1);
         tasksPage_scrum889.addReminderWithEmail.click();
-        BrowserUtilities.sleep(2);
     }
 
     @When("Edit task dependant as {string}")
     public void edit_task_dependant_as(String dependant) {
         BrowserUtilities.clickWithJS(tasksPage_scrum889.scrollDown);
-        BrowserUtilities.sleep(1);
+        BrowserUtilities.waitForClickablility(tasksPage_scrum889.dependantTasks, 10);
         tasksPage_scrum889.dependantTasks.click();
         BrowserUtilities.waitForClickablility(tasksPage_scrum889.dependentSearchBox, 10);
         tasksPage_scrum889.dependentSearchBox.sendKeys(dependant);
@@ -325,14 +255,65 @@ public class TasksSCRUM889_StepDef {
         tasksPage_scrum889.timeTrackingMinutes.sendKeys(minutes);
     }
 
-    @When("User clicks responsible person button and add declare himself\\/herself {string}")
-    public void user_clicks_responsible_person_button_and_add_declare_himself_herself(String string) {
+    @When("User declare himself herself {string}")
+    public void user_declare_himself_herself(String string) {
+        tasksPage_scrum889.moreResponsible.click();
+        tasksPage_scrum889.addMentionEmployees.click();
+        tasksPage_scrum889.addMentionMarketing("marketing73@cybertekschool.com");
+    }
+
+    @Then("User should be able to declare himself herself as responsible person")
+    public void user_should_be_able_to_declare_himself_herself_as_responsible_person() {
 
     }
 
-    @Then("User should be able to declare himself\\/herself as responsible person")
-    public void user_should_be_able_to_declare_himself_herself_as_responsible_person() {
+    @When("User clicks {string}")
+    public void user_clicks(String priority) {
+        Driver.getDriver().switchTo().frame(tasksPage_scrum889.iframeNewTask);
+        BrowserUtilities.waitForClickablility(tasksPage_scrum889.highPriority,10);
+        tasksPage_scrum889.highPriority.click();
+    }
 
+    @When("User types title as {string}")
+    public void user_types_title_as(String title) {
+        tasksPage_scrum889.taskTitle.sendKeys(title + Keys.ENTER);
+        expectedTitle=title;
+    }
+    @When("User types body as {string}")
+    public void user_types_body_as(String body) {
+        tasksPage_scrum889.taskTitle.sendKeys(""+Keys.TAB+body+Keys.ENTER);
+    }
+
+    @When("User mention as {string}")
+    public void user_mention_as(String mention) {
+        tasksPage_scrum889.addMention.click();
+        BrowserUtilities.waitForClickablility(tasksPage_scrum889.addMentionEmployees, 10);
+        tasksPage_scrum889.addMentionEmployees.click();
+        tasksPage_scrum889.addMentionMarketing(mention).click();
+    }
+
+    @Then("User can not create new task  without deadline")
+    public void user_can_not_create_new_task_without_deadline() {
+
+    }
+
+    @When("User types deadline as {string}")
+    public void user_types_deadline_as(String deadline) {
+        tasksPage_scrum889.deadline.click();
+        tasksPage_scrum889.addTaskDayCalendar().click();
+        tasksPage_scrum889.timeHours.clear();
+        tasksPage_scrum889.timeHours.sendKeys("" + 2);
+        tasksPage_scrum889.timeMinutes.sendKeys("" + 30);
+        tasksPage_scrum889.calendar.click();
+    }
+
+    @Then("User should see error message {string}")
+    public void user_should_see_error_message(String message) {
+        Assert.assertEquals(message, tasksPage_scrum889.errorMessage);
+    }
+    @Then("User can not create same task")
+    public void user_can_not_create_same_task() {
+        Assert.assertNotEquals(tasksPage_scrum889.newTask.getText(),tasksPage_scrum889.lastSecondTask.getText());
     }
 
 

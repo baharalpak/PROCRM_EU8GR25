@@ -7,7 +7,11 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class TasksPage_Scrum889 {
@@ -20,6 +24,11 @@ public class TasksPage_Scrum889 {
     public WebElement taskTitle;
     @FindBy(id = "bx-b-mention-task-form-bitrix_tasks_task_default_1")
     public WebElement addMention;
+    @FindBy(xpath = "//*[@id=\"bx-b-mention-task-form-bitrix_tasks_task_template_default_1\"]")
+    public WebElement addMention2;
+
+    @FindBy(xpath = "(//div[@id='popup-window-content-BXSocNetLogDestination']/div/div/a)[2]")
+    public WebElement addMentionEmployees2;
     @FindBy(xpath = "(//div[@class='bx-finder-box-tabs']/a)[2]")
     public WebElement addMentionEmployees;
     @FindBy(css = "[class='bx-finder-company-department-employee-name']")
@@ -34,13 +43,31 @@ public class TasksPage_Scrum889 {
     }
     @FindBy(css="[class='bx-calendar-cell']")
     public List<WebElement> calendarWeekDays;
-    public WebElement addTaskDayCalendar(String taskDay){
+    public WebElement addTaskDayCalendar(){
+        Calendar calendar = Calendar.getInstance();
+        DateFormat dateFormat = new SimpleDateFormat("dd");
+        String today = dateFormat.format(calendar.getTime()); //Today date
+        calendar.add(Calendar.DATE, 1); //one day later
+        String tomorrow = dateFormat.format(calendar.getTime());
         WebElement expectedDay=null;
         for (WebElement day : calendarWeekDays){
-            if (day.getText().equalsIgnoreCase(taskDay))
+            if (day.getText().equalsIgnoreCase(tomorrow))
                 expectedDay=day;
         }
         return expectedDay;
+    }
+    @FindBy(xpath = "(//input[@class='bx-calendar-form-input'])[1]")
+    public WebElement timeHours;
+    public int addTaskHours(){
+        int hour = LocalTime.now().getHour();
+        hour = (hour >= 12) ? hour -= 12 : hour;
+        return hour;
+    }
+    @FindBy(xpath = "(//input[@class='bx-calendar-form-input'])[2]")
+    public WebElement timeMinutes;
+    public int addTaskMinutes(){
+        int minute = LocalTime.now().getMinute();
+        return minute;
     }
     @FindBy(xpath = "(//span[@class='task-options-inp-container task-options-date t-empty'])[1]")
     public WebElement deadline;
@@ -48,15 +75,10 @@ public class TasksPage_Scrum889 {
     public WebElement iframeNewTask;
     @FindBy(xpath = "(//span[@class='bx-calendar-button-text'])[1]")
     public WebElement calendar;
-
-    @FindBy(xpath = "(//input[@class='bx-calendar-form-input'])[1]")
-    public WebElement timeHours;
-
-    @FindBy(xpath = "(//input[@class='bx-calendar-form-input'])[2]")
-    public WebElement timeMinutes;
-
     @FindBy(xpath = "(((//tr[@class='main-grid-row main-grid-row-body'])//td)[3]/span/a)")
     public WebElement newTask;
+    @FindBy(xpath = "(((//tr[@class='main-grid-row main-grid-row-body'])[2]//td)[3]/span/a)")
+    public WebElement lastSecondTask;
 
     @FindBy(xpath = "//div[@class='task-additional-alt-more']")
     public WebElement moreButton;
@@ -140,7 +162,8 @@ public class TasksPage_Scrum889 {
     public WebElement lastCreated;
 
     ////////////////////////////
-    @FindBy(xpath = "//*[@id=\"TASKS_GRID_ROLE_ID_4096_0_ADVANCED_N_table\"]/tbody/tr[6]/td[1]/span")
+   // @FindBy(xpath = "//*[@id=\"TASKS_GRID_ROLE_ID_4096_0_ADVANCED_N_table\"]/tbody/tr[6]/td[1]/span")
+    @FindBy(xpath = "((//tr[@class='main-grid-row main-grid-row-body'])//td)[1]/span/input")
     public WebElement checkboxForDelete;
 
     @FindBy(xpath = "(//span[@class='main-grid-panel-content-title'])[1]")
@@ -202,5 +225,14 @@ public class TasksPage_Scrum889 {
     @FindBy(xpath = "(//a[@class='js-id-tdp-mem-sel-is-open-form task-form-field-link'])[1]")
     public WebElement responsibleChange;
 
+    @FindBy(xpath = "//*[@id=\"bx-component-scope-bitrix_tasks_task_default_1-responsible\"]/span[2]/a")
+    public WebElement moreResponsible;
+
+    @FindBy(id="bx-component-scope-bitrix_tasks_task_default_1-responsible")
+    public WebElement moreResponsibleBox;
+
+    //@FindBy(xpath = "//*[@id=\"tasks-content-outer\"]/div[2]/div[1]/text()")
+    @FindBy(xpath="//div[@class='task-message-label error']")
+    public WebElement errorMessage;
 
 }
