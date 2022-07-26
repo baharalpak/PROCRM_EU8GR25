@@ -1,8 +1,10 @@
 package com.procrm.step_definitions;
 
 import com.github.javafaker.App;
+import com.github.javafaker.Faker;
 import com.procrm.pages.AppreciationPage;
 import com.procrm.utilities.BrowserUtilities;
+import com.procrm.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -10,6 +12,8 @@ import org.junit.Assert;
 public class Appreciation_StepDefinitions {
 
     AppreciationPage AppreciationPage = new AppreciationPage();
+    Faker faker = new Faker();
+    String harryPotterQuoter;
 
     @When("User clicks on appreciation tab")
     public void user_clicks_on_appreciation_tab() {
@@ -33,8 +37,8 @@ public class Appreciation_StepDefinitions {
     public void the_file_and_the_picture_should_be_uploaded_successfully() {
 
         Assert.assertTrue(AppreciationPage.isFilesAndImagesUploaded(2));
-       // Assert.assertTrue(AppreciationPage.isFileNameMatching());
-       // Assert.assertTrue(AppreciationPage.isPictureNameMatching());
+        // Assert.assertTrue(AppreciationPage.isFileNameMatching());
+        // Assert.assertTrue(AppreciationPage.isPictureNameMatching());
     }
 
     @When("User adds users from Employees and Departments contact lists")
@@ -48,6 +52,7 @@ public class Appreciation_StepDefinitions {
 
 
     }
+
     @Then("users should be added successfully")
     public void users_should_be_added_successfully() {
         Assert.assertTrue(AppreciationPage.email2.isDisplayed());
@@ -58,11 +63,12 @@ public class Appreciation_StepDefinitions {
     public void user_adds_a_text_and_the_url_address_of_the_link() {
         AppreciationPage.addLinkAndText();
     }
+
     @Then("link should be attached successfully")
     public void link_should_be_attached_successfully() {
 
-        Assert.assertEquals("The title of the linked website",AppreciationPage.messageBox.getText());
-        Assert.assertEquals("www.youtube.com",AppreciationPage.messageBox.getAttribute("href"));
+        Assert.assertEquals("The title of the linked website", AppreciationPage.messageBox.getText());
+        Assert.assertEquals("www.youtube.com", AppreciationPage.messageBox.getAttribute("href"));
 
     }
 
@@ -71,6 +77,7 @@ public class Appreciation_StepDefinitions {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
+
     @Then("videos should be inserted successfully")
     public void videos_should_be_inserted_successfully() {
         // Write code here that turns the phrase above into concrete actions
@@ -80,17 +87,36 @@ public class Appreciation_StepDefinitions {
     @When("User creates a quote")
     public void user_creates_a_quote() {
         AppreciationPage.quoteIcon.click();
-        BrowserUtilities.sleep(2);
-        AppreciationPage.quotationBox.sendKeys("When life gives you lemons, make lemonade.");
-        BrowserUtilities.sleep(2);
-        AppreciationPage.messageBox.click();
+        BrowserUtilities.sleep(1);
+        Driver.getDriver().switchTo().frame(AppreciationPage.quotationIframe);
+        AppreciationPage.quotationBox.clear();
+        BrowserUtilities.sleep(1);
+        harryPotterQuoter = faker.harryPotter().quote();
+        AppreciationPage.quotationBox.sendKeys(harryPotterQuoter);
+        BrowserUtilities.sleep(1);
+        Driver.getDriver().switchTo().parentFrame();
+        AppreciationPage.sendButton.click();
 
     }
+
     @Then("quotes should be created successfully")
     public void quotes_should_be_created_successfully() {
-        Assert.assertEquals("When life gives you lemons, make lemonade.",AppreciationPage.quotationBox.getText());
+        Assert.assertEquals("expected: "+harryPotterQuoter+" but actual: "+AppreciationPage.getTopQuotationText(), harryPotterQuoter, AppreciationPage.topQuotation.getText());
+
     }
 
+    @When("User adds mention")
+    public void user_adds_mention() {
+        AppreciationPage.addingMention();
+
+
+    }
+
+    @Then("mentions should be created successfully")
+    public void mentions_should_be_created_successfully() {
+
+        Assert.assertTrue(AppreciationPage.email1.isDisplayed());
+    }
 
 
 }
