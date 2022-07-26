@@ -121,15 +121,15 @@ Feature: SCRUM-897
       | marketing |
       | helpdesk  |
 
-  @SCRUM-916
+  @SCRUM-916 @wipBahar @DONE
   Scenario Outline: User should be able to attach link by clicking on the link icon.
     Given "<user>" user is on homepage
     When User clicks Message button.
     And User clicks Link icon.
-    And User attach "THE LINK" to Link URL Box.
+    And User attach the link to Link URL Box.
     And User clicks Save button.
     And User clicks Send button.
-    Then Verify that user can attach link.
+    Then Verify that user can "attach link".
 
     Examples:
       | user      |

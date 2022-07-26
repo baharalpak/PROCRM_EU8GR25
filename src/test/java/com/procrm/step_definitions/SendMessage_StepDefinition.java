@@ -114,5 +114,15 @@ public class SendMessage_StepDefinition {
     public void userClicksOnAddMoreLink() {
         sendMessagePage.addMoreLink.click();
     }
+
+    @And("User clicks Link icon.")
+    public void userClicksLinkIcon() {
+        sendMessagePage.linkIcon.click();
+    }
+
+    @And("User attach the link to Link URL Box.")
+    public void userAttachToLinkURLBox() {
+        sendMessagePage.linkInsertBox.sendKeys(faker.letterify("www.?????.com"));
+    }
 }
 
