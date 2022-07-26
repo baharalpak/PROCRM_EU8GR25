@@ -1,18 +1,24 @@
 package com.procrm.pages;
 
 import com.procrm.utilities.Driver;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CalendarTasksEvents {
-    public CalendarTasksEvents() {
+public class CalendarTasksEventsPage {
+    public CalendarTasksEventsPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
     @FindBy(name = "name")
-    public WebElement eventDescription;
+    public WebElement eventName;
+
+    //@FindBy(css = "div[class*='calendar-field-container-textarea']")
+    @FindBy(xpath = "//body[@style='min-height: 104px;']")
+    public WebElement description;
+
+    @FindBy(xpath = "//*[@class='bx-editor-iframe']")
+    public WebElement iframe;
 
     @FindBy(name = "importance")
     public WebElement importanceCheckBox;
@@ -59,20 +65,33 @@ public class CalendarTasksEvents {
     @FindBy(xpath = "//*[@class='calendar-additional-block']")
     public WebElement more;
 
+    @FindBy(xpath = "//div[contains(text(),\"More\")]")
+    //@FindBy(xpath="//div[@class='calendar-additional-alt-more']")
+    public WebElement moreButton;
+
+    @FindBy(xpath = "//span[@class='calendar-field-colorpicker-color-item-more-link']")
+    public WebElement otherColorSelect;
+
+    @FindBy(xpath = "(//span[@class='calendar-additional-alt-promo-text'])[3]")
+    public WebElement moreEventColor;
+
     @FindBy(xpath = "//ul[@class='calendar-field-colorpicker']/li[@style='background-color: rgb(248, 115, 150);']")
     public WebElement pinkColour;
 
-   // @FindBy(linkText = "(Cmd+Enter)")
+    //@FindBy(linkText = "(Cmd+Enter)")
     //public WebElement saveButton;
 
-    //@FindBy(xpath= "(//div[@class='calendar-form-footer-container']/button)[1]")
-    //public WebElement saveButton;
-
-    @FindBy( css = "[id*='save_cmd']")
+    @FindBy(xpath = "(//div[@class='calendar-form-footer-container']/button)[1]")
     public WebElement saveButton;
 
-    @FindBy(className = "calendar-field-colorpicker-color-item-more-link")
-    public WebElement moreEventColor;
+    //@FindBy( css = "[id*='save_cmd']")
+    //public WebElement saveButton;
+
+    //@FindBy(className = "calendar-field-colorpicker-color-item-more-link")
+    //@FindBy(xpath = "//ul[@class='calendar-field-colorpicker']/li[@class='calendar-field-colorpicker-color-item-more-link']")
+
+   // @FindBy(className = "calendar-field-colorpicker-color-item-more-link")
+   // public WebElement otherEventColor;
 
     @FindBy(className = "main-color-picker-custom-action")
     public WebElement customColor;
@@ -80,7 +99,23 @@ public class CalendarTasksEvents {
     @FindBy(className = "main-color-picker-custom-textbox")
     public WebElement colorValueBox;
 
-    @FindBy (xpath = "//*[@class='calendar-field calendar-field-select' and @name='accessibility']")
+    @FindBy(xpath = "//*[@class='calendar-field calendar-field-select' and @name='accessibility']")
     public WebElement selectAvailability;
 
+    @FindBy(xpath = "(//input[@tabindex='1'])[1]")
+    public WebElement filterAndSearch;
+////*[@id="calendar-filter-personal_search"]
+
+    @FindBy(name = "private_event")
+    public WebElement privacyCheckBox;
+
+    @FindBy(xpath = "(//*[@class='calendar-right-block-event-info-btn'])[2]")
+    public WebElement editButton;
+
+    @FindBy(xpath = "(//div[@class='calendar-timeline-stream-section']/div/div/div)[2]/span[2]")
+    public WebElement searchedEvent;
+
 }
+
+
+
