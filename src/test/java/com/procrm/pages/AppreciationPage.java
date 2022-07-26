@@ -2,11 +2,15 @@ package com.procrm.pages;
 
 import com.procrm.utilities.BrowserUtilities;
 import com.procrm.utilities.Driver;
+import org.apache.commons.collections.functors.ExceptionPredicate;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AppreciationPage {
 
@@ -16,6 +20,7 @@ public class AppreciationPage {
     }
 
     String fileName;
+    //WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
 
     //WEBELEMENTS
     @FindBy(className = "feed-add-post-form-link-text")
@@ -30,7 +35,7 @@ public class AppreciationPage {
     @FindBy(name = "bxu_files[]")
     public WebElement uploadFilesAndImagesButton;
 
-    @FindBy(id = "blog-submit-button-save")
+    @FindBy(xpath = "(//button[@class='ui-btn ui-btn-lg ui-btn-primary'])[1]")
     public WebElement sendButton;
 
     @FindBy(xpath = "//a[text()='My Drive / Uploaded files']")
@@ -39,13 +44,13 @@ public class AppreciationPage {
     @FindBy(xpath = "//*[@id=\"bx-destination-tag\"]")
     public WebElement addUsersButton;
 
-    @FindBy (xpath = "//*[contains(@id, 'destDepartmentTab_destination')]")
+    @FindBy(xpath = "//*[contains(@id, 'destDepartmentTab_destination')]")
     public WebElement employeesAndDepartmentsButton;
 
-    @FindBy(xpath = "//*[@id=\"bx-lm-category-relation-129\"]/a[2]/div[1]/div[1]")
+    @FindBy(xpath = "//a[@href='#U693']")
     public WebElement email1;
 
-    @FindBy(xpath = "//*[@id=\"bx-lm-category-relation-129\"]/a[3]/div[1]/div[1]")
+    @FindBy(xpath = "//a[@href='#U512']")
     public WebElement email2;
 
     @FindBy(xpath = "//span[@title='Link']")
@@ -66,12 +71,23 @@ public class AppreciationPage {
     @FindBy(xpath = "//body[@class='vsc-initialized']")
     public WebElement messageBox;
 
-    @FindBy(xpath = "//*[@title='Quote text']")
+    @FindBy(xpath = "//span[@class='bxhtmled-top-bar-btn bxhtmled-button-quote']")
     public WebElement quoteIcon;
 
-    @FindBy (xpath = "//*[@class='bxhtmled-quote']")
+    @FindBy(xpath = "//iframe[@class='bx-editor-iframe']")
+    public WebElement quotationIframe;
+
+    @FindBy(xpath = "//blockquote[@class='bxhtmled-quote']")
     public WebElement quotationBox;
 
+    @FindBy(id = "bx-b-mention-blogPostForm")
+    public WebElement mentionIcon;
+
+    @FindBy(xpath = "//*[contains(@id, 'destDepartmentTab_mention')]")
+    public WebElement employeesAndDepartmentsButtonForAddingMentions;
+
+    @FindBy(xpath = "(//table[@class='blogquote'])[1]//td")
+    public WebElement topQuotation;
 
 
     //METHODS
@@ -90,7 +106,7 @@ public class AppreciationPage {
         // sendButton.click();
     }
 
-    public void addLinkAndText(){
+    public void addLinkAndText() {
         linkIcon.click();
         BrowserUtilities.sleep(2);
         String linkTextWritten = "The title of the linked website";
@@ -113,6 +129,15 @@ public class AppreciationPage {
         return flag;
     }
 
+    public void addingMention() {
+        mentionIcon.click();
+        employeesAndDepartmentsButtonForAddingMentions.click();
+        BrowserUtilities.sleep(2);
+        email1.click();
+        BrowserUtilities.sleep(2);
+
+    }
+
     public boolean isFileNameMatching() {
 
         return uploadedFiles.getAttribute("title").contains("file")
@@ -124,5 +149,19 @@ public class AppreciationPage {
         return uploadedFiles.getAttribute("alt").contains("image")
                 && uploadedFiles.getAttribute("alt").contains(".jpg");
 
+    }
+    //method for the quotation scenario
+    public String getTopQuotationText() {
+        try
+        {
+            //wait.until(ExpectedConditions.elementToBeClickable(topQuotation));
+            BrowserUtilities.waitForClickablility(topQuotation, 10);
+            return topQuotation.getText();
+        }
+        catch (StaleElementReferenceException e)
+        {
+            Driver.getDriver().navigate().refresh();
+            return topQuotation.getText();
+        }
     }
 }
