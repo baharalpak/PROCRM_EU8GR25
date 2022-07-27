@@ -1,23 +1,22 @@
 Feature: Task Feature SCRUM_889
   As a user, I should be able to use "Tasks" functionality so that user can create, change, delete and track the tasks either on Activity Stream or Tasks page.
-
-  Scenario: HR User can create a high priority task in duration of the certain deadline by mentioning about a user.
+#finish
+  Scenario: Verify that HR User can create a high priority task in duration of the certain deadline by mentioning about a user.
     Given "HR" user is on Home Page.
     And User clicks on Tasks module.
     When User clicks "New Task" button.
     And Fills "task" details
       | priority | High Priority                  |
-      | title    | Test Case 5                    |
+      | title    | Acceptance Criteria            |
       | body     | Daily Stand-up: 19.00CEST      |
       | deadline | Tomorrows Date                 |
       | mention  | marketing73@cybertekschool.com |
     And User clicks "Add Task" button.
     Then User should be able to display new task created on My Tasks Page
 
-
-  Scenario Outline: HR User can edit the task for adding time tracking.
-  HR User can edit the task for adding reminder to e-mail.
-  HR User can add dependent tasks by editing the already created task.
+#finish
+  @Scrum889
+  Scenario Outline: Verify that HR User can edit the task for adding time tracking,reminder to e-mail and add dependent tasks.
     Given "HR" user is on Home Page.
     And User clicks on Tasks module.
     When "HR" user clicks on the last created task.
@@ -27,16 +26,15 @@ Feature: Task Feature SCRUM_889
     * Edit task dependant as "<dependant>"
     * Edit task hours "<hours>"
     * Edit task minutes "<minutes>"
-    * User clicks "Sava Changes" button
+    * User clicks "Save Changes" button
     * User clicks "Close" button.
     Then User should be able to see edited task.
     Examples:
       | responsible              | reminder                | dependant   | hours | minutes |
       | alper@cybertekschool.com | One day before deadline | Test Case 5 | 2     | 30      |
 
-
-  Scenario:Marketing User can add participants and observers to already created task by editing.
-  Marketing User can add checklist to an already created task by editing.
+#finish
+  Scenario: Verify that Marketing User can add participants, observers and add checklist to already created task by editing.
     Given "Marketing" user is on Home Page.
     And User clicks on Tasks module.
     When "Marketing" user clicks on the last created task
@@ -47,19 +45,21 @@ Feature: Task Feature SCRUM_889
       | checklist1  | TEST1                         |
       | checklist2  | TEST2                         |
       | checklist3  | TEST3                         |
-    * User clicks "Sava Changes" button
+    * User clicks "Save Changes" button
     * User clicks "Close" button.
     Then User should be able to see edited task.
 
-  Scenario: HR User can add one more responsible person by editing created task.
+  Scenario: Verify that HR User can add one more responsible person by editing created task.
     Given "HR" user is on Home Page.
     And User clicks on Tasks module.
     When "HR" user clicks on the last created task.
     And User clicks "Edit" button.
-    And User clicks responsible person button and add one more responsible person
+    * User clicks responsible person button and add one more responsible person
+    * User clicks "Save Changes" button
+    * User clicks "Close" button.
     Then User should be able to add more responsible people.
-  @Scrum889
-  Scenario: Marketing User can create a subtask of the first acceptance criteria's task quickly by using plus button, adding tags.
+    #finish
+  Scenario: Verify that Marketing User can create a subtask of the first acceptance criteria's task quickly by using plus button, adding tags.
     Given "Marketing" user is on Home Page.
     And User clicks plus button on Tasks module.
     * Fills "task" details
@@ -70,10 +70,8 @@ Feature: Task Feature SCRUM_889
     * User add "Subtask"
     * User clicks "Add Task" button.
     Then User should be able to see new task created.
-
-
-  Scenario:HR User can create new task template for high priority task, for him/herself, by mentioning about Marketing User, specifying the deadline, using the Options under 'Deadline in' section.
-  HR User can be redirected to "New task template" page by clicking 'All templates' under "TASK TEMPLATES" menu on "New task" module.
+#finish
+  Scenario: Verify that HR User can create new task template for high priority task, for him/herself, by mentioning about Marketing User, specifying the deadline, using the Options under 'Deadline in' section and redirected to "New task template" page by clicking 'All templates' under "TASK TEMPLATES" menu on "New task" module.
     Given "HR" user is on Home Page.
     And User clicks on Tasks module.
     When User clicks "New Task Template" button under "New Task"
@@ -89,8 +87,8 @@ Feature: Task Feature SCRUM_889
     * User clicks "New Task Template" button under "New Task"
     Then User should be able to redirected to "Task templates" page
 
-
-  Scenario: HR User can delete task by using "SELECT ACTION" dropdown menu after checking the task.
+#finish
+  Scenario: Verify that HR User can delete task by using "SELECT ACTION" dropdown menu after checking the task.
     Given "HR" user is on Home Page.
     And User clicks on Tasks module.
     When User select last created task
@@ -98,10 +96,52 @@ Feature: Task Feature SCRUM_889
     And User clicks "APPLY" button and "Continue" button
     Then User should be able to delete task.
 
-  Scenario: Marketing User can edit the task by declaring himself/herself as responsible person
+
+  Scenario: Verify that Marketing User can edit the task by declaring himself/herself as responsible person
     Given "Marketing" user is on Home Page.
     And User clicks on Tasks module.
     When "Marketing" user clicks on the last created task
     And User clicks "Edit" button.
-    And User clicks responsible person button and add declare himself/herself "marketing73@cybertekschool.com"
-    Then User should be able to declare himself/herself as responsible person
+    And User declare himself herself "marketing73@cybertekschool.com"
+    Then User should be able to declare himself herself as responsible person
+
+  Scenario Outline: Verify that user can not create a new task without not fill in Task Name
+    Given "HR" user is on Home Page.
+    And User clicks on Tasks module.
+    When User clicks "New Task" button.
+    And User clicks "<priority>"
+    * User types body as "<body>"
+    * User types deadline as "<deadline>"
+    * User mention as "<mention>"
+    * User clicks "Add Task" button.
+    Then User should see error message "The task name is not specified."
+
+    Examples:
+      | body                      | priority      | deadline       | mention                 |
+      | Daily Stand-up: 19.00CEST | High Priority | Tomorrows Date | hr12@cybertekschool.com |
+
+  Scenario Outline: Verify that user can not create a new task without deadline
+    Given "HR" user is on Home Page.
+    And User clicks on Tasks module.
+    When User clicks "New Task" button.
+    And User clicks "<priority>"
+    * User types title as "<title>"
+    * User mention as "<mention>"
+    * User clicks "Add Task" button.
+    Then User can not create new task  without deadline
+    Examples:
+      | priority      | title          | mention                 |
+      | High Priority | Daily Stand-up | hr12@cybertekschool.com |
+
+  Scenario: Verify that the user cannot create two identical tasks
+    Given "HR" user is on Home Page.
+    And User clicks on Tasks module.
+    When User clicks "New Task" button.
+    And Fills "task" details
+      | priority | High Priority                  |
+      | title    | Acceptance Criteria            |
+      | body     | Daily Stand-up: 19.00CEST      |
+      | deadline | Tomorrows Date                 |
+      | mention  | marketing73@cybertekschool.com |
+    And User clicks "Add Task" button.
+    Then User can not create same task
