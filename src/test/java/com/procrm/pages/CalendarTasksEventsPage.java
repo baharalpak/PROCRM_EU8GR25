@@ -51,6 +51,11 @@ public class CalendarTasksEventsPage {
     @FindBy(name = "lo_cation")
     public WebElement locationDropdown;
 
+    @FindBy(xpath = "(//*[@class='main-ui-filter-sidebar-item-text'])[3]")
+    public WebElement IamOrganizer;
+
+    @FindBy(xpath = "(//*[@class='main-ui-filter-sidebar-item-text'])[1]")
+    public WebElement invitations;
     @FindBy(className = "feed-event-del-but")
     public WebElement attendeesDelButton;
 
@@ -66,7 +71,7 @@ public class CalendarTasksEventsPage {
     @FindBy(xpath = "//*[@class='calendar-additional-block']")
     public WebElement more;
 
-    @FindBy(xpath = "//div[contains(text(),\"More\")]")
+    @FindBy(xpath = "//div[contains(text(),'More')]")
     //@FindBy(xpath="//div[@class='calendar-additional-alt-more']")
     public WebElement moreButton;
 
@@ -113,9 +118,20 @@ public class CalendarTasksEventsPage {
     @FindBy(xpath = "(//*[@class='calendar-right-block-event-info-btn'])[2]")
     public WebElement editButton;
 
+    @FindBy(xpath = "(//*[@class='calendar-slider-view-buttonset-inner'])")
+    public WebElement edit;
+
     @FindBy(xpath = "(//div[@class='calendar-timeline-stream-section']/div/div/div)[2]/span[2]")
     public WebElement searchedEvent;
 
+    @FindBy(className = "calendar-counter-inner")
+    public WebElement invitationsCounter;
 
+    @FindBy(className = "main-ui-control main-ui-select")
+    public WebElement eventWithParticipants;
 
+    @FindBy(className = "//*[@id=\"popup-window-content-calendar-filter-personal_search_container\"]/div/div/div[3]/div[2]/div/button")
+    public WebElement eventWithParticipantsSearch;
+    @FindBy(className = "calendar-search-cancel")
+    public WebElement reset;
 }
