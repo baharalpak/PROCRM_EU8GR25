@@ -41,8 +41,8 @@ public class AppreciationPage {
     @FindBy(xpath = "//a[text()='My Drive / Uploaded files']")
     public WebElement uploadedFiles;
 
-    @FindBy(xpath = "//*[@id=\"bx-destination-tag\"]")
-    public WebElement addUsersButton;
+    @FindBy(xpath = "//a[@id='bx-destination-tag']")
+    public WebElement addMoreButton;
 
     @FindBy(xpath = "//*[contains(@id, 'destDepartmentTab_destination')]")
     public WebElement employeesAndDepartmentsButton;
@@ -88,6 +88,13 @@ public class AppreciationPage {
 
     @FindBy(xpath = "(//table[@class='blogquote'])[1]//td")
     public WebElement topQuotation;
+
+    @FindBy(xpath = "//div[@class='feed-add-post-destination-wrap']")
+    public WebElement contactsBox;
+
+    @FindBy(xpath = "//span[@class='feed-add-post-del-but']")
+    public WebElement excludingAllEmployees;
+
 
 
     //METHODS

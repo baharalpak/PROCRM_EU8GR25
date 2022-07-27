@@ -2,7 +2,7 @@
 Feature: Appreciation Feature
   As a user, I should be able to send appreciation by clicking on Appreciation subheading from "More" tab under Activity Stream
 
-
+  @DONE
   Scenario Outline: User uploads files and pictures from local disks
     Given "<user>" user is on homepage
     When User clicks on appreciation tab
@@ -14,11 +14,17 @@ Feature: Appreciation Feature
       | marketing |
       | helpdesk  |
 
-
+  @mustafa
   Scenario Outline: User adds multiple contacts from Employees and Departments contact lists
     Given "<user>" user is on homepage
     When User clicks on appreciation tab
-    And User adds users from Employees and Departments contact lists
+    And User adds below emails from Employees and Departments contact lists
+      | helpdesk19@cybertekschool.com  |
+      | marketing37@cybertekschool.com |
+      | hr83@cybertekschool.com        |
+      | helpdesk31@cybertekschool.com  |
+      | marketing59@cybertekschool.com |
+      | Test1                          |
     Then users should be added successfully
     Examples:
       | user      |
@@ -38,7 +44,7 @@ Feature: Appreciation Feature
       | marketing |
       | helpdesk  |
 
-
+  @BUG
   Scenario Outline: User inserts videos by entering the video URL
     Given "<user>" user is on homepage
     When User clicks on appreciation tab
@@ -50,7 +56,7 @@ Feature: Appreciation Feature
       | marketing |
       | helpdesk  |
 
-  @mustafa
+  @DONE
   Scenario Outline:  User creates a quote by clicking on the Comma icon
     Given "<user>" user is on homepage
     When User clicks on appreciation tab
