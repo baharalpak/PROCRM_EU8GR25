@@ -88,14 +88,14 @@ public class SendMessage_StepDefinition {
         sendMessagePage.addMentionIcon.click();
     }
 
-    @And("User adds mentions.")
-    public void userAddsMentions() {
-        sendMessagePage.mention2Text.click();
-        sendMessagePage.mention3Text.click();
-        sendMessagePage.mention4Text.click();
-        sendMessagePage.mention5Text.click();
-        sendMessagePage.closeButton.click();
-    }
+//    @And("User adds mentions.")
+//    public void userAddsMentions() {
+//        sendMessagePage.mention2Text.click();
+//        sendMessagePage.mention3Text.click();
+//        sendMessagePage.mention4Text.click();
+//        sendMessagePage.mention5Text.click();
+//        sendMessagePage.closeButton.click();
+//    }
 
     @And("User clicks Employees and Departments.")
     public void userClicksEmployeesAndDepartments() {
@@ -170,6 +170,16 @@ public class SendMessage_StepDefinition {
     @Then("Verify that users are added.")
     public void verifyThatUsersAreAdded() {
 
+    }
+
+    @And("User adds mentions below.")
+    public void userAddsMentionsBelow(DataTable dataTable) {
+
+        List<String> mentions = dataTable.asList();
+
+        for (String eachMention : mentions) {
+            sendMessagePage.addEmployeeContainer.sendKeys(eachMention + Keys.ENTER);
+        }
     }
 }
 
