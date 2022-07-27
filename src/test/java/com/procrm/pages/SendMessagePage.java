@@ -27,6 +27,12 @@ public class SendMessagePage {
     @FindBy(xpath = "//span[@class='bxhtmled-top-bar-btn bxhtmled-button-video']")
     public WebElement insertVideoIcon;
 
+    @FindBy(xpath = "//span[@class='bxhtmled-top-bar-btn bxhtmled-button-link']")
+    public WebElement linkIcon;
+
+    @FindBy(xpath = "//input[@placeholder='Link URL']")
+    public WebElement linkInsertBox;
+
     @FindBy(xpath = "//input[@placeholder='YouTube or Vimeo video URL']")
     public WebElement videoSourceBox;
 
@@ -77,6 +83,12 @@ public class SendMessagePage {
 
     @FindBy(xpath = "//span[.='The message title is not specified']")
     public WebElement mandatoryMessageTitleError;
+
+    @FindBy(xpath = "(//span[@data-id])[2]")
+    public WebElement secondAddedEmployee;
+
+    @FindBy(xpath = "(//input[@type='text'])[5]")
+    public WebElement addEmployeeContainer;
 
 
 }

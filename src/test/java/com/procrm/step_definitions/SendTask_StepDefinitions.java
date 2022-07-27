@@ -1,7 +1,7 @@
 package com.procrm.step_definitions;
 
 import com.procrm.pages.BasePage;
-import com.procrm.pages.TasksPage;
+import com.procrm.pages.sendTaskPage;
 import com.procrm.utilities.BrowserUtilities;
 import com.procrm.utilities.Driver;
 import io.cucumber.java.en.And;
@@ -10,14 +10,14 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
-public class Tasks_StepDefinitions {
+public class SendTask_StepDefinitions {
 
-    TasksPage tasksPage = new TasksPage();
+    sendTaskPage sendTaskPage = new sendTaskPage();
 
     @When("User clicks on Tasks module.")
     public void user_clicks_on_tasks_module() {
 
-        tasksPage.tasksModuleButton.click();
+        sendTaskPage.tasksModuleButton.click();
     }
 
     @Given("{string} user is on Home Page.")
@@ -39,13 +39,13 @@ public class Tasks_StepDefinitions {
     @Then("User should be able to display All Tasks.")
     public void user_should_be_able_to_display() {
 
-        Assert.assertTrue(tasksPage.inProgressBox.isDisplayed());
+        Assert.assertTrue(sendTaskPage.inProgressBox.isDisplayed());
     }
 
     @Then("User should be able to see Ongoing Tasks.")
     public void userShouldBeAbleToSeeOngoingTasks() {
 
-        Assert.assertTrue(tasksPage.ongoingBox.isDisplayed());
+        Assert.assertTrue(sendTaskPage.ongoingBox.isDisplayed());
     }
 
     @And("User clicks {string} button.")
@@ -53,32 +53,32 @@ public class Tasks_StepDefinitions {
 
         switch (buttonType.toLowerCase()){
             case "all":
-                tasksPage.allTabButton.click();
+                sendTaskPage.allTabButton.click();
                 break;
             case "ongoing":
-                tasksPage.ongoingButton.click();
+                sendTaskPage.ongoingButton.click();
                 break;
             case "new task":
-                tasksPage.newTaskButton.click();
+                sendTaskPage.newTaskButton.click();
                 break;
             case "add task":
-                tasksPage.addTaskButton.click();
+                sendTaskPage.addTaskButton.click();
                 Driver.getDriver().switchTo().parentFrame();
                 break;
             case "edit":
 
                 BrowserUtilities.sleep(2);
-                Driver.getDriver().switchTo().frame(tasksPage.iframeNewTask);
+                Driver.getDriver().switchTo().frame(sendTaskPage.iframeNewTask);
 
                 BrowserUtilities.sleep(4);
-                tasksPage.editTaskButton.click();
+                sendTaskPage.editTaskButton.click();
                 break;
             case "save changes":
-                tasksPage.saveChangesButton.click();
+                sendTaskPage.saveChangesButton.click();
                 Driver.getDriver().switchTo().parentFrame();
                 break;
             case "close":
-                tasksPage.closeButton.click();
+                sendTaskPage.closeButton.click();
                 break;
         }
         BrowserUtilities.sleep(3);
@@ -87,9 +87,9 @@ public class Tasks_StepDefinitions {
     @And("User fills in Task Name which is mandatory field with {string}.")
     public void userFillsInTaskNameWhichIsMandatoryFieldWith(String text) {
 
-        Driver.getDriver().switchTo().frame(tasksPage.iframeNewTask);
+        Driver.getDriver().switchTo().frame(sendTaskPage.iframeNewTask);
 
-        tasksPage.taskNameField.sendKeys(text);
+        sendTaskPage.taskNameField.sendKeys(text);
     }
 
     @Then("{string} user should be able to display new task created on My Tasks Page.")
@@ -99,7 +99,7 @@ public class Tasks_StepDefinitions {
 
             BrowserUtilities.sleep(3);
 
-            Assert.assertEquals("Task has been created", tasksPage.popupNewTask.getText());
+            Assert.assertEquals("Task has been created", sendTaskPage.popupNewTask.getText());
 
         }
     }
@@ -108,7 +108,7 @@ public class Tasks_StepDefinitions {
     public void userCANNOTBEABLETODisplayNewTaskCreated(String userType) {
 
         if (userType.equalsIgnoreCase("marketing") || userType.equalsIgnoreCase("helpdesk")){
-            Assert.assertFalse(tasksPage.popupNewTask.isDisplayed());
+            Assert.assertFalse(sendTaskPage.popupNewTask.isDisplayed());
         }
     }
 
@@ -117,7 +117,7 @@ public class Tasks_StepDefinitions {
 
         if (userType.equalsIgnoreCase("hr")){
 
-            tasksPage.newTask.click();
+            sendTaskPage.newTask.click();
         }
     }
 
@@ -128,21 +128,21 @@ public class Tasks_StepDefinitions {
         if (userType.equalsIgnoreCase("hr")){
 
             BrowserUtilities.sleep(3);
-            tasksPage.taskNameField.click();
-            tasksPage.taskNameField.clear();
-            tasksPage.taskNameField.sendKeys(newTaskName);
-            tasksPage.saveChangesButton.click();
+            sendTaskPage.taskNameField.click();
+            sendTaskPage.taskNameField.clear();
+            sendTaskPage.taskNameField.sendKeys(newTaskName);
+            sendTaskPage.saveChangesButton.click();
             BrowserUtilities.sleep(2);
 
             Driver.getDriver().switchTo().parentFrame();
-            tasksPage.closeButton.click();
+            sendTaskPage.closeButton.click();
         }
     }
 
     @Then("HR user should be able to see {string} which is edited on My Tasks Page.")
     public void hrUserShouldBeAbleToSeeWhichIsEditedOnMyTasksPage(String editedTaskName) {
 
-        Assert.assertEquals(tasksPage.newTask.getText(), editedTaskName);
+        Assert.assertEquals(sendTaskPage.newTask.getText(), editedTaskName);
     }
 
 
@@ -151,7 +151,7 @@ public class Tasks_StepDefinitions {
 
         if (userType.equalsIgnoreCase("helpdesk") || userType.equalsIgnoreCase("marketing")){
 
-            Assert.assertTrue(tasksPage.editTaskButton.isEnabled());
+            Assert.assertTrue(sendTaskPage.editTaskButton.isEnabled());
         }
     }
 }

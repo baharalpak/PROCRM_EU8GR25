@@ -1,4 +1,4 @@
-Feature: SCRUM-575-Tasks Feature.
+Feature: SCRUM-575-Send Task Feature.
 
   # SCRUM-875: Test Execution for SCRUM-575
 
