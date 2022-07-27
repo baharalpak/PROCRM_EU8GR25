@@ -7,7 +7,7 @@ Feature: SCRUM-897
     Given "<user>" user is on homepage
     When User clicks Message button.
     And User clicks Insert video icon.
-    And User fills Video source box with "https://www.youtube.com/watch?v=H_XxH66lm3U".
+    * User fills Video source box with "https://www.youtube.com/watch?v=H_XxH66lm3U".
     Then Verify that user can add video.
 
     Examples:
@@ -21,7 +21,7 @@ Feature: SCRUM-897
     Given "<user>" user is on homepage
     When User clicks Message button.
     And User clicks Insert video icon.
-    And User fills Video source box with "https://vimeo.com/259411563".
+    * User fills Video source box with "https://vimeo.com/259411563".
     Then Verify that user can add video.
 
     Examples:
@@ -35,8 +35,8 @@ Feature: SCRUM-897
     Given "<user>" user is on homepage
     When User clicks Message button.
     And User clicks Comma icon.
-    And User fills Quote box with a quote.
-    And User clicks Send button.
+    * User fills Quote box with a quote.
+    * User clicks Send button.
     Then Verify that user can "create quote".
 
     Examples:
@@ -50,11 +50,11 @@ Feature: SCRUM-897
     Given "<user>" user is on homepage
     When User clicks Message button.
     And User clicks Add mention icon.
-    And User fills Message Title which is mandatory field with a message title.
-    And User clicks on Add more link.
-    And User clicks Employees and Departments.
-    And User adds mentions.
-    And User clicks Send button.
+    * User fills Message Title which is mandatory field with a message title.
+    * User clicks on Add more link.
+    * User clicks Employees and Departments.
+    * User adds mentions.
+    * User clicks Send button.
     Then Verify that user can "add mention".
 
     Examples:
@@ -69,7 +69,7 @@ Feature: SCRUM-897
     Given "<user>" user is on homepage
     When User clicks Message button.
     And User fills Message Title which is mandatory field with a message title.
-    And User clicks Send button.
+    * User clicks Send button.
     Then Verify that user can "send a message".
 
     Examples:
@@ -78,8 +78,8 @@ Feature: SCRUM-897
       | marketing |
       | helpdesk  |
 
-  @SCRUM-906 @negative @DONE
-  Scenario Outline: User CAN NOT send a message without filling mandatory fields.
+  @SCRUM-906  @DONE
+  Scenario Outline: User CAN NOT send a message without filling mandatory fields. (Negative)
     Given "<user>" user is on homepage
     When User clicks Message button.
     And User clicks Send button.
@@ -92,12 +92,12 @@ Feature: SCRUM-897
       | helpdesk  |
 
   @SCRUM-914
-  Scenario Outline: User should be able to click on upload files icon to upload FILES from local disks.
+  Scenario Outline: User should be able to click on upload files icon to upload FILE from local disks.
     Given "<user>" user is on homepage
     When User clicks Message button.
     And User clicks Upload Files icon.
-    And User uploads "THE FILE" to Upload files and images box.
-    And User clicks Send button.
+    * User uploads "THE FILE" to Upload files and images box.
+    * User clicks Send button.
     Then Verify that user can upload the file.
 
     Examples:
@@ -107,12 +107,12 @@ Feature: SCRUM-897
       | helpdesk  |
 
   @SCRUM-915
-  Scenario Outline: User should be able to click on upload files icon to upload PICTURES from local disks.
+  Scenario Outline: User should be able to click on upload files icon to upload PICTURE from local disks.
     Given "<user>" user is on homepage
     When User clicks Message button.
     And User clicks Upload Files icon.
-    And User uploads "THE PICTURE" to Upload files and images box.
-    And User clicks Send button.
+    * User uploads "THE PICTURE" to Upload files and images box.
+    * User clicks Send button.
     Then Verify that user can upload the picture.
 
     Examples:
@@ -121,14 +121,14 @@ Feature: SCRUM-897
       | marketing |
       | helpdesk  |
 
-  @SCRUM-916 @wipBahar @DONE
+  @SCRUM-916  @DONE
   Scenario Outline: User should be able to attach link by clicking on the link icon.
     Given "<user>" user is on homepage
     When User clicks Message button.
     And User clicks Link icon.
-    And User attach the link to Link URL Box.
-    And User clicks Save button.
-    And User clicks Send button.
+    * User attach the link to Link URL Box.
+    * User clicks Save button.
+    * User clicks Send button.
     Then Verify that user can "attach link".
 
     Examples:
@@ -137,27 +137,34 @@ Feature: SCRUM-897
       | marketing |
       | helpdesk  |
 
-  @SCRUM-917
-  Scenario Outline: User should be able to add users from selecting multiple contacts from Employees and Departments contact lists.
+  @SCRUM-917 @wipBahar
+  Scenario Outline: User should be able to add List of users from selecting multiple contacts from Employees and Departments contact lists.
     Given "<user>" user is on homepage
     When User clicks Message button.
-    And User fills Message Title which is mandatory field with "New Message".
-    And User clicks ADD MORE link on TO BOX.
-    And User clicks Employees and Departments link.
-    And User adds multiple users from selecting multiple contacts below.
+    And User fills Message Title which is mandatory field with a message title.
+    * User clicks on Add more link.
+    * User adds List of users from selecting multiple contacts below.
       | hr1@cybertekschool.com         |
       | helpdesk19@cybertekschool.com  |
       | marketing37@cybertekschool.com |
       | hr83@cybertekschool.com        |
       | helpdesk31@cybertekschool.com  |
       | marketing59@cybertekschool.com |
-      | Test1                          |
-    And User clicks Close button.
-    And User clicks Send button.
-    Then Verify that user can add users.
+    * User clicks Send button.
+    Then Verify that users are added.
 
     Examples:
       | user      |
       | hr        |
       | marketing |
       | helpdesk  |
+
+    Scenario: List of users
+      Then user should see the users
+    | hr1@cybertekschool.com         |
+    | helpdesk19@cybertekschool.com  |
+    | marketing37@cybertekschool.com |
+    | hr83@cybertekschool.com        |
+    | helpdesk31@cybertekschool.com  |
+    | marketing59@cybertekschool.com |
+    | Test1                          |

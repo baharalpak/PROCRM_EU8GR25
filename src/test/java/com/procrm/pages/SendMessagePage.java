@@ -84,5 +84,11 @@ public class SendMessagePage {
     @FindBy(xpath = "//span[.='The message title is not specified']")
     public WebElement mandatoryMessageTitleError;
 
+    @FindBy(xpath = "(//span[@data-id])[2]")
+    public WebElement secondAddedEmployee;
+
+    @FindBy(xpath = "(//input[@type='text'])[5]")
+    public WebElement addEmployeeContainer;
+
 
 }

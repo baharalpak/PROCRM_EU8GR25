@@ -1,13 +1,20 @@
 package com.procrm.step_definitions;
 
 import com.github.javafaker.Faker;
+import com.procrm.pages.BasePage;
 import com.procrm.pages.SendMessagePage;
 import com.procrm.utilities.BrowserUtilities;
 import com.procrm.utilities.Driver;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
+
+import java.security.Key;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SendMessage_StepDefinition {
 
@@ -54,6 +61,7 @@ public class SendMessage_StepDefinition {
 
     @And("User clicks Comma icon.")
     public void userClicksCommaIcon() {
+       // BrowserUtilities.waitForVisibility(sendMessagePage.commaIcon, 2);
         sendMessagePage.commaIcon.click();
         BrowserUtilities.sleep(2);
     }
@@ -92,6 +100,7 @@ public class SendMessage_StepDefinition {
     @And("User clicks Employees and Departments.")
     public void userClicksEmployeesAndDepartments() {
         sendMessagePage.employeesAndDepartments.click();
+        BrowserUtilities.sleep(3);
     }
 
     @And("User clicks more recipient link.")
@@ -123,6 +132,44 @@ public class SendMessage_StepDefinition {
     @And("User attach the link to Link URL Box.")
     public void userAttachToLinkURLBox() {
         sendMessagePage.linkInsertBox.sendKeys(faker.letterify("www.?????.com"));
+    }
+
+    @And("User clicks Close button.")
+    public void userClicksCloseButton() {
+        sendMessagePage.closeButton.click();
+    }
+
+//    @And("User adds List of users from selecting multiple contacts below.")
+//    public void userAddsListOfUsersFromSelectingMultipleContactsBelow(DataTable dataTable) {
+//
+//        List<String> users = dataTable.asList();
+//        System.out.println(dataTable);
+//
+//
+//        for (String each : users) {
+//            sendMessagePage.addEmployeeContainer.sendKeys(each);
+//        }
+//
+//    }
+
+    @Then("User adds List of users from selecting multiple contacts below.")
+    public void user_adds_list_of_users_from_selecting_multiple_contacts_below(DataTable dataTable) {
+        List<String> users = dataTable.asList();
+
+        for (String each : users) {
+            sendMessagePage.addEmployeeContainer.sendKeys(each + Keys.ENTER);
+        }
+    }
+
+
+    @Then("user should see the users")
+    public void userShouldSeeTheUsers(List<String> users) {
+        System.out.println(users);
+    }
+
+    @Then("Verify that users are added.")
+    public void verifyThatUsersAreAdded() {
+
     }
 }
 
