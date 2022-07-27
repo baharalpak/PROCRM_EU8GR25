@@ -165,6 +165,66 @@ public class functionsUnderEmployeeMenu_StepDefinitions {
 
     }
 
+    @When("user find name of receiver as {string}")
+    public void user_find_name_of_receiver_as(String receiver) {
+        functionsUnderEmployeeMenu.typesHiMessage.click();
+
+    }
+    @When("user clicks {string} button")
+    public void user_clicks_button(String string) {
+        functionsUnderEmployeeMenu.sendMessageButton.click();
+
+    }
+    @When("user types {string} and send message")
+    public void user_types_and_send_message(String message) {
+        functionsUnderEmployeeMenu.sendMessageBox.sendKeys(message +Keys.ENTER);
+
+    }
+    @Then("verify that {string} gets {string}")
+    public void verify_that_gets(String string, String string2) {
+    Assert.assertTrue(functionsUnderEmployeeMenu.cemal.isDisplayed());
+    }
+
+    @When("user clicks ADD Department button again")
+    public void user_clicks_add_department_button_again() {
+        functionsUnderEmployeeMenu.addDepartmentAgain.click();
+
+    }
+    @When("user types same department name again")
+    public void user_types_same_department_name_again() {
+        functionsUnderEmployeeMenu.addSameDepartmentName.sendKeys("Group25");
+
+    }
+    @Then("user gets an error message")
+    public void user_gets_an_error_message() {
+       // Assert.assertTrue(functionsUnderEmployeeMenu.getAnErrorMesage.isDisplayed()));
+
+    }
+
+    @When("user clicks {string} button {int} times")
+    public void user_clicks_button_times(String string, Integer int1) {
+
+    }
+    @Then("verify that {string} gets an {string}")
+    public void verify_that_gets_an(String string, String string2) {
+
+    }
+
+
+    /*
+    @When("user clicks {string}")
+    public void user_clicks(String string) {
+
+    }
+    @When("{string} login")
+    public void login(String string) {
+
+    }
+    @Then("verify that {string} gets {string}")
+    public void verify_that_gets(String string, String string2) {
+
+    }
+
 
 
 /*
