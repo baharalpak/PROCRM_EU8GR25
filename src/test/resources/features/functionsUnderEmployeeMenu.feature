@@ -1,9 +1,8 @@
 Feature: Functions Under Employee Menu
-  #As a user, I should be able to use functions under employee menu
-
-
+    #As a user, I should be able to use functions under employee menu
+  @Scrum-893
   Scenario Outline: Display company structure
-    Given "<user>" user is on homepage
+    Given "<user>" user is on homepage.
     When user clicks Employees button
     And user clicks Company Structure button
     Then user should see the Company Structure
@@ -13,22 +12,24 @@ Feature: Functions Under Employee Menu
       | hr        |
       | marketing |
       | helpdesk  |
+
   @Scrum-893
   Scenario: Add a department
-    Given "HR" user is on homepage
+    Given "HR" user is on homepage.
     When user clicks Employees button
     And user clicks Company Structure button
-    And user clicks ADD Department button
-    And user types department name
-    And user clicks add
+    * user clicks ADD Department button
+    * user types department name
+    * user clicks add
     Then user can see the name of the newly created department
 
   @Scrum-893
   Scenario Outline:Find employees by search box
-    Given "<user>" user is on homepage
-    When user clicks Find Employees
-    And user types "name of employee" in the search box
-    Then user can see "name of employee" employee info displayed
+    Given "<user>" user is on homepage.
+    When user clicks Employees button.
+    And user clicks Find Employees
+    * user types name of employee "James" in the search box
+    Then user can see name of employee "James" employee info displayed
 
     Examples:
       | user      |
@@ -36,11 +37,28 @@ Feature: Functions Under Employee Menu
       | marketing |
       | helpdesk  |
 
+  @Scrum-893
   Scenario Outline:Can not type nothing to find employees
-    When user clicks Find Employees
-    And user types nothing in the search box
-    And user click search button
-    Then user can not see any employee info displayed
+    Given "<user>" user is on homepage.
+    When user clicks Employees button.
+    And user clicks Find Employees
+    * user types wrong employee name "Jimi" in the search box
+    * user click search button
+    Then user can see this message "Your search did not match any employees."
+    Examples:
+      | user      |
+      | hr        |
+      | marketing |
+      | helpdesk  |
+
+  @Scrum-893
+  Scenario Outline:Find employees by Alphabet
+    Given "<user>" user is on homepage.
+    When user clicks Employees button.
+    And user clicks Find Employees
+    *  user clicks Search By Alphabet button
+    * user clicks the letter A
+    Then user disable to see the result of input
 
     Examples:
       | user      |
@@ -48,26 +66,13 @@ Feature: Functions Under Employee Menu
       | marketing |
       | helpdesk  |
 
-
-  Scenario Outline:Find employees by search box
-    Given "<user>" user is on homepage
-    When user click Find Employees
-    And  user clicks Search By Alphabet button
-    And user clicks the letter "letter"
-    Then user can see employee info
-
-    Examples:
-      | user      |
-      | hr        |
-      | marketing |
-      | helpdesk  |
-
-
+  @Scrum-893
   Scenario Outline:Can not type a special character to find employees
-    When user clicks Find Employees
-    And user types some "special characters" in the search box
-    And user click search button
-    Then user can not see any employee info displayed
+    Given "<user>" user is on homepage.
+    When user clicks Employees button.
+    And user clicks Find Employees
+    * user types some "?!@" in the search box
+    Then user can see this message "Your search did not match any employees."
 
     Examples:
       | user      |
@@ -75,11 +80,13 @@ Feature: Functions Under Employee Menu
       | marketing |
       | helpdesk  |
 
+  @Scrum-893
   Scenario Outline: Export the employee list
-    Given "<user>" user is on homepage
-    When user clicks Find Employees
-    And user clicks the more button
-    And user clicks Export to Excel
+    Given "<user>" user is on homepage.
+    When user clicks Employees button.
+    And user clicks Find Employees
+    * user clicks the more button
+    * user clicks Export to Excel
     Then user download the file
 
     Examples:
@@ -88,8 +95,9 @@ Feature: Functions Under Employee Menu
       | marketing |
       | helpdesk  |
 
+  @Scrum-893 @a
   Scenario Outline: Display Telephone Directory
-    Given "<user>" logs in home page
+    Given "<user>" user is on homepage.
     When user clicks Employees button
     And user clicks Telephone Directory button
     Then user should see the telephone directory
@@ -99,13 +107,17 @@ Feature: Functions Under Employee Menu
       | helpdesk  |
       | marketing |
 
+  @Scrum-893
   Scenario Outline: User send message to employee from the telephone directory
-    Given "<user>" logs in home page
-    Given there are two users in application as "<sender>" and "<receiver>"
-    When "<sender>" send "date" to "<receiver>"
-    And  "<receiver>" login
+    Given "HR" user is on homepage.
+    When user clicks Employees button
+    And user clicks Telephone Directory button
+    * user find name of receiver as"<receiver>"
+    * "<sender>" send "date" to "<receiver>"
+    *  "<receiver>" login
     Then verify that "<receiver>" gets "date"
 
     Examples:
-      | sender            | receiver     |
-      | James             | Nick Owhadi  |
+      | sender | receiver |
+      | HR     | James    |
+

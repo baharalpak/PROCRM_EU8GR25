@@ -1,8 +1,9 @@
 package com.procrm.step_definitions;
 
 import com.github.javafaker.Faker;
-import com.procrm.pages.CompanyPage;
+import com.procrm.pages.BasePage;
 import com.procrm.pages.functionsUnderEmployeeMenuPage;
+import com.procrm.utilities.BrowserUtilities;
 import com.procrm.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -12,21 +13,34 @@ import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 
-
-
 public class functionsUnderEmployeeMenu_StepDefinitions {
 
     functionsUnderEmployeeMenuPage functionsUnderEmployeeMenu = new functionsUnderEmployeeMenuPage();
-    CompanyPage companyPage = new CompanyPage();
     Actions action = new Actions(Driver.getDriver());
 
     Faker faker = new Faker();
+
+    @Given("{string} user is on homepage.")
+    public void userIsOnHomepage(String userType) {
+
+        switch (userType.toLowerCase()) {
+            case "hr":
+                BasePage.loginAsHR();
+                break;
+            case "helpdesk":
+                BasePage.loginAsHelpDesk();
+                break;
+            case "marketing":
+                BasePage.loginAsMarketing();
+                break;
+        }
+    }
 
     @When("user clicks ADD Department button")
     public void user_clicks_add_department_button() throws InterruptedException {
         functionsUnderEmployeeMenu.addDepartment.click();
         //BrowserUtilities.waitForClickablility(functionsUnderEmployeeMenu.addDepartment, 10);
-        Thread.sleep(5000);
+
 
     }
 
@@ -45,46 +59,135 @@ public class functionsUnderEmployeeMenu_StepDefinitions {
     @Then("user can see the name of the newly created department")
     public void user_can_see_the_name_of_the_newly_created_department() throws InterruptedException {
         Assert.assertTrue(functionsUnderEmployeeMenu.createdDepartmentName.isDisplayed());
-        //BrowserUtilities.waitForClickablility(functionsUnderEmployeeMenu.addDepartment, 10);
+        //BrowserUtilities.waitForClickability(functionsUnderEmployeeMenu.addDepartment, 10);
+
+
+    }
+
+   /* @When("{string} user clicks Find Employees")
+    public void userClicksFindEmployees() throws InterruptedException {
+        //functionsUnderEmployeeMenu.openLeftMenu.click();
+        /*
+        Thread.sleep(5000);
+        functionsUnderEmployeeMenu.employeesButton.click();
+        Thread.sleep(5000);
+        functionsUnderEmployeeMenu.employeesFindButton.click();
         Thread.sleep(5000);
 
-    }
+         */
 
-    @When("user clicks Find Employees")
-    public void userClicksFindEmployees() {
-        functionsUnderEmployeeMenu.employeesButton.click();
-        functionsUnderEmployeeMenu.employeesFindButton.click();
+    //}
 
-    }
 
-    @And("user types {string} in the search box")
+    @And("user types name of employee {string} in the search box")
     public void userTypesInTheSearchBox(String name) {
+
         functionsUnderEmployeeMenu.employeesSearchButton.sendKeys(name + Keys.ENTER);
 
     }
 
-    @Then("user can see {string} employee info displayed")
-    public void userCanSeeEmployeeInfoDisplayed(String arg0) {
+    @Then("user can see name of employee {string} employee info displayed")
+    public void userCanSeeEmployeeInfoDisplayed(String nameEmployee) {
+        //functionsUnderEmployeeMenu.disPlayedEmployeeName.isDisplayed();
+        String actualNameEmployee = functionsUnderEmployeeMenu.disPlayedEmployeeName.getText();
+        //Assert.assertEquals(nameEmployee, actualNameEmployee);
+        Assert.assertTrue(functionsUnderEmployeeMenu.disPlayedEmployeeName.isDisplayed());
+
     }
+
+
+    @And("user types wrong employee name {string} in the search box")
+    public void userTypesWrongEmployeeNameInTheSearchBox(String anyName) {
+        //functionsUnderEmployeeMenu.employeesSearchButton.sendKeys(anyName);
+        functionsUnderEmployeeMenu.employeesSearchButton.sendKeys(anyName + Keys.ENTER);
+
+    }
+
+    @When("user clicks Employees button.")
+    public void userClicksEmployeesButton() {
+        functionsUnderEmployeeMenu.employeesButton.click();
+    }
+
+    @And("user clicks Find Employees")
+    public void userClicksFindEmployees() {
+        BrowserUtilities.sleep(3);
+        functionsUnderEmployeeMenu.findEmployeeButton.click();
+        BrowserUtilities.sleep(3);
+    }
+
+    @When("user click search button")
+    public void user_click_search_button() {
+        functionsUnderEmployeeMenu.secondSearchButton.click();
+
+    }
+
+    @And("user clicks Search By Alphabet button")
+    public void userClicksSearchByAlphabetButton() {
+        functionsUnderEmployeeMenu.searchByAlphabet.click();
+    }
+
+    @And("user clicks the letter A")
+    public void userClicksTheLetter() {
+        functionsUnderEmployeeMenu.alphabetA.click();
+        BrowserUtilities.sleep(7);
+    }
+
+    @Then("user can see this message {string}")
+    public void userCanSeeThisMessage(String message) {
+        Assert.assertEquals(message, functionsUnderEmployeeMenu.message.getText());
+
+    }
+
+    @And("user clicks the more button")
+    public void userClicksTheMoreButton() {
+        functionsUnderEmployeeMenu.moreButton.click();
+    }
+
+    @And("user clicks Export to Excel")
+    public void userClicksExportToExcel() {
+        functionsUnderEmployeeMenu.exportToExcel.click();
+    }
+
+    @Then("user download the file")
+    public void userDownloadTheFile() {
+        // Assert.assertEquals(userDownloadTheFile,functionsUnderEmployeeMenu.userDownloadTheFile.getText());
+
+    }
+
+    @Then("user disable to see the result of input")
+    public void userDisableToSeeTheResultOfInput() {
+        functionsUnderEmployeeMenu.findEmployeeResultChild1.isDisplayed();
+    }
+
+    @And("user types some {string} in the search box")
+    public void userTypesSomeInTheSearchBox(String specialCharacter) {
+        functionsUnderEmployeeMenu.employeesSearchButton.sendKeys(specialCharacter + Keys.ENTER);
+
+    }
+
+
+
+/*
+    @Then("user can not see any employee info displayed")
+    public void user_can_not_see_any_employee_info_displayed() {
+        
+    }
+
 
     @When("user click Find Employees")
     public void userClickFindEmployees() {
     }
 
-    @And("user clicks Search By Alphabet button")
-    public void userClicksSearchByAlphabetButton() {
-    }
 
-    @And("user clicks the letter {string}")
-    public void userClicksTheLetter(String arg0) {
-    }
+
+
 
     @Then("user can see employee info")
     public void userCanSeeEmployeeInfo() {
     }
 
     @Given("\"<user> user is on homepage")
-    public void userUserIsOnHomepage() throws Throwable {    // Write code here that turns the phrase above into concrete actions    throw new cucumber.api.PendingException();}
+    public void userUserIsOnHomepage(){
     }
 
     @And("user clicks the more button")
@@ -115,4 +218,10 @@ public class functionsUnderEmployeeMenu_StepDefinitions {
     public void verifyThatGets(String arg0, String arg1) {
     }
 
+    @And("user types some {string} in the search box")
+    public void userTypesSomeInTheSearchBox(String arg0) {
+    }
+
+
+ */
 }
