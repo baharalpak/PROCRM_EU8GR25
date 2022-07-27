@@ -69,17 +69,17 @@ public class SendMessagePage {
     @FindBy(xpath = "//a[.='Add more']")
     public WebElement addMoreLink;
 
-    @FindBy(xpath = "(//div[@class='bx-finder-company-department-employee-name'])[2]")
-    public WebElement mention2Text;
-
-    @FindBy(xpath = "(//div[@class='bx-finder-company-department-employee-name'])[3]")
-    public WebElement mention3Text;
-
-    @FindBy(xpath = "(//div[@class='bx-finder-company-department-employee-name'])[4]")
-    public WebElement mention4Text;
-
-    @FindBy(xpath = "(//div[@class='bx-finder-company-department-employee-name'])[5]")
-    public WebElement mention5Text;
+//    @FindBy(xpath = "(//div[@class='bx-finder-company-department-employee-name'])[2]")
+//    public WebElement mention2Text;
+//
+//    @FindBy(xpath = "(//div[@class='bx-finder-company-department-employee-name'])[3]")
+//    public WebElement mention3Text;
+//
+//    @FindBy(xpath = "(//div[@class='bx-finder-company-department-employee-name'])[4]")
+//    public WebElement mention4Text;
+//
+//    @FindBy(xpath = "(//div[@class='bx-finder-company-department-employee-name'])[5]")
+//    public WebElement mention5Text;
 
     @FindBy(xpath = "//span[.='The message title is not specified']")
     public WebElement mandatoryMessageTitleError;

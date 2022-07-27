@@ -53,7 +53,13 @@ Feature: SCRUM-897
     * User fills Message Title which is mandatory field with a message title.
     * User clicks on Add more link.
     * User clicks Employees and Departments.
-    * User adds mentions.
+    * User adds mentions below.
+      | hr1@cybertekschool.com         |
+      | helpdesk19@cybertekschool.com  |
+      | marketing37@cybertekschool.com |
+      | hr83@cybertekschool.com        |
+      | helpdesk31@cybertekschool.com  |
+      | marketing59@cybertekschool.com |
     * User clicks Send button.
     Then Verify that user can "add mention".
 
@@ -137,7 +143,7 @@ Feature: SCRUM-897
       | marketing |
       | helpdesk  |
 
-  @SCRUM-917 @wipBahar
+  @SCRUM-917 @wipBahar  @DONE
   Scenario Outline: User should be able to add List of users from selecting multiple contacts from Employees and Departments contact lists.
     Given "<user>" user is on homepage
     When User clicks Message button.
@@ -159,12 +165,3 @@ Feature: SCRUM-897
       | marketing |
       | helpdesk  |
 
-    Scenario: List of users
-      Then user should see the users
-    | hr1@cybertekschool.com         |
-    | helpdesk19@cybertekschool.com  |
-    | marketing37@cybertekschool.com |
-    | hr83@cybertekschool.com        |
-    | helpdesk31@cybertekschool.com  |
-    | marketing59@cybertekschool.com |
-    | Test1                          |
