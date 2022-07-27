@@ -5,9 +5,12 @@ import com.github.javafaker.Faker;
 import com.procrm.pages.AppreciationPage;
 import com.procrm.utilities.BrowserUtilities;
 import com.procrm.utilities.Driver;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+
+import java.util.Map;
 
 public class Appreciation_StepDefinitions {
 
@@ -41,15 +44,20 @@ public class Appreciation_StepDefinitions {
         // Assert.assertTrue(AppreciationPage.isPictureNameMatching());
     }
 
-    @When("User adds users from Employees and Departments contact lists")
-    public void user_adds_users_from_employees_and_departments_contact_lists() {
-        AppreciationPage.addUsersButton.click();
+    @When("User adds below emails from Employees and Departments contact lists")
+    public void user_adds_below_emails_from_employees_and_departments_contact_lists(DataTable dataTable) throws InterruptedException{
+        Map<String, String> map = dataTable.asMap(String.class, String.class);
+
+
+
+
+         AppreciationPage.addMoreButton.click();
         AppreciationPage.employeesAndDepartmentsButton.click();
         BrowserUtilities.sleep(2);
         AppreciationPage.email2.click();
         AppreciationPage.email1.click();
         BrowserUtilities.sleep(2);
-
+        AppreciationPage.excludingAllEmployees.click();
 
     }
 
@@ -101,7 +109,7 @@ public class Appreciation_StepDefinitions {
 
     @Then("quotes should be created successfully")
     public void quotes_should_be_created_successfully() {
-        Assert.assertEquals("expected: "+harryPotterQuoter+" but actual: "+AppreciationPage.getTopQuotationText(), harryPotterQuoter, AppreciationPage.topQuotation.getText());
+        Assert.assertEquals("expected: " + harryPotterQuoter + " but actual: " + AppreciationPage.getTopQuotationText(), harryPotterQuoter, AppreciationPage.topQuotation.getText());
 
     }
 
