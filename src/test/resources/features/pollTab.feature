@@ -102,12 +102,141 @@ Feature: User should be able to create a poll by clicking on Poll tab under Acti
     Given "<user>" user is on homepage
     When user clicks on Activity Stream
     And clicks on Poll tap  from top menu
+
+    When User clicks on add more
+    And user click on Employees and Departments button
+    And user add employees emails
+
     And User add a question
     And user add an answer to the text box
     And user add an second answer to the text box
     And user click on multiple choice checkbox.
     When user click on send button
     Then user should be able to send the message.
+    Examples:
+      | user      |
+      | hr        |
+      | marketing |
+      | helpdesk  |
+
+
+  @pollN1
+  Scenario Outline:  User should  NOT be able add same answer twice.
+    Given "<user>" user is on homepage
+    When user clicks on Activity Stream
+    And clicks on Poll tap  from top menu
+
+    When User clicks on add more
+    And user click on Employees and Departments button
+    And user add employees emails
+
+    * User add a question
+    * user add an answer to the text box
+    * user add an second answer as same one  to the text box
+    * user click on multiple choice checkbox.
+    When user click on send button
+    Then user should NOT be able to send the message.
+
+
+
+    Examples:
+      | user      |
+      | hr        |
+      | marketing |
+      | helpdesk  |
+  @pollN2
+  Scenario Outline:  User should  NOT be able to attach Text without a Link (Negative )
+    Given "<user>" user is on homepage
+    When user clicks on Activity Stream
+    And clicks on Poll tap  from top menu
+
+    When User clicks on add more
+    And user click on Employees and Departments button
+    And user add employees emails
+
+    When user click on link button
+    And add a Text to link box
+    And clicks on save button
+
+
+    When user click on send button
+    Then user should NOT be able to send the message.
+
+
+    Examples:
+      | user      |
+      | hr        |
+      | marketing |
+      | helpdesk  |
+
+  @pollTabN3
+
+  Scenario Outline:  User should NOT be able to send a pool with invalid credential
+    Given "<user>" user is on homepage
+    When user clicks on Activity Stream
+    And clicks on Poll tap  from top menu
+
+    When User clicks on add more
+    And user click on Employees and Departments button
+    And user add invalid employees emails
+
+
+    When user click on send button
+    Then user should be able to send the message.
+    Examples:
+      | user      |
+      | hr        |
+      | marketing |
+      | helpdesk  |
+
+
+  @pollTabN4
+
+  Scenario Outline:  User should NOT be able to send a pool without message title
+    Given "<user>" user is on homepage
+    When user clicks on Activity Stream
+    And clicks on Poll tap  from top menu
+
+    When User clicks on add more
+    And user click on Employees and Departments button
+    And user add employees emails
+
+
+    When user click on send button
+    Then user should be able to send the message.
+    Examples:
+      | user      |
+      | hr        |
+      | marketing |
+      | helpdesk  |
+
+
+  @pollTabN5
+  Scenario Outline: User should not be able to SEND A POLL without a question but with answers select  the Allow multiple choice checkbox.
+    Given "<user>" user is on homepage
+    When user clicks on Activity Stream
+    And clicks on Poll tap  from top menu
+
+    And user add an answer to the text box
+    And user add an second answer to the text box
+    And user click on multiple choice checkbox.
+
+    When User clicks on add more
+    And user click on Employees and Departments button
+    And user add employees emails
+
+    When user click on link button
+    And add a Text to link box
+    And clicks on save button
+
+
+    When user click on send button
+    Then user should be able to send the message.
+
+
+
+
+
 
 
 
@@ -117,15 +246,6 @@ Feature: User should be able to create a poll by clicking on Poll tab under Acti
       | hr        |
       | marketing |
       | helpdesk  |
-
-  Scenario: User should  NOT be able to attach Text without a Link (Negative )
-    Given "<user>" user is on homepage
-    And user clicks on Activity Stream
-    And clicks on Poll tap  from top menu
-    When user click on link button
-    And add a Text to link box
-    And clicks on save button
-    Then User should NOT be able to see the text as link in the text box.
 
   Scenario: User should be able to  add mention using add mention icon.
 
