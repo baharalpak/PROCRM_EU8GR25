@@ -177,7 +177,7 @@ public class CalendarTasksEventsStepDefs {
     @When("User add attendee")
     public void user_add_attendee() {
         BrowserUtilities.waitForVisibility(calendarTasksEventsPage.addMoreAttendee, 10);
-        calendarTasksEventsPage.addMoreAttendee.click();
+        BrowserUtilities.clickWithJS(calendarTasksEventsPage.addMoreAttendee);
         BrowserUtilities.waitFor(3);
         calendarTasksEventsPage.attendeesInput.sendKeys("marketing10@cybertekschool.com" + Keys.ENTER);
         BrowserUtilities.waitFor(3);

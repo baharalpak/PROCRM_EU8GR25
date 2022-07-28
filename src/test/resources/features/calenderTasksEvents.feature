@@ -87,7 +87,7 @@ Feature: Calendar feature
     When User click Filter and search
      * User click INVITATIONS
     Then Verify user should be able to display invitations by using "Filter and search" box
-
+  @selma
   Scenario: HR User can filter events and/or tasks by using "Filter and search" box after clicking "I'M AN ORGANISER" button.
     Given "HR" user is on homepage
     And User click Calendar button
