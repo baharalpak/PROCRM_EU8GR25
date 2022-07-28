@@ -1,21 +1,18 @@
 package com.procrm.pages;
 
-import com.procrm.utilities.BrowserUtilities;
 import com.procrm.utilities.Driver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class TasksPage_Scrum889 {
-    public TasksPage_Scrum889() {
+public class TaskPage {
+    public TaskPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
     @FindBy(id = "tasks-task-priority-cb")
@@ -37,7 +34,7 @@ public class TasksPage_Scrum889 {
         WebElement expectedMention=null;
         for (WebElement el : employeesList) {
             if(el.getText().equalsIgnoreCase(mentionUserEmployee))
-            expectedMention=el;
+                expectedMention=el;
         }
         return expectedMention;
     }
