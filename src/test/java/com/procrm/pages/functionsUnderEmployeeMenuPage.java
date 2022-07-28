@@ -5,7 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class functionsUnderEmployeeMenuPage {
+
 
 
 
@@ -38,7 +41,7 @@ public class functionsUnderEmployeeMenuPage {
     @FindBy(xpath = "//a[@class='employee-name-link']")
     public WebElement disPlayedEmployeeName;
 
-    @FindBy(id="sitemap-menu")
+    @FindBy(id = "sitemap-menu")
     public WebElement openLeftMenu;
 
     @FindBy(xpath = "//*[@id='top_menu_id_company_342409671']/a/span[2]/span[2]")
@@ -65,7 +68,37 @@ public class functionsUnderEmployeeMenuPage {
     @FindBy(xpath = "//*[@id='tr_485']//td[1]")
     public WebElement findEmployeeResultChild1;
 
+    @FindBy(css = "[class='bx-user-name']")
+    public List<WebElement> telephoneDirectoryList;
 
+    public WebElement findReceiverName(String recevierName) {
+        WebElement expectedMention = null;
+        for (WebElement el : telephoneDirectoryList) {
+            if (el.getText().equalsIgnoreCase(recevierName))
+                expectedMention = el;
+        }
+        return expectedMention;
+    }
+
+    @FindBy(css = "[class='webform-small-button-text']")
+    public WebElement sendMessageButton;
+
+    @FindBy(css="[class='bx-messenger-textarea-input']")
+    public WebElement sendMessageBox;
+
+    @FindBy(css="[class='bx-messenger-message']")
+    public WebElement cemal;
+
+    @FindBy(xpath = "//a[@bx-tooltip-user-id='500']")
+    public WebElement typesHiMessage;
+
+    @FindBy(xpath = "//span[@class='webform-small-button-text']")
+    public WebElement addDepartmentAgain;
+
+    @FindBy(id = "NAME")
+    public WebElement addSameDepartmentName;;
 
 }
+
+
 

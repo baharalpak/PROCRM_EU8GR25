@@ -23,6 +23,17 @@ Feature: Functions Under Employee Menu
     * user clicks add
     Then user can see the name of the newly created department
 
+
+  @Scrum-893
+  Scenario: Add 2 departments with the same name
+    Given "HR" user is on homepage.
+    When user clicks Employees button
+    And user clicks Company Structure button
+    * user clicks ADD Department button again
+    * user types same department name again
+    * user clicks add
+    Then user gets an error message
+
   @Scrum-893
   Scenario Outline:Find employees by search box
     Given "<user>" user is on homepage.
@@ -95,7 +106,7 @@ Feature: Functions Under Employee Menu
       | marketing |
       | helpdesk  |
 
-  @Scrum-893 @a
+  @Scrum-893
   Scenario Outline: Display Telephone Directory
     Given "<user>" user is on homepage.
     When user clicks Employees button
@@ -109,15 +120,35 @@ Feature: Functions Under Employee Menu
 
   @Scrum-893
   Scenario Outline: User send message to employee from the telephone directory
-    Given "HR" user is on homepage.
+    Given "<user>" user is on homepage.
     When user clicks Employees button
     And user clicks Telephone Directory button
-    * user find name of receiver as"<receiver>"
-    * "<sender>" send "date" to "<receiver>"
-    *  "<receiver>" login
-    Then verify that "<receiver>" gets "date"
+    * user find name of receiver as "helpdesk1@cybertekschool.com"
+    * user clicks "send message" button
+    * user types "Hi helpdesk73" and send message
+    Then verify that "<receiver>" gets "message"
 
     Examples:
-      | sender | receiver |
-      | HR     | James    |
+      | user      |
+      | hr        |
+      | helpdesk  |
+      | marketing |
+
+
+  @Scrum-893 @a
+  Scenario Outline: User send message to employee from the telephone directory
+    Given "<user>" user is on homepage.
+    When user clicks Employees button
+    And user clicks Telephone Directory button
+    * user find name of receiver as "helpdesk1@cybertekschool.com"
+    * user clicks "send message" button 6 times
+    * user types "Hi helpdesk73" and send message
+    Then verify that "<receiver>" gets an "Error message"
+
+    Examples:
+      | user      |
+      | hr        |
+      #| helpdesk  |
+      #| marketing |
+
 
