@@ -220,7 +220,9 @@ public class TasksPage_Scrum889 {
     public WebElement moreResponsibleBox;
 
     //@FindBy(xpath = "//*[@id=\"tasks-content-outer\"]/div[2]/div[1]/text()")
-    @FindBy(xpath="//div[@class='task-message-label error']")
+    //@FindBy(xpath="//div[@class='task-message-label error']")
+   // @FindBy(className ="task-message-label error")
+    @FindBy(xpath = "//div[text()='The task name is not specified.']")
     public WebElement errorMessage;
 
     @FindBy(xpath = "(//a[@class='task-form-field-item-text task-options-destination-text'])[1]")

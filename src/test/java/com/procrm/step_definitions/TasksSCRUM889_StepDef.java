@@ -279,7 +279,8 @@ public class TasksSCRUM889_StepDef {
     }
     @Then("User should see error message {string}")
     public void user_should_see_error_message(String message) {
-       // Assert.assertEquals(message, tasksPage_scrum889.errorMessage);
+       // Assert.assertEquals(message, tasksPage_scrum889.errorMessage.getText());
+        Driver.getDriver().switchTo().frame(tasksPage_scrum889.iframeNewTask);
         Assert.assertTrue(tasksPage_scrum889.errorMessage.isDisplayed());
     }
     @Then("User can not create same task")
