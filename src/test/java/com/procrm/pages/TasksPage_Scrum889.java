@@ -223,4 +223,7 @@ public class TasksPage_Scrum889 {
     @FindBy(xpath="//div[@class='task-message-label error']")
     public WebElement errorMessage;
 
+    @FindBy(xpath = "(//a[@class='task-form-field-item-text task-options-destination-text'])[1]")
+    public WebElement declaredResponsiblePerson;
+
 }
