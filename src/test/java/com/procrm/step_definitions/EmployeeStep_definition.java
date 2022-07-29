@@ -24,17 +24,18 @@ public class EmployeeStep_definition {
         companyPage.companyStructure.click();
         BrowserUtilities.sleep(3);
     }
-    @Then("user should see the Company Structure")
+    @Then("Verify that user should see the Company Structure")
     public void user_should_see_the_company_structure() {
         Assert.assertTrue(Driver.getDriver().getTitle().contains("Company Structure"));
     }
     @When("user clicks Telephone Directory button")
     public void user_clicks_telephone_directory_button() {
+
         companyPage.telephoneDirectory.click();
         BrowserUtilities.sleep(3);
 
       }
-    @Then("user should see the telephone directory")
+    @Then("Verify that user should see the telephone directory")
     public void user_should_see_the_telephone_directory() {
         Assert.assertTrue(Driver.getDriver().getTitle().contains("Telephone Directory"));
 

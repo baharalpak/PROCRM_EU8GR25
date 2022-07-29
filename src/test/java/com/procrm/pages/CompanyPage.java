@@ -23,7 +23,8 @@ public class CompanyPage {
     @FindBy(xpath = "(//a[@href='/company/vis_structure.php'])[3]")
     public WebElement companyStructure;
 
-    @FindBy(xpath = "(//a[@href='/company/telephones.php'])")
+    //@FindBy(xpath = "(//a[@href='/company/telephones.php'])")
+    @FindBy(xpath = "//*[text()='Telephone Directory']")
     public WebElement telephoneDirectory;
 
     /*public void clickAnyFunctions(String functionName){

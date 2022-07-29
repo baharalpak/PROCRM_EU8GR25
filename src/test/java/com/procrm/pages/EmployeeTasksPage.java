@@ -8,12 +8,12 @@ import org.openqa.selenium.support.PageFactory;
 import java.io.File;
 import java.util.List;
 
-public class functionsUnderEmployeeMenuPage {
+public class EmployeeTasksPage {
 
 
 
 
-    public functionsUnderEmployeeMenuPage() {
+    public EmployeeTasksPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
@@ -99,11 +99,14 @@ public class functionsUnderEmployeeMenuPage {
     @FindBy(id = "NAME")
     public WebElement addSameDepartmentName;
 
-    /*public static Boolean isFileDownloaded(String fileName) {
+    @FindBy(xpath = "//*[text()='Telephone Directory']")
+    public WebElement telephoneDirectory;
+
+   public static Boolean isFileDownloaded(String fileName) {
         boolean flag = false;
         //paste your directory path below
         //eg: C:\\Users\\username\\Downloads
-        String dirPath = "\"C:\\Users\\ecebo\\Downloads\"";
+        String dirPath = "C:\\Users\\ecebo\\Downloads";
         File dir = new File(dirPath);
         File[] files = dir.listFiles();
         if (files.length == 0 || files == null) {
@@ -121,8 +124,8 @@ public class functionsUnderEmployeeMenuPage {
         return flag;
 
     }
-     */
 
+ /*
     public boolean isFileDownloaded(String downloadPath, String fileName) {
         File dir = new File(downloadPath);
         File[] dirContents = dir.listFiles();
@@ -135,6 +138,6 @@ public class functionsUnderEmployeeMenuPage {
             }
         }
         return false;
-    }
+    }*/
 }
 
