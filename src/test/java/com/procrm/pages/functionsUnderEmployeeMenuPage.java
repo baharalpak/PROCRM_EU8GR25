@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.File;
 import java.util.List;
 
 public class functionsUnderEmployeeMenuPage {
@@ -96,9 +97,44 @@ public class functionsUnderEmployeeMenuPage {
     public WebElement addDepartmentAgain;
 
     @FindBy(id = "NAME")
-    public WebElement addSameDepartmentName;;
+    public WebElement addSameDepartmentName;
 
+    /*public static Boolean isFileDownloaded(String fileName) {
+        boolean flag = false;
+        //paste your directory path below
+        //eg: C:\\Users\\username\\Downloads
+        String dirPath = "\"C:\\Users\\ecebo\\Downloads\"";
+        File dir = new File(dirPath);
+        File[] files = dir.listFiles();
+        if (files.length == 0 || files == null) {
+            System.out.println("The directory is empty");
+            flag = false;
+        } else {
+            for (File listFile : files) {
+                if (listFile.getName().contains(fileName)) {
+                    System.out.println(fileName + " is present");
+                    break;
+                }
+                flag = true;
+            }
+        }
+        return flag;
+
+    }
+     */
+
+    public boolean isFileDownloaded(String downloadPath, String fileName) {
+        File dir = new File(downloadPath);
+        File[] dirContents = dir.listFiles();
+
+        for (int i = 0; i < dirContents.length; i++) {
+            if (dirContents[i].getName().equals(fileName)) {
+                // File has been found, it can now be deleted:
+                dirContents[i].delete();
+                return true;
+            }
+        }
+        return false;
+    }
 }
-
-
 
