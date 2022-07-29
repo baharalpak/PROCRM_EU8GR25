@@ -1,6 +1,5 @@
 package com.procrm.pages;
 
-import com.procrm.step_definitions.SendMessage_StepDefinition;
 import com.procrm.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,9 +19,6 @@ public class SendMessagePage {
 
     @FindBy(xpath = "//body[@contenteditable='true']")
     public WebElement messageTitleBox;
-
-    @FindBy(xpath = "(//div[@class='feed-post-text-block-inner-inner'])[1]")
-    public WebElement lastCreatedMessage;
 
     @FindBy(xpath = "//span[@class='bxhtmled-top-bar-btn bxhtmled-button-video']")
     public WebElement insertVideoIcon;
@@ -69,26 +65,19 @@ public class SendMessagePage {
     @FindBy(xpath = "//a[.='Add more']")
     public WebElement addMoreLink;
 
-//    @FindBy(xpath = "(//div[@class='bx-finder-company-department-employee-name'])[2]")
-//    public WebElement mention2Text;
-//
-//    @FindBy(xpath = "(//div[@class='bx-finder-company-department-employee-name'])[3]")
-//    public WebElement mention3Text;
-//
-//    @FindBy(xpath = "(//div[@class='bx-finder-company-department-employee-name'])[4]")
-//    public WebElement mention4Text;
-//
-//    @FindBy(xpath = "(//div[@class='bx-finder-company-department-employee-name'])[5]")
-//    public WebElement mention5Text;
-
     @FindBy(xpath = "//span[.='The message title is not specified']")
     public WebElement mandatoryMessageTitleError;
-
-    @FindBy(xpath = "(//span[@data-id])[2]")
-    public WebElement secondAddedEmployee;
 
     @FindBy(xpath = "(//input[@type='text'])[5]")
     public WebElement addEmployeeContainer;
 
+    @FindBy(xpath = "(//span[@title='Upload files'])[1]")
+    public WebElement uploadFilesIcon;
+
+    @FindBy(xpath = "(//input[@class='diskuf-fileUploader wd-test-file-light-inp '])[1]")
+    public WebElement filePictureUploadContainer;
+
+    @FindBy(xpath = "//a[.='My Drive / Uploaded files']")
+    public WebElement myDriveUploadedFiles;
 
 }
