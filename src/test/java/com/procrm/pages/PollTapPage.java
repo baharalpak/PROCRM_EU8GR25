@@ -110,6 +110,11 @@ public WebElement answer2;
     @FindBy(xpath = "//*[@id=\"blog-submit-button-save\"]")
     public  WebElement SendButton;
 
+    @FindBy(xpath = "//*[@id=\"tasks-iframe-wrap\"]")
+    public WebElement PollTextBox;
+@FindBy(xpath = "//*[@id=\"feed-add-post-destination-item\"]/span/span[2]")
+    public  WebElement deleteToBox;
+
 
 
 }

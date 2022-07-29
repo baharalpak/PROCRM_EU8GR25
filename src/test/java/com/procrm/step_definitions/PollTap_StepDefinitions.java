@@ -2,20 +2,29 @@ package com.procrm.step_definitions;
 
 import com.procrm.pages.BasePage;
 import com.procrm.pages.PollTapPage;
+import com.procrm.runners.CukesRunner;
 import com.procrm.utilities.BrowserUtilities;
 import com.procrm.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Keys;
 import io.cucumber.java.*;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 
+import java.io.File;
+import java.io.IOException;
+
 public class PollTap_StepDefinitions {
     PollTapPage pollTapPage=new PollTapPage();
+
+
 
 
     @When("user clicks on Activity Stream")
@@ -30,6 +39,7 @@ public class PollTap_StepDefinitions {
     public void clicksOnPollTapFromTopMenu() {
         pollTapPage.PollTap.click();
         BrowserUtilities.sleep(3);
+
 
     }
 
@@ -53,7 +63,20 @@ public class PollTap_StepDefinitions {
         BrowserUtilities.sleep(2);
         pollTapPage.addEmployee.sendKeys(Keys.ENTER);
         BrowserUtilities.sleep(1);
-        
+
+    }
+
+    @And("user add invalid employees emails")
+    public void userAddInvalidEmployeesEmails() throws IOException {
+        pollTapPage.deleteToBox.click();
+        pollTapPage.addEmployee.sendKeys("marketcybertekschool.com");
+
+        BrowserUtilities.sleep(2);
+
+       File file = ( (TakesScreenshot)Driver.getDriver()).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(file, new File("C:\\Users\\yyardim\\OneDrive - University of Edinburgh\\Program testing 2022\\Proje 2022\\Screen shot"+  "-"+ "invalid employees emails"+ ".jpg"));
+
+
     }
 
     @When("user click on link button")
@@ -87,6 +110,13 @@ public class PollTap_StepDefinitions {
 
     @And("add a Text to link box")
     public void addATextToLinkBox() {
+
+        pollTapPage.AddText.sendKeys("send text");
+        BrowserUtilities.sleep(2);
+
+        pollTapPage.AddLink.sendKeys("/.'#]###");
+        BrowserUtilities.sleep(2);
+
         
     }
 
@@ -204,6 +234,7 @@ pollTapPage.questionTextBox.click();
         BrowserUtilities.sleep(2);
         Driver.getDriver().switchTo().alert().accept();
         BrowserUtilities.sleep(2);
+
     }
 
     @Then("the question will be deleted")
@@ -246,16 +277,33 @@ pollTapPage.questionTextBox.click();
 
     }
 
-    @When("user click on send button")
-    public void userClickOnSendButton() {
-        pollTapPage.SendButton.click();
 
+
+    @When("user click on send button")
+    public void userClickOnSendButton() throws IOException {
+        pollTapPage.SendButton.click();
+        BrowserUtilities.sleep(3);
+
+
+
+        File file = ( (TakesScreenshot)Driver.getDriver()).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(file, new File("C:\\Users\\yyardim\\OneDrive - University of Edinburgh\\Program testing 2022\\Proje 2022\\Screen shot\\test" + "-"+pollTapPage.SendButton.getText() +  ".jpg"));
 
 
     }
 
+
+
     @Then("user should be able to send the message.")
     public void userShouldBeAbleToSendTheMessage() {
+
+    }
+
+    @And("user add an second answer as same one  to the text box")
+    public void userAddAnSecondAnswerAsSameOneToTheTextBox() {
+        pollTapPage.answer2.sendKeys("Answer1");
+        BrowserUtilities.sleep(2);
+
 
     }
 
