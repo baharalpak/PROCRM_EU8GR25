@@ -107,9 +107,9 @@ Feature: User should be able to create a poll by clicking on Poll tab under Acti
     And user click on Employees and Departments button
     And user add employees emails
 
-    And User add a question
-    And user add an answer to the text box
-    And user add an second answer to the text box
+    * User add a question
+    * user add an answer to the text box
+    * user add an second answer to the text box
     And user click on multiple choice checkbox.
     When user click on send button
     Then user should be able to send the message.
@@ -151,12 +151,12 @@ Feature: User should be able to create a poll by clicking on Poll tab under Acti
     And clicks on Poll tap  from top menu
 
     When User clicks on add more
-    And user click on Employees and Departments button
-    And user add employees emails
+    * user click on Employees and Departments button
+    * user add employees emails
 
     When user click on link button
     And add a Text to link box
-    And clicks on save button
+    * clicks on save button
 
 
     When user click on send button
@@ -217,28 +217,21 @@ Feature: User should be able to create a poll by clicking on Poll tab under Acti
     When user clicks on Activity Stream
     And clicks on Poll tap  from top menu
 
-    And user add an answer to the text box
-    And user add an second answer to the text box
-    And user click on multiple choice checkbox.
+    * user add an answer to the text box
+    * user add an second answer to the text box
+    * user click on multiple choice checkbox.
 
     When User clicks on add more
     And user click on Employees and Departments button
-    And user add employees emails
+    * user add employees emails
 
     When user click on link button
     And add a Text to link box
-    And clicks on save button
+    * clicks on save button
 
 
     When user click on send button
     Then user should be able to send the message.
-
-
-
-
-
-
-
 
 
     Examples:
@@ -251,30 +244,30 @@ Feature: User should be able to create a poll by clicking on Poll tab under Acti
 
     Given "<user>" user is on homepage
     And user clicks on Activity Stream
-    And clicks on Poll tap  from top menu
+    * clicks on Poll tap  from top menu
     When user click on mention icon.
     And user click on Employees and Departments button
-    And user mention employees from contact list
+    * user mention employees from contact list
     Then User should be able to see the mention in the text box.
 
   Scenario: User should be able to create and edit questions and answers.
     Given "<user>" user is on homepage
     And user clicks on Activity Stream
-    And clicks on Poll tap  from top menu
+    * clicks on Poll tap  from top menu
     When user click on Question text Box
     And User add a question
-    And user edit the question
+    * user edit the question
 
     And user add an answer to the text box
-    And user edit the answer
+    * user edit the answer
 
     And user add an second answer to the text box
-    And user edit the second answer
+    * user edit the second answer
 Scenario:  User should be able to delete questions and multiple answers, and user should be able select  the Allow multiple choice checkbox.
 
   Given "<user>" user is on homepage
   And user clicks on Activity Stream
-  And clicks on Poll tap  from top menu
+  * clicks on Poll tap  from top menu
   And user click on delete question icon
   Then the question will be deleted
 
@@ -284,20 +277,6 @@ Scenario:  User should be able to delete questions and multiple answers, and use
 
 
 
-  Scenario: User should be able to send a pool.
-    Given "<user>" user is on homepage
-    And user clicks on Activity Stream
-    And clicks on Poll tap  from top menu
-  When user click on send button
-  Then user should be able to send the message.
-
-  Scenario: User should NOT be able to send a pool with a wrong credential
-    Given "<user>" user is on homepage
-    And user clicks on Activity Stream
-    And clicks on Poll tap  from top menu
-    When user add a wrong email
-    And user click on send button
-    Then user should NOT be able to send the message.
 
   #1. User should be able to add users from selecting multiple contacts from Employees and Departments contact lists.
   #2. User should be able to attach link by clicking on the link icon.

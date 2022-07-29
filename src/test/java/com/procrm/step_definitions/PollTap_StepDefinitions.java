@@ -2,6 +2,7 @@ package com.procrm.step_definitions;
 
 import com.procrm.pages.BasePage;
 import com.procrm.pages.PollTapPage;
+import com.procrm.runners.CukesRunner;
 import com.procrm.utilities.BrowserUtilities;
 import com.procrm.utilities.Driver;
 import io.cucumber.java.en.And;
@@ -22,6 +23,8 @@ import java.io.IOException;
 
 public class PollTap_StepDefinitions {
     PollTapPage pollTapPage=new PollTapPage();
+
+
 
 
     @When("user clicks on Activity Stream")
@@ -71,7 +74,7 @@ public class PollTap_StepDefinitions {
         BrowserUtilities.sleep(2);
 
        File file = ( (TakesScreenshot)Driver.getDriver()).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(file, new File("C:\\Users\\yyardim\\OneDrive - University of Edinburgh\\Program testing 2022\\Proje 2022\\Screen shot"+ ".jpg"));
+        FileUtils.copyFile(file, new File("C:\\Users\\yyardim\\OneDrive - University of Edinburgh\\Program testing 2022\\Proje 2022\\Screen shot"+  "-"+ "invalid employees emails"+ ".jpg"));
 
 
     }
@@ -280,8 +283,11 @@ pollTapPage.questionTextBox.click();
     public void userClickOnSendButton() throws IOException {
         pollTapPage.SendButton.click();
         BrowserUtilities.sleep(3);
+
+
+
         File file = ( (TakesScreenshot)Driver.getDriver()).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(file, new File("C:\\Users\\yyardim\\OneDrive - University of Edinburgh\\Program testing 2022\\Proje 2022\\Screen shot\\test"+ ".jpg"));
+        FileUtils.copyFile(file, new File("C:\\Users\\yyardim\\OneDrive - University of Edinburgh\\Program testing 2022\\Proje 2022\\Screen shot\\test" + "-"+pollTapPage.SendButton.getText() +  ".jpg"));
 
 
     }
