@@ -1,7 +1,6 @@
 package com.procrm.step_definitions;
 
 import com.github.javafaker.Faker;
-import com.procrm.pages.BasePage;
 import com.procrm.pages.SendMessagePage;
 import com.procrm.utilities.BrowserUtilities;
 import com.procrm.utilities.Driver;
@@ -12,8 +11,6 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 
-import java.security.Key;
-import java.util.ArrayList;
 import java.util.List;
 
 public class SendMessage_StepDefinition {
@@ -36,7 +33,6 @@ public class SendMessage_StepDefinition {
         BrowserUtilities.sleep(2);
         sendMessagePage.videoSourceBox.sendKeys(videoURL);
         BrowserUtilities.sleep(5);
-
     }
 
     @And("User clicks Save button.")
@@ -44,7 +40,6 @@ public class SendMessage_StepDefinition {
         BrowserUtilities.sleep(2);
         sendMessagePage.saveButton.click();
         BrowserUtilities.sleep(2);
-
     }
 
     @Then("Verify that user can add video.")
@@ -61,14 +56,12 @@ public class SendMessage_StepDefinition {
 
     @And("User clicks Comma icon.")
     public void userClicksCommaIcon() {
-       // BrowserUtilities.waitForVisibility(sendMessagePage.commaIcon, 2);
         sendMessagePage.commaIcon.click();
         BrowserUtilities.sleep(2);
     }
 
     @And("User fills Quote box with a quote.")
     public void userFillsQuoteBoxWithAQuote() {
-
         Driver.getDriver().switchTo().frame(sendMessagePage.quoteBoxIframe);
         sendMessagePage.quoteBox.sendKeys(faker.shakespeare().hamletQuote() + " \"Shakespeare\"");
         BrowserUtilities.sleep(2);
@@ -87,15 +80,6 @@ public class SendMessage_StepDefinition {
     public void userClicksAddMentionIcon() {
         sendMessagePage.addMentionIcon.click();
     }
-
-//    @And("User adds mentions.")
-//    public void userAddsMentions() {
-//        sendMessagePage.mention2Text.click();
-//        sendMessagePage.mention3Text.click();
-//        sendMessagePage.mention4Text.click();
-//        sendMessagePage.mention5Text.click();
-//        sendMessagePage.closeButton.click();
-//    }
 
     @And("User clicks Employees and Departments.")
     public void userClicksEmployeesAndDepartments() {
@@ -139,19 +123,6 @@ public class SendMessage_StepDefinition {
         sendMessagePage.closeButton.click();
     }
 
-//    @And("User adds List of users from selecting multiple contacts below.")
-//    public void userAddsListOfUsersFromSelectingMultipleContactsBelow(DataTable dataTable) {
-//
-//        List<String> users = dataTable.asList();
-//        System.out.println(dataTable);
-//
-//
-//        for (String each : users) {
-//            sendMessagePage.addEmployeeContainer.sendKeys(each);
-//        }
-//
-//    }
-
     @Then("User adds List of users from selecting multiple contacts below.")
     public void user_adds_list_of_users_from_selecting_multiple_contacts_below(DataTable dataTable) {
         List<String> users = dataTable.asList();
@@ -161,15 +132,9 @@ public class SendMessage_StepDefinition {
         }
     }
 
-
     @Then("user should see the users")
     public void userShouldSeeTheUsers(List<String> users) {
         System.out.println(users);
-    }
-
-    @Then("Verify that users are added.")
-    public void verifyThatUsersAreAdded() {
-
     }
 
     @And("User adds mentions below.")
@@ -180,6 +145,31 @@ public class SendMessage_StepDefinition {
         for (String eachMention : mentions) {
             sendMessagePage.addEmployeeContainer.sendKeys(eachMention + Keys.ENTER);
         }
+    }
+
+    @And("User clicks Upload Files icon.")
+    public void userClicksUploadFilesIcon() {
+        BrowserUtilities.sleep(2);
+        sendMessagePage.uploadFilesIcon.click();
+        BrowserUtilities.sleep(3);
+    }
+
+    @And("User uploads {string} to Upload files and images box.")
+    public void userUploadsToUploadFilesAndImagesBox(String filePath) {
+
+        filePath = "C:\\Users\\bahar\\Desktop\\Cydeo\\Alumni Meeting Documents\\SELENIUM_CUCUMBER_TESTNG_JUNIT_QUESTIONS.pdf";
+
+        sendMessagePage.filePictureUploadContainer.sendKeys(filePath);
+    }
+
+    @Then("Verify that user can upload the {string}.")
+    public void verifyThatUserCanUploadThe(String uploadedFile) {
+        sendMessagePage.myDriveUploadedFiles.isDisplayed();
+    }
+
+    @Then("Verify that users are added.")
+    public void verifyThatUsersAreAdded() {
+
     }
 }
 
