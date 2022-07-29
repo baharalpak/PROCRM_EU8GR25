@@ -25,12 +25,12 @@ Feature: Functions Under Employee Menu
 
 
   @Scrum-893
-  Scenario: Add 2 departments with the same name
+  Scenario: Add 2 departments with the same name(Negative)
     Given "HR" user is on homepage.
     When user clicks Employees button
     And user clicks Company Structure button
-    * user clicks ADD Department button again
-    * user types same department name again
+    * user clicks ADD Department button
+    * user types department name
     * user clicks add
     Then user gets an error message
 
@@ -49,12 +49,11 @@ Feature: Functions Under Employee Menu
       | helpdesk  |
 
   @Scrum-893
-  Scenario Outline:Can not type nothing to find employees
+  Scenario Outline:Can not type nothing to find employees(Negative)
     Given "<user>" user is on homepage.
     When user clicks Employees button.
     And user clicks Find Employees
     * user types wrong employee name "Jimi" in the search box
-    * user click search button
     Then user can see this message "Your search did not match any employees."
     Examples:
       | user      |
@@ -68,17 +67,17 @@ Feature: Functions Under Employee Menu
     When user clicks Employees button.
     And user clicks Find Employees
     *  user clicks Search By Alphabet button
-    * user clicks the letter A
+    * user clicks the letter "A"
     Then user disable to see the result of input
 
     Examples:
       | user      |
       | hr        |
-      | marketing |
-      | helpdesk  |
+     # | marketing |
+      #| helpdesk  |
 
   @Scrum-893
-  Scenario Outline:Can not type a special character to find employees
+  Scenario Outline:Can not type a special character to find employees(Negative)
     Given "<user>" user is on homepage.
     When user clicks Employees button.
     And user clicks Find Employees
@@ -103,8 +102,8 @@ Feature: Functions Under Employee Menu
     Examples:
       | user      |
       | hr        |
-      | marketing |
-      | helpdesk  |
+      #| marketing |
+      #| helpdesk  |
 
   @Scrum-893
   Scenario Outline: Display Telephone Directory
@@ -118,7 +117,7 @@ Feature: Functions Under Employee Menu
       | helpdesk  |
       | marketing |
 
-  @Scrum-893
+  @Scrum-
   Scenario Outline: User send message to employee from the telephone directory
     Given "<user>" user is on homepage.
     When user clicks Employees button
@@ -131,24 +130,24 @@ Feature: Functions Under Employee Menu
     Examples:
       | user      |
       | hr        |
-      | helpdesk  |
-      | marketing |
+      #| helpdesk  |
+      #| marketing |
 
 
   @Scrum-893 @a
-  Scenario Outline: User send message to employee from the telephone directory
+  Scenario Outline: User send message to employee from the telephone directory(Negative)
     Given "<user>" user is on homepage.
-    When user clicks Employees button
+    When user clicks Employees button.
     And user clicks Telephone Directory button
-    * user find name of receiver as "helpdesk1@cybertekschool.com"
-    * user clicks "send message" button 6 times
-    * user types "Hi helpdesk73" and send message
+    * user find name of receiver as "helpdesk10@cybertekschool.com"
+    * user clicks "send message" button
+    * user types "Hi helpdesk73" and send message "6" times
     Then verify that "<receiver>" gets an "Error message"
 
     Examples:
       | user      |
       | hr        |
-      #| helpdesk  |
-      #| marketing |
+     # | helpdesk  |
+     # | marketing |
 
 
