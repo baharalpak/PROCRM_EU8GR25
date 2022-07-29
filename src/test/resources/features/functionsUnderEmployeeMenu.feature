@@ -45,8 +45,8 @@ Feature: Functions Under Employee Menu
     Examples:
       | user      |
       | hr        |
-      | marketing |
-      | helpdesk  |
+      #| marketing |
+      #| helpdesk  |
 
   @Scrum-893
   Scenario Outline:Can not type nothing to find employees(Negative)
@@ -58,8 +58,8 @@ Feature: Functions Under Employee Menu
     Examples:
       | user      |
       | hr        |
-      | marketing |
-      | helpdesk  |
+     # | marketing |
+     # | helpdesk  |
 
   @Scrum-893
   Scenario Outline:Find employees by Alphabet
@@ -87,8 +87,8 @@ Feature: Functions Under Employee Menu
     Examples:
       | user      |
       | hr        |
-      | marketing |
-      | helpdesk  |
+      #| marketing |
+      #| helpdesk  |
 
   @Scrum-893
   Scenario Outline: Export the employee list
@@ -114,8 +114,8 @@ Feature: Functions Under Employee Menu
     Examples:
       | user      |
       | hr        |
-      | helpdesk  |
-      | marketing |
+     # | helpdesk  |
+      #| marketing |
 
   @Scrum-
   Scenario Outline: User send message to employee from the telephone directory
