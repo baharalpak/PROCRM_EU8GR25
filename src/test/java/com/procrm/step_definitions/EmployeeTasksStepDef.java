@@ -114,8 +114,10 @@ public class EmployeeTasksStepDef {
         BrowserUtilities.sleep(7);
     }
 
+
     @Then("Verify that user can see this message {string}")
     public void userCanSeeThisMessage(String message) {
+        BrowserUtilities.sleep(7);
         Assert.assertEquals(message, empTasksPage.message.getText());
 
     }
@@ -142,8 +144,9 @@ public class EmployeeTasksStepDef {
 
     @Then("Verify that user disable to see the result of input")
     public void userDisableToSeeTheResultOfInput() {
+        BrowserUtilities.sleep(7);
         //empTasksPage.findEmployeeResultChild1.isDisplayed();
-        Assert.assertTrue(empTasksPage.findEmployeeResultChild1.isDisplayed());
+        Assert.assertTrue(empTasksPage.message.isDisplayed());
     }
 
     @And("user types some {string} in the search box")
@@ -154,6 +157,7 @@ public class EmployeeTasksStepDef {
 
     @When("user find name of receiver as {string}")
     public void user_find_name_of_receiver_as(String receiver) {
+        BrowserUtilities.sleep(7);
         empTasksPage.typesHiMessage.click();
 
     }
