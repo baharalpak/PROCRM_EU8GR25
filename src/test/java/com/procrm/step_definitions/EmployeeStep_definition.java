@@ -21,8 +21,8 @@ public class EmployeeStep_definition {
     }
     @When("user clicks Company Structure button")
     public void user_clicks_company_structure_button() {
-        companyPage.companyStructure.click();
         BrowserUtilities.sleep(3);
+        companyPage.companyStructure.click();
     }
     @Then("Verify that user should see the Company Structure")
     public void user_should_see_the_company_structure() {
@@ -30,9 +30,8 @@ public class EmployeeStep_definition {
     }
     @When("user clicks Telephone Directory button")
     public void user_clicks_telephone_directory_button() {
-
+        BrowserUtilities.sleep(7);
         companyPage.telephoneDirectory.click();
-        BrowserUtilities.sleep(3);
 
       }
     @Then("Verify that user should see the telephone directory")

@@ -13,7 +13,7 @@ Feature: Functions Under Employee Menu
       | marketing |
       | helpdesk  |
 
-  @Scrum-893
+  @Scrum-893 @a
   Scenario: Add a department
     Given "HR" user is on homepage.
     When user clicks Employees button
@@ -138,7 +138,7 @@ Feature: Functions Under Employee Menu
   @Scrum-893
   Scenario Outline: User send message to employee from the telephone directory(Negative)
     Given "<user>" user is on homepage.
-    When user clicks Employees button.
+    When user clicks Employees button
     And user clicks Telephone Directory button
     * user find name of receiver as "helpdesk10@cybertekschool.com"
     * user clicks "send message" button
