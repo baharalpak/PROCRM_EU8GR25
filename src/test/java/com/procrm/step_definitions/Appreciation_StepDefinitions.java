@@ -1,6 +1,5 @@
 package com.procrm.step_definitions;
 
-import com.github.javafaker.App;
 import com.github.javafaker.Faker;
 import com.procrm.pages.AppreciationPage;
 import com.procrm.utilities.BrowserUtilities;
@@ -9,17 +8,27 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Appreciation_StepDefinitions {
 
     AppreciationPage AppreciationPage = new AppreciationPage();
     Faker faker = new Faker();
     String harryPotterQuoter;
+    List<String> contacts;
+    List<String> contacts2;
+    String chuckNorrisFacts;
+
 
     @When("User clicks on appreciation tab")
     public void user_clicks_on_appreciation_tab() {
+
 
         AppreciationPage.moreButton.click();
         BrowserUtilities.sleep(2);
@@ -45,26 +54,41 @@ public class Appreciation_StepDefinitions {
     }
 
     @When("User adds below emails from Employees and Departments contact lists")
-    public void user_adds_below_emails_from_employees_and_departments_contact_lists(DataTable dataTable) throws InterruptedException{
-        Map<String, String> map = dataTable.asMap(String.class, String.class);
+    public void user_adds_below_emails_from_employees_and_departments_contact_lists(DataTable dataTable) throws InterruptedException {
 
+        Driver.getDriver().switchTo().frame(AppreciationPage.messageBoxIframe);
+        AppreciationPage.emptyMessageBox.clear();
+        BrowserUtilities.sleep(2);
+        AppreciationPage.emptyMessageBox.sendKeys(faker.educator().university());
+        BrowserUtilities.sleep(2);
+        Driver.getDriver().switchTo().parentFrame();
 
-
-
-         AppreciationPage.addMoreButton.click();
+        AppreciationPage.addMoreButton.click();
         AppreciationPage.employeesAndDepartmentsButton.click();
         BrowserUtilities.sleep(2);
-        AppreciationPage.email2.click();
-        AppreciationPage.email1.click();
-        BrowserUtilities.sleep(2);
+
+        contacts = dataTable.asList();
+
+
+
+        for (String contact : contacts) {
+            AppreciationPage.choosingContacts.sendKeys(contact + Keys.ENTER);
+        }
+
+
         AppreciationPage.excludingAllEmployees.click();
+        AppreciationPage.sendButton.click();
 
     }
 
     @Then("users should be added successfully")
     public void users_should_be_added_successfully() {
-        Assert.assertTrue(AppreciationPage.email2.isDisplayed());
-        Assert.assertTrue(AppreciationPage.email1.isDisplayed());
+
+        String contacts1 = contacts.get(0);
+        String contacts2 = contacts.get(1);
+        String contacts3 = contacts.get(2);
+
+        Assert.assertEquals("expected: " + contacts+ " but actual: " + AppreciationPage.getTopUsersData(),contacts1+", "+contacts2+", "+contacts3 , AppreciationPage.topUserData.getText());
     }
 
     @When("User adds a text and the URL address of the link")
@@ -75,8 +99,8 @@ public class Appreciation_StepDefinitions {
     @Then("link should be attached successfully")
     public void link_should_be_attached_successfully() {
 
-        Assert.assertEquals("The title of the linked website", AppreciationPage.messageBox.getText());
-        Assert.assertEquals("www.youtube.com", AppreciationPage.messageBox.getAttribute("href"));
+        Assert.assertEquals("https://www.youtube.com/", AppreciationPage.urlLink.getAttribute("href"));
+
 
     }
 
@@ -96,7 +120,7 @@ public class Appreciation_StepDefinitions {
     public void user_creates_a_quote() {
         AppreciationPage.quoteIcon.click();
         BrowserUtilities.sleep(1);
-        Driver.getDriver().switchTo().frame(AppreciationPage.quotationIframe);
+        Driver.getDriver().switchTo().frame(AppreciationPage.quotationBoxIframe);
         AppreciationPage.quotationBox.clear();
         BrowserUtilities.sleep(1);
         harryPotterQuoter = faker.harryPotter().quote();
@@ -122,8 +146,65 @@ public class Appreciation_StepDefinitions {
 
     @Then("mentions should be created successfully")
     public void mentions_should_be_created_successfully() {
+        Driver.getDriver().navigate().refresh();
+        BrowserUtilities.sleep(1);
 
-        Assert.assertTrue(AppreciationPage.email1.isDisplayed());
+        String a1 = contacts2.get(0);
+        String a2 = contacts2.get(1);
+        String a3 = contacts2.get(2);
+
+        BrowserUtilities.sleep(1);
+        Assert.assertEquals(a1, Driver.getDriver().findElement(By.xpath("(//div[@class='feed-post-text-block-inner-inner']//a[text()='"+a1+"'])[1]")).getText());
+        BrowserUtilities.sleep(1);
+        Assert.assertEquals(a2, Driver.getDriver().findElement(By.xpath("(//div[@class='feed-post-text-block-inner-inner']//a[text()='"+a2+"'])[1]")).getText());
+        BrowserUtilities.sleep(1);
+        Assert.assertEquals(a3, Driver.getDriver().findElement(By.xpath("(//div[@class='feed-post-text-block-inner-inner']//a[text()='"+a3+"'])[1]")).getText());
+        BrowserUtilities.sleep(1);
+
+    }
+
+    @When("User writes message as it is mandatory to send appreciation")
+    public void user_writes_message_as_it_is_mandatory_to_send_appreciation() {
+        BrowserUtilities.sleep(1);
+        Driver.getDriver().switchTo().frame(AppreciationPage.messageBoxIframe);
+        AppreciationPage.emptyMessageBox.clear();
+        BrowserUtilities.sleep(1);
+        chuckNorrisFacts = faker.chuckNorris().fact();
+        AppreciationPage.emptyMessageBox.sendKeys(chuckNorrisFacts);
+        BrowserUtilities.sleep(1);
+        Driver.getDriver().switchTo().parentFrame();
+        AppreciationPage.sendButton.click();
+
+
+    }
+
+    @Then("appreciation should be sent successfully")
+    public void appreciation_should_be_sent_successfully() {
+        WebElement chuckNorrisMessages = Driver.getDriver().findElement(By.xpath("(//div[text()='" + chuckNorrisFacts + "'])"));
+
+        Assert.assertEquals("expected: " + chuckNorrisFacts + " but actual: " + chuckNorrisMessages.getText(), chuckNorrisFacts, chuckNorrisMessages.getText());
+
+    }
+
+    @When("User adds below emails from Employees and Departments contact lists to mention")
+    public void user_adds_below_emails_from_employees_and_departments_contact_lists_to_mention(DataTable dataTable2) {
+
+
+
+        AppreciationPage.addingMention();
+
+        contacts2 = dataTable2.asList();
+
+        for (String contact : contacts2) {
+
+            AppreciationPage.chooseContacts(contact);
+
+
+
+        }
+        AppreciationPage.excludingAllEmployees.click();
+        AppreciationPage.sendButton.click();
+
     }
 
 
