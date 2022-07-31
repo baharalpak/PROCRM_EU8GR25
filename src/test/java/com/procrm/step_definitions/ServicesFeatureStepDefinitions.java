@@ -2,6 +2,7 @@ package com.procrm.step_definitions;
 
 import com.procrm.pages.ServicesPage;
 import com.procrm.utilities.BrowserUtilities;
+import com.procrm.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -35,15 +36,18 @@ public class ServicesFeatureStepDefinitions {
         switch (str) {
             case "My Courses":
                 Assert.assertEquals("Course report",servicesPage.courseReportPageTitle());
-                Assert.assertTrue(servicesPage.isCoursesTableDisplayed());
+               Assert.assertTrue(servicesPage.isCoursesTableDisplayed());
                 break;
             case "Grade Book":
                 Assert.assertEquals("Test results",servicesPage.testResultsPageTitle());
                 Assert.assertTrue(servicesPage.isGradeBookTableDisplayed());
                 break;
-            default:
-                //
+            /* default:
+
+               Driver.getDriver().getTitle();
+        */
         }
+
     }
     @When("User clicks on the grade book tab to see their grades")
     public void user_clicks_on_the_grade_book_tab_to_see_their_grades() {
@@ -66,11 +70,12 @@ public class ServicesFeatureStepDefinitions {
     }
     @Then("Student's Profile data should be edited successfully")
     public void student_s_profile_data_should_be_edited_successfully() {
+        Driver.getDriver().navigate().refresh();
         HashMap hm1 = new HashMap();
         hm1 = (HashMap) servicesPage.retrievePersonalData();
         Assert.assertEquals("Mustafa",hm1.get("FirstName"));
         Assert.assertEquals("Y",hm1.get("LastName"));
-        Assert.assertEquals("my@gmail.com",hm1.get("Email"));
+        Assert.assertEquals(servicesPage.randomEmailAddress,hm1.get("Email"));
         Assert.assertEquals("www.xxxxx.com",hm1.get("Website"));
         Assert.assertEquals("123",hm1.get("ICQ"));
 
@@ -80,7 +85,12 @@ public class ServicesFeatureStepDefinitions {
         Assert.assertEquals("AA12 3BC",hm2.get("ZipCode"));
 
         Assert.assertTrue(servicesPage.chkPublicProfile.isSelected());
+
+
+
     }
+
+
 
 
 }

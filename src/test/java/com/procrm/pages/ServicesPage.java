@@ -1,5 +1,6 @@
 package com.procrm.pages;
 
+import com.github.javafaker.Faker;
 import com.procrm.utilities.BrowserUtilities;
 import com.procrm.utilities.Driver;
 import org.openqa.selenium.WebElement;
@@ -13,10 +14,13 @@ import java.util.Map;
 
 public class ServicesPage {
 
+
     public ServicesPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
+    Faker faker = new Faker();
+    public String randomEmailAddress;
 
     @FindBy(xpath = "//*[@title='Services']/span")
     public WebElement servicesTab;
@@ -92,87 +96,87 @@ public class ServicesPage {
 
 
     //METHODS
-    public String courseReportPageTitle()
-    {
+    public String courseReportPageTitle() {
         return pageTitle.getText();
     }
-    public boolean isCoursesTableDisplayed()
-    {
-        boolean flag=false;
-        if(thCourse.isDisplayed() && thName.isDisplayed() )
-        {flag = true;}
+
+    public boolean isCoursesTableDisplayed() {
+        boolean flag = false;
+        if (thCourse.isDisplayed() && thName.isDisplayed()) {
+            flag = true;
+        }
         return flag;
     }
 
-    public String testResultsPageTitle()
-    {
-       return pageTitle.getText();
+    public String testResultsPageTitle() {
+        return pageTitle.getText();
     }
 
-    public boolean isGradeBookTableDisplayed()
-    {
-        boolean flag=false;
-        if(thCourse.isDisplayed() && thLastScore.isDisplayed() && thPassed.isDisplayed() && thAttempts.isDisplayed())
-        {flag = true;}
+    public boolean isGradeBookTableDisplayed() {
+        boolean flag = false;
+        if (thCourse.isDisplayed() && thLastScore.isDisplayed() && thPassed.isDisplayed() && thAttempts.isDisplayed()) {
+            flag = true;
+        }
         return flag;
     }
-    public void editPersonalData()
-    {
-     inputFirstName.clear();
-     inputFirstName.sendKeys("Mustafa");
-     inputLastName.clear();
-     inputLastName.sendKeys("Y");
-     inputEmail.clear();
-     inputEmail.sendKeys("my@gmail.com");
-     inputWebsite.clear();
-     inputWebsite.sendKeys("www.xxxxx.com");
-     inputICQ.clear();
-     inputICQ.sendKeys("123");
-     BrowserUtilities.sleep(2000);
+
+    public void editPersonalData() {
+
+        randomEmailAddress = faker.internet().emailAddress();
+
+        inputFirstName.clear();
+        inputFirstName.sendKeys("Mustafa");
+        inputLastName.clear();
+        inputLastName.sendKeys("Y");
+        inputEmail.clear();
+        inputEmail.sendKeys(randomEmailAddress);
+        inputWebsite.clear();
+        inputWebsite.sendKeys("www.xxxxx.com");
+        inputICQ.clear();
+        inputICQ.sendKeys("123");
+        BrowserUtilities.sleep(2);
     }
 
-    public void editProfileSetting()
-    {
-        if(!chkPublicProfile.isSelected())
-        {chkPublicProfile.click();}
+    public void editProfileSetting() {
+        if (!chkPublicProfile.isSelected()) {
+            chkPublicProfile.click();
+        }
 
         inputResume.clear();
         inputResume.sendKeys("MY RESUME");
-        BrowserUtilities.sleep(2000);
+        BrowserUtilities.sleep(2);
     }
 
-    public void editPostalAddress()
-    {
-     ddCountry.click();
-     ddCountry_UK.click();
-     inputZipCode.clear();
-     inputZipCode.sendKeys("AA12 3BC");
-     BrowserUtilities.sleep(2000);
+    public void editPostalAddress() {
+        ddCountry.click();
+        ddCountry_UK.click();
+        inputZipCode.clear();
+        inputZipCode.sendKeys("AA12 3BC");
+        BrowserUtilities.sleep(2);
     }
 
-    public void saveProfileChanges()
-    {
-      btnSave.click();
-      BrowserUtilities.sleep(2000);
+    public void saveProfileChanges() {
+        btnSave.click();
+        BrowserUtilities.sleep(2);
     }
 
-    public Map<String,String> retrievePersonalData()
-    {
+    public Map<String, String> retrievePersonalData() {
         HashMap hm = new HashMap();
-        hm.put("FirstName",inputFirstName.getText());
-        hm.put("LastName",inputLastName.getText());
-        hm.put("Email",inputEmail.getText());
-        hm.put("Website",inputWebsite.getText());
-        hm.put("ICQ",inputICQ.getText());
-     return hm;
+        // hm.put("FirstName",inputFirstName.getText());
+        hm.put("FirstName", inputFirstName.getAttribute("value"));
+        hm.put("LastName", inputLastName.getAttribute("value"));
+        hm.put("Email", inputEmail.getAttribute("value"));
+        hm.put("Website", inputWebsite.getAttribute("value"));
+        hm.put("ICQ", inputICQ.getAttribute("value"));
+        return hm;
     }
-    public Map<String,String> retrievePostalAddress()
-    {
+
+    public Map<String, String> retrievePostalAddress() {
         HashMap hm = new HashMap();
         Select select = new Select(ddCountry);
 
-        hm.put("Country",select.getFirstSelectedOption().getText());
-        hm.put("ZipCode",inputZipCode.getText());
+        hm.put("Country", select.getFirstSelectedOption().getText());
+        hm.put("ZipCode", inputZipCode.getAttribute("value"));
         return hm;
     }
 }

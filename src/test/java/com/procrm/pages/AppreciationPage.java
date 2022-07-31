@@ -1,5 +1,6 @@
 package com.procrm.pages;
 
+import com.github.javafaker.Faker;
 import com.procrm.utilities.BrowserUtilities;
 import com.procrm.utilities.Driver;
 import org.apache.commons.collections.functors.ExceptionPredicate;
@@ -19,6 +20,8 @@ public class AppreciationPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
+
+    Faker faker = new Faker();
     String fileName;
     //WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
 
@@ -53,6 +56,13 @@ public class AppreciationPage {
     @FindBy(xpath = "//a[@href='#U512']")
     public WebElement email2;
 
+    @FindBy(xpath = "//div[@class='feed-post-block feed-post-block-short feed-post-block-separator']//a[text()='helpdesk35@cybertekschool.com']")
+    public WebElement emailChosen1;
+    @FindBy(xpath = "//div[@class='feed-post-block feed-post-block-short feed-post-block-separator']//a[text()='marketing26@cybertekschool.com']")
+    public WebElement emailChosen2;
+    @FindBy(xpath = "//div[@class='feed-post-block feed-post-block-short feed-post-block-separator']//a[text()='hr89@cybertekschool.com ']")
+    public WebElement emailChosen3;
+
     @FindBy(xpath = "//span[@title='Link']")
     public WebElement linkIcon;
 
@@ -75,19 +85,29 @@ public class AppreciationPage {
     public WebElement quoteIcon;
 
     @FindBy(xpath = "//iframe[@class='bx-editor-iframe']")
-    public WebElement quotationIframe;
+    public WebElement quotationBoxIframe;
+
+    @FindBy(xpath = "//iframe[@class='bx-editor-iframe']")
+    public WebElement messageBoxIframe;
 
     @FindBy(xpath = "//blockquote[@class='bxhtmled-quote']")
     public WebElement quotationBox;
 
+    @FindBy(xpath = "//body[@style='min-height: 184px;']")
+    public WebElement emptyMessageBox;
+
     @FindBy(id = "bx-b-mention-blogPostForm")
     public WebElement mentionIcon;
 
-    @FindBy(xpath = "//*[contains(@id, 'destDepartmentTab_mention')]")
+    //a[@class='bx-finder-box-tab bx-lm-tab-department bx-finder-box-tab-selected']
+    @FindBy(xpath = "//a[contains(@id,'destDepartmentTab')]")
     public WebElement employeesAndDepartmentsButtonForAddingMentions;
 
     @FindBy(xpath = "(//table[@class='blogquote'])[1]//td")
     public WebElement topQuotation;
+
+    @FindBy(xpath = "(//span[@class='feed-add-post-destination-cont'])[1]")
+    public WebElement topUserData;
 
     @FindBy(xpath = "//div[@class='feed-add-post-destination-wrap']")
     public WebElement contactsBox;
@@ -96,6 +116,21 @@ public class AppreciationPage {
     public WebElement excludingAllEmployees;
 
 
+    @FindBy(xpath = "(//input[@type='text'])[5]")
+    public WebElement choosingContacts;
+
+    @FindBy(xpath = "//div[@class='feed-post-text-block-inner-inner']/a")
+    public WebElement urlLink;
+
+    @FindBy(xpath = "(//div[@class='feed-post-text-block-inner-inner']//a[text()='helpdesk35@cybertekschool.com'])[1]")
+            public WebElement addedMention;
+
+    //Driver.getDriver().findElement(By.xpath("(//div[@class='feed-post-text-block-inner-inner']//a[text()='+"---+"'])[1]"))
+
+
+    //div[@class='feed-post-text-block-inner-inner']/a
+
+    String youtubeLink;
 
     //METHODS
     public void uploadFile(String filePath) {
@@ -137,11 +172,18 @@ public class AppreciationPage {
     }
 
     public void addingMention() {
+        Driver.getDriver().switchTo().frame(messageBoxIframe);
+        emptyMessageBox.clear();
+        BrowserUtilities.sleep(2);
+        emptyMessageBox.sendKeys(faker.educator().university());
+        BrowserUtilities.sleep(2);
+        Driver.getDriver().switchTo().parentFrame();
+
         mentionIcon.click();
+        BrowserUtilities.sleep(2);
         employeesAndDepartmentsButtonForAddingMentions.click();
-        BrowserUtilities.sleep(2);
-        email1.click();
-        BrowserUtilities.sleep(2);
+
+
 
     }
 
@@ -157,18 +199,41 @@ public class AppreciationPage {
                 && uploadedFiles.getAttribute("alt").contains(".jpg");
 
     }
+
     //method for the quotation scenario
     public String getTopQuotationText() {
-        try
-        {
+        try {
             //wait.until(ExpectedConditions.elementToBeClickable(topQuotation));
             BrowserUtilities.waitForClickablility(topQuotation, 10);
             return topQuotation.getText();
-        }
-        catch (StaleElementReferenceException e)
-        {
+        } catch (StaleElementReferenceException e) {
             Driver.getDriver().navigate().refresh();
             return topQuotation.getText();
+        }
+    }
+
+    public String getTopUsersData() {
+        try {
+            //wait.until(ExpectedConditions.elementToBeClickable(topQuotation));
+            BrowserUtilities.waitForClickablility(topUserData, 10);
+            return topUserData.getText().toString();
+        } catch (StaleElementReferenceException e) {
+            Driver.getDriver().navigate().refresh();
+            return topUserData.getText().toString();
+        }
+    }
+    public void chooseContacts(String email) {
+        try {
+            BrowserUtilities.sleep(2);
+            Driver.getDriver().findElement(By.xpath("//div[@class='bx-finder-company-department-employees']//div[text()='" + email + "']")).click();
+        }catch (Exception e)
+        {
+            Driver.getDriver().switchTo().parentFrame();
+            mentionIcon.click();
+            BrowserUtilities.sleep(2);
+            employeesAndDepartmentsButtonForAddingMentions.click();
+            BrowserUtilities.sleep(2);
+            Driver.getDriver().findElement(By.xpath("//div[@class='bx-finder-company-department-employees']//div[text()='" + email + "']")).click();
         }
     }
 }
