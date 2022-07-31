@@ -14,7 +14,7 @@ Feature: Appreciation Feature
       | marketing |
       | helpdesk  |
 
-  @SCRUM-944
+  @SCRUM-944 @DONE
   Scenario Outline: User adds multiple contacts from Employees and Departments contact lists
     Given "<user>" user is on homepage
     When User clicks on appreciation tab
