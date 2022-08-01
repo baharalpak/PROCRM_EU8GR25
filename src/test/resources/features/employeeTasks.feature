@@ -1,6 +1,7 @@
+@SCRUM-961
 Feature: Functions Under Employee Menu
     #As a user, I should be able to use functions under employee menu
-  @Scrum-893
+  @SCRUM-950
   Scenario Outline: Display company structure
     Given "<user>" user is on homepage.
     When user clicks Employees button
@@ -13,7 +14,7 @@ Feature: Functions Under Employee Menu
       | marketing |
       | helpdesk  |
 
-  @Scrum-893 @a
+  @SCRUM-951
   Scenario: Add a department
     Given "HR" user is on homepage.
     When user clicks Employees button
@@ -24,7 +25,7 @@ Feature: Functions Under Employee Menu
     Then Verify that user can see the name of the newly created department
 
 
-  @Scrum-893
+  @SCRUM-952
   Scenario: HR can not Add 2 departments with the same name(Negative)
     Given "HR" user is on homepage.
     When user clicks Employees button
@@ -35,7 +36,7 @@ Feature: Functions Under Employee Menu
     Then Verify that user can see this message "You do not allowed added two same department name."
 
 
-  @Scrum-893
+  @SCRUM-953
   Scenario Outline:Find employees by search box
     Given "<user>" user is on homepage.
     When user clicks Employees button.
@@ -49,7 +50,7 @@ Feature: Functions Under Employee Menu
       | marketing |
       | helpdesk  |
 
-  @Scrum-893
+  @SCRUM-954
   Scenario Outline:Find employees by search box (Negative)
     Given "<user>" user is on homepage.
     When user clicks Employees button.
@@ -62,7 +63,7 @@ Feature: Functions Under Employee Menu
       | marketing |
       | helpdesk  |
 
-  @Scrum-893
+  @SCRUM-955
   Scenario Outline:Find employees by Alphabet
     Given "<user>" user is on homepage.
     When user clicks Employees button.
@@ -77,7 +78,7 @@ Feature: Functions Under Employee Menu
       | marketing |
       | helpdesk  |
 
-  @Scrum-893
+  @SCRUM-956
   Scenario Outline:Can not type a special character to find employees(Negative)
     Given "<user>" user is on homepage.
     When user clicks Employees button.
@@ -91,7 +92,7 @@ Feature: Functions Under Employee Menu
       | marketing |
       | helpdesk  |
 
-  @Scrum-893
+  @SCRUM-957
   Scenario Outline: Export the employee list
     Given "<user>" user is on homepage.
     When user clicks Employees button.
@@ -106,7 +107,7 @@ Feature: Functions Under Employee Menu
       | marketing |
       | helpdesk  |
 
-  @Scrum-893
+  @SCRUM-958
   Scenario Outline: Display Telephone Directory
     Given "<user>" user is on homepage.
     When user clicks Employees button
@@ -118,7 +119,7 @@ Feature: Functions Under Employee Menu
       | helpdesk  |
       | marketing |
 
-  @Scrum-893
+  @SCRUM-959
   Scenario Outline: User send message to employee from the telephone directory
     Given "<user>" user is on homepage.
     When user clicks Employees button
@@ -135,7 +136,7 @@ Feature: Functions Under Employee Menu
       | marketing |
 
 
-  @Scrum-893
+  @SCRUM-960
   Scenario Outline: User send message to employee from the telephone directory(Negative)
     Given "<user>" user is on homepage.
     When user clicks Employees button
